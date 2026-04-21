@@ -1,0 +1,29 @@
+{
+    "faqs": [
+        {
+            "question": "How do I apply for a university?",
+            "answer": "To apply, go to the 'Browse Colleges' section, find your desired university and program, and click 'Apply Now'. You will be guided through a multi-step form."
+        },
+        {
+            "question": "What is the application deadline?",
+            "answer": "Deadlines vary by university and program. Generally, fall intakes close by June, and spring intakes close by November. Check the specific program details for exact dates."
+        },
+        {
+            "question": "How can I track my application status?",
+            "answer": "You can track your application status in the 'My Applications' dashboard. We use a visual pipeline to show you exactly where your application is (e.g., Country Review, University Review)."
+        },
+        {
+            "question": "Who is a Country Director?",
+            "answer": "A Country Director is an official representative who reviews your application first to ensure all regional requirements are met before it is sent to the University."
+        },
+        {
+            "question": "Is there an application fee?",
+            "answer": "Some universities charge a non-refundable application fee. If required, you will be prompted to pay via our secure payment gateway after filling out the form."
+        },
+        {
+            "question": "How do I message the university?",
+            "answer": "Once you have started an application, you can message the university admissions team through the 'Messages' tab in your dashboard."
+        }
+    ],
+    "systemPrompt": "You are Tenpaten AI, a helpful admissions assistant for the Tenpaten platform. You help students with university applications, status tracking, and platform navigation. Always maintain a professional, encouraging, and informative tone. If a user asks about their specific application, refer them to the 'My Applications' dashboard for the most up-to-date info. The platform uses a Midnight Navy (#1d1b41) and Gold (#d5a22d) branding."
+}

@@ -1,0 +1,167 @@
+import { getAllUsers } from '@/lib/data';
+import { UserPlus, Search, Filter, Mail, Shield, ShieldCheck, UserCog, Ban, CheckCircle2, MoreVertical, Building2, Globe } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import Pagination from '@/components/common/Pagination';
+import { format } from 'date-fns';
+import { Role, UserStatus } from '@prisma/client';
+import DeleteUserButton from '@/components/admin/DeleteUserButton';
+import ProvisionIdentityModal from '@/components/admin/ProvisionIdentityModal';
+
+export default async function AdminUsersPage({
+    searchParams,
+}: {
+    searchParams?: Promise<{ page?: string }>;
+}) {
+    const { page } = (await searchParams) || {};
+    const currentPage = Number(page) || 1;
+    const { users, metadata } = await getAllUsers(currentPage);
+
+    return (
+        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            {/* Header Section */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 className="text-2xl sm:text-3xl font-black text-[#36335e] tracking-tight">Identity & Access</h1>
+                    <p className="text-gray-500 mt-1 font-medium italic">Manage platform-wide user roles, permissions, and security status.</p>
+                </div>
+                <div className="flex items-center gap-3">
+                    <ProvisionIdentityModal>
+                        <Button className="bg-[#36335e] hover:bg-[#2a284a] text-white rounded-2xl px-6 py-6 shadow-lg shadow-[#36335e]/20 transition-all active:scale-95 flex gap-2 font-bold group">
+                            <UserPlus className="w-5 h-5 text-[#d5a22d] group-hover:scale-110 transition-transform" />
+                            <span>Provision New Identity</span>
+                        </Button>
+                    </ProvisionIdentityModal>
+                </div>
+            </div>
+
+            {/* Toolbar */}
+            <div className="flex flex-wrap items-center gap-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm">
+                <div className="flex-1 min-w-[300px] relative group">
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                    <input
+                        type="text"
+                        placeholder="Search by name, email, or identity code..."
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border-transparent focus:bg-white focus:border-[#d5a22d]/30 focus:ring-0 rounded-xl text-sm font-medium transition-all"
+                    />
+                </div>
+                <div className="flex items-center gap-2">
+                    <Button variant="outline" className="rounded-xl border-gray-200 text-gray-600 font-bold flex gap-2 h-11">
+                        <Filter className="w-4 h-4 text-[#d5a22d]" />
+                        <span>Filter Roles</span>
+                    </Button>
+                </div>
+            </div>
+
+            {/* Users Table */}
+            <div className="bg-white rounded-[2.5rem] border border-gray-100 shadow-xl overflow-hidden">
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                        <thead>
+                            <tr className="bg-[#36335e] text-white">
+                                <th className="px-8 py-6 text-xs font-black uppercase tracking-[0.2em]">Identity Profile</th>
+                                <th className="px-6 py-6 text-xs font-black uppercase tracking-[0.2em]">Privilege Level</th>
+                                <th className="px-6 py-6 text-xs font-black uppercase tracking-[0.2em]">Affiliation</th>
+                                <th className="px-6 py-6 text-xs font-black uppercase tracking-[0.2em]">Status</th>
+                                <th className="px-6 py-6 text-xs font-black uppercase tracking-[0.2em] text-center">Control</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-50">
+                            {users.map((user) => (
+                                <tr key={user.id} className="hover:bg-gray-50/50 transition-colors duration-200 group">
+                                    <td className="px-8 py-5">
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-12 h-12 rounded-2xl bg-[#36335e]/5 flex items-center justify-center text-[#36335e] font-black group-hover:bg-[#36335e] group-hover:text-[#d5a22d] transition-all shadow-inner">
+                                                {user.fullName.charAt(0)}
+                                            </div>
+                                            <div>
+                                                <h3 className="font-black text-[#36335e] group-hover:text-[#d5a22d] transition-colors leading-none">
+                                                    {user.fullName}
+                                                </h3>
+                                                <div className="flex items-center gap-1.5 mt-1.5 opacity-60">
+                                                    <Mail className="w-3 h-3" />
+                                                    <p className="text-[10px] font-bold text-gray-500 uppercase tracking-tight">{user.email}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-5">
+                                        <div className="flex items-center gap-2">
+                                            <RoleBadge role={user.role as Role} />
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-5">
+                                        <div className="space-y-1">
+                                            {user.role === 'SCHOOL_ADMIN' && user.managedUniversity && (
+                                                <div className="flex items-center gap-1.5 text-xs font-black text-[#36335e]">
+                                                    <Building2 className="w-3.5 h-3.5 text-[#d5a22d]" />
+                                                    <span className="truncate max-w-[150px]">{user.managedUniversity.name}</span>
+                                                </div>
+                                            )}
+                                            {user.role === 'COUNTRY_DIRECTOR' && user.managedCountry && (
+                                                <div className="flex items-center gap-1.5 text-xs font-black text-[#36335e]">
+                                                    <Globe className="w-3.5 h-3.5 text-[#d5a22d]" />
+                                                    <span>{user.managedCountry.name}</span>
+                                                </div>
+                                            )}
+                                            <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                                <span>Joined {format(new Date(user.createdAt), 'MMM yyyy')}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-5">
+                                        <div className="flex items-center gap-2">
+                                            {user.status === 'BLOCKED' ? (
+                                                <span className="px-3 py-1 rounded-full text-[10px] font-black bg-red-50 text-red-600 border border-red-100 uppercase tracking-widest">Blocked</span>
+                                            ) : (
+                                                <span className="px-3 py-1 rounded-full text-[10px] font-black bg-emerald-50 text-emerald-600 border border-emerald-100 uppercase tracking-widest">Active</span>
+                                            )}
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-5">
+                                        <div className="flex items-center justify-center gap-2">
+                                            <Link href={`/dashboard/admin/users/${user.id}`}>
+                                                <Button size="icon" variant="ghost" className="h-10 w-10 rounded-xl text-[#36335e] hover:bg-[#36335e] hover:text-[#d5a22d] transition-all">
+                                                    <UserCog className="w-5 h-5" />
+                                                </Button>
+                                            </Link>
+                                            <DeleteUserButton userId={user.id} userName={user.fullName} />
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+
+                {/* Pagination */}
+                <div className="px-8 py-6 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
+                    <p className="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">
+                        Log Segment {currentPage} of {metadata.totalPages}
+                    </p>
+                    <Pagination totalPages={metadata.totalPages} currentPage={currentPage} />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function RoleBadge({ role }: { role: Role }) {
+    const configs = {
+        SUPER_ADMIN: { label: 'Super Admin', style: 'bg-[#36335e] text-[#d5a22d] border-[#36335e]', icon: ShieldCheck },
+        COUNTRY_DIRECTOR: { label: 'Regional Director', style: 'bg-blue-50 text-blue-600 border-blue-100', icon: Globe },
+        SCHOOL_ADMIN: { label: 'School Admin', style: 'bg-indigo-50 text-indigo-600 border-indigo-100', icon: Building2 },
+        AFFILIATE: { label: 'Partner Affiliate', style: 'bg-emerald-50 text-emerald-600 border-emerald-100', icon: Shield },
+        PROSPECT: { label: 'Student User', style: 'bg-gray-100 text-gray-600 border-gray-200', icon: Shield },
+    };
+
+    const config = configs[role] || configs.PROSPECT;
+    const Icon = config.icon;
+
+    return (
+        <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.15em] border flex items-center gap-2 ${config.style}`}>
+            <Icon className="w-3 h-3" />
+            {config.label}
+        </span>
+    );
+}

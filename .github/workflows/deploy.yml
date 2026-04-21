@@ -1,0 +1,16 @@
+name: Deployment (Vercel Managed)
+
+# This workflow is placeholder to document that deployment 
+# is handled automatically by Vercel's GitHub integration.
+# No GitHub Actions are required for deployment.
+
+on:
+  push:
+    branches:
+      - 'ignore-all' # This ensures it never runs automatically
+
+jobs:
+  skip:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deployment is handled by Vercel."

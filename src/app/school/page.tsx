@@ -1,0 +1,282 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import {
+    GraduationCap, ArrowRight, CheckCircle2, Sparkles, Globe2,
+    ShieldCheck, TrendingUp, Users, LayoutDashboard, Trophy,
+    Building2, Menu, X
+} from 'lucide-react';
+import { TenpatenLogo } from '@/components/branding/TenpatenLogo';
+
+export default function SchoolLandingPage() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    return (
+        <main className="min-h-screen bg-[#1a1b41] selection:bg-[#d5a22d]/30">
+            {/* Navigation Bar */}
+            <nav className={`fixed top-0 left-0 right-0 z-50 bg-[#1a1b41]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300 ${isMenuOpen ? 'h-auto pb-6' : 'h-16 md:h-20'}`}>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
+                    <div className="scale-90 sm:scale-100 origin-left">
+                        <TenpatenLogo variant="white" />
+                    </div>
+
+                    <div className="hidden md:flex items-center gap-8">
+                        <Link href="#features" className="text-sm font-semibold text-gray-300 hover:text-[#d5a22d] transition-colors">Solutions</Link>
+                        <Link href="#partners" className="text-sm font-semibold text-gray-300 hover:text-[#d5a22d] transition-colors">Our Partners</Link>
+                    </div>
+
+                    <div className="flex items-center gap-2 sm:gap-4">
+                        <Link
+                            href="/school/login"
+                            className="hidden sm:block px-4 py-2 text-sm font-bold text-gray-300 hover:text-[#d5a22d] transition-all rounded-lg"
+                        >
+                            Institution Login
+                        </Link>
+                        <Link
+                            href="/school/register"
+                            className="px-4 sm:px-6 py-2 sm:py-2.5 bg-[#d5a22d] text-white rounded-xl text-xs sm:text-sm font-bold hover:bg-[#b89531] hover:shadow-lg hover:shadow-[#d5a22d]/20 transition-all active:scale-95 whitespace-nowrap"
+                        >
+                            Apply to Join
+                        </Link>
+
+                        {/* Mobile Menu Toggle */}
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="md:hidden p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
+                        >
+                            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                        </button>
+                    </div>
+                </div>
+
+                {/* Mobile Menu Overlay */}
+                {isMenuOpen && (
+                    <div className="md:hidden px-4 pt-2 pb-6 space-y-4 animate-in fade-in slide-in-from-top-4 duration-300 border-t border-gray-50 mt-2">
+                        <div className="flex flex-col gap-4">
+                            <Link
+                                href="#features"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="text-sm font-semibold text-gray-300 px-2 py-1"
+                            >
+                                Solutions
+                            </Link>
+                            <Link
+                                href="#partners"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="text-sm font-semibold text-gray-300 px-2 py-1"
+                            >
+                                Our Partners
+                            </Link>
+                            <Link
+                                href="/school/login"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="sm:hidden text-sm font-bold text-[#d5a22d] px-2 py-1"
+                            >
+                                Institution Login
+                            </Link>
+                        </div>
+                    </div>
+                )}
+            </nav>
+
+            {/* Hero Section */}
+            <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden flex items-center justify-center min-h-[75vh]">
+                {/* Background Visuals */}
+                <div className="absolute inset-0 -z-10">
+                    <img
+                        src="https://images.unsplash.com/photo-1541339907198-e08756defeec?auto=format&fit=crop&q=80&w=2000"
+                        alt="Modern university architecture"
+                        className="w-full h-full object-cover opacity-[0.04] select-none"
+                    />
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
+                        <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#36335e]/40 rounded-full blur-[120px]" />
+                        <div className="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-[#d5a22d]/10 rounded-full blur-[100px]" />
+                    </div>
+                </div>
+
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#36335e]/50 border border-[#36335e] text-white text-sm font-bold mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 backdrop-blur-sm">
+                        <Building2 className="w-4 h-4 text-[#d5a22d]" />
+                        <span>Institutional Partnership Program</span>
+                    </div>
+
+                    <h1 className="text-3xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15] mb-6 animate-in fade-in slide-in-from-bottom-6 duration-1000">
+                        Modernize Your Global <br className="hidden lg:block" />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#d5a22d] to-white bg-300% animate-gradient">
+                            Recruitment Strategy
+                        </span>
+                    </h1>
+
+                    <p className="max-w-2xl mx-auto text-sm lg:text-base text-gray-400 leading-relaxed mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+                        Connect with verified international students, streamline admissions,
+                        and build a diverse student body with Tenpaten Apply's data-driven ecosystem
+                        designed specifically for global institutions.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-500">
+                        <Link
+                            href="/school/register"
+                            className="w-full sm:w-auto px-8 py-3 bg-[#d5a22d] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#b89531] transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#d5a22d]/20 text-sm"
+                        >
+                            Become a Partner
+                            <ArrowRight className="w-5 h-5" />
+                        </Link>
+                        <Link
+                            href="/school/login"
+                            className="w-full sm:w-auto px-8 py-3 bg-transparent text-white border border-white/20 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-white/10 transition-all active:scale-95 text-sm"
+                        >
+                            Institution Login
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* Features Grid */}
+            <section id="features" className="py-16 bg-[#1a1b41] relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-2xl lg:text-3xl font-extrabold text-white mb-3 tracking-tight">The Institutional Toolkit</h2>
+                        <p className="text-gray-400 font-medium text-sm">Powerful features to scale your international presence</p>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                        <div className="group p-8 rounded-[2rem] bg-[#23244a] border border-white/5 hover:border-[#d5a22d]/30 hover:bg-[#23244a] transition-all duration-500 hover:shadow-2xl hover:shadow-[#d5a22d]/10">
+                            <div className="w-12 h-12 bg-[#1a1b41] rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform mb-6 border border-white/10">
+                                <Users className="w-7 h-7 text-[#d5a22d]" />
+                            </div>
+                            <h3 className="text-lg font-bold text-white mb-3">Verified Student Pool</h3>
+                            <p className="text-gray-400 text-[13px] leading-relaxed">
+                                Access thousands of pre-screened students with complete digital dossiers and academic transcripts.
+                            </p>
+                        </div>
+
+                        <div className="group p-8 rounded-[2rem] bg-[#23244a] border border-white/5 hover:border-[#d5a22d]/30 hover:bg-[#23244a] transition-all duration-500 hover:shadow-2xl hover:shadow-[#d5a22d]/10">
+                            <div className="w-12 h-12 bg-[#1a1b41] rounded-xl flex items-center justify-center shadow-lg group-hover:-rotate-6 transition-transform mb-6 border border-white/10">
+                                <LayoutDashboard className="w-7 h-7 text-[#d5a22d]" />
+                            </div>
+                            <h3 className="text-lg font-bold text-white mb-3">Admission Workspace</h3>
+                            <p className="text-gray-400 text-[13px] leading-relaxed">
+                                Manage the entire student lifecycle from inquiry to enrollment with our unified institutional dashboard.
+                            </p>
+                        </div>
+
+                        <div className="group p-8 rounded-[2rem] bg-[#23244a] border border-white/5 hover:border-[#d5a22d]/30 hover:bg-[#23244a] transition-all duration-500 hover:shadow-2xl hover:shadow-[#d5a22d]/10">
+                            <div className="w-12 h-12 bg-[#1a1b41] rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform mb-6 border border-white/10">
+                                <Trophy className="w-7 h-7 text-[#d5a22d]" />
+                            </div>
+                            <h3 className="text-lg font-bold text-white mb-3">Performance Data</h3>
+                            <p className="text-gray-400 text-[13px] leading-relaxed">
+                                Real-time analytics on geographical diversity, conversion rates, and recruitment channel performance.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Partner Universities Showcase */}
+            <section id="partners" className="py-16 bg-[#151636] border-y border-white/5">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-2xl lg:text-3xl font-extrabold text-white mb-3 tracking-tight">Trusted by Leading Institutions</h2>
+                        <p className="text-gray-400 font-medium text-sm">Join a growing network of prestigious universities worldwide.</p>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                        {[
+                            {
+                                name: "SRM Institute of Science and Technology",
+                                location: "Tamil Nadu, India",
+                                image: "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&q=80&w=800",
+                                programs: "250+ Programs",
+                                type: "Private University"
+                            },
+                            {
+                                name: "Vellore Institute of Technology",
+                                location: "Vellore, India",
+                                image: "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&q=80&w=800",
+                                programs: "180+ Programs",
+                                type: "Institution of Eminence"
+                            },
+                            {
+                                name: "Amity University",
+                                location: "Noida, India",
+                                image: "https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?auto=format&fit=crop&q=80&w=800",
+                                programs: "300+ Programs",
+                                type: "International Campus"
+                            }
+                        ].map((uni, idx) => (
+                            <div key={idx} className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#1a1b41] hover:bg-[#20214a] transition-all duration-500 flex flex-col hover:border-[#d5a22d]/50 hover:shadow-2xl hover:shadow-[#d5a22d]/10">
+                                <div className="aspect-[16/10] overflow-hidden relative">
+                                    <img src={uni.image} alt={uni.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                    <div className="absolute top-4 left-4">
+                                        <span className="px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-lg text-[10px] font-black text-[#1a1b41] uppercase tracking-widest shadow-xl">
+                                            {uni.type}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="p-6">
+                                    <h3 className="text-lg font-bold text-white mb-2 transition-colors group-hover:text-[#d5a22d] line-clamp-1">{uni.name}</h3>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-[12px] text-gray-400 font-bold uppercase tracking-wider">{uni.location}</span>
+                                        <span className="text-[12px] bg-[#36335e] text-white px-2 py-0.5 rounded-full font-black uppercase tracking-tighter border border-white/10">{uni.programs}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="mt-12 text-center">
+                        <Link href="/school/register">
+                            <Button variant="outline" size="lg" className="rounded-xl px-10 py-3 font-bold border-2 border-[#d5a22d] text-[#d5a22d] bg-transparent hover:bg-[#d5a22d] hover:text-white transition-all shadow-lg hover:shadow-[#d5a22d]/20 active:scale-95 text-sm">
+                                View More Partners
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* Footer */}
+            <footer className="bg-[#151636] border-t border-white/10 py-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-12">
+                        <div className="col-span-2 lg:col-span-2 space-y-6">
+                            <TenpatenLogo className="text-white" />
+                            <p className="text-gray-400 max-w-sm leading-relaxed text-sm font-medium">
+                                Empowering global institutions with Tenpaten Apply's smart recruitment technology,
+                                verified student data, and a worldwide network of education partners.
+                            </p>
+                        </div>
+
+                        <div className="space-y-4">
+                            <h4 className="font-bold text-white">Partner Portal</h4>
+                            <ul className="space-y-2 text-sm text-gray-400 font-medium">
+                                <li><Link href="/school/login" className="hover:text-[#d5a22d] transition-colors">Partner Log In</Link></li>
+                                <li><Link href="/school/register" className="hover:text-[#d5a22d] transition-colors">Join as Institution</Link></li>
+                                <li><Link href="/" className="hover:text-[#d5a22d] transition-colors">Prospective Students</Link></li>
+                                <li><Link href="/register?type=partner" className="hover:text-[#d5a22d] transition-colors">Affiliate Network</Link></li>
+                            </ul>
+                        </div>
+
+                        <div className="space-y-4">
+                            <h4 className="font-bold text-white">Resources</h4>
+                            <ul className="space-y-2 text-sm text-gray-400 font-medium">
+                                <li><Link href="/help" className="hover:text-[#d5a22d] transition-colors">School Help Center</Link></li>
+                                <li><Link href="/contact" className="hover:text-[#d5a22d] transition-colors">Contact Support</Link></li>
+                                <li><Link href="/privacy" className="hover:text-[#d5a22d] transition-colors">Privacy Policy</Link></li>
+                                <li><Link href="/terms" className="hover:text-[#d5a22d] transition-colors">Partner Terms</Link></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className="pt-12 border-t border-white/10 text-center">
+                        <p className="text-sm text-gray-500 font-medium">
+                            &copy; {new Date().getFullYear()} Tenpaten Apply Institutional Network. All rights reserved.
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    );
+}
