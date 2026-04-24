@@ -26,7 +26,7 @@ export interface NavItem {
     external?: boolean;
 }
 
-export const navigationConfig = {
+export const navigationConfig: Record<string, NavItem[]> = {
     super_admin: [
         { name: 'Dashboard', href: '/dashboard/admin', icon: LayoutDashboard },
         { name: 'Users', href: '/dashboard/admin/users', icon: UserPlus },

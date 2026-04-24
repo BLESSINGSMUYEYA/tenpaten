@@ -5,16 +5,6 @@ import { FileText, Search, Filter, Calendar, GraduationCap, Building2, User, Arr
 import { ApplicationStatus } from '@prisma/client';
 import { format } from 'date-fns';
 
-export default async function Page({
-    searchParams,
-}: {
-    searchParams?: Promise<{
-        page?: string;
-    }>;
-}) {
-    const { page } = (await searchParams) || {};
-    const currentPage = Number(page) || 1;
-    const { applications, metadata } = await getApplicationsByCountry(currentPage);
 
 export default async function Page({
     searchParams,
