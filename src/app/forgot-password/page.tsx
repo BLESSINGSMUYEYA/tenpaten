@@ -15,75 +15,89 @@ export default function ForgotPasswordPage() {
     );
 
     return (
-        <div className="min-h-screen flex bg-white sm:bg-gray-50/50">
-            <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-                <div className="mx-auto w-full max-w-[400px]">
-                    
-                    <div className="mb-8">
-                        <Link href="/login" className="inline-flex items-center text-sm text-gray-500 hover:text-gray-900 transition-colors mb-6">
-                            <ArrowLeft className="w-4 h-4 mr-2" />
-                            Back to login
-                        </Link>
-                        <h2 className="text-2xl font-bold text-gray-900 mb-2">Reset your password</h2>
-                        <p className="text-gray-500">
-                            Enter the email address associated with your account and we'll send you a link to reset your password.
-                        </p>
-                    </div>
+        <div className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-[#1a1b4d] to-[#12132e] p-4 overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+                <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-[#d5a22d]/20 rounded-full blur-[150px] animate-pulse duration-[10s]" />
+                <div className="absolute bottom-[-20%] left-[-10%] w-[800px] h-[800px] bg-[#36335e]/40 rounded-full blur-[150px] animate-pulse duration-[8s] delay-1000" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(54,51,94,0.1)_0%,transparent_70%)]" />
+                {/* Grid pattern */}
+                <div
+                    className="absolute inset-0 opacity-[0.05]"
+                    style={{
+                        backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+                        backgroundSize: '60px 60px',
+                    }}
+                />
+            </div>
 
-                    <div className="bg-white sm:shadow-xl sm:shadow-gray-200/50 sm:border border-gray-100 sm:rounded-2xl p-6 sm:p-8">
-                        {state?.success ? (
-                            <div className="text-center space-y-4 py-4">
-                                <div className="mx-auto w-12 h-12 bg-green-50 rounded-full flex items-center justify-center mb-4">
-                                    <CheckCircle2 className="h-6 w-6 text-green-500" />
-                                </div>
-                                <h3 className="text-lg font-medium text-gray-900">Check your email</h3>
-                                <p className="text-sm text-gray-500">{state.success}</p>
-                                <Button asChild className="w-full mt-4 h-11 rounded-xl bg-gray-900 hover:bg-gray-800 text-white">
-                                    <Link href="/login">Return to login</Link>
-                                </Button>
+            <div className="relative z-10 w-full max-w-[440px] animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="mb-8">
+                    <Link href="/login" className="inline-flex items-center text-sm text-white/50 hover:text-white transition-all mb-6 group">
+                        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                        Back to login
+                    </Link>
+                    <h2 className="text-3xl font-black text-white mb-2 tracking-tight">Reset password</h2>
+                    <p className="text-white/50 text-sm font-medium">
+                        Enter your email and we&apos;ll send you a recovery link.
+                    </p>
+                </div>
+
+                <div className="bg-white/95 backdrop-blur-xl rounded-[2rem] shadow-2xl ring-1 ring-black/5 p-8 sm:p-10">
+                    {state?.success ? (
+                        <div className="text-center space-y-6 py-4">
+                            <div className="mx-auto w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mb-4">
+                                <CheckCircle2 className="h-8 w-8 text-green-500" />
                             </div>
-                        ) : (
-                            <form action={formAction} className="space-y-5">
-                                <div className="space-y-2">
-                                    <Label htmlFor="email">Email address</Label>
-                                    <div className="relative">
-                                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-                                        <Input
-                                            id="email"
-                                            name="email"
-                                            type="email"
-                                            required
-                                            placeholder="you@example.com"
-                                            className="pl-10 h-11"
-                                            disabled={isPending}
-                                        />
-                                    </div>
+                            <div className="space-y-2">
+                                <h3 className="text-xl font-black text-gray-900 tracking-tight">Check your inbox</h3>
+                                <p className="text-sm text-gray-500 font-medium leading-relaxed">{state.success}</p>
+                            </div>
+                            <Button asChild className="w-full h-14 rounded-2xl bg-[#36335e] hover:bg-[#2a284a] text-white font-black uppercase tracking-widest text-xs shadow-xl shadow-[#36335e]/20 transition-all active:scale-95">
+                                <Link href="/login">Return to sign in</Link>
+                            </Button>
+                        </div>
+                    ) : (
+                        <form action={formAction} className="space-y-6">
+                            <div className="space-y-2">
+                                <Label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-gray-400 ml-1">Email Address</Label>
+                                <div className="relative group">
+                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 group-focus-within:text-[#36335e] transition-colors" />
+                                    <Input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        required
+                                        placeholder="you@example.com"
+                                        className="pl-12 h-14 rounded-2xl border-gray-100 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#36335e]/10 focus:border-[#36335e] transition-all font-medium"
+                                        disabled={isPending}
+                                    />
                                 </div>
+                            </div>
 
-                                {state?.error && (
-                                    <div className="flex items-center gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-600 border border-red-100">
-                                        <AlertCircle className="h-4 w-4 shrink-0" />
-                                        <p>{state.error}</p>
-                                    </div>
+                            {state?.error && (
+                                <div className="flex items-center gap-3 rounded-2xl bg-red-50 p-4 text-xs font-bold text-red-600 border border-red-100 animate-in fade-in zoom-in duration-300">
+                                    <AlertCircle className="h-4 w-4 shrink-0" />
+                                    <p>{state.error}</p>
+                                </div>
+                            )}
+
+                            <Button
+                                type="submit"
+                                disabled={isPending}
+                                className="w-full h-14 bg-[#36335e] hover:bg-[#2a284a] text-white transition-all font-black uppercase tracking-[0.2em] text-xs rounded-2xl shadow-xl shadow-[#36335e]/20 active:scale-[0.98]"
+                            >
+                                {isPending ? (
+                                    <>
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                        Processing...
+                                    </>
+                                ) : (
+                                    'Send recovery link'
                                 )}
-
-                                <Button
-                                    type="submit"
-                                    disabled={isPending}
-                                    className="w-full h-11 bg-gradient-to-r from-[#36335e] to-[#2a284a] hover:from-[#2a284a] hover:to-[#36335e] text-white transition-all font-semibold rounded-xl shadow-lg shadow-[#36335e]/20"
-                                >
-                                    {isPending ? (
-                                        <>
-                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                            Sending reset link...
-                                        </>
-                                    ) : (
-                                        'Send reset link'
-                                    )}
-                                </Button>
-                            </form>
-                        )}
-                    </div>
+                            </Button>
+                        </form>
+                    )}
                 </div>
             </div>
         </div>

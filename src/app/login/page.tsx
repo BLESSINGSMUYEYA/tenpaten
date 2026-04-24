@@ -5,9 +5,7 @@ import LoginForm from '@/components/login-form';
 import { RoleGateway, RoleType } from '@/components/auth/RoleGateway';
 
 function LoginContent() {
-    const [selectedRole, setSelectedRole] = useState<RoleType>(null);
-
-
+    const [selectedRole, setSelectedRole] = useState<RoleType>('student');
 
     return (
         <RoleGateway

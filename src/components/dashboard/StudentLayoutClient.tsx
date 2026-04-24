@@ -24,8 +24,8 @@ export default function StudentLayoutClient({ children }: { children: React.Reac
                 {children}
             </div>
 
-            {/* Right/FAQ Side Column - Sticky */}
-            <div className="lg:col-span-1 min-w-0">
+            {/* Right/FAQ Side Column - Sticky - Hidden on Mobile */}
+            <div className="hidden lg:block lg:col-span-1 min-w-0">
                 <div className="sticky top-6">
                     <DashboardFAQs />
                 </div>

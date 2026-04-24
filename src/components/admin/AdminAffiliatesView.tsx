@@ -115,14 +115,14 @@ export default function AdminAffiliatesView({
             {/* Table */}
             <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
                 <Table>
-                    <TableHeader className="bg-slate-50/50">
-                        <TableRow className="hover:bg-transparent border-slate-100">
-                            <TableHead className="w-[300px] text-[10px] font-black uppercase tracking-widest text-slate-400 py-5">Partner Profile</TableHead>
-                            <TableHead className="text-[10px] font-black uppercase tracking-widest text-slate-400">Referral Code</TableHead>
-                            <TableHead className="text-[10px] font-black uppercase tracking-widest text-slate-400">Region</TableHead>
-                            <TableHead className="text-[10px] font-black uppercase tracking-widest text-slate-400">Status</TableHead>
-                            <TableHead className="text-[10px] font-black uppercase tracking-widest text-slate-400">Reward Mode</TableHead>
-                            <TableHead className="text-right text-[10px] font-black uppercase tracking-widest text-slate-400 pr-8">Actions</TableHead>
+                    <TableHeader className="bg-[#36335e]">
+                        <TableRow className="hover:bg-transparent border-none">
+                            <TableHead className="w-[300px] text-[10px] font-black uppercase tracking-[0.2em] text-white py-5">Partner Profile</TableHead>
+                            <TableHead className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Referral Code</TableHead>
+                            <TableHead className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Region</TableHead>
+                            <TableHead className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Status</TableHead>
+                            <TableHead className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Reward Mode</TableHead>
+                            <TableHead className="text-right text-[10px] font-black uppercase tracking-[0.2em] text-white pr-8">Actions</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>

@@ -12,10 +12,8 @@ function RegisterContent({ questions, countries }: { questions: QuestionData[], 
     const type = searchParams.get('type');
     const [questionnaireComplete, setQuestionnaireComplete] = useState(false);
 
-    // If ?type=student is in the URL, treat it as student directly selected
-    const [selectedRole, setSelectedRole] = useState<RoleType>(
-        type === 'student' ? 'student' : null
-    );
+    // Default to student role to show the form directly, removing the choice step
+    const [selectedRole, setSelectedRole] = useState<RoleType>('student');
 
     const showQuestionnaire = selectedRole === 'student' && !questionnaireComplete;
 

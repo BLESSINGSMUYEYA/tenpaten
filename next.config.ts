@@ -18,6 +18,20 @@ const nextConfig: NextConfig = {
       bodySizeLimit: '10mb',
     },
   },
+  async redirects() {
+    return [
+      {
+        source: '/school/login',
+        destination: '/login',
+        permanent: true,
+      },
+      {
+        source: '/school/register',
+        destination: '/login',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

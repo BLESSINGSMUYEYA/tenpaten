@@ -57,7 +57,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
                     <div className="hidden lg:flex lg:w-72 flex-none flex-col bg-[#1d1b41] border-r border-white/5 shadow-2xl">
                         {/* Logo/Brand */}
                         <Link
-                            className="flex items-center px-6 py-5 border-b border-white/10 hover:bg-white/5 transition-colors"
+                            className="flex items-center px-6 h-14 border-b border-white/10 border-t-2 border-t-transparent hover:bg-white/5 transition-colors"
                             href={getHomeUrl(role)}
                         >
                             <TenpatenLogo variant="white" className="text-white" />
@@ -128,7 +128,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
                         {/* Top header — White with bottom border for clear separation from navy sidebar */}
                         <DashboardNav user={session?.user} isEnrolled={isEnrolled} hasAffiliateAccess={hasAffiliateAccess} />
                         <DynamicBreadcrumbs />
-                        <div className="flex-1 bg-background p-4 sm:p-6 lg:p-8 overflow-y-auto custom-scrollbar">
+                        <div className="flex-1 bg-background p-3 sm:p-4 lg:p-5 overflow-y-auto custom-scrollbar">
                             <Suspense fallback={null}>
                                 <WelcomeBanner />
                             </Suspense>

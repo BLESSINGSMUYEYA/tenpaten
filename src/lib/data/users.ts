@@ -16,14 +16,23 @@ export async function getUser() {
     }
 }
 
-export async function getAllUsers(page: number = 1, limit: number = 10) {
+export async function getAllUsers(page: number = 1, limit: number = 10, role?: string) {
     const session = await auth();
     if (!session?.user?.email) return { users: [], metadata: { total: 0, page, limit, totalPages: 0 } };
 
     try {
         const skip = (page - 1) * limit;
+        
+        let where: any = {};
+        if (role === 'staff') {
+            where = { role: { not: 'PROSPECT' } };
+        } else if (role && role !== 'all') {
+            where = { role: role };
+        }
+
         const [users, total] = await Promise.all([
             prisma.user.findMany({
+                where,
                 skip,
                 take: limit,
                 orderBy: { createdAt: 'desc' },
@@ -33,7 +42,7 @@ export async function getAllUsers(page: number = 1, limit: number = 10) {
                     affiliateProfile: true
                 }
             }),
-            prisma.user.count()
+            prisma.user.count({ where })
         ]);
 
         const totalPages = Math.ceil(total / limit);

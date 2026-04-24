@@ -13,7 +13,7 @@ export function getHomeUrl(role?: Role | string | null): string {
         case 'AFFILIATE':
             return '/dashboard/affiliate';
         case 'SUPER_ADMIN':
-            return '/dashboard/admin/users';
+            return '/dashboard/admin';
         default:
             return '/dashboard';
     }

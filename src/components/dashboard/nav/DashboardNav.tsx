@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Menu, X, Settings, LogOut, ChevronDown, Bell, Users, Building2 } from 'lucide-react';
+import { Menu, X, Settings, LogOut, ChevronDown, Bell, Users, Building2, Search } from 'lucide-react';
 import { signOut } from 'next-auth/react';
 import NotificationBell from '@/components/common/NotificationBell';
 import { navigationConfig } from '@/config/navigation';
@@ -53,7 +53,27 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
             {/* Desktop Header — White with gold top accent, clearly distinct from Midnight Navy sidebar */}
             <nav className="hidden lg:block bg-white border-b border-gray-100 border-t-2 border-t-[#d5a22d] sticky top-0 z-40 shadow-sm">
                 <div className="px-8">
-                    <div className="flex items-center justify-end h-14">
+                    <div className="flex items-center justify-between h-14">
+                        {/* Global Search Bar */}
+                        <div className="w-full max-w-sm">
+                            <form action="/dashboard/colleges" method="GET" className="relative group">
+                                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                    <Search className="h-4 w-4 text-slate-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                                </div>
+                                <input
+                                    type="text"
+                                    name="query"
+                                    placeholder="Search programs or colleges..."
+                                    className="block w-full pl-10 pr-3 py-2 border border-gray-100 rounded-xl bg-gray-50/50 text-[13px] font-medium placeholder:text-slate-400 focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#d5a22d]/30 focus:border-[#d5a22d] transition-all"
+                                />
+                                <div className="absolute inset-y-0 right-0 flex items-center pr-1.5">
+                                    <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded border border-gray-200 bg-white text-[10px] font-medium text-slate-400 select-none">
+                                        ↵
+                                    </kbd>
+                                </div>
+                            </form>
+                        </div>
+
                         <div className="flex items-center gap-3">
                             <NotificationBell />
                             <ProfileDropdown user={user} isOpen={profileOpen} setIsOpen={setProfileOpen} />
@@ -67,7 +87,7 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
                 <div className="px-4 sm:px-6">
                     <div className="flex items-center justify-between h-16">
                         <Link href={homeUrl} className="transition-transform active:scale-95">
-                            <TenpatenLogo className="scale-90 origin-left" />
+                            <TenpatenLogo className="scale-90 origin-left" variant="navy" />
                         </Link>
 
                         <div className="flex items-center gap-2">
@@ -98,7 +118,7 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
                     >
                         {/* Drawer Header */}
                         <div className="p-6 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
-                            <TenpatenLogo className="scale-75 origin-left" />
+                            <TenpatenLogo className="scale-75 origin-left" variant="navy" />
                             <button 
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="p-2 rounded-xl bg-white border border-gray-100 shadow-sm active:scale-90 transition-transform"
@@ -147,6 +167,11 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
                                              <Icon className={`w-4 h-4 ${active ? 'text-[#d5a22d]' : 'text-slate-400'}`} />
                                         </div>
                                         {link.name}
+                                        {(link as any).badge && (
+                                            <span className="ml-2 px-1.5 py-0.5 rounded text-[8px] font-black bg-[#d5a22d] text-[#36335e] uppercase tracking-widest shrink-0">
+                                                {(link as any).badge}
+                                            </span>
+                                        )}
                                         {active && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#d5a22d] animate-pulse" />}
                                     </Link>
                                 );

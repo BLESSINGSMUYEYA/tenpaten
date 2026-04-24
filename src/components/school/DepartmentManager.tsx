@@ -60,42 +60,59 @@ export default function DepartmentManager({ departments }: { departments: Depart
             </div>
 
             {/* List */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {departments.length === 0 && (
-                    <div className="col-span-full py-16 bg-white rounded-[2.5rem] border border-dashed border-slate-200 flex flex-col items-center justify-center text-center">
-                        <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-4">
-                            <Layers className="w-8 h-8 text-slate-300" />
-                        </div>
-                        <h4 className="text-lg font-bold text-slate-900 mb-1">No Departments Yet</h4>
-                        <p className="text-sm text-slate-500 font-medium">Create your first department to get started.</p>
-                    </div>
-                )}
-
-                {departments.map((dept) => (
-                    <div key={dept.id} className="group flex items-center justify-between p-6 bg-white rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#36335e]/20 transition-all duration-300 hover:-translate-y-1">
-                        <div className="flex items-center gap-5">
-                            <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-[#36335e]/10 group-hover:text-[#36335e] transition-colors border border-slate-100">
-                                <Layers className="w-5 h-5" />
-                            </div>
-                            <div>
-                                <p className="font-black text-slate-900 group-hover:text-[#36335e] transition-colors tracking-tight text-lg leading-tight mb-1">{dept.name}</p>
-                                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 rounded-lg border border-slate-100">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-[#36335e]/50" />
-                                    <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{dept._count?.programs || 0} Programs</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button
-                            onClick={() => handleDelete(dept.id)}
-                            disabled={isDeleting === dept.id}
-                            className="p-3 text-slate-300 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all shadow-sm border border-transparent hover:border-rose-100 group-hover:opacity-100 md:opacity-0 focus:opacity-100 transform active:scale-95"
-                            title="Delete Department"
-                        >
-                            {isDeleting === dept.id ? <Loader2 className="w-5 h-5 animate-spin" /> : <Trash2 className="w-5 h-5" />}
-                        </button>
-                    </div>
-                ))}
+            <div className="bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden">
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                        <thead>
+                            <tr className="bg-[#36335e] text-white">
+                                <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Faculty / Department Name</th>
+                                <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Curriculum Size</th>
+                                <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em] text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-50">
+                            {departments.length === 0 ? (
+                                <tr>
+                                    <td colSpan={3} className="px-6 py-12 text-center text-gray-400 font-medium italic">
+                                        No departments found. Create one above to get started.
+                                    </td>
+                                </tr>
+                            ) : (
+                                departments.map((dept) => (
+                                    <tr key={dept.id} className="hover:bg-gray-50/50 transition-colors duration-200 group">
+                                        <td className="px-6 py-5">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-10 h-10 rounded-full bg-[#36335e]/5 flex items-center justify-center text-[#36335e] group-hover:bg-[#36335e] group-hover:text-[#d5a22d] transition-all">
+                                                    <Layers className="w-5 h-5" />
+                                                </div>
+                                                <h4 className="font-black text-[#36335e] group-hover:text-[#d5a22d] transition-colors uppercase truncate">
+                                                    {dept.name}
+                                                </h4>
+                                            </div>
+                                        </td>
+                                        <td className="px-6 py-5">
+                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-gray-50 rounded-lg border border-gray-100 text-[10px] font-black text-gray-500 uppercase tracking-widest group-hover:bg-[#36335e]/5 group-hover:text-[#36335e] transition-all">
+                                                <span>{dept._count?.programs || 0} Programs</span>
+                                            </div>
+                                        </td>
+                                        <td className="px-6 py-5">
+                                            <div className="flex items-center justify-center">
+                                                <button
+                                                    onClick={() => handleDelete(dept.id)}
+                                                    disabled={isDeleting === dept.id}
+                                                    className="p-2.5 text-rose-600 hover:bg-rose-600 hover:text-white rounded-xl transition-all border border-transparent hover:border-rose-100"
+                                                    title="Delete Department"
+                                                >
+                                                    {isDeleting === dept.id ? <Loader2 className="w-5 h-5 animate-spin" /> : <Trash2 className="w-5 h-5" />}
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );

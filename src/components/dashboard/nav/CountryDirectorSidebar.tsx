@@ -37,6 +37,11 @@ export default function CountryDirectorSidebar() {
                                 <Icon className={`w-4 h-4 ${active ? 'text-[#d5a22d]' : 'text-white/60 group-hover:text-white'}`} />
                             </div>
                             <span className={`font-semibold text-sm ${active ? 'text-white' : ''}`}>{item.name}</span>
+                            {item.badge && (
+                                <span className="ml-2 px-1.5 py-0.5 rounded text-[8px] font-black bg-[#d5a22d] text-[#36335e] uppercase tracking-widest">
+                                    {item.badge}
+                                </span>
+                            )}
                             {active && (
                                 <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#d5a22d] animate-pulse" />
                             )}

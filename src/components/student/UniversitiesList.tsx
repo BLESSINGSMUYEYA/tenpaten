@@ -223,6 +223,8 @@ export default function UniversitiesList({
                 </div>
             </div>
 
+            {children}
+            
             {/* Results Section */}
             {(!hideUntilSearch || isSearchActive) && (
                 <div className="space-y-8 animate-in fade-in duration-1000">
@@ -254,8 +256,6 @@ export default function UniversitiesList({
                             ))}
                         </div>
                     )}
-
-                    {children}
                 </div>
             )}
         </div>

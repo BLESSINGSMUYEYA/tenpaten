@@ -11,11 +11,12 @@ import ProvisionIdentityModal from '@/components/admin/ProvisionIdentityModal';
 export default async function AdminUsersPage({
     searchParams,
 }: {
-    searchParams?: Promise<{ page?: string }>;
+    searchParams?: Promise<{ page?: string; role?: string }>;
 }) {
-    const { page } = (await searchParams) || {};
+    const { page, role } = (await searchParams) || {};
     const currentPage = Number(page) || 1;
-    const { users, metadata } = await getAllUsers(currentPage);
+    const currentRole = role || 'all';
+    const { users, metadata } = await getAllUsers(currentPage, 10, currentRole);
 
     return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -36,8 +37,23 @@ export default async function AdminUsersPage({
             </div>
 
             {/* Toolbar */}
-            <div className="flex flex-wrap items-center gap-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm">
-                <div className="flex-1 min-w-[300px] relative group">
+            <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 bg-white p-2 rounded-3xl border border-gray-100 shadow-sm">
+                <div className="flex items-center p-1 bg-gray-50 rounded-2xl">
+                    <Link 
+                        href="/dashboard/admin/users?role=all"
+                        className={`px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${currentRole === 'all' ? 'bg-[#36335e] text-[#d5a22d] shadow-lg shadow-[#36335e]/20' : 'text-gray-400 hover:text-gray-600'}`}
+                    >
+                        All Identities
+                    </Link>
+                    <Link 
+                        href="/dashboard/admin/users?role=staff"
+                        className={`px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${currentRole === 'staff' ? 'bg-[#36335e] text-[#d5a22d] shadow-lg shadow-[#36335e]/20' : 'text-gray-400 hover:text-gray-600'}`}
+                    >
+                        Staff Only
+                    </Link>
+                </div>
+
+                <div className="flex-1 relative group">
                     <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d5a22d] transition-colors" />
                     <input
                         type="text"
@@ -46,9 +62,9 @@ export default async function AdminUsersPage({
                     />
                 </div>
                 <div className="flex items-center gap-2">
-                    <Button variant="outline" className="rounded-xl border-gray-200 text-gray-600 font-bold flex gap-2 h-11">
+                    <Button variant="outline" className="rounded-xl border-gray-200 text-gray-600 font-bold flex gap-2 h-11 px-6">
                         <Filter className="w-4 h-4 text-[#d5a22d]" />
-                        <span>Filter Roles</span>
+                        <span>Advanced Filters</span>
                     </Button>
                 </div>
             </div>

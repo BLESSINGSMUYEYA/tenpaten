@@ -68,24 +68,27 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
 
                         <div className="space-y-8 relative z-10">
                             {/* Enable Toggle */}
-                            <div className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                            <div className="flex items-center justify-between p-6 bg-slate-50 rounded-3xl border border-slate-100 group">
                                 <div>
-                                    <h4 className="text-sm font-bold text-slate-900">Scholarship Status</h4>
-                                    <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mt-1">
-                                        {isActive ? 'ACTIVE ACROSS PLATFORM' : 'CURRENTLY DISABLED'}
+                                    <h4 className="text-xs font-black text-[#36335e] uppercase tracking-widest">Scholarship Status</h4>
+                                    <p className="text-[10px] font-bold tracking-widest text-slate-400 mt-1 uppercase">
+                                        {isActive ? <span className="text-[#36335e] bg-[#36335e]/10 px-2 py-0.5 rounded-lg">Active Across Platform</span> : 'Currently Disabled'}
                                     </p>
                                 </div>
-                                <button
-                                    onClick={() => setIsActive(!isActive)}
-                                    className={`transition-colors ${isActive ? 'text-emerald-500' : 'text-slate-300 hover:text-slate-400'}`}
-                                >
-                                    {isActive ? <ToggleRight className="w-12 h-12" /> : <ToggleLeft className="w-12 h-12" />}
-                                </button>
+                                <label className="relative inline-flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked={isActive}
+                                        onChange={() => setIsActive(!isActive)}
+                                        className="sr-only peer"
+                                    />
+                                    <div className="w-14 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-7 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-[#36335e]"></div>
+                                </label>
                             </div>
 
                             {/* Percentage Input */}
-                            <div className={`space-y-3 transition-opacity duration-300 ${!isActive ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}>
-                                <label className="block text-xs font-black uppercase tracking-widest text-[#36335e] ml-1">Discount Percentage (%)</label>
+                            <div className={`space-y-4 transition-all duration-500 ${!isActive ? 'opacity-30 pointer-events-none scale-95 origin-top' : 'opacity-100 scale-100'}`}>
+                                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Discount Percentage (%)</label>
                                 <div className="relative">
                                     <input
                                         type="number"
@@ -93,12 +96,12 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
                                         max="100"
                                         value={percentage}
                                         onChange={(e) => setPercentage(e.target.value)}
-                                        className="w-full h-16 px-6 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#36335e]/10 focus:border-[#36335e] focus:bg-white text-2xl font-black text-slate-900 transition-all placeholder:text-slate-300"
+                                        className="w-full h-16 px-8 bg-[#36335e]/5 border-none rounded-2xl focus:ring-4 focus:ring-[#36335e]/10 focus:bg-white text-2xl font-black text-[#36335e] transition-all placeholder:text-slate-300 shadow-inner"
                                         placeholder="e.g. 20"
                                     />
-                                    <div className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-400 font-black text-xl">%</div>
+                                    <div className="absolute right-8 top-1/2 -translate-y-1/2 text-[#36335e]/30 font-black text-xl">%</div>
                                 </div>
-                                <div className="flex gap-2 text-[11px] text-slate-500 font-medium px-1">
+                                <div className="flex gap-2 text-[10px] text-slate-500 font-bold px-1 uppercase tracking-tight leading-relaxed">
                                     <AlertCircle className="w-4 h-4 shrink-0 text-[#d5a22d]" />
                                     This percentage will be dynamically calculated against the Base Tuition set on each individual program.
                                 </div>
@@ -107,9 +110,9 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
                             <button
                                 onClick={handleSaveGlobal}
                                 disabled={isSaving}
-                                className="w-full h-14 bg-gradient-to-r from-[#36335e] to-[#2a284a] text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-2 shadow-xl shadow-[#36335e]/20 hover:shadow-2xl hover:-translate-y-0.5 transition-all active:translate-y-0 active:shadow-none disabled:opacity-50"
+                                className="w-full h-16 bg-[#36335e] hover:bg-[#2a284a] text-white rounded-2xl font-black uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 shadow-xl shadow-[#36335e]/20 hover:shadow-2xl hover:-translate-y-0.5 transition-all active:translate-y-0 active:shadow-none disabled:opacity-50 group"
                             >
-                                {isSaving ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
+                                {isSaving ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5 text-[#d5a22d] group-hover:scale-110 transition-transform" />}
                                 Save Global Settings
                             </button>
                         </div>
@@ -118,60 +121,68 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
 
                 {/* Exemptions List */}
                 <div className="lg:col-span-2">
-                    <div className="bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden flex flex-col h-[calc(100vh-16rem)] min-h-[500px]">
-                        <div className="p-6 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center shrink-0">
+                    <div className="bg-white rounded-[2rem] border border-gray-100 shadow-xl shadow-[#36335e]/5 overflow-hidden flex flex-col h-[calc(100vh-16rem)] min-h-[600px]">
+                        <div className="p-8 border-b border-slate-100 bg-[#36335e]/5 flex justify-between items-center shrink-0">
                             <div>
-                                <h3 className="text-lg font-black text-[#36335e] tracking-tight">Program Exemptions</h3>
-                                <p className="text-xs text-slate-500 font-medium mt-1">Toggle switches to exclude specific programs from the global discount.</p>
+                                <h3 className="text-xl font-black text-[#36335e] tracking-tight">Program Exemptions</h3>
+                                <p className="text-sm font-medium text-slate-500 mt-1">Configure specific exclusions from the global discount policy.</p>
                             </div>
-                            <div className="px-3 py-1 bg-white border border-slate-200 rounded-full text-[10px] font-black tracking-widest text-slate-400">
-                                {university.programs.length} PROGRAMS
+                            <div className="px-4 py-2 bg-white border border-[#36335e]/10 rounded-xl text-[10px] font-black tracking-widest text-[#36335e] shadow-sm">
+                                {university.programs.length} PROGRAMS REGISTRY
                             </div>
                         </div>
 
-                        <div className="flex-1 overflow-y-auto p-2">
+                        <div className="flex-1 overflow-y-auto p-4 md:p-6 custom-scrollbar">
                             {university.programs.length === 0 ? (
-                                <div className="h-full flex flex-col items-center justify-center text-slate-400 space-y-3">
-                                    <AlertCircle className="w-10 h-10 opacity-20" />
-                                    <p className="text-sm font-bold">No academic programs added yet.</p>
+                                <div className="h-full flex flex-col items-center justify-center text-slate-300 space-y-4">
+                                    <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100">
+                                        <AlertCircle className="w-10 h-10 opacity-20" />
+                                    </div>
+                                    <p className="text-sm font-black uppercase tracking-widest">No academic programs added yet.</p>
                                 </div>
                             ) : (
-                                <ul className="divide-y divide-slate-50">
+                                <div className="divide-y divide-slate-100/50">
                                     {university.programs.map(program => (
-                                        <li key={program.id} className="p-4 hover:bg-slate-50/80 transition-colors rounded-xl flex items-center justify-between group">
-                                            <div className="flex-1 min-w-0 pr-4">
-                                                <h4 className={`text-sm font-bold truncate ${program.excludeFromGlobalScholarship ? 'text-slate-400' : 'text-slate-900'}`}>
+                                        <div key={program.id} className="p-6 hover:bg-slate-50/50 transition-colors rounded-[2rem] flex items-center justify-between group">
+                                            <div className="flex-1 min-w-0 pr-8">
+                                                <h4 className={`text-base font-black uppercase tracking-tight transition-colors ${program.excludeFromGlobalScholarship ? 'text-slate-400' : 'text-[#36335e]'}`}>
                                                     {program.name}
                                                 </h4>
-                                                <div className="flex items-center gap-3 mt-1 text-[10px] uppercase font-bold tracking-widest">
-                                                    <span className="text-[#d5a22d]">{program.level}</span>
-                                                    {!program.baseTuition && (
-                                                        <span className="text-rose-500 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> No Base Price Set</span>
+                                                <div className="flex items-center gap-4 mt-2 text-[10px] uppercase font-black tracking-widest">
+                                                    <span className="text-[#d5a22d] bg-[#d5a22d]/5 px-2 py-0.5 rounded-lg border border-[#d5a22d]/10">{program.level}</span>
+                                                    {!program.baseTuition ? (
+                                                        <span className="text-rose-500 flex items-center gap-1 bg-rose-50 px-2 py-0.5 rounded-lg border border-rose-100">
+                                                            <AlertCircle className="w-3.5 h-3.5" /> No Base Price Set
+                                                        </span>
+                                                    ) : (
+                                                        <span className="text-emerald-500 bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-100">Pricing Ready</span>
                                                     )}
                                                 </div>
                                             </div>
                                             
-                                            <div className="flex items-center gap-4 shrink-0">
-                                                <div className={`text-[10px] font-black uppercase tracking-widest w-24 text-right transition-colors ${program.excludeFromGlobalScholarship ? 'text-rose-400' : 'text-emerald-500'}`}>
+                                            <div className="flex items-center gap-6 shrink-0">
+                                                <div className={`text-[10px] font-black uppercase tracking-[0.2em] w-24 text-right transition-all ${program.excludeFromGlobalScholarship ? 'text-rose-500 bg-rose-50 px-3 py-1 rounded-lg' : 'text-[#36335e] bg-[#36335e]/10 px-3 py-1 rounded-lg'}`}>
                                                     {program.excludeFromGlobalScholarship ? 'EXEMPTED' : 'INCLUDED'}
                                                 </div>
-                                                <button
-                                                    onClick={() => handleToggleExemption(program.id, program.excludeFromGlobalScholarship)}
-                                                    disabled={processingPrograms[program.id]}
-                                                    className={`transition-colors ${processingPrograms[program.id] ? 'opacity-50' : ''} ${program.excludeFromGlobalScholarship ? 'text-rose-400 hover:text-rose-500' : 'text-emerald-500 hover:text-emerald-600'}`}
-                                                >
-                                                    {processingPrograms[program.id] ? (
-                                                        <Loader2 className="w-8 h-8 animate-spin" />
-                                                    ) : program.excludeFromGlobalScholarship ? (
-                                                        <ToggleLeft className="w-10 h-10" />
-                                                    ) : (
-                                                        <ToggleRight className="w-10 h-10" />
+                                                <label className="relative inline-flex items-center cursor-pointer">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={!program.excludeFromGlobalScholarship}
+                                                        onChange={() => handleToggleExemption(program.id, program.excludeFromGlobalScholarship)}
+                                                        disabled={processingPrograms[program.id]}
+                                                        className="sr-only peer"
+                                                    />
+                                                    <div className="w-14 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-7 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-[#36335e]"></div>
+                                                    {processingPrograms[program.id] && (
+                                                        <div className="absolute inset-0 bg-white/50 backdrop-blur-[1px] flex items-center justify-center z-10 rounded-full">
+                                                            <Loader2 className="w-4 h-4 animate-spin text-[#36335e]" />
+                                                        </div>
                                                     )}
-                                                </button>
+                                                </label>
                                             </div>
-                                        </li>
+                                        </div>
                                     ))}
-                                </ul>
+                                </div>
                             )}
                         </div>
                     </div>

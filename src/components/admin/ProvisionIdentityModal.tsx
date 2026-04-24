@@ -29,6 +29,17 @@ export default function ProvisionIdentityModal({ children }: ProvisionIdentityMo
     const [showPassword, setShowPassword] = useState(false);
     const [selectedRole, setSelectedRole] = useState('');
 
+    // Auto-open modal if action=provision is in URL
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('action') === 'provision') {
+            setOpen(true);
+            // Clear the param without refreshing
+            const newUrl = window.location.pathname;
+            window.history.replaceState({}, '', newUrl);
+        }
+    }, []);
+
     const [state, formAction, isPending] = useActionState(createUserByAdmin, undefined);
 
     // Handle initial state and updates from action state

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState, useTransition, useEffect } from 'react';
 import { 
     Search, Filter, Plus, Building2, MapPin, 
     GraduationCap, ExternalLink, Trash2, Check, X,
@@ -12,6 +12,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { deleteUniversity, updateUniversityStatus } from '@/lib/actions/universities';
+import { registerUniversityByAdmin } from '@/lib/actions/admin-universities';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogFooter,
+} from "@/components/ui/dialog";
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 
 type School = {
     id: string;
@@ -27,13 +45,27 @@ type School = {
 interface SchoolsManagerProps {
     initialSchools: School[];
     total: number;
+    countries: { id: string, name: string, code: string }[];
 }
 
-export default function SchoolsManager({ initialSchools, total }: SchoolsManagerProps) {
+export default function SchoolsManager({ initialSchools, total, countries }: SchoolsManagerProps) {
     const [schools, setSchools] = useState<School[]>(initialSchools);
     const [searchTerm, setSearchTerm] = useState('');
     const [isPending, startTransition] = useTransition();
     const [loadingIds, setLoadingIds] = useState<string[]>([]);
+    const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+    const [isRegistering, setIsRegistering] = useState(false);
+
+    // Auto-open register modal if action=register is in URL
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('action') === 'register') {
+            setIsRegisterModalOpen(true);
+            // Clear the param without refreshing to avoid re-opening on reload
+            const newUrl = window.location.pathname;
+            window.history.replaceState({}, '', newUrl);
+        }
+    }, []);
 
     const filteredSchools = schools.filter(s => 
         s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -77,6 +109,28 @@ export default function SchoolsManager({ initialSchools, total }: SchoolsManager
         });
     };
 
+    const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsRegistering(true);
+        const formData = new FormData(e.currentTarget);
+        
+        try {
+            const result = await registerUniversityByAdmin(formData);
+            if (result.success) {
+                toast.success('University registered and credentials sent!');
+                setIsRegisterModalOpen(false);
+                // Refresh list or trigger revalidation
+                window.location.reload(); 
+            } else {
+                toast.error(result.error || 'Failed to register university');
+            }
+        } catch (error) {
+            toast.error('An unexpected error occurred');
+        } finally {
+            setIsRegistering(false);
+        }
+    };
+
     return (
         <div className="space-y-8">
             {/* Header Section */}
@@ -87,14 +141,11 @@ export default function SchoolsManager({ initialSchools, total }: SchoolsManager
                 </div>
                 <div className="flex items-center gap-3">
                     <Button 
-                        asChild
-                        className="bg-[#36335e] hover:bg-[#2a284a] text-white rounded-xl px-6 py-6 shadow-lg shadow-[#36335e]/20 transition-all active:scale-95 flex gap-2 font-bold cursor-not-allowed opacity-60"
-                        title="Registration flow triggered via School Admin signup"
+                        onClick={() => setIsRegisterModalOpen(true)}
+                        className="bg-[#36335e] hover:bg-[#2a284a] text-white rounded-xl px-6 py-6 shadow-lg shadow-[#36335e]/20 transition-all active:scale-95 flex gap-2 font-bold"
                     >
-                        <div>
-                            <Plus className="w-5 h-5 text-[#d5a22d]" />
-                            <span>Register New School</span>
-                        </div>
+                        <Plus className="w-5 h-5 text-[#d5a22d]" />
+                        <span>Register New School</span>
                     </Button>
                 </div>
             </div>
@@ -281,6 +332,106 @@ export default function SchoolsManager({ initialSchools, total }: SchoolsManager
                     </div>
                 </div>
             </div>
+
+            {/* Register University Modal */}
+            <Dialog open={isRegisterModalOpen} onOpenChange={setIsRegisterModalOpen}>
+                <DialogContent className="sm:max-w-[500px] rounded-[2rem] p-0 overflow-hidden border-none shadow-2xl">
+                    <div className="bg-[#36335e] p-8 text-white relative">
+                        <div className="absolute top-0 right-0 p-8 opacity-10">
+                            <Building2 className="w-24 h-24" />
+                        </div>
+                        <DialogHeader>
+                            <DialogTitle className="text-2xl font-black tracking-tight">Onboard University</DialogTitle>
+                            <DialogDescription className="text-white/60 font-medium">
+                                Register a new institution and send admin credentials automatically.
+                            </DialogDescription>
+                        </DialogHeader>
+                    </div>
+
+                    <form onSubmit={handleRegister} className="p-8 space-y-6">
+                        <div className="space-y-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="universityName" className="text-xs font-black uppercase tracking-widest text-gray-400">University Name</Label>
+                                <Input 
+                                    id="universityName" 
+                                    name="universityName" 
+                                    placeholder="e.g. Oxford University" 
+                                    required 
+                                    className="rounded-xl border-gray-100 bg-gray-50 focus:bg-white transition-all"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="countryId" className="text-xs font-black uppercase tracking-widest text-gray-400">Country Location</Label>
+                                <Select name="countryId" required>
+                                    <SelectTrigger className="rounded-xl border-gray-100 bg-gray-50 focus:bg-white">
+                                        <SelectValue placeholder="Select a country" />
+                                    </SelectTrigger>
+                                    <SelectContent className="rounded-xl">
+                                        {countries.map((country) => (
+                                            <SelectItem key={country.id} value={country.id}>
+                                                {country.name} ({country.code})
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            <div className="pt-4 border-t border-gray-50">
+                                <p className="text-[10px] font-black uppercase tracking-widest text-[#d5a22d] mb-4">Admin Account Details</p>
+                                <div className="grid grid-cols-1 gap-4">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="adminName" className="text-xs font-bold text-gray-500">Admin Full Name</Label>
+                                        <Input 
+                                            id="adminName" 
+                                            name="adminName" 
+                                            placeholder="e.g. Dr. Jane Smith" 
+                                            required 
+                                            className="rounded-xl border-gray-100 bg-gray-50"
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="adminEmail" className="text-xs font-bold text-gray-500">Work Email Address</Label>
+                                        <Input 
+                                            id="adminEmail" 
+                                            name="adminEmail" 
+                                            type="email" 
+                                            placeholder="admin@oxford.edu" 
+                                            required 
+                                            className="rounded-xl border-gray-100 bg-gray-50"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <DialogFooter className="pt-4">
+                            <Button 
+                                type="button" 
+                                variant="ghost" 
+                                onClick={() => setIsRegisterModalOpen(false)}
+                                className="rounded-xl font-bold"
+                            >
+                                Cancel
+                            </Button>
+                            <Button 
+                                type="submit" 
+                                disabled={isRegistering}
+                                className="bg-[#36335e] text-white hover:bg-[#2a284a] rounded-xl px-8 font-black uppercase tracking-widest text-xs shadow-lg shadow-[#36335e]/20"
+                            >
+                                {isRegistering ? (
+                                    <>
+                                        <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                                        Registering...
+                                    </>
+                                ) : (
+                                    'Register & Send Email'
+                                )}
+                            </Button>
+                        </DialogFooter>
+                    </form>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

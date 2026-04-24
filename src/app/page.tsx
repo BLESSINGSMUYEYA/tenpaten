@@ -139,8 +139,7 @@ export default function Home() {
               <ul className="space-y-4 text-[#1a1b41]/60 leading-relaxed font-medium text-lg">
                 <li><Link href="#features" className="hover:text-[#d5a22d] transition-colors">How it Works</Link></li>
                 <li><Link href="/register?type=student" className="hover:text-[#d5a22d] transition-colors">For Students</Link></li>
-                <li><Link href="/register?type=partner" className="hover:text-[#d5a22d] transition-colors">For Partners</Link></li>
-                <li><Link href="/register?type=school" className="hover:text-[#d5a22d] transition-colors">For Universities</Link></li>
+                <li><Link href="/contact" className="hover:text-[#d5a22d] transition-colors">Partner Inquiries</Link></li>
               </ul>
             </div>
 

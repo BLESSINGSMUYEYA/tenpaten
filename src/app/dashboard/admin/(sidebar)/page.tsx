@@ -80,13 +80,13 @@ export default async function AdminDashboardPage() {
                     <h2 className="text-xl font-black text-[#36335e] tracking-tight">System Controls</h2>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <Link href="/dashboard/admin/users/create" className="p-6 rounded-2xl border border-gray-100 hover:border-[#d5a22d] hover:bg-gray-50 transition-all flex flex-col items-center justify-center gap-3 text-center group">
+                    <Link href="/dashboard/admin/users?action=provision" className="p-6 rounded-2xl border border-gray-100 hover:border-[#d5a22d] hover:bg-gray-50 transition-all flex flex-col items-center justify-center gap-3 text-center group">
                         <div className="w-10 h-10 rounded-xl bg-[#36335e]/5 flex items-center justify-center group-hover:bg-[#36335e] transition-colors shadow-sm">
                             <UserCheck className="w-5 h-5 text-[#36335e] group-hover:text-[#d5a22d]" />
                         </div>
                         <span className="font-bold text-gray-700 text-sm">Add New User</span>
                     </Link>
-                    <Link href="/dashboard/admin/schools/create" className="p-6 rounded-2xl border border-gray-100 hover:border-[#d5a22d] hover:bg-gray-50 transition-all flex flex-col items-center justify-center gap-3 text-center group">
+                    <Link href="/dashboard/admin/schools?action=register" className="p-6 rounded-2xl border border-gray-100 hover:border-[#d5a22d] hover:bg-gray-50 transition-all flex flex-col items-center justify-center gap-3 text-center group">
                         <div className="w-10 h-10 rounded-xl bg-[#36335e]/5 flex items-center justify-center group-hover:bg-[#36335e] transition-colors shadow-sm">
                             <School className="w-5 h-5 text-[#36335e] group-hover:text-[#d5a22d]" />
                         </div>

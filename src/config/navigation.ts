@@ -39,7 +39,7 @@ export const navigationConfig = {
     ],
     school_admin: [
         { name: 'Dashboard', href: '/dashboard/school', icon: LayoutDashboard },
-        { name: 'Talent Radar', href: '/dashboard/school/discover', icon: Zap },
+        { name: 'Talent Radar', href: '/dashboard/school/discover', icon: Zap, badge: 'Soon' },
         { name: 'Applications', href: '/dashboard/school/applications', icon: FileText },
         { name: 'Academics', href: '/dashboard/school/programs', icon: GraduationCap },
         { name: 'Requirements', href: '/dashboard/school/requirements', icon: Sparkles },

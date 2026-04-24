@@ -27,7 +27,7 @@ export default async function Page() {
             case 'SCHOOL_ADMIN':
                 redirect('/dashboard/school');
             case 'SUPER_ADMIN':
-                redirect('/dashboard/admin/users');
+                redirect('/dashboard/admin');
             default:
                 break;
         }
@@ -68,68 +68,63 @@ export default async function Page() {
     return (
         <div className="max-w-7xl mx-auto space-y-10 pb-12">
             
-            {/* 1. Integrated Hero Greeting */}
-            <div className="relative overflow-hidden group">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 px-2">
-                    <div className="space-y-3">
-                        <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-lg bg-[#36335e]/5 flex items-center justify-center">
-                                <Sparkles className="w-4 h-4 text-[#d5a22d]" />
+            {/* 1. Integrated Hero Greeting - Centered Hero Discovery Layout */}
+            <div className="relative overflow-hidden group py-4">
+                <div className="flex flex-col items-center text-center gap-10 px-4">
+
+
+                    {/* Decorative Striped Banner - Centered & Wide */}
+                    <div className="flex w-full max-w-5xl min-h-[140px] rounded-[2.5rem] overflow-hidden relative group border border-slate-100 shadow-2xl shadow-[#1d1b41]/5 transition-all hover:shadow-3xl hover:border-[#d5a22d]/30 bg-white">
+                        {/* High-Clarity Background Image */}
+                        <div className="absolute inset-0 bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity duration-700" style={{ backgroundImage: "url('/images/dashboard/banner_bg.png')" }} />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-0" />
+
+                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 px-10 py-8 h-full w-full">
+                            <div className="flex items-center gap-6">
+                                <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-[#d5a22d] to-[#b89531] flex items-center justify-center shadow-xl shadow-[#d5a22d]/20 group-hover:rotate-6 transition-all duration-500">
+                                    <Sparkles className="w-8 h-8 text-[#1d1b41]" />
+                                </div>
+                                <div className="text-left bg-white/60 backdrop-blur-md p-6 rounded-[2rem] border border-white/20 shadow-xl shadow-black/5">
+                                    <p className="text-xs font-black text-[#d5a22d] uppercase tracking-[0.3em] leading-none mb-2">{greeting}, {user?.fullName?.split(' ')[0] || 'Student'}</p>
+                                    <h2 className="text-2xl sm:text-3xl font-black text-[#1d1b41] tracking-tight uppercase leading-none">Your Future <br /> Starts Here</h2>
+                                </div>
                             </div>
-                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">{greeting}</span>
+                            
+                            <div className="hidden lg:flex items-center gap-4 bg-white/40 backdrop-blur-md px-8 py-5 rounded-[2rem] border border-white/50 shadow-sm">
+                                <div className="space-y-2">
+                                    <div className="flex justify-between items-center text-[10px] font-black text-[#1d1b41]/40 uppercase tracking-[0.2em]">
+                                        <span>Portal Ready</span>
+                                        <span className="text-[#d5a22d]">100%</span>
+                                    </div>
+                                    <div className="h-2 w-40 rounded-full bg-slate-100 overflow-hidden">
+                                        <div className="h-full w-full bg-gradient-to-r from-[#1d1b41] to-[#d5a22d] rounded-full shadow-[0_0_10px_rgba(213,162,45,0.3)]" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h1 className="text-3xl sm:text-4xl font-black text-[#36335e] tracking-tight">
-                            Welcome back, <span className="text-[#d5a22d]">
-                                {user?.fullName?.split(' ')[0] || 'Scholar'}
-                            </span>
-                        </h1>
-                        <p className="text-sm text-slate-500 font-medium max-w-md">
-                            Your global educational journey continue here. Track your progress and find new opportunities.
-                        </p>
                     </div>
 
-                    <div className="flex items-center gap-4">
+                    {/* Action Buttons - Forced Side-by-Side with Responsive Scaling */}
+                    <div className="flex flex-row items-center justify-center gap-3 sm:gap-6 w-full max-w-lg mx-auto">
                         <Link
                             href="/dashboard/colleges"
-                            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-[#36335e] text-[10px] font-black uppercase tracking-widest hover:border-[#d5a22d] hover:text-[#d5a22d] transition-all shadow-sm"
+                            className="flex-1 flex items-center justify-center gap-2 px-4 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200 text-[#36335e] text-[10px] sm:text-xs font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] hover:border-[#d5a22d] hover:text-[#d5a22d] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95 whitespace-nowrap"
                         >
-                            <Building2 className="w-3.5 h-3.5" />
+                            <Building2 className="w-3.5 h-3.5 sm:w-4 h-4" />
                             Universities
                         </Link>
                         <Link
                             href="/dashboard/applications"
-                            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#36335e] text-white text-[10px] font-black uppercase tracking-widest hover:bg-[#2a284a] transition-all shadow-md shadow-[#36335e]/10"
+                            className="flex-1 flex items-center justify-center gap-2 px-4 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#36335e] text-white text-[10px] sm:text-xs font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] hover:bg-[#2a284a] transition-all shadow-xl shadow-[#36335e]/20 hover:shadow-2xl hover:shadow-[#36335e]/30 hover:-translate-y-0.5 active:scale-95 whitespace-nowrap"
                         >
-                            <Sparkles className="w-3.5 h-3.5" />
+                            <Sparkles className="w-3.5 h-3.5 sm:w-4 h-4 text-[#d5a22d]" />
                             Apply Now
                         </Link>
                     </div>
                 </div>
             </div>
 
-            {/* 2. Global Search Bar - Clean & Prominent */}
-            <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#36335e]/5 to-[#d5a22d]/5 rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-white border border-slate-100 rounded-[2rem] p-2 shadow-sm focus-within:shadow-xl focus-within:border-[#d5a22d]/30 transition-all duration-300">
-                    <form action="/dashboard/colleges" method="GET" className="flex items-center">
-                        <div className="flex-1 flex items-center px-4">
-                            <Search className="w-5 h-5 text-slate-300 group-focus-within:text-[#d5a22d] transition-colors" />
-                            <input
-                                type="text"
-                                name="query"
-                                placeholder="Search for programs, universities or countries..."
-                                className="w-full bg-transparent border-none outline-none py-4 px-4 text-[#36335e] font-bold text-sm sm:text-base placeholder:text-slate-300 placeholder:font-medium"
-                            />
-                        </div>
-                        <button
-                            type="submit"
-                            className="bg-[#36335e] text-[#d5a22d] px-8 py-4 rounded-[1.75rem] text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#2a284a] transition-all active:scale-95 shadow-lg"
-                        >
-                            Search
-                        </button>
-                    </form>
-                </div>
-            </div>
+
 
             {/* 4. Main Command Center Grid */}
             <div className="grid lg:grid-cols-12 gap-8 items-start">

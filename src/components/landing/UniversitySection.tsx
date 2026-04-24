@@ -75,10 +75,10 @@ export function UniversitySection() {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-12 lg:mt-16">
                             <Link
-                                href="/register?type=school"
+                                href="/login"
                                 className="w-full sm:w-fit inline-flex items-center justify-center gap-3 px-8 py-5 sm:px-12 sm:py-6 rounded-2xl bg-[#1a1b41] text-white font-black uppercase tracking-widest text-[10px] sm:text-xs transition-all hover:bg-[#d5a22d] hover:scale-[1.02] active:scale-95 shadow-2xl shadow-[#1a1b41]/10"
                             >
-                                School Dashboard
+                                Partner Log In
                                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                             </Link>
                             <Link

@@ -43,13 +43,6 @@ export default async function MessagesPage({ searchParams }: { searchParams: Pro
             {/* Sidebar List */}
             <div className={`w-full md:w-80 lg:w-96 bg-white rounded-[2rem] shadow-xl shadow-[#1d1b41]/5 border border-gray-100 overflow-hidden flex flex-col transition-all duration-300 ${selectedId ? 'hidden md:flex' : 'flex'
                 }`}>
-                <div className="p-6 border-b border-gray-100 bg-white/50 backdrop-blur-sm flex items-center justify-between">
-                    <h1 className="text-2xl font-black text-[#1d1b41] uppercase tracking-tighter">Messages</h1>
-                    <div className="flex items-center gap-2.5 px-3 py-1 bg-[#1d1b41]/5 rounded-full border border-[#1d1b41]/10">
-                        <span className="flex h-1.5 w-1.5 rounded-full bg-[#d5a22d] animate-pulse" />
-                        <span className="text-[9px] font-black text-[#1d1b41] uppercase tracking-widest leading-none">Live</span>
-                    </div>
-                </div>
                 <ConversationList conversations={conversations} />
             </div>
 

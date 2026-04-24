@@ -188,3 +188,48 @@ export async function sendVerificationEmail(email: string, otp: string, name: st
     }
 }
 
+export async function sendSchoolAdminCredentials(email: string, fullName: string, password: string, universityName: string) {
+    if (!process.env.RESEND_API_KEY || !resend) {
+        console.warn('RESEND_API_KEY is missing. Skipping email.');
+        return;
+    }
+
+    try {
+        await resend.emails.send({
+            from: EMAIL_SENDER,
+            to: email,
+            subject: `Tenpaten Partner Account: ${universityName}`,
+            html: `
+                <div style="background-color: ${BG_COLOR}; padding: 40px 20px;">
+                    <div style="${baseEmailStyles}">
+                        ${emailHeader}
+                        <div style="${contentStyles}">
+                            <h2 style="margin-top: 0; font-size: 24px; color: ${HEADING_COLOR}; font-weight: 800;">Welcome, Partner!</h2>
+                            <p style="font-size: 16px; margin-bottom: 24px;">Hello ${fullName}, your institution <strong>${universityName}</strong> has been registered on Tenpaten Apply.</p>
+                            
+                            <p style="font-size: 16px; margin-bottom: 16px;">Use the credentials below to log in to your official dashboard:</p>
+                            
+                            <div style="background-color: #f3f4f6; padding: 24px; border-radius: 16px; margin-bottom: 32px; border: 1px solid #e5e7eb;">
+                                <p style="margin: 0; font-size: 14px; color: #6b7280; margin-bottom: 8px;"><strong>Email:</strong> ${email}</p>
+                                <p style="margin: 0; font-size: 14px; color: #6b7280;"><strong>Temporary Password:</strong> <span style="color: ${BRAND_COLOR}; font-family: monospace; font-weight: 900;">${password}</span></p>
+                            </div>
+ 
+                            <div style="text-align: center; margin-bottom: 32px;">
+                                <a href="${process.env.NEXT_PUBLIC_APP_URL || 'https://tenpaten.com'}/login" style="${buttonStyles}">Log In to Portal</a>
+                            </div>
+
+                            <p style="font-size: 14px; color: #6b7280;">For security, please change your password immediately after your first login.</p>
+                        </div>
+                        <div style="${footerStyles}">
+                            <div style="margin-bottom: 12px; font-weight: 800; color: ${BRAND_COLOR};">TENPATEN APPLY</div>
+                            <p style="margin: 0;">&copy; ${new Date().getFullYear()} Tenpaten Global. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        });
+    } catch (error) {
+        console.error('Failed to send credentials email:', error);
+    }
+}
+

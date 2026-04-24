@@ -42,168 +42,108 @@ export function RoleGateway({ mode, selectedRole, onSelectRole, children }: Role
     const isLogin = mode === 'login';
 
     return (
-        <div className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-[#1a1b4d] to-[#12132e] p-4 overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#d5a22d]/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-[#36335e]/30 rounded-full blur-[120px]" />
-                {/* Grid pattern */}
-                <div
-                    className="absolute inset-0 opacity-[0.03]"
-                    style={{
-                        backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-                        backgroundSize: '40px 40px',
-                    }}
-                />
-            </div>
-
-            <div className="relative z-10 w-full max-w-lg">
-                {/* Logo */}
-                <div className="flex justify-center mb-8">
-                    <TenpatenLogo variant="white" />
+        <div className="min-h-screen flex flex-col lg:flex-row bg-[#f8fafc]">
+            {/* Left Column: Branding & Value Prop */}
+            <div className="hidden lg:flex lg:w-[40%] xl:w-[35%] bg-[#1a1b41] relative overflow-hidden flex-col justify-between p-12 xl:p-16">
+                {/* Background decorative elements */}
+                <div className="absolute top-[-10%] right-[-10%] w-96 h-96 bg-[#d5a22d]/10 rounded-full blur-[100px]" />
+                <div className="absolute bottom-[-10%] left-[-10%] w-96 h-96 bg-[#36335e]/40 rounded-full blur-[100px]" />
+                
+                {/* Logo Section */}
+                <div className="relative z-10">
+                    <TenpatenLogo variant="white" className="scale-125 origin-left" />
                 </div>
 
-                {/* PICKER STATE */}
-                {!selectedRole && (
-                    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                        <div className="text-center mb-8">
-                            <h1 className="text-3xl sm:text-4xl font-black text-white mb-3 tracking-tight">
-                                {isLogin ? 'Welcome back' : 'Join Tenpaten'}
-                            </h1>
-                            <p className="text-white/50 text-sm font-medium">
-                                {isLogin ? 'Who are you signing in as?' : 'Who are you signing up as?'}
-                            </p>
-                        </div>
-
-                        <div className="grid gap-4">
-                            {roles.map((role) => {
-                                const Icon = role.icon;
-                                // For login, school goes to /school/login; for register, school goes to /school/register
-                                const schoolHref = isLogin ? '/school/login' : '/school/register';
-
-                                return role.id === 'school' ? (
-                                    <Link
-                                        key={role.id}
-                                        href={schoolHref}
-                                        className={`group relative flex items-center gap-5 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:ring-2 ${role.ring} hover:ring-opacity-40 transition-all duration-300 cursor-pointer`}
-                                    >
-                                        <div className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${role.gradient} flex items-center justify-center shadow-lg`}>
-                                            <Icon className="w-7 h-7 text-white" />
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-2 mb-1">
-                                                <span className="text-white font-bold text-lg">{role.label}</span>
-                                                <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${role.badge}`}>
-                                                    Institution
-                                                </span>
-                                            </div>
-                                            <p className="text-white/50 text-sm leading-relaxed">{role.description}</p>
-                                        </div>
-                                        <ArrowRight className="flex-shrink-0 w-5 h-5 text-white/30 group-hover:text-white/70 group-hover:translate-x-1 transition-all" />
-                                    </Link>
-                                ) : (
-                                    <button
-                                        key={role.id}
-                                        onClick={() => onSelectRole(role.id)}
-                                        className={`group relative flex items-center gap-5 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:ring-2 ${role.ring} hover:ring-opacity-40 transition-all duration-300 cursor-pointer text-left w-full`}
-                                    >
-                                        <div className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${role.gradient} flex items-center justify-center shadow-lg`}>
-                                            <Icon className="w-7 h-7 text-white" />
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-2 mb-1">
-                                                <span className="text-white font-bold text-lg">{role.label}</span>
-                                            </div>
-                                            <p className="text-white/50 text-sm leading-relaxed">{role.description}</p>
-                                        </div>
-                                        <ArrowRight className="flex-shrink-0 w-5 h-5 text-white/30 group-hover:text-white/70 group-hover:translate-x-1 transition-all" />
-                                    </button>
-                                );
-                            })}
-                        </div>
-
-                        {/* Footer links */}
-                        <div className="mt-8 space-y-4 text-center">
-                            <p className="text-white/40 text-sm font-medium">
-                                {isLogin ? (
-                                    <>
-                                        Don&apos;t have an account?{' '}
-                                        <Link href="/register" className="text-[#d5a22d] hover:text-[#f0b830] font-bold transition-colors">
-                                            Sign up
-                                        </Link>
-                                    </>
-                                ) : (
-                                    <>
-                                        Already have an account?{' '}
-                                        <Link href="/login" className="text-[#d5a22d] hover:text-[#f0b830] font-bold transition-colors">
-                                            Sign in
-                                        </Link>
-                                    </>
-                                )}
-                            </p>
-                            
-                        </div>
+                {/* Content Section */}
+                <div className="relative z-10 space-y-8">
+                    <div className="space-y-4">
+                        <h1 className="text-4xl xl:text-5xl font-black text-white leading-[1.1] tracking-tighter uppercase">
+                            Global <br />
+                            <span className="text-[#d5a22d]">Education</span> <br />
+                            Simplified.
+                        </h1>
+                        <p className="text-white/60 text-lg font-medium leading-relaxed max-w-sm">
+                            Connect with top universities worldwide and start your international journey today.
+                        </p>
                     </div>
-                )}
-                {/* FORM STATE — student selected */}
-                {selectedRole === 'student' && (
-                    <div className="animate-in fade-in slide-in-from-bottom-4 duration-400">
-                        {/* Back button */}
-                        <button
-                            onClick={() => onSelectRole(null)}
-                            className="flex items-center gap-2 text-white/50 hover:text-white text-sm font-medium mb-6 transition-colors group"
-                        >
-                            <ChevronLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-                            Back
-                        </button>
 
-                        {/* Role badge */}
-                        <div className="flex items-center gap-2 mb-6">
-                            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#36335e] to-[#4f4b8a] flex items-center justify-center">
-                                <GraduationCap className="w-4 h-4 text-white" />
-                            </div>
-                            <span className="text-white/70 text-sm font-medium">
-                                Student {isLogin ? 'Sign In' : 'Sign Up'}
-                            </span>
-                        </div>
-
-                        {/* Actual form card */}
-                        <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl ring-1 ring-black/5 overflow-hidden">
-                            <div className="px-6 pt-8 pb-2 sm:px-8">
-                                <h2 className="text-2xl font-black text-gray-900 tracking-tight mb-1">
-                                    {isLogin ? 'Sign in to your account' : 'Create your account'}
-                                </h2>
-                                <p className="text-sm text-gray-500">
-                                    {isLogin ? 'Enter your credentials to continue' : 'Start your journey to top universities'}
-                                </p>
-                            </div>
-                            <div className="px-6 py-6 sm:px-8">
-                                {children}
-                            </div>
-                            {selectedRole === 'student' && (
-                                <div className="px-6 py-5 bg-gray-50/50 border-t border-gray-100 sm:px-8">
-                                    <p className="text-sm text-gray-500 text-center font-medium">
-                                        {isLogin ? (
-                                            <>
-                                                New student?{' '}
-                                                <Link href="/register?type=student" className="font-bold text-[#d5a22d] hover:text-[#b89531] hover:underline transition-all">
-                                                    Create an account
-                                                </Link>
-                                            </>
-                                        ) : (
-                                            <>
-                                                Already have an account?{' '}
-                                                <Link href="/login" className="font-bold text-[#d5a22d] hover:text-[#b89531] hover:underline transition-all">
-                                                    Sign in
-                                                </Link>
-                                            </>
-                                        )}
-                                    </p>
+                    <div className="space-y-6 pt-8 border-t border-white/10">
+                        {[
+                            { title: '500+ Universities', desc: 'Direct access to global institutions' },
+                            { title: 'Smart Applications', desc: 'One-click multi-university apply' },
+                            { title: 'Visa Support', desc: 'Expert guidance for your student visa' }
+                        ].map((item, i) => (
+                            <div key={i} className="flex gap-4 group">
+                                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#d5a22d]/20 transition-all">
+                                    <ArrowRight className="w-4 h-4 text-[#d5a22d]" />
                                 </div>
-                            )}
-                        </div>
+                                <div>
+                                    <h4 className="text-white font-bold text-sm uppercase tracking-tight">{item.title}</h4>
+                                    <p className="text-white/40 text-xs font-medium">{item.desc}</p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                )}
+                </div>
+
+                {/* Footer text */}
+                <div className="relative z-10">
+                    <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.3em]">
+                        &copy; {new Date().getFullYear()} Tenpaten Apply. All rights reserved.
+                    </p>
+                </div>
+            </div>
+
+            {/* Right Column: Authentication Form */}
+            <div className="flex-1 flex flex-col justify-center items-center p-6 sm:p-12 lg:p-20 relative">
+                {/* Mobile Logo Only */}
+                <div className="lg:hidden mb-12">
+                    <TenpatenLogo variant="navy" />
+                </div>
+
+                <div className="w-full max-w-[480px] animate-in fade-in slide-in-from-bottom-6 duration-700">
+                    {/* Form Header */}
+                    <div className="mb-10 text-center lg:text-left">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d5a22d]/10 border border-[#d5a22d]/20 text-[#d5a22d] text-[10px] font-black tracking-widest uppercase mb-4">
+                            {selectedRole === 'student' ? 'Student Portal' : 'Institution Portal'}
+                        </div>
+                        <h2 className="text-4xl font-black text-[#1a1b41] tracking-tighter uppercase mb-3">
+                            {isLogin ? 'Sign In' : 'Sign Up'}
+                        </h2>
+                        <p className="text-gray-500 font-medium">
+                            {isLogin ? 'Please enter your credentials to access your dashboard.' : 'Enter your details to create your student account.'}
+                        </p>
+                    </div>
+
+                    {/* The Form Card */}
+                    <div className="bg-white rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(26,27,65,0.08)] border border-gray-100/50 p-8 sm:p-10">
+                        {children}
+                    </div>
+
+                    {/* Bottom Links */}
+                    <div className="mt-10 text-center lg:text-left">
+                        <p className="text-sm text-gray-500 font-bold">
+                            {isLogin ? (
+                                <>
+                                    New to Tenpaten?{' '}
+                                    <Link 
+                                        href="/register?type=student" 
+                                        className="text-[#d5a22d] hover:text-[#b89531] hover:underline transition-all"
+                                    >
+                                        Create an account
+                                    </Link>
+                                </>
+                            ) : (
+                                <>
+                                    Already have an account?{' '}
+                                    <Link href="/login" className="text-[#d5a22d] hover:text-[#b89531] hover:underline transition-all">
+                                        Sign in
+                                    </Link>
+                                </>
+                            )}
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     );

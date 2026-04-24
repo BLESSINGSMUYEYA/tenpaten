@@ -2,8 +2,6 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import prisma from '@/lib/prisma';
 import ScholarshipManager from '@/components/school/scholarships/ScholarshipManager';
-import { PageHeader } from '@/components/ui/PageHeader';
-import { Percent } from 'lucide-react';
 
 export default async function SchoolScholarshipsPage() {
     const session = await auth();
@@ -48,17 +46,7 @@ export default async function SchoolScholarshipsPage() {
     }
 
     return (
-        <div className="space-y-6">
-            <PageHeader 
-                preTitle={
-                    <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.3em] border border-[#d5a22d]/20">
-                        <Percent className="w-3.5 h-3.5" />
-                        Platform Economics
-                    </div>
-                }
-                title="Scholarship Engine"
-                subtitle="Manage universal tuition discounts and program exemptions."
-            />
+        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12">
             <ScholarshipManager university={university} />
         </div>
     );

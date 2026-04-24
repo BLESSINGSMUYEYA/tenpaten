@@ -2,8 +2,10 @@ import { getAllUniversitiesWithPrograms } from '@/lib/data/universities';
 import { getAllCountries } from '@/lib/data/countries';
 import UniversitiesList from '@/components/student/UniversitiesList';
 import Pagination from '@/components/common/Pagination';
-import Breadcrumbs from '@/components/ui/Breadcrumbs';
-import { Sparkles } from 'lucide-react';
+import { FeaturedSection, DestinationsSection, HowItWorksSection, TrustSection } from '@/components/student/BrowseUniversitySections';
+import ProgramCard from '@/components/student/ProgramCard';
+import { GraduationCap, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default async function UniversitiesPage({
     searchParams,
@@ -18,7 +20,7 @@ export default async function UniversitiesPage({
 }) {
     const { page, query, country, level, sortBy } = (await searchParams) || {};
     const currentPage = Number(page) || 1;
-    const limit = 8; // Grid of 2x4 works perfectly
+    const limit = 8;
     const [{ universities: universitiesData, metadata }, countries] = await Promise.all([
         getAllUniversitiesWithPrograms(currentPage, limit, {
             query,
@@ -29,7 +31,7 @@ export default async function UniversitiesPage({
         getAllCountries()
     ]);
 
-    // Map to simplified university format for the list
+    // Map to simplified university format
     const universities = universitiesData.map((uni: any) => {
         const mappedPrograms = uni.programs.map((p: any) => ({
             id: p.id,
@@ -46,17 +48,10 @@ export default async function UniversitiesPage({
         let matchingProgram = null;
         if (query) {
             const lowerQuery = query.toLowerCase();
-            const queryWords = lowerQuery.split(' ').filter(Boolean);
-            
-            matchingProgram = mappedPrograms.find((p: any) => {
-                const programName = p.name?.toLowerCase() || '';
-                const majors = p.majors?.map((m: string) => m.toLowerCase()) || [];
-                
-                // Fuzzy/Loose match: Check if query is in name/majors OR if any word matches
-                return programName.includes(lowerQuery) || 
-                       majors.some((m: string) => m.includes(lowerQuery)) ||
-                       queryWords.some(word => word.length >= 3 && (programName.includes(word) || majors.some((m: string) => m.includes(word))));
-            }) || null;
+            matchingProgram = mappedPrograms.find((p: any) => 
+                p.name?.toLowerCase().includes(lowerQuery) || 
+                p.majors?.some((m: string) => m.toLowerCase().includes(lowerQuery))
+            ) || null;
         }
 
         return {
@@ -77,13 +72,52 @@ export default async function UniversitiesPage({
         };
     });
 
+    const allPrograms = universities.flatMap(uni => 
+        uni.programs.slice(0, 3).map((p: any) => ({
+            ...p,
+            university: { id: uni.id, name: uni.name }
+        }))
+    ).slice(0, 6);
+
+    const isSearching = !!query || !!country || !!level;
+
     return (
-        <div className="space-y-0 pb-6 -mt-6 overflow-x-hidden">
+        <div className="space-y-0 pb-12 -mt-6 overflow-x-hidden">
             <div className="px-1 max-w-7xl mx-auto w-full">
-                {/* Universities List with integrated Header Control */}
                 <UniversitiesList universities={universities} allCountries={countries} hideUntilSearch={true}>
-                    {/* Pagination Controls - Now hidden until search */}
-                    <div className="mt-12 flex justify-center">
+                    {!isSearching && (
+                        <div className="mt-12 space-y-24 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                            {/* 1. Universities Section */}
+                            <FeaturedSection universities={universities} />
+
+                            {/* 2. Programs Section */}
+                            <div className="space-y-10">
+                                <div className="flex items-center justify-between">
+                                    <div>
+                                        <h2 className="text-2xl font-black text-[#1d1b41] uppercase tracking-tight">Top Programs</h2>
+                                        <p className="text-slate-500 text-sm font-medium">Explore world-class academic paths</p>
+                                    </div>
+                                    <div className="h-px flex-1 bg-gray-100 mx-12 hidden lg:block" />
+                                    <Link href="/dashboard/programs" className="group flex items-center gap-3 text-[#d5a22d] font-black text-xs uppercase tracking-widest hover:text-[#1d1b41] transition-all">
+                                        All Programs <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                    </Link>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                    {allPrograms.map((program) => (
+                                        <div key={program.id} className="relative group">
+                                            <ProgramCard program={program} />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <DestinationsSection countries={countries} />
+                            <HowItWorksSection />
+                            <TrustSection />
+                        </div>
+                    )}
+
+                    <div className="mt-16 flex justify-center">
                         <Pagination totalPages={metadata.totalPages} currentPage={currentPage} />
                     </div>
                 </UniversitiesList>

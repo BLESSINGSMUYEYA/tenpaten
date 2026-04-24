@@ -15,35 +15,38 @@ export default async function Page() {
     const universities = (await getUniversities()).filter(u => (u.status as any) !== 'DRAFT');
 
     return (
-        <div className="w-full space-y-10 pb-12 animate-in fade-in duration-700">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12">
+            {/* Header Section */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#36335e]/10 text-[#36335e] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
-                        <Building2 className="w-3 h-3" />
-                        Network Registry
-                    </div>
-                    <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">University Management</h1>
-                    <p className="text-gray-500 mt-2 font-medium italic">Manage institutional profiles and educational standards within your country.</p>
+                    <h1 className="text-2xl sm:text-3xl font-black text-[#36335e] tracking-tight">University Management</h1>
+                    <p className="text-gray-500 mt-1 font-medium italic">Manage institutional profiles and educational standards within your country.</p>
                 </div>
-                <div className="flex items-center gap-3">
-                    <div className="relative group">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#d5a22d] transition-colors" />
-                        <input
-                            type="text"
-                            placeholder="Find an institution..."
-                            className="pl-12 pr-6 py-3.5 bg-slate-50 border-none rounded-2xl text-sm font-medium focus:ring-2 focus:ring-[#d5a22d] focus:bg-white transition-all w-72 shadow-sm text-[#36335e]"
-                        />
-                    </div>
-                    <Link href="/dashboard/country-director/universities/create">
-                        <Button className="h-12 px-6 bg-[#36335e] hover:bg-[#2a284a] text-white font-bold rounded-2xl shadow-lg shadow-[#36335e]/20 transition-all transform hover:scale-105 active:scale-95 leading-none">
-                            <Plus className="w-5 h-5 mr-2 text-[#d5a22d]" />
-                            Add University
-                        </Button>
-                    </Link>
+                <div className="flex items-center gap-2 px-4 py-2 bg-[#d5a22d]/10 text-[#d5a22d] rounded-xl text-sm font-black uppercase tracking-widest border border-[#d5a22d]/20">
+                    <Building2 className="w-4 h-4" />
+                    <span>Regional Network Registry</span>
                 </div>
             </div>
 
-            <div className="bg-white rounded-[2.5rem] shadow-xl shadow-[#36335e]/10 overflow-hidden border border-slate-100">
+            {/* Toolbar */}
+            <div className="flex flex-wrap items-center gap-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm">
+                <div className="flex-1 min-w-[300px] relative group">
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                    <input
+                        type="text"
+                        placeholder="Search for an institution by name or location..."
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border-transparent focus:bg-white focus:border-[#d5a22d]/30 focus:ring-0 rounded-xl text-sm font-medium transition-all"
+                    />
+                </div>
+                <Link href="/dashboard/country-director/universities/create">
+                    <Button className="bg-[#36335e] hover:bg-[#2a284a] text-white rounded-xl px-6 py-6 shadow-lg shadow-[#36335e]/20 transition-all active:scale-95 flex gap-2 font-bold">
+                        <Plus className="w-5 h-5 text-[#d5a22d]" />
+                        <span>Add University</span>
+                    </Button>
+                </Link>
+            </div>
+
+            <div className="bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden">
                 {universities.length === 0 ? (
                     <div className="text-center py-24 px-12">
                         <div className="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center mx-auto mb-6 text-slate-200">
@@ -63,15 +66,15 @@ export default async function Page() {
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="border-b border-slate-50 bg-slate-50/50">
-                                    <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Institution</th>
-                                    <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Network Scale</th>
-                                    <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Verification Status</th>
-                                    <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Registry Date</th>
-                                    <th className="px-8 py-5 text-right text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Actions</th>
+                                <tr className="bg-[#36335e] text-white">
+                                    <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Institution</th>
+                                    <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Network Scale</th>
+                                    <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Verification Status</th>
+                                    <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Registry Date</th>
+                                    <th className="px-6 py-5 text-right text-xs font-black uppercase tracking-[0.2em]">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-50">
+                            <tbody className="divide-y divide-gray-50">
                                 {universities.map((uni) => (
                                     <tr key={uni.id} className="group hover:bg-slate-50/50 transition-colors duration-300">
                                         <td className="px-8 py-6">

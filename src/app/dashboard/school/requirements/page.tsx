@@ -38,21 +38,22 @@ export default async function SchoolRequirementsPage() {
     }
 
     return (
-        <>
-            <PageHeader
-                title="Application Requirements"
-                subtitle="Customize specific document and information requirements for student applications."
-                action={
-                    <div className="flex items-center gap-2 px-4 py-2 bg-brand-primary rounded-xl text-white text-sm font-bold shadow-lg shadow-brand-primary/20">
-                        <FileText className="w-4 h-4 text-brand-accent" />
-                        <span>Configuration</span>
-                    </div>
-                }
-            />
+        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12">
+            {/* Header Section */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 className="text-2xl sm:text-3xl font-black text-[#36335e] tracking-tight">Application Requirements</h1>
+                    <p className="text-gray-500 mt-1 font-medium italic">Customize specific document and information requirements for student applications.</p>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-[#d5a22d]/10 text-[#d5a22d] rounded-xl text-sm font-black uppercase tracking-widest border border-[#d5a22d]/20">
+                    <FileText className="w-4 h-4" />
+                    <span>Configuration Engine</span>
+                </div>
+            </div>
 
             <div className="space-y-6">
                 <RequirementSettings university={university} />
             </div>
-        </>
+        </div>
     );
 }

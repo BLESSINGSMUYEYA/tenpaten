@@ -59,7 +59,7 @@ export default function DynamicBreadcrumbs() {
     if (items.length === 0) return null;
 
     return (
-        <div className="bg-white/50 backdrop-blur-sm border-b border-gray-100 px-4 sm:px-6 lg:px-8 py-2.5">
+        <div className="bg-white/50 backdrop-blur-sm border-b border-gray-100 px-4 sm:px-6 lg:px-8 py-1.5">
             <Breadcrumbs items={items} />
         </div>
     );
