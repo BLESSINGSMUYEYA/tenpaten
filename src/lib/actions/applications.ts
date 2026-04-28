@@ -5,6 +5,7 @@ import { requireRole } from '@/lib/auth-utils';
 import { logAction } from '@/lib/audit';
 import { createNotification } from '../notifications';
 import { sendApplicationStatusEmail } from '../email-templates';
+import { pusherServer } from '../pusher';
 
 export async function submitApplication(prevState: string | undefined, formData: FormData) {
     const user = await requireRole('PROSPECT'); // Security check
@@ -115,6 +116,23 @@ export async function submitApplication(prevState: string | undefined, formData:
             }
         } catch (msgError) {
             console.error('Failed to initiate automated communication:', msgError);
+        }
+
+        // 3. Real-time Pusher Notification for Admin Feed
+        try {
+            const program = await prisma.program.findUnique({
+                where: { id: programId },
+                select: { universityId: true, name: true }
+            });
+            if (program) {
+                await pusherServer.trigger(`university-${program.universityId}`, 'new-activity', {
+                    type: 'NEW_APPLICATION',
+                    message: `New application for ${program.name}`,
+                    timestamp: new Date(),
+                });
+            }
+        } catch (pError) {
+            console.error('Pusher trigger failed:', pError);
         }
 
         return 'success';
@@ -243,6 +261,25 @@ export async function updateApplicationStatus(id: string, newStatus: string, not
             newStatus,
             application.program.name
         );
+
+        // 5. Real-time Pusher Notification for Student
+        try {
+            await pusherServer.trigger(`user-${application.prospectId}`, 'status-update', {
+                applicationId: id,
+                newStatus,
+                programName: application.program.name,
+                message: studentMessages[newStatus] || `Your application status is now ${statusLabel}`
+            });
+            
+            // Also notify the university feed
+            await pusherServer.trigger(`university-${application.program.universityId}`, 'new-activity', {
+                type: 'STATUS_CHANGE',
+                message: `Status of ${application.prospect.fullName}'s application updated to ${statusLabel}`,
+                timestamp: new Date(),
+            });
+        } catch (pError) {
+            console.error('Pusher trigger failed:', pError);
+        }
 
         return 'success';
     } catch (error) {
@@ -411,6 +448,15 @@ export async function submitFullApplication(data: any) {
             );
         }
     }
+
+    // Pusher for Live Feed
+    try {
+        await pusherServer.trigger(`university-${application.program.universityId}`, 'new-activity', {
+            type: 'NEW_APPLICATION',
+            message: `New application for ${application.program.name} from ${personalInfo.fullName}`,
+            timestamp: new Date(),
+        });
+    } catch (e) {}
 
     return { success: true, applicationId: application.id };
 }

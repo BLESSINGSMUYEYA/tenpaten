@@ -4,6 +4,7 @@ import "./globals.css";
 import NextAuthProvider from "@/components/providers/NextAuthProvider";
 import { PerformanceProvider } from "@/components/providers/PerformanceProvider";
 import { Toaster } from "sonner";
+import PusherWrapper from "@/components/providers/PusherWrapper";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -68,6 +69,7 @@ export default function RootLayout({
         <NextAuthProvider>
           <PerformanceProvider>
             {children}
+            <PusherWrapper />
             <Toaster richColors position="top-center" />
           </PerformanceProvider>
         </NextAuthProvider>

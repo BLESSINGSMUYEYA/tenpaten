@@ -14,6 +14,8 @@ import SchoolDashboardCharts from '@/components/dashboard/analytics/SchoolDashbo
 import { PageHeader } from '@/components/ui/PageHeader';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { getHomeUrl } from '@/lib/navigation';
+import SchoolQRCode from '@/components/school/SchoolQRCode';
+import LiveActivityFeed from '@/components/school/LiveActivityFeed';
 
 export default async function UniversityDashboard() {
     const session = await auth();
@@ -48,9 +50,12 @@ export default async function UniversityDashboard() {
                                 select: { applications: true }
                             }
                         }
+                    },
+                    _count: {
+                        select: { programs: true }
                     }
                 }
-            });
+            }) as any;
         }
     } catch (error) {
         console.error("Failed to connect to database for university:", error);
@@ -449,6 +454,16 @@ export default async function UniversityDashboard() {
                             </Link>
                         </CardContent>
                     </Card>
+
+                    {/* Live Activity Feed */}
+                    <LiveActivityFeed universityId={university.id} />
+
+                    {/* QR Code & Branded Short URL */}
+                    <SchoolQRCode
+                        universityId={university.id}
+                        universityName={university.name}
+                        slug={(university as any).slug ?? null}
+                    />
 
                     <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 relative overflow-hidden group hover:border-[#36335e]/20 transition-colors">
                         <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">

@@ -5,7 +5,7 @@ import { Send, ArrowLeft, MoreVertical, Phone, Video, CheckCheck, AlertCircle, M
 import { sendMessage, deleteMessage } from '@/lib/actions/messaging';
 import Link from 'next/link';
 import { formatDetailedDate } from '@/lib/utils/date';
-import { pusherClient } from '@/lib/pusher';
+import { pusherClient } from '@/lib/pusher-client';
 import { toast } from 'sonner';
 
 interface Message {

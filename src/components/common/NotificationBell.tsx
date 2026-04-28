@@ -5,7 +5,7 @@ import { Bell, CheckCheck, Info, AlertTriangle, XCircle, CheckCircle, BellRing, 
 import Link from 'next/link';
 import { getNotifications, getUnreadCount, markAsRead, markAllAsRead } from '@/app/actions/notificationActions';
 import { useSession } from 'next-auth/react';
-import { pusherClient } from '@/lib/pusher';
+import { pusherClient } from '@/lib/pusher-client';
 
 type Notification = {
     id: string;

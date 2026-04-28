@@ -4,6 +4,8 @@ import { z } from 'zod';
 import prisma from '@/lib/prisma';
 import { auth } from '@/auth';
 import { revalidatePath } from 'next/cache';
+import { slugify, isValidSlug, generateUniqueSlug } from '@/lib/utils/slugify';
+
 
 const CreateUniversitySchema = z.object({
     name: z.string().min(2, 'University name is required'),
@@ -239,4 +241,63 @@ export async function createUniversityInitial(data: {
         console.error('Failed to create university:', error);
         return { error: 'Failed to register institution. Please try again.' };
     }
+}
+
+export async function updateUniversitySlug(newSlug: string, targetUniversityId?: string) {
+    const session = await auth();
+    const user = session?.user as any;
+
+    if (!user) return { error: 'Unauthorized' };
+
+    const universityId = targetUniversityId || user.managedUniversityId;
+    if (!universityId) return { error: 'No university specified' };
+
+    // Auth check
+    if (user.role === 'SCHOOL_ADMIN' && universityId !== user.managedUniversityId) {
+        return { error: 'Unauthorized: You can only manage your own university' };
+    }
+    if (!['SUPER_ADMIN', 'COUNTRY_DIRECTOR', 'SCHOOL_ADMIN'].includes(user.role)) {
+        return { error: 'Unauthorized' };
+    }
+
+    // Format validation
+    const trimmed = newSlug.trim().toLowerCase();
+    if (!isValidSlug(trimmed)) {
+        return { error: 'Invalid slug. Use 3–60 lowercase letters, numbers, and hyphens only (e.g. my-university).' };
+    }
+
+    // Uniqueness check (excluding current university)
+    const conflict = await prisma.university.findFirst({
+        where: { slug: trimmed, id: { not: universityId } },
+        select: { id: true },
+    });
+    if (conflict) {
+        return { error: 'This short URL is already taken. Please choose another.' };
+    }
+
+    try {
+        await prisma.university.update({
+            where: { id: universityId },
+            data: { slug: trimmed },
+        });
+
+        revalidatePath('/dashboard/school');
+        revalidatePath(`/schools/${universityId}`);
+        return { success: true, slug: trimmed };
+    } catch (error) {
+        console.error('Failed to update slug:', error);
+        return { error: 'Failed to update short URL.' };
+    }
+}
+
+/** Quick availability check used by the inline slug editor (no side-effects) */
+export async function checkSlugAvailability(slug: string, universityId: string) {
+    if (!isValidSlug(slug.trim().toLowerCase())) {
+        return { available: false, reason: 'Invalid format' };
+    }
+    const conflict = await prisma.university.findFirst({
+        where: { slug: slug.trim().toLowerCase(), id: { not: universityId } },
+        select: { id: true },
+    });
+    return { available: !conflict };
 }

@@ -272,3 +272,26 @@ export async function getAllUniversities() {
         return { universities: [] };
     }
 }
+
+export async function getUniversityBySlug(slug: string) {
+    try {
+        const university = await prisma.university.findFirst({
+            where: { slug, status: 'APPROVED' },
+            select: {
+                id: true,
+                name: true,
+                slug: true,
+                logo: true,
+                description: true,
+                website: true,
+                images: true,
+                country: { select: { name: true, code: true } },
+                _count: { select: { programs: true } },
+            },
+        });
+        return university;
+    } catch (error) {
+        console.error('Failed to fetch university by slug:', error);
+        return null;
+    }
+}

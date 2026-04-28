@@ -76,10 +76,10 @@ export default function SettingsTabs({ user, universities = [], countries = [] }
     };
 
     useEffect(() => {
-        if (selectedProgramId) {
+        if (selectedProgramId && user.role === 'PROSPECT') {
             saveDraftProgress(selectedProgramId);
         }
-    }, [selectedProgramId]);
+    }, [selectedProgramId, user.role]);
 
     const selectedUniversity = universities.find(u =>
         u.programs.some((p: any) => p.id === selectedProgramId)
@@ -140,6 +140,10 @@ export default function SettingsTabs({ user, universities = [], countries = [] }
 
     const handleSubmitApplication = async () => {
         if (!selectedProgramId) return;
+        if (user.role !== 'PROSPECT') {
+            toast.error('Only students can submit applications.');
+            return;
+        }
         setIsSubmitting(true);
         try {
             const result = await submitFullApplication({
@@ -171,7 +175,7 @@ export default function SettingsTabs({ user, universities = [], countries = [] }
         const currentIndex = tabs.findIndex(t => t.id === activeTab);
         if (currentIndex < tabs.length - 1) {
             // Save draft before moving to next tab
-            if (selectedProgramId) {
+            if (selectedProgramId && user.role === 'PROSPECT') {
                 saveDraftProgress(selectedProgramId);
             }
             setActiveTab(tabs[currentIndex + 1].id);

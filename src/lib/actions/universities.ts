@@ -5,6 +5,7 @@ import { requireRole } from '@/lib/auth-utils';
 import { logAction } from '@/lib/audit';
 import { CreateUniversitySchema } from '../definitions';
 import { revalidatePath } from 'next/cache';
+import { slugify, generateUniqueSlug } from '@/lib/utils/slugify';
 
 export async function createUniversity(prevState: string | undefined, formData: FormData) {
     const user = await requireRole('COUNTRY_DIRECTOR');
@@ -183,9 +184,23 @@ export async function updateUniversityStatus(universityId: string, status: 'APPR
             }
         }
 
+        // Auto-generate slug when first approved
+        let slugData: { slug?: string } = {};
+        if (status === 'APPROVED') {
+            const existing = await prisma.university.findUnique({
+                where: { id: universityId },
+                select: { slug: true, name: true },
+            });
+            if (existing && !existing.slug) {
+                const base = slugify(existing.name);
+                const uniqueSlug = await generateUniqueSlug(base, universityId);
+                slugData.slug = uniqueSlug;
+            }
+        }
+
         await prisma.university.update({
             where: { id: universityId },
-            data: { status }
+            data: { status, ...slugData },
         });
 
         revalidatePath('/dashboard/admin/schools');

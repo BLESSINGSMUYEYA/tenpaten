@@ -69,6 +69,7 @@ model QuestionnaireQuestion {
 model University {
   id                      String             @id @default(cuid())
   name                    String
+  slug                    String?            @unique
   countryId               String
   description             String?
   images                  String[]
