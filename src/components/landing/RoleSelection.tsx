@@ -58,13 +58,13 @@ export function RoleSelection() {
                                 <h3 className="text-xl sm:text-xl lg:text-2xl font-black text-[#1a1b41] uppercase tracking-tighter leading-none">Institutions</h3>
                             </div>
                             <p className="text-gray-500 text-sm sm:text-base mb-8 flex-1 font-bold leading-relaxed">
-                                Join 500+ universities worldwide. Reach talented students and automate recruitment.
+                                Modernize your recruitment. Connect with verified students and manage admissions at scale.
                             </p>
                             <Link
-                                href="/login"
+                                href="/school"
                                 className="text-[10px] font-black text-[#d5a22d] uppercase tracking-[0.3em] hover:text-[#1a1b41] flex items-center gap-2 group/link mt-auto"
                             >
-                                Institution Log In
+                                Partnership Details
                                 <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                             </Link>
                         </div>

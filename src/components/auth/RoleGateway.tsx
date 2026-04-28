@@ -69,7 +69,7 @@ export function RoleGateway({ mode, selectedRole, onSelectRole, children }: Role
 
                     <div className="space-y-6 pt-8 border-t border-white/10">
                         {[
-                            { title: '500+ Universities', desc: 'Direct access to global institutions' },
+                            { title: 'More Universities', desc: 'Direct access to global institutions' },
                             { title: 'Smart Applications', desc: 'One-click multi-university apply' },
                             { title: 'Visa Support', desc: 'Expert guidance for your student visa' }
                         ].map((item, i) => (
@@ -105,7 +105,7 @@ export function RoleGateway({ mode, selectedRole, onSelectRole, children }: Role
                     {/* Form Header */}
                     <div className="mb-10 text-center lg:text-left">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d5a22d]/10 border border-[#d5a22d]/20 text-[#d5a22d] text-[10px] font-black tracking-widest uppercase mb-4">
-                            {selectedRole === 'student' ? 'Student Portal' : 'Institution Portal'}
+                            Tenpaten Portal
                         </div>
                         <h2 className="text-4xl font-black text-[#1a1b41] tracking-tighter uppercase mb-3">
                             {isLogin ? 'Sign In' : 'Sign Up'}

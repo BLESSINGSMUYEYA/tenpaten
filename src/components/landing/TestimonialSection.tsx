@@ -2,25 +2,25 @@ import { Star, Quote } from 'lucide-react';
 
 const Testimonials = [
     {
-        name: "Sarah M.",
-        role: "International Student",
-        content: "Tenpaten Apply transformed my dream of studying abroad into reality. The application process was seamless, and I received my offer letter in record time.",
+        name: "Blessings Muyeya",
+        role: "Founder",
+        content: "Tenpaten was born out of a vision to democratize global education. We are building the bridge that empowers every student to reach their full potential, regardless of their background.",
         rating: 5,
-        avatar: "S"
+        avatar: "BM"
     },
     {
-        name: "Dr. James K.",
-        role: "Admissions Director",
-        content: "Partnering with Tenpaten has drastically improved our international recruitment. We now receive highly qualified, pre-vetted applicants, saving us hundreds of hours.",
+        name: "Jairos Phiri",
+        role: "Founder",
+        content: "Our platform is more than just an application tool; it's a commitment to transparency and excellence. We are redefining how universities and students interact on a global scale.",
         rating: 5,
-        avatar: "J"
+        avatar: "JP"
     },
     {
-        name: "Elena R.",
-        role: "Education Consultant",
-        content: "The partner dashboard is incredibly intuitive. It allows my agency to track dozens of student applications simultaneously with complete transparency.",
+        name: "Davie Chilembo",
+        role: "National Director",
+        content: "We've seen the life-changing impact this platform has on students every day. It's rewarding to lead the effort in making world-class education accessible and achievable.",
         rating: 5,
-        avatar: "E"
+        avatar: "DC"
     }
 ];
 

@@ -123,44 +123,63 @@ export default function Home() {
       <TestimonialSection />
 
       {/* Footer */}
-      <footer className="bg-gray-50 border-t border-gray-100 py-32 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.4] bg-[radial-gradient(#d5a22d_1px,transparent_1px)] [background-size:48px_48px] pointer-events-none" />
+      <footer className="bg-[#1a1b41] py-24 lg:py-32 relative overflow-hidden border-t border-white/5">
+        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#d5a22d_1px,transparent_1px)] [background-size:48px_48px] pointer-events-none" />
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-12 sm:gap-16 lg:gap-24 mb-20">
-            <div className="col-span-1 md:col-span-2 space-y-8">
-              <TenpatenLogo variant="color" />
-              <p className="text-[#1a1b41]/60 max-w-sm leading-relaxed font-medium text-lg">
-                Connecting talented students with world-class educational opportunities through Tenpaten Apply.
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 lg:gap-16 mb-24">
+            <div className="col-span-2 space-y-8">
+              <TenpatenLogo variant="white" className="scale-110 origin-left" />
+              <p className="text-white/50 max-w-sm leading-relaxed font-medium text-base">
+                The world's most trusted ecosystem for international student recruitment. 
+                We simplify complex admissions processes for students and global institutions.
               </p>
+              <div className="flex items-center gap-4">
+                {['Twitter', 'LinkedIn', 'Instagram', 'Facebook'].map((social) => (
+                  <a key={social} href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-[#d5a22d] hover:bg-[#d5a22d]/10 transition-all duration-300 text-[10px] font-black uppercase tracking-tighter">
+                    {social[0]}
+                  </a>
+                ))}
+              </div>
             </div>
 
-            <div className="space-y-6">
-              <h4 className="text-[#1a1b41] font-bold leading-relaxed text-lg mb-6">Platform</h4>
-              <ul className="space-y-4 text-[#1a1b41]/60 leading-relaxed font-medium text-lg">
+            <div className="space-y-8">
+              <h4 className="text-white font-black uppercase tracking-widest text-xs">For Students</h4>
+              <ul className="space-y-4 text-white/40 text-sm font-bold">
+                <li><Link href="/register?type=student" className="hover:text-[#d5a22d] transition-colors">Apply to University</Link></li>
                 <li><Link href="#features" className="hover:text-[#d5a22d] transition-colors">How it Works</Link></li>
-                <li><Link href="/register?type=student" className="hover:text-[#d5a22d] transition-colors">For Students</Link></li>
-                <li><Link href="/contact" className="hover:text-[#d5a22d] transition-colors">Partner Inquiries</Link></li>
+                <li><Link href="/login" className="hover:text-[#d5a22d] transition-colors">Student Login</Link></li>
+                <li><Link href="/scholarships" className="hover:text-[#d5a22d] transition-colors">Find Scholarships</Link></li>
               </ul>
             </div>
 
-            <div className="space-y-6">
-              <h4 className="text-[#1a1b41] font-bold leading-relaxed text-lg mb-6">Support</h4>
-              <ul className="space-y-4 text-[#1a1b41]/60 leading-relaxed font-medium text-lg">
-                <li><Link href="/contact" className="hover:text-[#d5a22d] transition-colors">Contact Us</Link></li>
-                <li><Link href="/help" className="hover:text-[#d5a22d] transition-colors">Help Center</Link></li>
+            <div className="space-y-8">
+              <h4 className="text-white font-black uppercase tracking-widest text-xs">For Institutions</h4>
+              <ul className="space-y-4 text-white/40 text-sm font-bold">
+                <li><Link href="/school" className="hover:text-[#d5a22d] transition-colors">Partnership Overview</Link></li>
+                <li><Link href="mailto:sales@tenpaten.com" className="hover:text-[#d5a22d] transition-colors">Contact Sales</Link></li>
+                <li><Link href="/school" className="hover:text-[#d5a22d] transition-colors">Managed Onboarding</Link></li>
+              </ul>
+            </div>
+
+            <div className="space-y-8">
+              <h4 className="text-white font-black uppercase tracking-widest text-xs">Legal & Support</h4>
+              <ul className="space-y-4 text-white/40 text-sm font-bold">
                 <li><Link href="/privacy" className="hover:text-[#d5a22d] transition-colors">Privacy Policy</Link></li>
                 <li><Link href="/terms" className="hover:text-[#d5a22d] transition-colors">Terms of Service</Link></li>
+                <li><Link href="/help" className="hover:text-[#d5a22d] transition-colors">Help Center</Link></li>
+                <li><Link href="/contact" className="hover:text-[#d5a22d] transition-colors">Get in Touch</Link></li>
               </ul>
             </div>
           </div>
 
-          <div className="pt-12 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-8">
-            <p className="text-[#1a1b41]/60 leading-relaxed font-medium text-lg">
-              &copy; {new Date().getFullYear()} <span className="text-[#1a1b41]">Tenpaten Apply</span>. All rights reserved.
+          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
+            <p className="text-white/20 text-[10px] font-black uppercase tracking-[0.4em]">
+              &copy; {new Date().getFullYear()} Tenpaten Apply. All rights reserved.
             </p>
-
-            <div className="flex items-center gap-8">
-              {/* Add social links or secondary links here */}
+            <div className="flex items-center gap-6">
+              <span className="w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
+              <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">System Status: Operational</span>
             </div>
           </div>
         </div>

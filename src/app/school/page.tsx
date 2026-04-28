@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import {
     GraduationCap, ArrowRight, CheckCircle2, Sparkles, Globe2,
     ShieldCheck, TrendingUp, Users, LayoutDashboard, Trophy,
-    Building2, Menu, X
+    Building2, Menu, X, MessageSquare
 } from 'lucide-react';
 import { TenpatenLogo } from '@/components/branding/TenpatenLogo';
 
@@ -29,16 +29,10 @@ export default function SchoolLandingPage() {
 
                     <div className="flex items-center gap-2 sm:gap-4">
                         <Link
-                            href="/school/login"
-                            className="hidden sm:block px-4 py-2 text-sm font-bold text-gray-300 hover:text-[#d5a22d] transition-all rounded-lg"
-                        >
-                            Institution Login
-                        </Link>
-                        <Link
-                            href="/school/register"
+                            href="mailto:sales@tenpaten.com"
                             className="px-4 sm:px-6 py-2 sm:py-2.5 bg-[#d5a22d] text-white rounded-xl text-xs sm:text-sm font-bold hover:bg-[#b89531] hover:shadow-lg hover:shadow-[#d5a22d]/20 transition-all active:scale-95 whitespace-nowrap"
                         >
-                            Apply to Join
+                            Inquire Now
                         </Link>
 
                         {/* Mobile Menu Toggle */}
@@ -68,13 +62,6 @@ export default function SchoolLandingPage() {
                                 className="text-sm font-semibold text-gray-300 px-2 py-1"
                             >
                                 Our Partners
-                            </Link>
-                            <Link
-                                href="/school/login"
-                                onClick={() => setIsMenuOpen(false)}
-                                className="sm:hidden text-sm font-bold text-[#d5a22d] px-2 py-1"
-                            >
-                                Institution Login
                             </Link>
                         </div>
                     </div>
@@ -117,17 +104,75 @@ export default function SchoolLandingPage() {
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-500">
                         <Link
-                            href="/school/register"
+                            href="mailto:sales@tenpaten.com"
                             className="w-full sm:w-auto px-8 py-3 bg-[#d5a22d] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#b89531] transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#d5a22d]/20 text-sm"
                         >
-                            Become a Partner
+                            Contact Sales
                             <ArrowRight className="w-5 h-5" />
                         </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* How It Works: The Institutional Journey */}
+            <section id="journey" className="py-20 lg:py-32 bg-[#1a1b41] relative">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16 lg:mb-24">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#36335e] text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+                            The Roadmap
+                        </div>
+                        <h2 className="text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase leading-[0.9]">Your Path to <br/> Global Growth</h2>
+                    </div>
+
+                    <div className="grid md:grid-cols-4 gap-8 relative">
+                        {/* Connecting Line (Desktop) */}
+                        <div className="hidden md:block absolute top-12 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/10 to-transparent z-0" />
+                        
+                        {[
+                            {
+                                step: "01",
+                                title: "Consultation",
+                                desc: "Connect with our sales team to discuss your recruitment targets and institutional requirements.",
+                                icon: MessageSquare
+                            },
+                            {
+                                step: "02",
+                                title: "Verification",
+                                desc: "Our compliance team verifies your credentials to ensure the highest standard of global partnership.",
+                                icon: ShieldCheck
+                            },
+                            {
+                                step: "03",
+                                title: "Managed Setup",
+                                desc: "Our team configures your branding, programs, and admission criteria for you.",
+                                icon: LayoutDashboard
+                            },
+                            {
+                                step: "04",
+                                title: "Global Launch",
+                                desc: "Go live on the Tenpaten ecosystem and start receiving pre-vetted international leads.",
+                                icon: Globe2
+                            }
+                        ].map((item, i) => (
+                            <div key={i} className="relative z-10 flex flex-col items-center text-center group">
+                                <div className="w-24 h-24 rounded-[2rem] bg-[#23244a] border border-white/10 flex items-center justify-center mb-6 group-hover:border-[#d5a22d]/50 transition-all duration-500 shadow-xl group-hover:shadow-[#d5a22d]/10">
+                                    <item.icon className="w-10 h-10 text-[#d5a22d]" />
+                                    <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#d5a22d] text-[#1a1b41] text-[10px] font-black flex items-center justify-center">
+                                        {item.step}
+                                    </span>
+                                </div>
+                                <h4 className="text-xl font-black text-white uppercase tracking-tighter mb-3">{item.title}</h4>
+                                <p className="text-sm text-gray-400 font-medium leading-relaxed">{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="mt-20 text-center">
                         <Link
-                            href="/school/login"
-                            className="w-full sm:w-auto px-8 py-3 bg-transparent text-white border border-white/20 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-white/10 transition-all active:scale-95 text-sm"
+                            href="mailto:sales@tenpaten.com"
+                            className="inline-flex items-center gap-3 px-10 py-5 bg-white text-[#1a1b41] rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#d5a22d] hover:text-white transition-all shadow-2xl"
                         >
-                            Institution Login
+                            Inquire for Partnership
                         </Link>
                     </div>
                 </div>
@@ -175,67 +220,6 @@ export default function SchoolLandingPage() {
                 </div>
             </section>
 
-            {/* Partner Universities Showcase */}
-            <section id="partners" className="py-16 bg-[#151636] border-y border-white/5">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-12">
-                        <h2 className="text-2xl lg:text-3xl font-extrabold text-white mb-3 tracking-tight">Trusted by Leading Institutions</h2>
-                        <p className="text-gray-400 font-medium text-sm">Join a growing network of prestigious universities worldwide.</p>
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                        {[
-                            {
-                                name: "SRM Institute of Science and Technology",
-                                location: "Tamil Nadu, India",
-                                image: "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&q=80&w=800",
-                                programs: "250+ Programs",
-                                type: "Private University"
-                            },
-                            {
-                                name: "Vellore Institute of Technology",
-                                location: "Vellore, India",
-                                image: "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&q=80&w=800",
-                                programs: "180+ Programs",
-                                type: "Institution of Eminence"
-                            },
-                            {
-                                name: "Amity University",
-                                location: "Noida, India",
-                                image: "https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?auto=format&fit=crop&q=80&w=800",
-                                programs: "300+ Programs",
-                                type: "International Campus"
-                            }
-                        ].map((uni, idx) => (
-                            <div key={idx} className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#1a1b41] hover:bg-[#20214a] transition-all duration-500 flex flex-col hover:border-[#d5a22d]/50 hover:shadow-2xl hover:shadow-[#d5a22d]/10">
-                                <div className="aspect-[16/10] overflow-hidden relative">
-                                    <img src={uni.image} alt={uni.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                                    <div className="absolute top-4 left-4">
-                                        <span className="px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-lg text-[10px] font-black text-[#1a1b41] uppercase tracking-widest shadow-xl">
-                                            {uni.type}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className="p-6">
-                                    <h3 className="text-lg font-bold text-white mb-2 transition-colors group-hover:text-[#d5a22d] line-clamp-1">{uni.name}</h3>
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-[12px] text-gray-400 font-bold uppercase tracking-wider">{uni.location}</span>
-                                        <span className="text-[12px] bg-[#36335e] text-white px-2 py-0.5 rounded-full font-black uppercase tracking-tighter border border-white/10">{uni.programs}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-12 text-center">
-                        <Link href="/school/register">
-                            <Button variant="outline" size="lg" className="rounded-xl px-10 py-3 font-bold border-2 border-[#d5a22d] text-[#d5a22d] bg-transparent hover:bg-[#d5a22d] hover:text-white transition-all shadow-lg hover:shadow-[#d5a22d]/20 active:scale-95 text-sm">
-                                View More Partners
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-            </section>
 
             {/* Footer */}
             <footer className="bg-[#151636] border-t border-white/10 py-16">
@@ -252,10 +236,8 @@ export default function SchoolLandingPage() {
                         <div className="space-y-4">
                             <h4 className="font-bold text-white">Partner Portal</h4>
                             <ul className="space-y-2 text-sm text-gray-400 font-medium">
-                                <li><Link href="/school/login" className="hover:text-[#d5a22d] transition-colors">Partner Log In</Link></li>
-                                <li><Link href="/school/register" className="hover:text-[#d5a22d] transition-colors">Join as Institution</Link></li>
                                 <li><Link href="/" className="hover:text-[#d5a22d] transition-colors">Prospective Students</Link></li>
-                                <li><Link href="/register?type=partner" className="hover:text-[#d5a22d] transition-colors">Affiliate Network</Link></li>
+                                <li><Link href="mailto:sales@tenpaten.com" className="hover:text-[#d5a22d] transition-colors">Partnership Inquiries</Link></li>
                             </ul>
                         </div>
 

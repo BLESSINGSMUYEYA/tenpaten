@@ -6,24 +6,24 @@ import { Search, PenLine, Globe2 } from 'lucide-react';
 const steps = [
   {
     number: '01',
-    title: 'Discover Programs',
-    desc: 'Browse thousands of programs from top universities worldwide that match your goals.',
+    title: 'Create Your Profile',
+    desc: 'Complete your digital dossier and questionnaire to tell us about your academic dreams.',
     icon: Search,
     color: 'from-blue-500 to-indigo-600',
     bgColor: 'bg-blue-50/50'
   },
   {
     number: '02',
-    title: 'Smart Matching',
-    desc: 'Our AI-driven matching engine connects you with programs where you have the highest chance of success.',
+    title: 'Smart Apply',
+    desc: 'Discover programs that match your profile and apply to multiple universities with one click.',
     icon: PenLine,
     color: 'from-[#d5a22d] to-[#b88a24]',
     bgColor: 'bg-[#d5a22d]/5'
   },
   {
     number: '03',
-    title: 'Global Application',
-    desc: 'Apply to multiple institutions with a single, simplified application process managed in one place.',
+    title: 'Track in Real-Time',
+    desc: 'Monitor your application status live and receive instant notifications for offers and enrollment.',
     icon: Globe2,
     color: 'from-purple-500 to-pink-600',
     bgColor: 'bg-purple-50/50'
