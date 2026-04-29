@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 
 const items = [
   'GLOBAL UNIVERSITY PARTNERSHIPS',
-  'NO APPLICATION FEES',
   'SMART PROGRAM MATCHING',
   'INSTANT VISA GUIDANCE',
   'SCHOLARSHIP ASSISTANCE',

@@ -145,15 +145,24 @@ export function LandingHero() {
 
             {/* Logo Ticker at the bottom */}
             <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden bg-black/20 backdrop-blur-sm border-t border-white/10 py-6 z-20">
-                <div className="flex w-[200%] animate-[marquee_20s_linear_infinite] items-center text-white/50 text-base md:text-lg font-black uppercase tracking-widest gap-24 px-12">
-                     <span>NO APPLICATION FEES</span>
+                <div className="flex w-max whitespace-nowrap animate-[marquee_20s_linear_infinite] items-center text-white/50 text-base md:text-lg font-black uppercase tracking-widest gap-24 px-12">
                      <span className="font-serif italic font-normal">Scholarships Available</span>
                      <span>FAST TRACK ADMISSIONS</span>
                      <span className="tracking-tighter font-extrabold">GLOBAL REACH</span>
                      <span>VERIFIED PROGRAMS</span>
                      <span>SECURE PROCESS</span>
                      {/* Duplicate for seamless loop */}
-                     <span>NO APPLICATION FEES</span>
+                     <span className="font-serif italic font-normal">Scholarships Available</span>
+                     <span>FAST TRACK ADMISSIONS</span>
+                     <span className="tracking-tighter font-extrabold">GLOBAL REACH</span>
+                     <span>VERIFIED PROGRAMS</span>
+                     <span>SECURE PROCESS</span>
+                     {/* Additional duplicates to ensure w-max spans the screen */}
+                     <span className="font-serif italic font-normal">Scholarships Available</span>
+                     <span>FAST TRACK ADMISSIONS</span>
+                     <span className="tracking-tighter font-extrabold">GLOBAL REACH</span>
+                     <span>VERIFIED PROGRAMS</span>
+                     <span>SECURE PROCESS</span>
                      <span className="font-serif italic font-normal">Scholarships Available</span>
                      <span>FAST TRACK ADMISSIONS</span>
                      <span className="tracking-tighter font-extrabold">GLOBAL REACH</span>
