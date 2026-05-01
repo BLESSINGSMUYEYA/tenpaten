@@ -1,7 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Check, Circle, AlertCircle, Clock, Send, Globe, School, PartyPopper, GraduationCap, XCircle } from 'lucide-react';
+import { 
+    Check, Circle, AlertCircle, Clock, Send, Globe, 
+    School, PartyPopper, GraduationCap, XCircle, AlertTriangle 
+} from 'lucide-react';
 
 export type ApplicationStatus = 
   | 'DRAFT' 
@@ -43,9 +46,10 @@ const STEPS: StatusStep[] = [
 interface StatusPipelineProps {
     currentStatus: ApplicationStatus;
     compact?: boolean;
+    isOverride?: boolean;
 }
 
-export default function StatusPipeline({ currentStatus, compact = false }: StatusPipelineProps) {
+export default function StatusPipeline({ currentStatus, compact = false, isOverride = false }: StatusPipelineProps) {
     const currentIndex = STEPS.findIndex(s => s.id === currentStatus);
     const isRejected = currentStatus === 'REJECTED';
 
@@ -61,7 +65,7 @@ export default function StatusPipeline({ currentStatus, compact = false }: Statu
                                 key={step.id} 
                                 className={`w-2.5 h-2.5 rounded-full border-2 border-white ring-1 ring-gray-100 ${
                                     isCompleted ? 'bg-[#d5a22d]' : 
-                                    isCurrent ? (isRejected ? 'bg-red-500' : 'bg-[#1d1b41] animate-pulse') : 
+                                    isCurrent ? (isRejected ? 'bg-red-500' : (isOverride ? 'bg-[#d5a22d]' : 'bg-[#1d1b41] animate-pulse')) : 
                                     'bg-gray-200'
                                 }`}
                                 title={step.label}
@@ -75,9 +79,17 @@ export default function StatusPipeline({ currentStatus, compact = false }: Statu
                         Rejected
                     </span>
                 ) : (
-                    <span className="text-[10px] font-black text-[#1d1b41] uppercase tracking-widest bg-gray-50 px-2 py-0.5 rounded-full border border-gray-100">
-                        {STEPS[currentIndex]?.label || 'Unknown'}
-                    </span>
+                    <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-black text-[#1d1b41] uppercase tracking-widest bg-gray-50 px-2 py-0.5 rounded-full border border-gray-100">
+                            {STEPS[currentIndex]?.label || 'Unknown'}
+                        </span>
+                        {isOverride && (
+                            <span className="text-[8px] font-black text-white uppercase tracking-widest bg-[#d5a22d] px-1.5 py-0.5 rounded-md flex items-center gap-1">
+                                <AlertTriangle className="w-2 h-2" />
+                                Override
+                            </span>
+                        )}
+                    </div>
                 )}
             </div>
         );
@@ -102,23 +114,23 @@ export default function StatusPipeline({ currentStatus, compact = false }: Statu
                         <div key={step.id} className="relative z-10 flex flex-col items-center">
                             <div className={`w-10 h-10 rounded-2xl flex items-center justify-center transition-all duration-500 border-2 ${
                                 isCompleted ? 'bg-[#d5a22d] border-[#d5a22d] text-white' : 
-                                isCurrent ? (isRejected ? 'bg-red-500 border-red-500 text-white' : 'bg-[#1d1b41] border-[#1d1b41] text-white shadow-lg shadow-[#1d1b41]/20') : 
+                                isCurrent ? (isRejected ? 'bg-red-500 border-red-500 text-white' : (isOverride ? 'bg-[#d5a22d] border-[#d5a22d] text-white' : 'bg-[#1d1b41] border-[#1d1b41] text-white shadow-lg shadow-[#1d1b41]/20')) : 
                                 'bg-white border-gray-200 text-gray-400'
                             }`}>
                                 {isCompleted ? <Check className="w-5 h-5" /> : <Icon className="w-5 h-5" />}
                             </div>
                             <div className="mt-3 text-center">
                                 <p className={`text-[10px] font-black uppercase tracking-widest ${
-                                    isCurrent ? (isRejected ? 'text-red-500' : 'text-[#1d1b41]') : 
+                                    isCurrent ? (isRejected ? 'text-red-500' : (isOverride ? 'text-[#d5a22d]' : 'text-[#1d1b41]')) : 
                                     isCompleted ? 'text-[#d5a22d]' : 'text-gray-400'
                                 }`}>
                                     {isCurrent && isRejected ? 'Rejected' : step.label}
                                 </p>
                             </div>
                             {isCurrent && !isRejected && (
-                                <div className="absolute top-[-12px] animate-bounce">
-                                    <div className="p-1 rounded-md bg-[#d5a22d] text-white text-[8px] font-black uppercase tracking-tighter">
-                                        Active
+                                <div className="absolute top-[-12px] animate-bounce flex flex-col items-center gap-1">
+                                    <div className={`p-1 rounded-md text-white text-[8px] font-black uppercase tracking-tighter ${isOverride ? 'bg-[#d5a22d]' : 'bg-[#1d1b41]'}`}>
+                                        {isOverride ? 'Manual Override' : 'Active'}
                                     </div>
                                 </div>
                             )}
@@ -140,6 +152,22 @@ export default function StatusPipeline({ currentStatus, compact = false }: Statu
                     </div>
                 </div>
             )}
+            
+            {isOverride && (
+                <div className="mt-8 p-4 rounded-2xl bg-[#d5a22d]/5 border border-[#d5a22d]/20 flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-500">
+                    <div className="w-10 h-10 rounded-xl bg-[#d5a22d]/10 flex items-center justify-center text-[#d5a22d] shrink-0">
+                        <AlertTriangle className="w-6 h-6" />
+                    </div>
+                    <div>
+                        <p className="text-sm font-black text-[#d5a22d] leading-none mb-1">Decision Override Active</p>
+                        <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                            This application is currently being handled via administrative override. Standard scoring and ranking logic have been bypassed.
+                        </p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
+
+

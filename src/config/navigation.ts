@@ -15,7 +15,8 @@ import {
     Zap,
     Trophy,
     Wallet,
-    Percent
+    Percent,
+    BarChart3
 } from 'lucide-react';
 
 export interface NavItem {
@@ -44,6 +45,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
         { name: 'Academics', href: '/dashboard/school/programs', icon: GraduationCap },
         { name: 'Requirements', href: '/dashboard/school/requirements', icon: Sparkles },
         { name: 'Scholarships', href: '/dashboard/school/scholarships', icon: Percent },
+        { name: 'Analytics', href: '/dashboard/school/analytics', icon: BarChart3 },
         { name: 'Finance', href: '/dashboard/school/finance', icon: Wallet },
         { name: 'Messages', href: '/dashboard/messages', icon: MessageCircle },
     ],

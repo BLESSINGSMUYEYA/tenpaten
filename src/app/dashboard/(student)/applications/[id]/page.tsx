@@ -1,4 +1,5 @@
 import StatusPipeline, { ApplicationStatus } from '@/components/common/StatusPipeline';
+import RedirectionResponse from '@/components/student/RedirectionResponse';
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -91,6 +92,14 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                     </div>
                 </div>
             </div>
+
+            {/* Alternative Program Suggestion */}
+            {application.alternativeProgramId && application.alternativeStatus === 'PENDING' && (
+                <RedirectionResponse 
+                    applicationId={id} 
+                    alternativeProgram={application.alternativeProgram} 
+                />
+            )}
 
             {/* Journey Tracker — The new StatusPipeline */}
             <div className="bg-white rounded-[3rem] border border-gray-100 shadow-xl shadow-[#1d1b41]/5 p-8 sm:p-12 overflow-x-auto custom-scrollbar">

@@ -122,7 +122,8 @@ export async function getApplicationDetails(id: string) {
                 },
                 statusHistory: {
                     orderBy: { createdAt: 'desc' }
-                }
+                },
+                alternativeProgram: true
             }
         });
         return application;

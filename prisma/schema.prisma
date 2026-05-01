@@ -176,6 +176,10 @@ model Application {
   acceptanceLetterUrl  String?
   enrollmentDetailsUrl String?
 
+  // Ranking fields — populated by runScoringAndRank() server action
+  meritScore           Float?                     // Cached score (0-100) from calculateMeritScore()
+  rank                 Int?                       // Rank within programme (1 = best)
+
   alternativeProgramId String?
   alternativeStatus    AlternativeStatus?
   alternativeProgram   Program?                   @relation("AlternativeProgram", fields: [alternativeProgramId], references: [id])
@@ -187,16 +191,20 @@ model Application {
   transactions         InstitutionalTransaction[]
 
   @@index([prospectId, status])
+  @@index([programId, rank])
 }
 
 model ApplicationStatusHistory {
-  id            String            @id @default(cuid())
-  applicationId String
-  status        ApplicationStatus
-  changedBy     String
-  note          String?
-  createdAt     DateTime          @default(now())
-  application   Application       @relation(fields: [applicationId], references: [id])
+  id             String            @id @default(cuid())
+  applicationId  String
+  status         ApplicationStatus
+  changedBy      String
+  note           String?
+  createdAt      DateTime          @default(now())
+  // Override tracking — populated only when an officer manually overrides
+  isOverride     Boolean           @default(false)
+  overrideReason String?
+  application    Application       @relation(fields: [applicationId], references: [id])
 }
 
 model AuditLog {

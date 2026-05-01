@@ -1,15 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { updateApplicationStatus } from '@/lib/actions/applications';
+import { saveOverride } from '@/lib/actions/bulk-actions';
+import { OVERRIDE_REASONS, OverrideReason } from '@/lib/constants/admissions';
 import { toast } from 'sonner';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { CheckCircle2, XCircle, AlertCircle, Save } from 'lucide-react';
+import { CheckCircle2, XCircle, AlertCircle, Save, AlertTriangle, Info } from 'lucide-react';
+import { Switch } from '@/components/ui/Switch';
 
 interface StatusUpdateFormProps {
     applicationId: string;
@@ -26,48 +29,82 @@ const STATUS_OPTIONS = [
 
 export default function StatusUpdateForm({ applicationId, currentStatus }: StatusUpdateFormProps) {
     const router = useRouter();
+    const [isPending, startTransition] = useTransition();
+    
     const [status, setStatus] = useState(currentStatus);
     const [note, setNote] = useState('');
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isOverride, setIsOverride] = useState(false);
+    const [overrideReason, setOverrideReason] = useState<OverrideReason | ''>('');
+    
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
 
     const handleSubmit = async () => {
-        setIsSubmitting(true);
         setError('');
         setSuccess(false);
 
-        try {
-            const result = await updateApplicationStatus(applicationId, status, note);
-
-            if (result === 'success') {
-                setSuccess(true);
-                setNote('');
-                toast.success('Application status updated successfully');
-                router.refresh();
-            } else {
-                setError(result || 'Failed to update status');
-                toast.error(result || 'Failed to update status');
-            }
-        } catch (err) {
-            setError('An unexpected error occurred');
-            toast.error('An unexpected error occurred');
-        } finally {
-            setIsSubmitting(false);
+        if (isOverride && !overrideReason) {
+            setError('A reason is required for manual overrides');
+            return;
         }
+
+        startTransition(async () => {
+            try {
+                let result;
+                if (isOverride) {
+                    result = await saveOverride(applicationId, status, overrideReason as OverrideReason);
+                } else {
+                    result = await updateApplicationStatus(applicationId, status, note);
+                }
+
+                if (result === 'success') {
+                    setSuccess(true);
+                    setNote('');
+                    toast.success('Application status updated successfully');
+                    router.refresh();
+                } else {
+                    setError(result || 'Failed to update status');
+                    toast.error(result || 'Failed to update status');
+                }
+            } catch (err) {
+                setError('An unexpected error occurred');
+                toast.error('An unexpected error occurred');
+            }
+        });
     };
 
     return (
         <div className="bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden">
-            <div className="p-6 sm:px-8 border-b border-slate-100 bg-slate-50/50">
+            <div className="p-6 sm:px-8 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
                 <h3 className="font-black text-[#36335e] text-sm uppercase tracking-widest flex items-center gap-2">
                     <Save className="w-4 h-4 text-[#d5a22d]" />
                     Process Application
                 </h3>
+                
+                <div className="flex items-center gap-2">
+                    <span className={`text-[9px] font-black uppercase tracking-widest ${isOverride ? 'text-[#d5a22d]' : 'text-slate-400'}`}>
+                        Official Override
+                    </span>
+                    <Switch 
+                        checked={isOverride} 
+                        onCheckedChange={setIsOverride} 
+                        className="data-[state=checked]:bg-[#d5a22d]"
+                    />
+                </div>
             </div>
+            
             <div className="p-6 sm:px-8 space-y-6">
+                {isOverride && (
+                    <div className="p-4 bg-[#d5a22d]/5 border border-[#d5a22d]/20 rounded-2xl flex items-start gap-3 animate-in slide-in-from-top-2">
+                        <AlertTriangle className="w-4 h-4 text-[#d5a22d] shrink-0 mt-0.5" />
+                        <p className="text-[10px] font-bold text-[#d5a22d] uppercase tracking-wide leading-relaxed">
+                            Manual overrides are flagged in the enrollment audit trail and require a standardized reason for institutional compliance.
+                        </p>
+                    </div>
+                )}
+
                 <div className="space-y-2">
-                    <Label htmlFor="status" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">New Status</Label>
+                    <Label htmlFor="status" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Target Status</Label>
                     <Select value={status} onValueChange={setStatus}>
                         <SelectTrigger id="status" className="w-full h-12 sm:h-14 rounded-2xl border-slate-200 bg-slate-50 focus:ring-4 focus:ring-[#36335e]/10 focus:border-[#36335e] font-bold text-slate-700 transition-all">
                             <SelectValue placeholder="Select status" />
@@ -87,16 +124,34 @@ export default function StatusUpdateForm({ applicationId, currentStatus }: Statu
                     </Select>
                 </div>
 
-                <div className="space-y-2">
-                    <Label htmlFor="note" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Internal Notes</Label>
-                    <Textarea
-                        id="note"
-                        placeholder="Add specific details or feedback..."
-                        value={note}
-                        onChange={(e) => setNote(e.target.value)}
-                        className="min-h-[120px] rounded-2xl border-slate-200 bg-slate-50 focus:ring-4 focus:ring-[#36335e]/10 focus:border-[#36335e] resize-none font-medium leading-relaxed transition-all p-4"
-                    />
-                </div>
+                {!isOverride ? (
+                    <div className="space-y-2 animate-in fade-in duration-300">
+                        <Label htmlFor="note" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Internal Notes</Label>
+                        <Textarea
+                            id="note"
+                            placeholder="Add specific details or feedback..."
+                            value={note}
+                            onChange={(e) => setNote(e.target.value)}
+                            className="min-h-[120px] rounded-2xl border-slate-200 bg-slate-50 focus:ring-4 focus:ring-[#36335e]/10 focus:border-[#36335e] resize-none font-medium leading-relaxed transition-all p-4"
+                        />
+                    </div>
+                ) : (
+                    <div className="space-y-2 animate-in slide-in-from-bottom-2 duration-300">
+                        <Label htmlFor="overrideReason" className="text-xs font-black uppercase tracking-widest text-[#d5a22d] ml-1">Override Reason</Label>
+                        <Select value={overrideReason} onValueChange={(val) => setOverrideReason(val as OverrideReason)}>
+                            <SelectTrigger id="overrideReason" className="w-full h-12 sm:h-14 rounded-2xl border-[#d5a22d]/30 bg-[#d5a22d]/5 focus:ring-4 focus:ring-[#d5a22d]/10 focus:border-[#d5a22d] font-bold text-slate-700 transition-all">
+                                <SelectValue placeholder="Select standardized reason..." />
+                            </SelectTrigger>
+                            <SelectContent className="rounded-2xl border-slate-200 shadow-xl">
+                                {OVERRIDE_REASONS.map((r) => (
+                                    <SelectItem key={r} value={r} className="font-bold focus:bg-slate-50 cursor-pointer py-3 rounded-xl">
+                                        {r}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                )}
 
                 {error && (
                     <div className="p-4 bg-rose-50 border border-rose-100 text-rose-600 rounded-2xl text-xs font-bold flex items-center gap-2 animate-in slide-in-from-top-2 shadow-sm">
@@ -105,25 +160,20 @@ export default function StatusUpdateForm({ applicationId, currentStatus }: Statu
                     </div>
                 )}
 
-                {success && (
-                    <div className="p-4 bg-emerald-50 border border-emerald-100 text-emerald-600 rounded-2xl text-xs font-bold flex items-center gap-2 animate-in slide-in-from-top-2 shadow-sm">
-                        <CheckCircle2 className="w-5 h-5 shrink-0" />
-                        Status updated successfully!
-                    </div>
-                )}
-
                 <Button
                     onClick={handleSubmit}
-                    disabled={isSubmitting || status === currentStatus && !note}
-                    className="w-full h-12 sm:h-14 bg-[#36335e] hover:bg-[#2a284a] text-white text-xs font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-[#36335e]/20 transition-all transform active:scale-95 disabled:opacity-50 disabled:active:scale-100 mt-2"
+                    disabled={isPending || (status === currentStatus && !note && !isOverride)}
+                    className={`w-full h-12 sm:h-14 text-white text-xs font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all transform active:scale-95 disabled:opacity-50 disabled:active:scale-100 mt-2 ${
+                        isOverride ? 'bg-[#d5a22d] hover:bg-[#b08523] shadow-[#d5a22d]/20' : 'bg-[#36335e] hover:bg-[#2a284a] shadow-[#36335e]/20'
+                    }`}
                 >
-                    {isSubmitting ? (
+                    {isPending ? (
                         <>
                             <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3" />
                             Processing...
                         </>
                     ) : (
-                        'Update Status'
+                        isOverride ? 'Execute Manual Override' : 'Update Status'
                     )}
                 </Button>
             </div>

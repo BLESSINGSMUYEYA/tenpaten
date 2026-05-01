@@ -4,8 +4,11 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
-import { FileText, CheckCircle2, Clock, AlertCircle, Users, Sparkles, MessageSquare, Building2, ArrowRight, ImageIcon, Search, ChevronRight } from 'lucide-react';
+import { 
+    FileText, CheckCircle2, Clock, AlertCircle, Users, Sparkles, 
+    MessageSquare, Building2, ArrowRight, ImageIcon, Search, 
+    ChevronRight, LayoutDashboard, GraduationCap 
+} from 'lucide-react';
 import Link from 'next/link';
 import { submitUniversityForReview } from '@/app/actions/universityActions';
 import { getSchoolStats } from '@/lib/actions/analytics';
@@ -16,6 +19,8 @@ import { EmptyState } from '@/components/ui/EmptyState';
 import { getHomeUrl } from '@/lib/navigation';
 import SchoolQRCode from '@/components/school/SchoolQRCode';
 import LiveActivityFeed from '@/components/school/LiveActivityFeed';
+import TaskQueue from '@/components/school/TaskQueue';
+import ProgrammeCard from '@/components/school/ProgrammeCard';
 
 export default async function UniversityDashboard() {
     const session = await auth();
@@ -261,31 +266,52 @@ export default async function UniversityDashboard() {
 
 
     // Calculate stats & Analytics
-    const { statusChartData, programChartData, totalApplications } = await getSchoolStats(university.id);
+    const { 
+        statusChartData, 
+        programChartData, 
+        totalApplications,
+        taskQueue,
+        yieldChartData
+    } = await getSchoolStats(university.id);
 
-    const pendingApplications = await prisma.application.count({
-        where: {
-            program: { universityId: university.id },
-            status: { in: ['SUBMITTED', 'COUNTRY_REVIEW', 'UNIVERSITY_REVIEW'] }
-        }
+    // Fetch all programs with their specific counts for cards
+    const programsWithStats = await (prisma.program as any).findMany({
+        where: { universityId: university.id },
+        select: {
+            id: true,
+            name: true,
+            intake: true,
+            applications: {
+                select: {
+                    id: true,
+                    status: true,
+                    rank: true,
+                }
+            }
+        },
+        orderBy: { name: 'asc' }
+    }) as any[];
+
+    const programmeCardsData = programsWithStats.map(p => {
+        const total = p.applications.length;
+        const ranked = p.applications.filter((a: any) => a.rank !== null).length;
+        const offersIssued = p.applications.filter((a: any) => a.status === 'OFFER_ISSUED').length;
+        const offersAccepted = p.applications.filter((a: any) => ['OFFER_ACCEPTED', 'ENROLLED'].includes(a.status)).length;
+        
+        return {
+            programId: p.id,
+            programName: p.name,
+            intake: p.intake,
+            totalApps: total,
+            rankedApps: ranked,
+            offersIssued,
+            offersAccepted,
+            quota: 50, // Default quota for now, could be added to schema later
+        };
     });
 
-    const offersIssued = await prisma.application.count({
-        where: {
-            program: { universityId: university.id },
-            status: 'OFFER_ISSUED'
-        }
-    });
+    const activeTasksCount = taskQueue.pendingScoring + taskQueue.pendingOffers + taskQueue.pendingRedirections;
 
-    const recentApplications = await prisma.application.findMany({
-        where: { program: { universityId: university.id } },
-        take: 5,
-        orderBy: { createdAt: 'desc' },
-        include: {
-            prospect: { select: { fullName: true, email: true } },
-            program: { select: { name: true } }
-        }
-    });
 
     return (
         <>
@@ -325,18 +351,18 @@ export default async function UniversityDashboard() {
                 <StatsCard
                     label="Total Applications"
                     value={totalApplications}
-                    trend="+10%"
+                    trend="+12%"
                 />
                 <StatsCard
-                    label="Pending Review"
-                    value={pendingApplications}
-                    trend="-2"
-                    trendUp={false}
+                    label="Outstanding Tasks"
+                    value={activeTasksCount}
+                    trend={activeTasksCount > 0 ? "Action Required" : "Cleared"}
+                    trendUp={activeTasksCount === 0}
                 />
                 <StatsCard
-                    label="Offers Issued"
-                    value={offersIssued}
-                    trend="+4"
+                    label="Yield Rate"
+                    value={`${((programmeCardsData.reduce((acc, p) => acc + p.offersAccepted, 0) / Math.max(1, programmeCardsData.reduce((acc, p) => acc + p.offersIssued, 0))) * 100).toFixed(0)}%`}
+                    trend="Market Average"
                 />
             </div>
 
@@ -345,115 +371,52 @@ export default async function UniversityDashboard() {
 
             {/* Operations Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <Card className="lg:col-span-2 border border-slate-100/50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.03)] rounded-[2.5rem] overflow-hidden bg-white">
-                    <CardHeader className="bg-slate-50/30 border-b border-slate-50 p-10">
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-6">
-                                <div className="w-14 h-14 rounded-2xl bg-[#36335e]/10 flex items-center justify-center text-[#36335e] shadow-sm">
-                                    <FileText className="w-6 h-6" />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-black text-[#36335e] tracking-tight flex items-center gap-3">Recent Applications</h3>
-                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">Live Enrollment Pipeline</p>
-                                </div>
-                            </div>
-                            <Link href="/dashboard/school/applications">
-                                <Button variant="ghost" size="sm" className="font-black text-[10px] uppercase tracking-widest text-[#36335e] hover:bg-[#36335e]/10 hover:text-[#d5a22d] rounded-xl px-4 py-2 mt-[-4px]">
-                                    View All
-                                </Button>
-                            </Link>
+                {/* Main Content: Programme Cards */}
+                <div className="lg:col-span-2 space-y-6">
+                    <div className="flex items-center justify-between px-4">
+                        <div className="flex items-center gap-3">
+                            <LayoutDashboard className="w-5 h-5 text-[#36335e]" />
+                            <h3 className="text-xl font-black text-[#36335e] tracking-tight">Programmes</h3>
                         </div>
-                    </CardHeader>
-                    <CardContent className="p-0">
-                        <div className="divide-y divide-slate-50">
-                            {recentApplications.length > 0 ? (
-                                recentApplications.map((app) => (
-                                    <Link
-                                        key={app.id}
-                                        href={`/dashboard/school/applications/${app.id}`}
-                                        className="block hover:bg-slate-50/80 transition-all group"
-                                    >
-                                        <div className="px-8 py-5 flex items-center justify-between">
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-[#36335e] font-bold shadow-sm group-hover:bg-[#36335e]/10 group-hover:scale-110 group-hover:text-[#d5a22d] transition-all duration-300 text-xs">
-                                                    {app.prospect.fullName.charAt(0)}
-                                                </div>
-                                                <div>
-                                                    <p className="text-sm font-bold text-[#36335e] group-hover:text-[#d5a22d] transition-colors uppercase tracking-tight">{app.prospect.fullName}</p>
-                                                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{app.program.name}</p>
-                                                </div>
-                                            </div>
-                                            <div className="flex items-center gap-4">
-                                                <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ${app.status === 'OFFER_ISSUED' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' :
-                                                    app.status === 'SUBMITTED' ? 'bg-amber-50 text-amber-600 border-amber-100' :
-                                                        'bg-[#36335e]/10 text-[#36335e] border-[#36335e]/20'
-                                                    }`}>
-                                                    {app.status.replace(/_/g, ' ')}
-                                                </span>
-                                                <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#d5a22d] group-hover:translate-x-1 transition-all" />
-                                            </div>
-                                        </div>
-                                    </Link>
-                                ))
-                            ) : (
+                        <Link href="/dashboard/school/applications">
+                            <Button variant="ghost" size="sm" className="font-black text-[10px] uppercase tracking-widest text-[#36335e] hover:bg-[#36335e]/10 hover:text-[#d5a22d] rounded-xl px-4 py-2">
+                                View Registry
+                            </Button>
+                        </Link>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {programmeCardsData.length > 0 ? (
+                            programmeCardsData.map((p) => (
+                                <ProgrammeCard key={p.programId} {...p} />
+                            ))
+                        ) : (
+                            <div className="col-span-2">
                                 <EmptyState
-                                    icon={FileText}
-                                    title="No applications yet"
-                                    description="Waiting for submissions"
-                                    className="p-12"
+                                    icon={GraduationCap}
+                                    title="No programmes found"
+                                    description="Start by creating your first academic programme"
+                                    action={
+                                        <Link href="/dashboard/school/programs/new">
+                                            <Button className="h-12 px-6 bg-[#36335e] hover:bg-[#2a284a] text-white font-bold rounded-2xl shadow-lg shadow-[#36335e]/20 transition-all">
+                                                Create Programme
+                                            </Button>
+                                        </Link>
+                                    }
+                                    className="bg-white border border-slate-100 rounded-[2.5rem] p-12"
                                 />
-                            )}
-                        </div>
-                    </CardContent>
-                </Card>
+                            </div>
+                        )}
+                    </div>
+                </div>
 
+                {/* Sidebar: Task Queue & Activity */}
                 <div className="space-y-8">
-                    <Card className="border-none shadow-2xl shadow-[#36335e]/20 rounded-[2.5rem] bg-[#36335e] text-white overflow-hidden relative group h-full min-h-[400px]">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-24 translate-x-24 blur-3xl group-hover:scale-150 transition-transform duration-1000" />
-                        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#4a4785]/50 rounded-full translate-y-24 -translate-x-12 blur-2xl" />
-
-                        <CardHeader className="p-10 pb-6 relative z-10">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/10 w-fit mb-4">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#d5a22d] animate-pulse" />
-                                Attention Needed
-                            </div>
-                            <CardTitle className="text-2xl font-black tracking-tight">Action Required</CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-10 pt-2 space-y-6 relative z-10">
-                            <div className="space-y-4">
-                                <div className="bg-white/10 backdrop-blur-md rounded-3xl p-5 border border-white/10 hover:bg-white/20 transition-all cursor-pointer group/item">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <p className="text-sm font-bold uppercase tracking-tight">Pending Reviews</p>
-                                        <ChevronRight className="w-4 h-4 text-indigo-200 group-hover/item:translate-x-1 transition-transform" />
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <span className="bg-white text-[#36335e] text-[10px] font-black px-2 py-0.5 rounded-md">
-                                            {pendingApplications}
-                                        </span>
-                                        <p className="text-[10px] uppercase tracking-widest text-indigo-100 font-bold">Applications Waiting</p>
-                                    </div>
-                                </div>
-                                <div className="bg-white/10 backdrop-blur-md rounded-3xl p-5 border border-white/10 hover:bg-white/20 transition-all cursor-pointer group/item">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <p className="text-sm font-bold uppercase tracking-tight">Program Updates</p>
-                                        <ChevronRight className="w-4 h-4 text-indigo-200 group-hover/item:translate-x-1 transition-transform" />
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <span className="bg-white text-[#36335e] text-[10px] font-black px-2 py-0.5 rounded-md">
-                                            {university?.programs?.length}
-                                        </span>
-                                        <p className="text-[10px] uppercase tracking-widest text-indigo-100 font-bold">Active Programs</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <Link href="/dashboard/school/applications" className="block mt-8">
-                                <Button className="w-full h-14 bg-white text-[#36335e] hover:bg-slate-50 font-black uppercase tracking-widest text-xs rounded-2xl shadow-xl transition-all transform hover:translate-y-[-2px]">
-                                    Process Applications
-                                </Button>
-                            </Link>
-                        </CardContent>
-                    </Card>
+                    <TaskQueue 
+                        pendingScoring={taskQueue.pendingScoring}
+                        pendingOffers={taskQueue.pendingOffers}
+                        pendingRedirections={taskQueue.pendingRedirections}
+                    />
 
                     {/* Live Activity Feed */}
                     <LiveActivityFeed universityId={university.id} />

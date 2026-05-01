@@ -144,3 +144,92 @@ export async function sendSwitchSuggestion(applicationId: string, alternativePro
 
     return updatedApplication;
 }
+
+/**
+ * Handles the student's response to an alternative program suggestion.
+ */
+export async function respondToSwitchSuggestion(applicationId: string, response: 'ACCEPTED' | 'REJECTED') {
+    const application = await prisma.application.findUnique({
+        where: { id: applicationId },
+        include: { alternativeProgram: true }
+    });
+
+    if (!application || !application.alternativeProgramId) {
+        throw new Error('No alternative program suggestion found');
+    }
+
+    if (response === 'ACCEPTED') {
+        // Perform the switch: move the alternative program to the primary program
+        await prisma.application.update({
+            where: { id: applicationId },
+            data: {
+                programId: application.alternativeProgramId,
+                alternativeProgramId: null,
+                alternativeStatus: null,
+                // Log the switch in history
+                statusHistory: {
+                    create: {
+                        status: application.status,
+                        changedBy: 'SYSTEM',
+                        note: `Student accepted switch to ${application.alternativeProgram?.name}`
+                    }
+                }
+            }
+        });
+    } else {
+        // Clear the suggestion
+        await prisma.application.update({
+            where: { id: applicationId },
+            data: {
+                alternativeProgramId: null,
+                alternativeStatus: 'REJECTED' // Or just null if you want to allow resuggestion
+            }
+        });
+    }
+
+    return { success: true };
+}
+
+/**
+ * Forces a program switch immediately without waiting for student approval.
+ */
+export async function forceSwitchProgram(applicationId: string, targetProgramId: string) {
+    const application = await prisma.application.findUnique({
+        where: { id: applicationId },
+        include: { prospect: true }
+    });
+
+    const targetProgram = await prisma.program.findUnique({
+        where: { id: targetProgramId }
+    });
+
+    if (!application || !targetProgram) throw new Error('Data not found');
+
+    await prisma.application.update({
+        where: { id: applicationId },
+        data: {
+            programId: targetProgramId,
+            alternativeProgramId: null,
+            alternativeStatus: null,
+            statusHistory: {
+                create: {
+                    status: application.status,
+                    changedBy: 'ADMIN',
+                    note: `Administrative switch to ${targetProgram.name} (Bypassed student approval)`
+                }
+            }
+        }
+    });
+
+    // Notify the student that they've been moved
+    await prisma.notification.create({
+        data: {
+            userId: application.prospectId,
+            title: 'Application Updated',
+            message: `Your application has been administratively moved to ${targetProgram.name}.`,
+            type: 'INFO'
+        }
+    });
+
+    return { success: true };
+}

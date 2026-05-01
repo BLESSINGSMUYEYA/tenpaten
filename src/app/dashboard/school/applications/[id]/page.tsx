@@ -31,6 +31,8 @@ export default async function SchoolApplicationDetails({
         notFound();
     }
 
+    const isOverride = application.statusHistory.some((h: any) => h.isOverride && h.status === application.status);
+
     const sections = [
         { id: 'personalInfo', label: 'Identity & Origins', icon: User, data: application.personalInfo as any },
         { id: 'familyInfo', label: 'Kinship Records', icon: Users, data: application.familyInfo as any },
@@ -53,7 +55,7 @@ export default async function SchoolApplicationDetails({
                 
                 <div className="relative z-10 space-y-6">
                     <Link
-                        href="/dashboard/school/applications"
+                        href={`/dashboard/school/applications?panel=${id}`}
                         className="inline-flex items-center gap-2 text-slate-400 hover:text-[#1d1b41] transition-colors group text-[10px] font-black uppercase tracking-widest"
                     >
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -102,7 +104,10 @@ export default async function SchoolApplicationDetails({
                             Real-time Status Sync Active
                         </div>
                     </div>
-                    <StatusPipeline currentStatus={application.status as ApplicationStatus} />
+                    <StatusPipeline 
+                        currentStatus={application.status as ApplicationStatus} 
+                        isOverride={isOverride}
+                    />
                 </div>
             </div>
 
