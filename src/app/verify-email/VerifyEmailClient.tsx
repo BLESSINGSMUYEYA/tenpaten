@@ -1,15 +1,14 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useActionState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { verifyEmailOTP, resendVerificationOTP } from '@/lib/actions/auth';
 import { Button } from '@/components/ui/button';
-import { AlertCircle, Loader2, ArrowRight, RefreshCcw } from 'lucide-react';
+import { AlertCircle, Loader2, ArrowRight, RefreshCcw, ShieldCheck } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 
 export default function VerifyEmailClient() {
     const searchParams = useSearchParams();
-    const router = useRouter();
     const { update } = useSession();
     
     const email = searchParams.get('email') || '';
@@ -20,6 +19,7 @@ export default function VerifyEmailClient() {
     const [resendStatus, setResendStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
     const [timeLeft, setTimeLeft] = useState(60);
     const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+    const formRef = useRef<HTMLFormElement>(null);
 
     const [state, formAction, isPending] = useActionState(
         verifyEmailOTP,
@@ -38,17 +38,18 @@ export default function VerifyEmailClient() {
                     // Small delay to ensure cookie is written before middleware check
                     await new Promise(resolve => setTimeout(resolve, 800));
                     
-                    // Finally navigate
-                    router.push(state.targetPath as string);
+                    // Force a hard navigation to guarantee the new cookie is read by middleware
+                    // and to clear any stale Next.js router cache
+                    window.location.href = state.targetPath as string;
                 } catch (error) {
                     console.error('Session update failed:', error);
-                    // Fallback redirect anyway
-                    router.push(state.targetPath as string);
+                    // Fallback hard redirect
+                    window.location.href = state.targetPath as string;
                 }
             };
             syncSessionAndRedirect();
         }
-    }, [state, update, router]);
+    }, [state, update]);
 
     useEffect(() => {
         if (timeLeft <= 0) return;
@@ -111,22 +112,32 @@ export default function VerifyEmailClient() {
     const isOtpComplete = otp.every(digit => digit !== '');
     const combinedOtp = otp.join('');
 
+    // Auto-submit when all 6 digits are entered
+    useEffect(() => {
+        if (isOtpComplete && !isPending && !state?.success) {
+            const timer = setTimeout(() => {
+                formRef.current?.requestSubmit();
+            }, 100);
+            return () => clearTimeout(timer);
+        }
+    }, [isOtpComplete, isPending, state?.success]);
+
     return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
             {/* Secure Channel Badge */}
-            <div className="flex items-center gap-4 p-4 rounded-3xl bg-indigo-50/50 border border-indigo-100/50">
-                <div className="w-10 h-10 rounded-2xl bg-white shadow-sm flex items-center justify-center text-indigo-600">
-                    <AlertCircle className="w-5 h-5" />
+            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#d5a22d]/5 border border-[#d5a22d]/20">
+                <div className="w-10 h-10 rounded-xl bg-white shadow-sm border border-gray-100 flex items-center justify-center text-[#d5a22d]">
+                    <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div className="space-y-0.5">
-                    <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Secure Verification Channel</p>
-                    <p className="text-xs font-bold text-indigo-900">
+                    <p className="text-[10px] font-black text-[#1a1b41]/40 uppercase tracking-widest">Secure Verification Channel</p>
+                    <p className="text-xs font-bold text-[#1a1b41]">
                         {email ? `Code sent to ${email}` : 'Waiting for email address...'}
                     </p>
                 </div>
             </div>
 
-            <form action={formAction} className="space-y-10">
+            <form ref={formRef} action={formAction} className="space-y-10">
                 <input type="hidden" name="email" value={email} />
                 <input type="hidden" name="otp" value={combinedOtp} />
                 <input type="hidden" name="callbackUrl" value={callbackUrl} />
@@ -147,7 +158,7 @@ export default function VerifyEmailClient() {
                                 onChange={(e) => handleOtpChange(index, e.target.value)}
                                 onKeyDown={(e) => handleKeyDown(index, e)}
                                 disabled={isPending || !email || state?.success}
-                                className="w-full h-16 sm:h-20 text-center text-3xl font-black border-2 border-slate-100 rounded-2xl focus:ring-4 focus:ring-amber-500/10 focus:border-amber-500 transition-all bg-slate-50/50 text-[#36335e] shadow-sm placeholder:text-slate-200"
+                                className="w-full h-16 sm:h-20 text-center text-3xl font-black border-2 border-slate-100 rounded-2xl focus:ring-4 focus:ring-[#d5a22d]/20 focus:border-[#d5a22d] transition-all bg-slate-50/50 text-[#1a1b41] shadow-sm placeholder:text-slate-200"
                                 aria-label={`Digit ${index + 1}`}
                                 placeholder="0"
                             />
@@ -158,7 +169,7 @@ export default function VerifyEmailClient() {
                 <div className="flex flex-col space-y-6">
                     <Button
                         type="submit"
-                        className="w-full h-16 bg-[#36335e] hover:bg-[#2a284a] text-white transition-all font-black uppercase tracking-[0.2em] text-xs rounded-2xl shadow-xl shadow-indigo-900/20 flex items-center justify-center gap-3 group disabled:opacity-50"
+                        className="w-full h-16 bg-[#1a1b41] hover:bg-[#1a1b41]/90 text-white transition-all font-black uppercase tracking-[0.2em] text-xs rounded-2xl shadow-xl shadow-[#1a1b41]/10 flex items-center justify-center gap-3 group disabled:opacity-50"
                         disabled={isPending || !isOtpComplete || !email || state?.success}
                     >
                         {isPending || state?.success ? (
@@ -178,7 +189,7 @@ export default function VerifyEmailClient() {
                         type="button"
                         onClick={handleResend}
                         disabled={timeLeft > 0 || isResending || !email || state?.success}
-                        className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-[#36335e] disabled:opacity-50 disabled:hover:text-slate-400 flex items-center justify-center transition-all group h-10"
+                        className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-[#d5a22d] disabled:opacity-50 disabled:hover:text-slate-400 flex items-center justify-center transition-all group h-10"
                     >
                         {isResending ? (
                             <Loader2 className="w-3 h-3 animate-spin mr-2" />

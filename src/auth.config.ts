@@ -36,9 +36,11 @@ export const authConfig = {
             const isEmailVerified = !!(auth?.user as any)?.emailVerified;
             const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
             const isOnVerifyPage = nextUrl.pathname.startsWith('/verify-email');
+            const userRole = (auth?.user as any)?.role;
 
-            // 1. Force unverified users to verify page if they are trying to access protected areas (Dashboard)
-            if (isLoggedIn && !isEmailVerified && isOnDashboard && !isOnVerifyPage) {
+            // 1. Force unverified STUDENT users to verify page if they are trying to access protected areas (Dashboard)
+            // Administrative roles (SCHOOL_ADMIN, SUPER_ADMIN, etc.) bypass this since their accounts are created manually
+            if (isLoggedIn && !isEmailVerified && isOnDashboard && !isOnVerifyPage && userRole === 'STUDENT') {
                 return Response.redirect(new URL('/verify-email', nextUrl));
             }
 
@@ -55,7 +57,6 @@ export const authConfig = {
                 };
 
                 // Check role-based access
-                const userRole = (auth?.user as any)?.role;
 
                 for (const [route, requiredRole] of Object.entries(protectedRoutes)) {
                     if (nextUrl.pathname === route || nextUrl.pathname.startsWith(`${route}/`)) {

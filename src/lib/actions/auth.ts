@@ -164,11 +164,17 @@ export async function verifyEmailOTP(prevState: any, formData: FormData) {
             })
         ]);
 
-        // Send Welcome Email (fire-and-forget)
-        sendWelcomeEmail(email, user.fullName).catch(console.error);
+        const withTimeout = <T>(promise: Promise<T>, ms: number): Promise<T> =>
+            Promise.race([
+                promise,
+                new Promise<T>((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms))
+            ]);
+
+        // Send Welcome Email (fire-and-forget but with timeout to avoid hanging the action)
+        withTimeout(sendWelcomeEmail(email, user.fullName), 3000).catch(console.error);
 
         // In-App Welcome Notification
-        createNotification(
+        withTimeout(createNotification(
             user.id,
             '🎉 Welcome to Tenpaten!',
             user.role === 'SCHOOL_ADMIN'
@@ -176,7 +182,7 @@ export async function verifyEmailOTP(prevState: any, formData: FormData) {
                 : 'Your account is verified! Start exploring universities and submit your first application.',
             'SUCCESS',
             user.role === 'SCHOOL_ADMIN' ? '/dashboard/school' : '/dashboard/colleges'
-        ).catch(console.error);
+        ), 3000).catch(console.error);
 
         const targetPath = user.role === 'SCHOOL_ADMIN'
             ? '/dashboard/school?welcome=true'
@@ -185,7 +191,7 @@ export async function verifyEmailOTP(prevState: any, formData: FormData) {
         // Clear caches
         revalidatePath('/', 'layout');
         revalidatePath('/dashboard', 'layout');
-        revalidatePath('/verify-email', 'layout');
+        // Removed revalidatePath('/verify-email') to prevent race conditions during the hard navigation
 
         return { success: true, targetPath };
 

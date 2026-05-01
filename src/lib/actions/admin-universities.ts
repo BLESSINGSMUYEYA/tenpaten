@@ -51,7 +51,8 @@ export async function registerUniversityByAdmin(formData: FormData) {
                     passwordHash: hashedPassword,
                     role: 'SCHOOL_ADMIN',
                     managedUniversityId: university.id,
-                    status: 'ACTIVE'
+                    status: 'ACTIVE',
+                    emailVerified: new Date()
                 }
             });
 

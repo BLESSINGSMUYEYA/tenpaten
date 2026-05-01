@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import VerifyEmailClient from './VerifyEmailClient';
 import { Metadata } from 'next';
 import { TenpatenLogo } from '@/components/branding/TenpatenLogo';
-import Image from 'next/image';
+import { ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Verify Your Email | Tenpaten Apply',
@@ -11,68 +11,85 @@ export const metadata: Metadata = {
 
 export default function VerifyEmailPage() {
     return (
-        <div className="min-h-screen grid lg:grid-cols-2 bg-white">
-            {/* Left Side - Brand Pattern */}
-            <div className="hidden lg:flex bg-[#36335e] flex-col justify-between p-12 relative overflow-hidden">
-                {/* Abstract Patterns */}
-                <div className="absolute inset-0 opacity-10" 
-                    style={{ 
-                        backgroundImage: `radial-gradient(#d5a22d 1px, transparent 1px)`, 
-                        backgroundSize: '24px 24px' 
-                    }} 
-                />
+        <div className="min-h-screen flex flex-col lg:flex-row bg-[#f8fafc]">
+            {/* Left Column: Branding & Value Prop */}
+            <div className="hidden lg:flex lg:w-[40%] xl:w-[35%] bg-[#1a1b41] relative overflow-hidden flex-col justify-between p-12 xl:p-16">
+                {/* Background decorative elements */}
+                <div className="absolute top-[-10%] right-[-10%] w-96 h-96 bg-[#d5a22d]/10 rounded-full blur-[100px]" />
+                <div className="absolute bottom-[-10%] left-[-10%] w-96 h-96 bg-[#36335e]/40 rounded-full blur-[100px]" />
                 
+                {/* Logo Section */}
                 <div className="relative z-10">
-                    <TenpatenLogo variant="white" className="mb-12" />
-                    
-                    <div className="relative group mb-12">
-                        <div className="absolute -inset-4 bg-gradient-to-tr from-amber-500/20 to-transparent blur-2xl rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                        <div className="relative aspect-square w-full max-w-sm mx-auto overflow-hidden rounded-3xl shadow-2xl shadow-black/40 border border-white/10">
-                            <Image 
-                                src="/images/verification-hero.png" 
-                                alt="Verification illustration" 
-                                fill 
-                                className="object-cover transform group-hover:scale-105 transition-transform duration-[2000ms]"
-                            />
-                        </div>
-                    </div>
-
-                    <h2 className="text-4xl font-black tracking-tight text-white mb-6 leading-tight">
-                        Securing your <br />
-                        <span className="text-[#d5a22d]">Global Future.</span>
-                    </h2>
-                    <p className="text-indigo-100/70 text-lg max-w-md font-medium leading-relaxed">
-                        Email verification is the first step in ensuring your international education journey remains private and secure.
-                    </p>
+                    <TenpatenLogo variant="white" className="scale-125 origin-left" />
                 </div>
 
-                <div className="relative z-10 pt-8 border-t border-white/10 flex items-center gap-4">
-                    <div className="flex -space-x-2">
-                        {[1, 2, 3].map((i) => (
-                            <div key={i} className="w-8 h-8 rounded-full border-2 border-[#36335e] bg-indigo-200" />
-                        ))}
-                    </div>
-                    <p className="text-xs text-indigo-200 font-medium">Joined by 10,000+ students worldwide</p>
-                </div>
-            </div>
-
-            {/* Right Side - Verify Form */}
-            <div className="flex flex-col justify-center px-4 sm:px-6 lg:px-20 xl:px-32 py-12">
-                <div className="lg:hidden mb-12">
-                    <TenpatenLogo />
-                </div>
-
-                <div className="w-full max-w-md mx-auto sm:mx-0">
-                    <div className="mb-10">
-                        <h1 className="text-3xl font-bold tracking-tight text-gray-900 mb-3">Check your email</h1>
-                        <p className="text-gray-500 font-light leading-relaxed">
-                            We&apos;ve sent a secure 6-digit code to your email address. Enter it below to verify your account.
+                {/* Content Section */}
+                <div className="relative z-10 space-y-8">
+                    <div className="space-y-4">
+                        <h1 className="text-4xl xl:text-5xl font-black text-white leading-[1.1] tracking-tighter uppercase">
+                            Secure <br />
+                            <span className="text-[#d5a22d]">Global</span> <br />
+                            Access.
+                        </h1>
+                        <p className="text-white/60 text-lg font-medium leading-relaxed max-w-sm">
+                            Email verification is the first step in ensuring your international education journey remains private and secure.
                         </p>
                     </div>
 
-                    <Suspense fallback={<div className="h-48 animate-pulse bg-gray-100 rounded-lg"></div>}>
-                        <VerifyEmailClient />
-                    </Suspense>
+                    <div className="space-y-6 pt-8 border-t border-white/10">
+                        {[
+                            { title: 'Bank-Grade Security', desc: 'Your data is encrypted and protected' },
+                            { title: 'Verified Institutions', desc: 'Connect safely with authentic universities' },
+                            { title: 'Privacy First', desc: 'You control who sees your application' }
+                        ].map((item, i) => (
+                            <div key={i} className="flex gap-4 group">
+                                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#d5a22d]/20 transition-all">
+                                    <ShieldCheck className="w-4 h-4 text-[#d5a22d]" />
+                                </div>
+                                <div>
+                                    <h4 className="text-white font-bold text-sm uppercase tracking-tight">{item.title}</h4>
+                                    <p className="text-white/40 text-xs font-medium">{item.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Footer text */}
+                <div className="relative z-10">
+                    <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.3em]">
+                        &copy; {new Date().getFullYear()} Tenpaten Apply. All rights reserved.
+                    </p>
+                </div>
+            </div>
+
+            {/* Right Column: Verification Form */}
+            <div className="flex-1 flex flex-col justify-center items-center p-6 sm:p-12 lg:p-20 relative">
+                {/* Mobile Logo Only */}
+                <div className="lg:hidden mb-12">
+                    <TenpatenLogo variant="navy" />
+                </div>
+
+                <div className="w-full max-w-[480px] animate-in fade-in slide-in-from-bottom-6 duration-700">
+                    {/* Form Header */}
+                    <div className="mb-10 text-center lg:text-left">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d5a22d]/10 border border-[#d5a22d]/20 text-[#d5a22d] text-[10px] font-black tracking-widest uppercase mb-4">
+                            Security Check
+                        </div>
+                        <h2 className="text-4xl font-black text-[#1a1b41] tracking-tighter uppercase mb-3">
+                            Verify Email
+                        </h2>
+                        <p className="text-gray-500 font-medium">
+                            We've sent a secure 6-digit code to your email address. Enter it below to verify your account.
+                        </p>
+                    </div>
+
+                    {/* The Form Card */}
+                    <div className="bg-white rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(26,27,65,0.08)] border border-gray-100/50 p-8 sm:p-10">
+                        <Suspense fallback={<div className="h-48 animate-pulse bg-gray-100 rounded-lg"></div>}>
+                            <VerifyEmailClient />
+                        </Suspense>
+                    </div>
                 </div>
             </div>
         </div>
