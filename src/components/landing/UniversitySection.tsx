@@ -133,10 +133,10 @@ export function UniversitySection() {
                     </div>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1a1b41] tracking-tighter uppercase leading-[0.9] mb-4">
                         Your Digital<br />
-                        <span className="text-[#d5a22d]">Command Center</span>
+                        <span className="text-[#d5a22d]">Admissions Workspace</span>
                     </h2>
                     <p className="text-gray-500 font-bold text-base lg:text-lg max-w-2xl mx-auto">
-                        Manage international recruitment end-to-end. From live applications to financial reporting — every tool your institution needs.
+                        Manage international recruitment end-to-end. Digital application management, wider student recruitment reach, reduced administrative workload — from one platform.
                     </p>
                 </div>
 

@@ -16,7 +16,7 @@ export function RoleSelection() {
                         Choose Your Path
                     </h2>
                     <p className="text-gray-500 font-bold text-base lg:text-lg mt-4 max-w-xl mx-auto">
-                        Whether you're a student chasing a dream or an institution expanding globally — Tenpaten is built for you.
+                        Whether you&apos;re a secondary school leaver chasing a dream or an institution seeking to modernise admissions — Tenpaten Apply is built for you.
                     </p>
                 </div>
 
@@ -90,16 +90,16 @@ export function RoleSelection() {
                             {/* Main copy */}
                             <div>
                                 <h3 className="text-3xl lg:text-4xl font-black text-white uppercase tracking-tighter leading-[0.9] mb-4">
-                                    Find Your<br />
-                                    <span className="text-[#d5a22d]">Dream Future</span>
+                                    Malawi Has Talent.<br />
+                                    <span className="text-[#d5a22d]">We Find It a Home.</span>
                                 </h3>
                                 <p className="text-white/60 font-medium mb-8 max-w-md leading-relaxed">
-                                    Discover accredited programs worldwide. We guide you from search to acceptance — fast-tracked, simplified, and transparent.
+                                    Secondary school leavers across every district of Malawi deserve access to higher education. Apply from anywhere — no travel, no printed forms, no barriers.
                                 </p>
 
                                 {/* Checklist */}
                                 <div className="grid grid-cols-2 gap-2 mb-8">
-                                    {['One unified profile', 'Scholarship access', 'Smart Help AI', 'Secure messaging'].map((item) => (
+                                    {['Apply from anywhere', 'Browse & compare programmes', 'Real-time status tracking', 'No printed forms'].map((item) => (
                                         <div key={item} className="flex items-center gap-2 text-white/60 text-xs font-bold">
                                             <CheckCircle className="w-3.5 h-3.5 text-[#d5a22d] shrink-0" />
                                             {item}
@@ -158,10 +158,10 @@ export function RoleSelection() {
                                 </div>
 
                                 <h3 className="text-2xl lg:text-3xl font-black text-[#1a1b41] uppercase tracking-tighter leading-[0.9] mb-3">
-                                    Expand Your<br />Global Footprint
+                                    Modernise Your<br />Admissions
                                 </h3>
                                 <p className="text-[#1a1b41]/70 font-bold text-sm mb-6 leading-relaxed flex-1">
-                                    Modernize international recruitment with a managed admissions pipeline, live analytics, and direct student communication.
+                                    We build and manage the digital infrastructure. You focus on delivering quality education. Reach a wider, more diverse student body across Malawi.
                                 </p>
                                 <Link
                                     href="/school"
@@ -191,7 +191,7 @@ export function RoleSelection() {
                                 <h3 className="text-xl font-black text-[#1a1b41] uppercase tracking-tighter leading-none">Partners &amp; Agents</h3>
                             </div>
                             <p className="text-gray-500 font-bold text-sm leading-relaxed mb-6 flex-1">
-                                Join as a registered counsellor or recruitment agent. Help students globally while growing your own practice.
+                                Join as a registered counsellor or recruitment agent. Help secondary school leavers across Malawi access higher education while growing your practice.
                             </p>
                             <Link
                                 href="/contact"

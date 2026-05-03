@@ -87,7 +87,7 @@ export function PartnershipJourney({ light = false }: PartnershipJourneyProps) {
                     <p className={`font-bold text-base lg:text-lg max-w-2xl mx-auto leading-relaxed ${
                         light ? 'text-gray-500' : 'text-white/50'
                     }`}>
-                        A fully managed onboarding journey — from your first conversation to going live on the global Tenpaten network.
+                        Our institutional engagement follows a structured, relationship-first approach — from your first conversation to going live on the Tenpaten network.
                     </p>
                 </div>
 
@@ -165,7 +165,7 @@ export function PartnershipJourney({ light = false }: PartnershipJourneyProps) {
                     <p className={`mt-4 text-[10px] font-black uppercase tracking-[0.25em] ${
                         light ? 'text-gray-400' : 'text-white/30'
                     }`}>
-                        No self-registration — all partnerships are sales-led
+                        Be part of Malawi&apos;s digital admissions future
                     </p>
                 </div>
             </div>

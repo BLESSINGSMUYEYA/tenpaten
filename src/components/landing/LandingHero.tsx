@@ -156,7 +156,7 @@ export function LandingHero() {
                         >
                             <span className="w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
                             <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.35em]">
-                                Platform Live — Applications Open
+                                Proudly Malawian — Applications Open
                             </span>
                         </motion.div>
 
@@ -201,7 +201,7 @@ export function LandingHero() {
                             transition={{ duration: 0.8, delay: 0.25 }}
                             className="text-white/70 text-lg lg:text-xl font-medium leading-relaxed max-w-lg mb-10"
                         >
-                            One platform. Every university. Apply to accredited global institutions with a single profile — and get expert support every step of the way.
+                            Bridging the gap between secondary school leavers and higher education institutions across Malawi — making the application process simpler, faster, and more accessible, regardless of your location or background.
                         </motion.p>
 
                         {/* Search bar */}
@@ -216,7 +216,7 @@ export function LandingHero() {
                                     <Search className="w-5 h-5 text-white/40 ml-4 shrink-0" />
                                     <input
                                         type="text"
-                                        placeholder="Search universities, programs..."
+                                        placeholder="Search universities or programmes in Malawi..."
                                         className="w-full bg-transparent text-white placeholder:text-white/40 px-3 py-4 outline-none text-sm font-medium"
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
@@ -238,7 +238,7 @@ export function LandingHero() {
                             transition={{ duration: 0.8, delay: 0.55 }}
                             className="flex flex-wrap gap-2"
                         >
-                            {['Scholarships', 'Engineering', 'Medicine', 'Fast Track', 'MBA'].map((tag) => (
+                            {['Lilongwe', 'Blantyre', 'Engineering', 'Medicine', 'Scholarships'].map((tag) => (
                                 <button
                                     key={tag}
                                     onClick={() => setSearchQuery(tag)}

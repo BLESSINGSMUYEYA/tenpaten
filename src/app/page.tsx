@@ -143,7 +143,7 @@ export default function Home() {
             <div className="col-span-2 space-y-8">
               <TenpatenLogo variant="white" className="scale-110 origin-left" />
               <p className="text-white/40 max-w-sm leading-relaxed font-medium text-base">
-                The ecosystem for international student recruitment. We simplify complex admissions processes for students and global institutions.
+                A proudly Malawian technology company committed to ensuring every student — from rural communities to urban centres like Lilongwe and Blantyre — has access to higher education opportunities.
               </p>
               <div className="flex items-center gap-3">
                 {['T', 'L', 'I', 'F'].map((s) => (

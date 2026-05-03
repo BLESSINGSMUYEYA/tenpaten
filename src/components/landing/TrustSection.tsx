@@ -50,8 +50,8 @@ export function TrustSection() {
                         You&apos;re In Safe Hands
                     </h2>
                     <p className="text-gray-500 font-bold text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
-                        You are communicating directly with verified university admissions units. For your safety, 
-                        your documents and information are always protected.
+                        You are communicating directly with verified university admissions units. For your safety,
+                        do not share passwords or payment credentials. Your documents are always protected.
                     </p>
                 </div>
 

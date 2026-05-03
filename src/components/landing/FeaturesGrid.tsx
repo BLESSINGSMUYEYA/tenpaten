@@ -15,7 +15,7 @@ const BentoCards = [
         dotColor: 'bg-green-500',
         icon: BarChart2,
         title: 'Application Pipeline',
-        sub: 'Track every application status — from Draft to Accepted — in a live, visual dashboard.',
+        sub: 'Track every applicant from submission to decision in a live dashboard. Reduce administrative workload with real-time applicant tracking.',
         preview: (
             <div className="mt-4 space-y-2">
                 {[
@@ -48,7 +48,7 @@ const BentoCards = [
         dotColor: 'bg-[#d5a22d]',
         icon: Zap,
         title: 'Smart Help',
-        sub: 'Get instant answers about applications, requirements, and scholarships with context-aware AI assistance.',
+        sub: 'Get instant answers about applications, programme requirements, and institutions across Malawi — with context-aware AI assistance.',
         preview: (
             <div className="mt-4 space-y-2">
                 {['How do I start an application?', 'What documents are required?', 'Are there scholarships?'].map((q, i) => (
@@ -68,7 +68,7 @@ const BentoCards = [
         dotColor: 'bg-blue-500',
         icon: Globe2,
         title: 'Browse Universities',
-        sub: 'Explore accredited institutions across every continent with rich program filters and live availability.',
+        sub: 'Explore and compare programmes at accredited institutions across Malawi. Search by district, course, or institution type.',
         preview: (
             <div className="mt-4 flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-100 bg-gray-50">
                 <Globe2 className="w-4 h-4 text-[#d5a22d]" />
@@ -85,7 +85,7 @@ const BentoCards = [
         dotColor: 'bg-green-500',
         icon: MessageSquare,
         title: 'Direct Messaging',
-        sub: 'Communicate safely with verified university admissions offices through our monitored channel.',
+        sub: 'Communicate safely with verified university admissions offices through our monitored secure channel — no WhatsApp, no uncertainty.',
         preview: (
             <div className="mt-4 px-3 py-2 rounded-xl border border-gray-100 bg-gray-50 flex items-start gap-2">
                 <div className="w-6 h-6 rounded-lg bg-[#1a1b41] flex items-center justify-center text-[8px] text-white font-black shrink-0 mt-0.5">ID</div>
@@ -105,7 +105,7 @@ const BentoCards = [
         dotColor: 'bg-green-500',
         icon: ShieldCheck,
         title: 'Unified Profile & Documents',
-        sub: 'Build one comprehensive profile. Apply to multiple institutions without re-entering information. Your documents are encrypted and verified.',
+        sub: 'Apply from anywhere. Build one digital dossier — apply to multiple institutions without re-entering information or printing a single form.',',
         preview: (
             <div className="mt-4 grid grid-cols-2 gap-2">
                 {['Full Name', 'Email', 'Personal Information', 'Family Information'].map((field, i) => (
@@ -131,13 +131,13 @@ export function FeaturesGrid() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header */}
                 <div className="text-center mb-12 lg:mb-16">
-                    <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">Core Platform</span>
+                    <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">What We Do</span>
                     <h2 className="text-3xl lg:text-5xl font-black text-[#1a1b41] mt-4 tracking-tighter uppercase leading-[0.9]">
-                        Everything Inside<br />
-                        <span className="text-[#d5a22d]">One Dashboard</span>
+                        A Centralised Platform<br />
+                        <span className="text-[#d5a22d]">For Institutions & Students</span>
                     </h2>
                     <p className="text-gray-500 font-bold text-base lg:text-lg mt-4 max-w-2xl mx-auto">
-                        Real tools. Real features. Every screen you need to go from discovery to acceptance.
+                        Tenpaten Apply provides a centralised platform serving both institutions and students — digital application management, wider recruitment reach, and real-time tracking.
                     </p>
                 </div>
 

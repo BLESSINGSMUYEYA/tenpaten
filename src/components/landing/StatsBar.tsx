@@ -6,33 +6,33 @@ import { motion } from 'framer-motion';
 const Pillars = [
     {
         icon: Globe2,
-        label: 'Global Reach',
-        sub: 'Universities across every continent',
+        label: 'Nationwide Reach',
+        sub: 'Connecting students across all districts of Malawi',
     },
     {
         icon: GraduationCap,
         label: 'Direct Admissions',
-        sub: 'Apply straight to accredited institutions',
+        sub: 'Apply directly to accredited universities and colleges',
     },
     {
         icon: Award,
-        label: 'Scholarship Access',
-        sub: 'Funding opportunities at every level',
+        label: 'Programme Discovery',
+        sub: 'Browse and compare programmes across institutions',
     },
     {
         icon: ShieldCheck,
-        label: 'Verified Programs',
-        sub: 'Every partner institution is pre-vetted',
+        label: 'Verified Institutions',
+        sub: 'Every partner institution is accredited and pre-vetted',
     },
     {
         icon: Zap,
-        label: 'Fast-Track Process',
-        sub: 'Streamlined from application to acceptance',
+        label: 'No Paperwork Travel',
+        sub: 'No district-to-district travel for application forms',
     },
     {
         icon: Clock,
         label: '24/7 Support',
-        sub: 'Smart Help available at every step',
+        sub: 'Smart Help available at every step of your journey',
     },
 ];
 
@@ -48,13 +48,10 @@ export function StatsBar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d5a22d]/30 bg-[#d5a22d]/10 text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#d5a22d] animate-pulse" />
-                        Premium Platform Benefits
-                    </span>
+                    <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">Malawi Education Platform</span>
                     <h2 className="mt-4 text-white font-black text-3xl sm:text-4xl tracking-tighter uppercase leading-[0.9]">
                         Everything You Need,{' '}
-                        <span className="text-[#d5a22d]">In One Place</span>
+                        <span className="text-[#d5a22d]">From Anywhere in Malawi</span>
                     </h2>
                 </div>
 
