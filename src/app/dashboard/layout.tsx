@@ -60,7 +60,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
                             className="flex items-center px-6 h-14 border-b border-white/10 border-t-2 border-t-transparent hover:bg-white/5 transition-colors"
                             href={getHomeUrl(role)}
                         >
-                            <TenpatenLogo variant="white" className="text-white" />
+                            <TenpatenLogo variant="white" className="text-white" disableLink />
                             {/* Gold accent dot on logo */}
                             <span className="ml-auto w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
                         </Link>
