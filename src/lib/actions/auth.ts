@@ -26,6 +26,8 @@ export async function authenticate(
 
     const callbackUrl = formData.get('callbackUrl') as string;
 
+    let targetUrl = '/dashboard';
+
     try {
         const data = Object.fromEntries(formData);
         const parsed = LoginFormSchema.safeParse(data);
@@ -39,6 +41,23 @@ export async function authenticate(
             redirect: false,
         });
 
+        const user = await prisma.user.findUnique({
+            where: { email: parsed.data.email },
+            select: { role: true }
+        });
+
+        if (callbackUrl && callbackUrl.startsWith('/')) {
+            targetUrl = callbackUrl;
+        } else if (user) {
+            switch (user.role) {
+                case 'SCHOOL_ADMIN': targetUrl = '/dashboard/school'; break;
+                case 'AFFILIATE': targetUrl = '/dashboard/affiliate'; break;
+                case 'COUNTRY_DIRECTOR': targetUrl = '/dashboard/country-director'; break;
+                case 'SUPER_ADMIN': targetUrl = '/dashboard/admin'; break;
+                default: targetUrl = '/dashboard'; break;
+            }
+        }
+
     } catch (error) {
         if (error instanceof AuthError) {
             switch (error.type) {
@@ -51,11 +70,7 @@ export async function authenticate(
         throw error;
     }
 
-    if (callbackUrl && callbackUrl.startsWith('/')) {
-        redirect(callbackUrl);
-    }
-
-    redirect('/dashboard');
+    redirect(targetUrl);
 }
 
 export async function register(prevState: string | undefined, formData: FormData) {
@@ -193,11 +208,17 @@ export async function verifyEmailOTP(prevState: any, formData: FormData) {
 
         const callbackUrl = formData.get('callbackUrl') as string;
 
-        const targetPath = callbackUrl && callbackUrl.startsWith('/')
-            ? callbackUrl
-            : (user.role === 'SCHOOL_ADMIN'
-                ? '/dashboard/school?welcome=true'
-                : '/dashboard?welcome=true');
+        let targetPath = '/dashboard?welcome=true';
+        if (callbackUrl && callbackUrl.startsWith('/')) {
+            targetPath = callbackUrl;
+        } else {
+            switch (user.role) {
+                case 'SCHOOL_ADMIN': targetPath = '/dashboard/school?welcome=true'; break;
+                case 'AFFILIATE': targetPath = '/dashboard/affiliate?welcome=true'; break;
+                case 'COUNTRY_DIRECTOR': targetPath = '/dashboard/country-director?welcome=true'; break;
+                case 'SUPER_ADMIN': targetPath = '/dashboard/admin?welcome=true'; break;
+            }
+        }
 
         // Clear caches
         revalidatePath('/', 'layout');

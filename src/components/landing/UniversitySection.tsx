@@ -1,94 +1,248 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Building2, Globe2, Users2, ArrowRight, CheckCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Building2, Globe2, Users2, ArrowRight, BarChart2, DollarSign, ClipboardList } from 'lucide-react';
+
+const Tabs = [
+    {
+        id: 'admissions',
+        label: 'Admissions',
+        icon: ClipboardList,
+        chip: 'LIVE PIPELINE',
+        chipColor: 'bg-green-500/10 text-green-500 border-green-500/20',
+        dotColor: 'bg-green-500',
+        headline: 'Managed Admissions Pipeline',
+        sub: 'Review, filter, and decide on applications from pre-vetted international students — all from one command center.',
+        bullets: ['Application queue management', 'One-click status updates', 'Bulk accept / reject actions', 'Automated student notifications'],
+        preview: (
+            <div className="rounded-2xl border border-gray-100 overflow-hidden shadow-lg">
+                <div className="bg-[#1a1b41] px-4 py-3 flex items-center justify-between">
+                    <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-widest">Applications</span>
+                    <span className="text-white/40 text-[9px]">REAL-TIME</span>
+                </div>
+                <div className="bg-white p-3 space-y-2">
+                    {[
+                        { name: 'Blessings Muyeya', prog: 'B.Tech Computer Science', status: 'SUCCESS', statusColor: 'text-green-500 bg-green-50 border-green-200' },
+                        { name: 'Test Prospect', prog: 'M.Tech Engineering', status: 'PENDING', statusColor: 'text-[#d5a22d] bg-[#d5a22d]/5 border-[#d5a22d]/20' },
+                    ].map((row, i) => (
+                        <div key={i} className="flex items-center gap-3 p-2 rounded-xl border border-gray-50 bg-gray-50/50">
+                            <div className="w-6 h-6 rounded-full bg-[#1a1b41] flex items-center justify-center text-[8px] text-white font-black shrink-0">
+                                {row.name[0]}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <p className="text-[10px] font-black text-[#1a1b41] truncate">{row.name}</p>
+                                <p className="text-[9px] text-gray-400 truncate">{row.prog}</p>
+                            </div>
+                            <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded-full border ${row.statusColor}`}>
+                                {row.status}
+                            </span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: 'analytics',
+        label: 'Analytics',
+        icon: BarChart2,
+        chip: 'REAL-TIME',
+        chipColor: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
+        dotColor: 'bg-blue-500',
+        headline: 'Performance Analytics',
+        sub: 'Understand your yield rate, application pipeline health, and program popularity — all with live data.',
+        bullets: ['Live yield rate tracking', 'Program popularity charts', 'Conversion funnel insights', 'Exportable reports'],
+        preview: (
+            <div className="rounded-2xl border border-gray-100 overflow-hidden shadow-lg">
+                <div className="bg-[#1a1b41] px-4 py-3 flex items-center justify-between">
+                    <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-widest">Dashboard Overview</span>
+                    <span className="text-white/40 text-[9px]">LIVE</span>
+                </div>
+                <div className="bg-white p-3 space-y-2">
+                    {[
+                        { label: 'Total Applications', chip: '+12% Growth', chipColor: 'text-green-500' },
+                        { label: 'Outstanding Tasks', chip: 'Action Required', chipColor: 'text-red-500' },
+                        { label: 'Yield Rate', chip: 'Market Average', chipColor: 'text-[#d5a22d]' },
+                    ].map((card, i) => (
+                        <div key={i} className="flex items-center justify-between p-2.5 rounded-xl border border-gray-100 bg-gray-50/50">
+                            <p className="text-[10px] font-black text-[#1a1b41] uppercase tracking-tight">{card.label}</p>
+                            <span className={`text-[9px] font-black uppercase ${card.chipColor}`}>{card.chip}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: 'finance',
+        label: 'Finance',
+        icon: DollarSign,
+        chip: 'TRACKED',
+        chipColor: 'bg-[#d5a22d]/10 text-[#d5a22d] border-[#d5a22d]/20',
+        dotColor: 'bg-[#d5a22d]',
+        headline: 'Financial Ledger',
+        sub: 'Track institutional revenue, application fees, platform charges, and withdrawal balances with full transparency.',
+        bullets: ['Per-application fee tracking', 'Gross revenue & net receivable', 'CSV export for registry', 'Payout request management'],
+        preview: (
+            <div className="rounded-2xl border border-gray-100 overflow-hidden shadow-lg">
+                <div className="bg-[#1a1b41] px-4 py-3 flex items-center justify-between">
+                    <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-widest">Financial Ledger</span>
+                    <span className="text-white/40 text-[9px]">TRACKED</span>
+                </div>
+                <div className="bg-white p-3">
+                    <div className="bg-[#1a1b41] rounded-xl p-3 mb-2">
+                        <p className="text-white/40 text-[9px] uppercase tracking-[0.2em] mb-1">Available Balance</p>
+                        <p className="text-white font-black text-lg">Total Receivable</p>
+                        <p className="text-[#d5a22d] text-[9px] font-black uppercase mt-1">+12.5% vs Prev Month</p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                        <div className="p-2.5 rounded-xl border border-gray-100 bg-gray-50/50">
+                            <p className="text-[9px] font-black text-gray-400 uppercase">Gross Revenue</p>
+                            <p className="text-[#1a1b41] text-xs font-black mt-0.5">Per Application</p>
+                        </div>
+                        <div className="p-2.5 rounded-xl border border-gray-100 bg-gray-50/50">
+                            <p className="text-[9px] font-black text-gray-400 uppercase">Service Fee</p>
+                            <p className="text-[#d5a22d] text-xs font-black mt-0.5">10% Platform</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+];
 
 export function UniversitySection() {
+    const [activeTab, setActiveTab] = useState('admissions');
+    const active = Tabs.find((t) => t.id === activeTab)!;
+
     return (
-        <section id="universities" className="py-20 lg:py-32 bg-white relative overflow-hidden">
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(#d5a22d 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        <section id="universities" className="py-20 lg:py-32 bg-slate-50/50 relative overflow-hidden">
+            <div
+                className="absolute inset-0 opacity-[0.025] pointer-events-none"
+                style={{ backgroundImage: 'radial-gradient(#1a1b41 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+            />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-                    <div className="order-2 lg:order-1 relative mt-12 lg:mt-0">
-                        <div className="relative rounded-[2.5rem] lg:rounded-[3.5rem] overflow-hidden shadow-2xl border border-gray-100 group">
-                            <Image
-                                src="/images/landing/university-hall.png"
-                                alt="University Partnership"
-                                width={1200}
-                                height={800}
-                                className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                                priority
-                            />
-                        </div>
-
-                        {/* stats card */}
-                        <div className="absolute -bottom-6 -right-4 sm:-bottom-10 sm:-right-10 bg-[#d5a22d] p-6 sm:p-12 rounded-[2rem] sm:rounded-[3rem] shadow-2xl group hover:scale-105 transition-transform duration-500 border-[6px] sm:border-8 border-white z-20">
-                            <div className="text-[#1a1b41] relative">
-                                <p className="text-4xl sm:text-5xl font-black tracking-tighter leading-[0.8] mb-1 sm:mb-2 uppercase">Now<br/>Open</p>
-                                <p className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] opacity-80">University Partnerships</p>
-                                <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-12 h-12 sm:w-16 h-16 bg-white/30 rounded-full blur-xl sm:blur-2xl animate-pulse" />
-                            </div>
-                        </div>
+                {/* Header */}
+                <div className="text-center mb-12 lg:mb-16">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d5a22d]/30 bg-[#d5a22d]/10 text-[#d5a22d] text-[10px] font-black tracking-[0.3em] mb-5 uppercase">
+                        Partnership Opportunity
                     </div>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1a1b41] tracking-tighter uppercase leading-[0.9] mb-4">
+                        Your Digital<br />
+                        <span className="text-[#d5a22d]">Command Center</span>
+                    </h2>
+                    <p className="text-gray-500 font-bold text-base lg:text-lg max-w-2xl mx-auto">
+                        Manage international recruitment end-to-end. From live applications to financial reporting — every tool your institution needs.
+                    </p>
+                </div>
 
-                    <div className="order-1 lg:order-2">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-gray-50 border border-gray-100 text-[#d5a22d] text-[10px] font-black tracking-[0.3em] mb-6 lg:mb-8 uppercase shadow-sm">
-                            Partnership Opportunity
-                        </div>
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1a1b41] mb-6 lg:mb-8 leading-[0.9] tracking-tighter uppercase text-balance">
-                            Expand Your <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d5a22d] to-[#1a1b41]">Global Footprint</span>
-                        </h2>
-                        <p className="text-gray-500 text-base lg:text-lg mb-8 lg:mb-12 font-bold leading-relaxed max-w-xl">
-                            We are currently onboarding a select group of world-class institutions. Join the ecosystem that connects your campus with highly qualified, pre-vetted international students.
-                        </p>
-
-                        <div className="space-y-5 sm:space-y-6 mb-10 lg:mb-12">
-                            {[
-                                {
-                                    icon: Globe2,
-                                    title: "Direct Access",
-                                    desc: "Tap into an emerging market of motivated students across Africa and globally."
-                                },
-                                {
-                                    icon: Users2,
-                                    title: "Streamlined Admissions",
-                                    desc: "Our pre-vetting process ensures you only receive applications that meet your criteria."
-                                },
-                                {
-                                    icon: Building2,
-                                    title: "Digital Command Center",
-                                    desc: "Manage your entire international recruitment pipeline from a single, high-performance dashboard."
-                                }
-                            ].map((item, i) => (
-                                <div key={i} className="flex gap-4 sm:gap-5 group">
-                                    <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gray-50 flex items-center justify-center group-hover:bg-[#1a1b41] transition-all shadow-sm border border-gray-100">
-                                        <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#d5a22d]" />
-                                    </div>
-                                    <div className="flex flex-col justify-center">
-                                        <h4 className="text-lg lg:text-xl font-black text-[#1a1b41] uppercase tracking-tighter mb-0.5">{item.title}</h4>
-                                        <p className="text-gray-500 text-xs sm:text-sm lg:text-base font-medium leading-relaxed">{item.desc}</p>
-                                    </div>
-                                </div>
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+                    {/* LEFT: Tabs + copy */}
+                    <div>
+                        {/* Tab buttons */}
+                        <div className="flex gap-2 p-1.5 rounded-2xl bg-gray-100 mb-10 w-fit">
+                            {Tabs.map((tab) => (
+                                <button
+                                    key={tab.id}
+                                    onClick={() => setActiveTab(tab.id)}
+                                    className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${
+                                        activeTab === tab.id
+                                            ? 'bg-[#1a1b41] text-white shadow-lg'
+                                            : 'text-gray-400 hover:text-[#1a1b41]'
+                                    }`}
+                                >
+                                    <tab.icon className={`w-3.5 h-3.5 ${activeTab === tab.id ? 'text-[#d5a22d]' : ''}`} />
+                                    {tab.label}
+                                </button>
                             ))}
                         </div>
-                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-12 lg:mt-16">
-                            <Link
-                                href="/school"
-                                className="w-full sm:w-fit inline-flex items-center justify-center gap-3 px-8 py-5 sm:px-12 sm:py-6 rounded-2xl bg-[#1a1b41] text-white font-black uppercase tracking-widest text-[10px] sm:text-xs transition-all hover:bg-[#d5a22d] hover:scale-[1.02] active:scale-95 shadow-2xl shadow-[#1a1b41]/20"
+
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeTab}
+                                initial={{ opacity: 0, y: 12 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -12 }}
+                                transition={{ duration: 0.3 }}
                             >
-                                Apply for Partnership
-                                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                            </Link>
-                            <Link
-                                href="/contact"
-                                className="w-full sm:w-fit inline-flex items-center justify-center gap-3 px-8 py-5 sm:px-12 sm:py-6 rounded-2xl border-2 border-gray-100 text-[#1a1b41] font-black uppercase tracking-widest text-[10px] sm:text-xs transition-all hover:bg-gray-50 active:scale-95"
-                            >
-                                Inquire Now
-                            </Link>
-                        </div>
+                                {/* Status chip */}
+                                <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-[9px] font-black tracking-[0.25em] uppercase mb-6 ${active.chipColor}`}>
+                                    <span className={`w-1.5 h-1.5 rounded-full ${active.dotColor}`} />
+                                    {active.chip}
+                                </div>
+
+                                <h3 className="text-2xl lg:text-3xl font-black text-[#1a1b41] uppercase tracking-tighter leading-[0.9] mb-4">
+                                    {active.headline}
+                                </h3>
+                                <p className="text-gray-500 font-bold leading-relaxed mb-8">
+                                    {active.sub}
+                                </p>
+
+                                <ul className="space-y-3 mb-10">
+                                    {active.bullets.map((b, i) => (
+                                        <li key={i} className="flex items-center gap-3 text-sm font-bold text-gray-600">
+                                            <div className="w-5 h-5 rounded-full bg-[#d5a22d]/10 border border-[#d5a22d]/20 flex items-center justify-center shrink-0">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-[#d5a22d]" />
+                                            </div>
+                                            {b}
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <div className="flex flex-col sm:flex-row gap-4">
+                                    <Link
+                                        href="/school"
+                                        className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#1a1b41] text-white font-black uppercase tracking-[0.2em] text-xs hover:bg-[#d5a22d] hover:text-[#1a1b41] transition-all shadow-xl shadow-[#1a1b41]/10 active:scale-95 group"
+                                    >
+                                        Apply for Partnership
+                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                    </Link>
+                                    <Link
+                                        href="mailto:sales@tenpaten.com"
+                                        className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl border-2 border-gray-100 text-[#1a1b41] font-black uppercase tracking-[0.2em] text-xs hover:border-[#d5a22d]/30 hover:bg-[#d5a22d]/5 transition-all active:scale-95"
+                                    >
+                                        Contact Sales
+                                    </Link>
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
+
+                    {/* RIGHT: Product preview panel */}
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeTab + '-preview'}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ duration: 0.4 }}
+                            className="relative"
+                        >
+                            {/* Image */}
+                            <div className="relative rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-[0_48px_80px_-24px_rgba(0,0,0,0.1)] group mb-6">
+                                <Image
+                                    src="/images/landing/university-hall.png"
+                                    alt="University Dashboard"
+                                    width={800}
+                                    height={520}
+                                    className="object-cover transition-transform duration-1000 group-hover:scale-105 w-full"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1b41]/60 to-transparent" />
+                                {/* NOW OPEN badge */}
+                                <div className="absolute bottom-6 left-6 bg-[#d5a22d] px-6 py-4 rounded-2xl">
+                                    <p className="text-[#1a1b41] font-black text-xl uppercase leading-none">Now<br />Open</p>
+                                    <p className="text-[#1a1b41]/70 text-[9px] font-black uppercase tracking-[0.25em] mt-1">University Partnerships</p>
+                                </div>
+                            </div>
+
+                            {/* Dashboard preview card */}
+                            {active.preview}
+                        </motion.div>
+                    </AnimatePresence>
                 </div>
             </div>
         </section>

@@ -74,7 +74,14 @@ export const authConfig = {
             } else if (isLoggedIn && isEmailVerified) {
                 // Redirect logged-in and verified users away from login/register pages
                 if (nextUrl.pathname === '/login' || nextUrl.pathname === '/register' || nextUrl.pathname === '/' || nextUrl.pathname === '/school/login') {
-                    return Response.redirect(new URL('/dashboard', nextUrl));
+                    let targetUrl = '/dashboard';
+                    switch (userRole) {
+                        case 'SCHOOL_ADMIN': targetUrl = '/dashboard/school'; break;
+                        case 'AFFILIATE': targetUrl = '/dashboard/affiliate'; break;
+                        case 'COUNTRY_DIRECTOR': targetUrl = '/dashboard/country-director'; break;
+                        case 'SUPER_ADMIN': targetUrl = '/dashboard/admin'; break;
+                    }
+                    return Response.redirect(new URL(targetUrl, nextUrl));
                 }
             }
             return true;

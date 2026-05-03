@@ -1,60 +1,90 @@
-import { Star, Quote } from 'lucide-react';
+'use client';
 
-const Testimonials = [
+import { motion } from 'framer-motion';
+
+const Founders = [
     {
-        name: "Blessings Muyeya",
-        role: "Founder",
-        content: "Tenpaten was born out of a vision to democratize global education. We are building the bridge that empowers every student to reach their full potential, regardless of their background.",
-        rating: 5,
-        avatar: "BM"
+        initials: 'BM',
+        name: 'Blessings Muyeya',
+        role: 'Co-Founder & CEO',
+        content:
+            'Tenpaten was born out of a vision to democratize global education. We are building the bridge that empowers every student to reach their full potential, regardless of their background.',
     },
     {
-        name: "Jairos Phiri",
-        role: "Founder",
-        content: "Our platform is more than just an application tool; it's a commitment to transparency and excellence. We are redefining how universities and students interact on a global scale.",
-        rating: 5,
-        avatar: "JP"
+        initials: 'JP',
+        name: 'Jairos Phiri',
+        role: 'Co-Founder',
+        content:
+            'Our platform is more than just an application tool — it\'s a commitment to transparency and excellence. We are redefining how universities and students interact on a global scale.',
     },
     {
-        name: "Davie Chilembo",
-        role: "National Director",
-        content: "We've seen the life-changing impact this platform has on students every day. It's rewarding to lead the effort in making world-class education accessible and achievable.",
-        rating: 5,
-        avatar: "DC"
-    }
+        initials: 'DC',
+        name: 'Davie Chilembo',
+        role: 'National Director',
+        content:
+            'We\'ve seen the life-changing impact this platform has on students every day. It\'s rewarding to lead the effort in making world-class education accessible and achievable.',
+    },
 ];
 
 export function TestimonialSection() {
     return (
-        <section className="py-20 lg:py-32 bg-white relative overflow-hidden border-t border-gray-100">
-            <div className="absolute inset-0 opacity-[0.4] bg-[radial-gradient(#d5a22d_1px,transparent_1px)] [background-size:48px_48px] pointer-events-none" />
-            
+        <section className="py-20 lg:py-32 bg-[#1a1b41] relative overflow-hidden">
+            {/* Dot grid */}
+            <div
+                className="absolute inset-0 opacity-[0.05] pointer-events-none"
+                style={{ backgroundImage: 'radial-gradient(#d5a22d 1px, transparent 1px)', backgroundSize: '48px 48px' }}
+            />
+            {/* Gold gradient orb */}
+            <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#d5a22d] opacity-[0.04] blur-[100px] pointer-events-none" />
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                {/* Header */}
                 <div className="text-center mb-16 lg:mb-20">
-                    <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">Success Stories</span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1a1b41] mt-4 tracking-tighter uppercase leading-[0.9]">Trusted by Thousands</h2>
-                    <p className="text-gray-500 font-bold text-base lg:text-lg mt-4 max-w-2xl mx-auto">Hear how our global platform is changing the way students and universities connect.</p>
+                    <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">From Our Team</span>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mt-4 tracking-tighter uppercase leading-[0.9]">
+                        Built With Purpose
+                    </h2>
+                    <p className="text-white/50 font-bold text-base lg:text-lg mt-4 max-w-2xl mx-auto">
+                        Hear directly from the people building Tenpaten — and why we believe every student deserves access to global education.
+                    </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
-                    {Testimonials.map((item, index) => (
-                        <div key={index} className="bg-white border border-gray-100 p-8 sm:p-10 rounded-[2.5rem] shadow-[0_24px_48px_-12px_rgba(0,0,0,0.05)] hover:shadow-[0_48px_80px_-24px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col group hover:-translate-y-2">
-                            <Quote className="w-10 h-10 text-[#d5a22d]/20 mb-6 group-hover:text-[#d5a22d] transition-colors duration-500" />
-                            
-                            <p className="text-gray-600 font-medium leading-relaxed mb-8 flex-1 italic">
-                                "{item.content}"
-                            </p>
-                            
-                            <div className="flex items-center gap-4 mt-auto pt-6 border-t border-gray-50">
-                                <div className="w-12 h-12 rounded-full bg-[#1a1b41] flex items-center justify-center text-white font-black text-lg">
-                                    {item.avatar}
+                <div className="grid md:grid-cols-3 gap-5 lg:gap-6">
+                    {Founders.map((item, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.12 }}
+                            className="group relative rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#d5a22d]/30 hover:bg-white/8 transition-all duration-500 overflow-hidden flex flex-col"
+                        >
+                            {/* Gold top border on hover */}
+                            <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#d5a22d] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                            {/* Header — mirrors the Messages/Chat UI (dark header, initials avatar) */}
+                            <div className="bg-[#1a1b41] border-b border-white/5 px-6 py-4 flex items-center gap-3">
+                                <div className="w-9 h-9 rounded-xl bg-[#d5a22d]/20 border border-[#d5a22d]/30 flex items-center justify-center text-[#d5a22d] text-[11px] font-black shrink-0">
+                                    {item.initials}
                                 </div>
                                 <div>
-                                    <h4 className="text-[#1a1b41] font-black tracking-tight">{item.name}</h4>
-                                    <p className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.2em]">{item.role}</p>
+                                    <p className="text-white font-black text-sm leading-none">{item.name}</p>
+                                    <div className="flex items-center gap-1.5 mt-0.5">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#d5a22d]" />
+                                        <p className="text-[#d5a22d] text-[9px] font-black uppercase tracking-[0.25em]">{item.role}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                            {/* Message body */}
+                            <div className="p-6 lg:p-8 flex-1 flex flex-col">
+                                {/* Quote marks */}
+                                <div className="text-[#d5a22d]/20 text-5xl font-serif leading-none mb-2 group-hover:text-[#d5a22d]/40 transition-colors duration-500">&ldquo;</div>
+                                <p className="text-white/60 font-medium leading-relaxed flex-1 italic text-sm lg:text-base">
+                                    {item.content}
+                                </p>
+                            </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
