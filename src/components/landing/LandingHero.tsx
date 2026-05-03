@@ -201,7 +201,7 @@ export function LandingHero() {
                             transition={{ duration: 0.8, delay: 0.25 }}
                             className="text-white/70 text-lg lg:text-xl font-medium leading-relaxed max-w-lg mb-10"
                         >
-                            Bridging the gap between secondary school leavers and higher education institutions across Malawi — making the application process simpler, faster, and more accessible, regardless of your location or background.
+                            Simplifying university admissions for every student in Malawi.
                         </motion.p>
 
                         {/* Search bar */}
