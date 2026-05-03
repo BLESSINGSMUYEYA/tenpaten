@@ -9,6 +9,7 @@ import {
     Building2, Menu, X, MessageSquare
 } from 'lucide-react';
 import { TenpatenLogo } from '@/components/branding/TenpatenLogo';
+import { PartnershipJourney } from '@/components/landing/PartnershipJourney';
 
 export default function SchoolLandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -114,69 +115,7 @@ export default function SchoolLandingPage() {
                 </div>
             </section>
 
-            {/* How It Works: The Institutional Journey */}
-            <section id="journey" className="py-20 lg:py-32 bg-[#1a1b41] relative">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16 lg:mb-24">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#36335e] text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
-                            The Roadmap
-                        </div>
-                        <h2 className="text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase leading-[0.9]">Your Path to <br/> Global Growth</h2>
-                    </div>
-
-                    <div className="grid md:grid-cols-4 gap-8 relative">
-                        {/* Connecting Line (Desktop) */}
-                        <div className="hidden md:block absolute top-12 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/10 to-transparent z-0" />
-                        
-                        {[
-                            {
-                                step: "01",
-                                title: "Consultation",
-                                desc: "Connect with our sales team to discuss your recruitment targets and institutional requirements.",
-                                icon: MessageSquare
-                            },
-                            {
-                                step: "02",
-                                title: "Verification",
-                                desc: "Our compliance team verifies your credentials to ensure the highest standard of global partnership.",
-                                icon: ShieldCheck
-                            },
-                            {
-                                step: "03",
-                                title: "Managed Setup",
-                                desc: "Our team configures your branding, programs, and admission criteria for you.",
-                                icon: LayoutDashboard
-                            },
-                            {
-                                step: "04",
-                                title: "Global Launch",
-                                desc: "Go live on the Tenpaten ecosystem and start receiving pre-vetted international leads.",
-                                icon: Globe2
-                            }
-                        ].map((item, i) => (
-                            <div key={i} className="relative z-10 flex flex-col items-center text-center group">
-                                <div className="w-24 h-24 rounded-[2rem] bg-[#23244a] border border-white/10 flex items-center justify-center mb-6 group-hover:border-[#d5a22d]/50 transition-all duration-500 shadow-xl group-hover:shadow-[#d5a22d]/10">
-                                    <item.icon className="w-10 h-10 text-[#d5a22d]" />
-                                    <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#d5a22d] text-[#1a1b41] text-[10px] font-black flex items-center justify-center">
-                                        {item.step}
-                                    </span>
-                                </div>
-                                <h4 className="text-xl font-black text-white uppercase tracking-tighter mb-3">{item.title}</h4>
-                                <p className="text-sm text-gray-400 font-medium leading-relaxed">{item.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-20 text-center">
-                        <Link
-                            href="mailto:sales@tenpaten.com"
-                            className="inline-flex items-center gap-3 px-10 py-5 bg-white text-[#1a1b41] rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#d5a22d] hover:text-white transition-all shadow-2xl"
-                        >
-                            Inquire for Partnership
-                        </Link>
-                    </div>
-                </div>
-            </section>
+            <PartnershipJourney />
 
             {/* Features Grid */}
             <section id="features" className="py-16 bg-[#1a1b41] relative overflow-hidden">

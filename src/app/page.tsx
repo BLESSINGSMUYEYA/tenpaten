@@ -11,6 +11,7 @@ import { RoleSelection } from '@/components/landing/RoleSelection';
 import { FeaturesGrid } from '@/components/landing/FeaturesGrid';
 import { UniversitySection } from '@/components/landing/UniversitySection';
 import { TrustSection } from '@/components/landing/TrustSection';
+import { PartnershipJourney } from '@/components/landing/PartnershipJourney';
 import { TestimonialSection } from '@/components/landing/TestimonialSection';
 
 export default function Home() {
@@ -128,6 +129,7 @@ export default function Home() {
       <FeaturesGrid />
       <RoleSelection />
       <UniversitySection />
+      <PartnershipJourney light />
       <TrustSection />
       <TestimonialSection />
 
