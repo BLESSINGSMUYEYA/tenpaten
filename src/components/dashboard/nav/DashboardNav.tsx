@@ -87,7 +87,7 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
                 <div className="px-4 sm:px-6">
                     <div className="flex items-center justify-between h-16">
                         <Link href={homeUrl} className="transition-transform active:scale-95">
-                            <TenpatenLogo className="scale-90 origin-left" variant="navy" />
+                            <TenpatenLogo className="scale-90 origin-left" variant="navy" disableLink />
                         </Link>
 
                         <div className="flex items-center gap-2">
