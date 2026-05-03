@@ -77,7 +77,7 @@ function FilterBar({ programs }: { programs: Program[] }) {
     };
 
     return (
-        <div className="flex flex-wrap items-center gap-3 p-3 bg-white rounded-2xl border border-slate-100 shadow-sm">
+        <div className="flex flex-wrap items-center gap-3 px-5 py-3.5 border-b border-slate-100 bg-slate-50/50">
             {/* Search */}
             <div className="flex-1 min-w-[220px] relative group">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#36335e] transition-colors" />
@@ -192,7 +192,7 @@ export default function ApplicantListClient({
     }, []);
 
     return (
-        <div className="space-y-4">
+        <div>
             {/* Filter Bar */}
             <FilterBar programs={programs} />
 
@@ -202,9 +202,8 @@ export default function ApplicantListClient({
                 onClearSelection={clearSelection}
             />
 
-            {/* Table */}
-            <div className="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden">
-                <div className="overflow-x-auto">
+            {/* Table — no card wrapper; parent card handles it */}
+            <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="bg-[#1d1b41] text-white">
@@ -311,21 +310,20 @@ export default function ApplicantListClient({
                             )}
                         </tbody>
                     </table>
-                </div>
-
-                {/* Pagination */}
-                {totalPages > 1 && (
-                    <div className="px-6 py-4 bg-slate-50/50 border-t border-slate-100 flex items-center justify-between">
-                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                            {total} applicants · Page {currentPage} of {totalPages}
-                        </p>
-                        <div className="flex items-center gap-2">
-                            <PaginationLink page={currentPage - 1} disabled={currentPage <= 1} label="Previous" />
-                            <PaginationLink page={currentPage + 1} disabled={currentPage >= totalPages} label="Next" primary />
-                        </div>
-                    </div>
-                )}
             </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+                <div className="px-6 py-4 bg-slate-50/50 border-t border-slate-100 flex items-center justify-between">
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                        {total} applicants · Page {currentPage} of {totalPages}
+                    </p>
+                    <div className="flex items-center gap-2">
+                        <PaginationLink page={currentPage - 1} disabled={currentPage <= 1} label="Previous" />
+                        <PaginationLink page={currentPage + 1} disabled={currentPage >= totalPages} label="Next" primary />
+                    </div>
+                </div>
+            )}
 
             {/* Side Panel */}
             {openPanel && (

@@ -97,35 +97,38 @@ export default async function SchoolApplicationsPage({
 
     // ── Render ────────────────────────────────────────────────────────────────
     return (
-        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12">
-            {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <h1 className="text-2xl sm:text-3xl font-black text-[#1d1b41] tracking-tight">
-                        Applicant Registry
-                    </h1>
-                    <p className="text-slate-400 mt-1 font-medium text-sm italic">
-                        Review, rank, and action student applications across all programmes.
-                    </p>
-                </div>
-                <div className="flex flex-wrap items-center gap-3">
-                    <ExportButton />
-                    <div className="flex items-center gap-2 px-4 py-2 bg-[#d5a22d]/10 text-[#d5a22d] rounded-xl text-sm font-black uppercase tracking-widest border border-[#d5a22d]/20">
-                        <FileText className="w-4 h-4" />
-                        <span>{total} Applications</span>
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12">
+            <div className="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden">
+
+                {/* ── Unified navy header — same bg as table thead ── */}
+                <div className="bg-[#1d1b41] px-6 py-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h1 className="text-base font-black text-white tracking-[0.15em] uppercase">
+                            Applicant Registry
+                        </h1>
+                        <p className="text-white/40 mt-0.5 font-medium text-[11px]">
+                            Review, rank, and action student applications across all programmes.
+                        </p>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-3">
+                        <ExportButton />
+                        <div className="flex items-center gap-2 px-3 py-2 bg-[#d5a22d]/20 text-[#d5a22d] rounded-xl text-[10px] font-black uppercase tracking-[0.2em] border border-[#d5a22d]/20">
+                            <FileText className="w-3.5 h-3.5" />
+                            <span>{total} Applications</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            {/* Client shell — owns all interactivity */}
-            <ApplicantListClient
-                applicants={applicants as any}
-                programs={universityPrograms}
-                total={total}
-                currentPage={currentPage}
-                totalPages={totalPages}
-                initialPanelId={panelId}
-            />
+                {/* ── Filter bar + table (no extra card wrapper) ── */}
+                <ApplicantListClient
+                    applicants={applicants as any}
+                    programs={universityPrograms}
+                    total={total}
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    initialPanelId={panelId}
+                />
+            </div>
         </div>
     );
 }
