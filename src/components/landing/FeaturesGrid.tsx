@@ -105,7 +105,7 @@ const BentoCards = [
         dotColor: 'bg-green-500',
         icon: ShieldCheck,
         title: 'Unified Profile & Documents',
-        sub: 'Apply from anywhere. Build one digital dossier — apply to multiple institutions without re-entering information or printing a single form.',',
+        sub: 'Apply from anywhere. Build one digital dossier — apply to multiple institutions without re-entering information or printing a single form.',
         preview: (
             <div className="mt-4 grid grid-cols-2 gap-2">
                 {['Full Name', 'Email', 'Personal Information', 'Family Information'].map((field, i) => (
