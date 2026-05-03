@@ -13,7 +13,7 @@ const Founders = [
     {
         initials: 'JP',
         name: 'Jairos Phiri',
-        role: 'Co-Founder',
+        role: 'Co-Founder & International Partnership Director',
         content:
             'Our platform is more than just an application tool — it\'s a commitment to transparency and excellence. We are redefining how universities and students interact on a global scale.',
     },
