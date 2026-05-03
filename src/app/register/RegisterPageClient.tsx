@@ -10,6 +10,7 @@ import { RoleGateway, RoleType } from '@/components/auth/RoleGateway';
 function RegisterContent({ questions, countries }: { questions: QuestionData[], countries: any[] }) {
     const searchParams = useSearchParams();
     const type = searchParams.get('type');
+    const callbackUrl = searchParams.get('callbackUrl') || '';
     const [questionnaireComplete, setQuestionnaireComplete] = useState(false);
 
     // Default to student role to show the form directly, removing the choice step
@@ -54,7 +55,7 @@ function RegisterContent({ questions, countries }: { questions: QuestionData[], 
                 setSelectedRole(role);
             }}
         >
-            <RegisterForm countries={countries} />
+            <RegisterForm countries={countries} callbackUrl={callbackUrl} />
         </RoleGateway>
     );
 }

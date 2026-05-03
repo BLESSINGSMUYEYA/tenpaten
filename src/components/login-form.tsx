@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Mail, LockKeyhole, Loader2, AlertCircle, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
 
-export default function LoginForm() {
+export default function LoginForm({ callbackUrl = '' }: { callbackUrl?: string }) {
     const [errorMessage, formAction, isPending] = useActionState(
         authenticate,
         undefined,
@@ -17,6 +17,7 @@ export default function LoginForm() {
 
     return (
         <form action={formAction} className="space-y-4">
+            {callbackUrl && <input type="hidden" name="callbackUrl" value={callbackUrl} />}
             <div className="space-y-5">
                 <div className="space-y-2">
                     <Label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-gray-400 ml-1">Email Address</Label>

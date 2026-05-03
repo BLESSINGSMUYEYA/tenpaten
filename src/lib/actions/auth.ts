@@ -24,6 +24,8 @@ export async function authenticate(
         return 'Too many login attempts. Please try again later.';
     }
 
+    const callbackUrl = formData.get('callbackUrl') as string;
+
     try {
         const data = Object.fromEntries(formData);
         const parsed = LoginFormSchema.safeParse(data);
@@ -48,6 +50,11 @@ export async function authenticate(
         }
         throw error;
     }
+
+    if (callbackUrl && callbackUrl.startsWith('/')) {
+        redirect(callbackUrl);
+    }
+
     redirect('/dashboard');
 }
 
@@ -184,9 +191,13 @@ export async function verifyEmailOTP(prevState: any, formData: FormData) {
             user.role === 'SCHOOL_ADMIN' ? '/dashboard/school' : '/dashboard/colleges'
         ), 3000).catch(console.error);
 
-        const targetPath = user.role === 'SCHOOL_ADMIN'
-            ? '/dashboard/school?welcome=true'
-            : '/dashboard?welcome=true';
+        const callbackUrl = formData.get('callbackUrl') as string;
+
+        const targetPath = callbackUrl && callbackUrl.startsWith('/')
+            ? callbackUrl
+            : (user.role === 'SCHOOL_ADMIN'
+                ? '/dashboard/school?welcome=true'
+                : '/dashboard?welcome=true');
 
         // Clear caches
         revalidatePath('/', 'layout');

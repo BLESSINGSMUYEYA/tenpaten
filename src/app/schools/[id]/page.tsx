@@ -46,13 +46,13 @@ export default async function PublicSchoolPage({ params }: { params: Promise<{ i
                 </Link>
                 <div className="ml-auto flex items-center gap-4">
                     <Link
-                        href="/login"
+                        href={`/login?callbackUrl=/dashboard/schools/${university.id}`}
                         className="text-sm font-bold text-gray-300 hover:text-[#d5a22d] transition-colors"
                     >
                         Sign In
                     </Link>
                     <Link
-                        href="/register"
+                        href={`/register?callbackUrl=/dashboard/schools/${university.id}`}
                         className="px-5 py-2.5 bg-[#d5a22d] text-white rounded-xl text-sm font-bold hover:bg-[#b89531] transition-all"
                     >
                         Join Free
@@ -131,7 +131,7 @@ export default async function PublicSchoolPage({ params }: { params: Promise<{ i
                             <ArrowRight className="w-4 h-4 ml-1" />
                         </Link>
                         <Link
-                            href="/register"
+                            href={`/register?callbackUrl=/dashboard/schools/${university.id}?tab=programs`}
                             className="w-full sm:w-auto px-10 py-4 bg-white/10 text-white border border-white/20 rounded-2xl font-black text-sm flex items-center justify-center gap-2 hover:bg-white/20 transition-all"
                         >
                             Create Account to Apply
