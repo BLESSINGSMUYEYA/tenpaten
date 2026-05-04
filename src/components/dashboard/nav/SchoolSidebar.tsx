@@ -10,7 +10,9 @@ export default function SchoolSidebar() {
     const pathname = usePathname();
 
     const isActive = (href: string) =>
-        pathname === href || pathname.startsWith(href + '/');
+        href === '/dashboard/school'
+            ? pathname === '/dashboard/school'
+            : pathname === href || pathname.startsWith(href + '/');
 
     return (
         <>

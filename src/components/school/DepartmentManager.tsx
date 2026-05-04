@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Trash2, Plus, Loader2, Layers } from 'lucide-react';
+import { Trash2, Plus, Loader2, Layers, GraduationCap } from 'lucide-react';
 import { createDepartment, deleteDepartment } from '@/lib/actions/school-academics';
 
 interface Department {
@@ -33,75 +33,89 @@ export default function DepartmentManager({ departments }: { departments: Depart
     };
 
     return (
-        <div className="space-y-8">
-            <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/40 p-8 flex flex-col items-center text-center">
-                <div className="w-16 h-16 bg-[#36335e]/10 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-[#36335e]/20">
-                    <Layers className="w-8 h-8 text-[#36335e]" />
+        <div className="space-y-10 animate-in fade-in duration-500">
+            <div className="bg-white rounded-[3rem] border border-slate-100 shadow-2xl shadow-slate-200/40 p-10 flex flex-col items-center text-center relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#36335e]/5 rounded-full blur-3xl -mr-32 -mt-32" />
+                
+                <div className="w-20 h-20 bg-[#36335e]/5 rounded-[2rem] flex items-center justify-center mb-8 shadow-sm border border-[#36335e]/10 relative z-10">
+                    <Layers className="w-10 h-10 text-[#36335e]" />
                 </div>
-                <h3 className="text-2xl font-black text-[#36335e] tracking-tight mb-2">Create New Department</h3>
-                <p className="text-sm font-medium text-slate-500 mb-8 max-w-md">Add academic faculties to organize your curriculum and programs.</p>
+                
+                <div className="relative z-10 space-y-2 mb-10">
+                    <h3 className="text-3xl font-black text-[#36335e] tracking-tight">Expand Institutional Structure</h3>
+                    <p className="text-sm font-bold text-slate-400 max-w-md mx-auto">Add academic faculties and administrative departments to better organize your curriculum.</p>
+                </div>
 
-                <form onSubmit={handleAdd} className="w-full max-w-lg flex flex-col sm:flex-row gap-4 relative group">
+                <form onSubmit={handleAdd} className="w-full max-w-xl flex flex-col sm:flex-row gap-4 relative z-10">
                     <input
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="e.g. Faculty of Engineering"
-                        className="flex-1 px-6 py-4 bg-slate-50 border-none rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#36335e]/10 focus:bg-white text-sm font-bold shadow-sm transition-all text-[#36335e] placeholder:text-slate-400 placeholder:font-medium"
+                        placeholder="e.g. Faculty of Engineering & Technology"
+                        className="flex-1 h-14 px-8 bg-slate-50 border-none rounded-2xl focus:ring-4 focus:ring-[#36335e]/10 focus:bg-white text-[15px] font-black shadow-sm transition-all text-[#36335e] placeholder:text-slate-300 placeholder:font-bold"
                     />
                     <button
                         disabled={isLoading || !name.trim()}
-                        className="px-8 py-4 bg-[#36335e] hover:bg-[#2a284a] text-white font-black uppercase tracking-widest text-xs rounded-2xl transition-all shadow-lg shadow-[#36335e]/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transform active:scale-95 whitespace-nowrap"
+                        className="h-14 px-10 bg-[#36335e] hover:bg-[#2a284a] text-white font-black uppercase tracking-widest text-[11px] rounded-2xl transition-all shadow-xl shadow-[#36335e]/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 transform active:scale-95 whitespace-nowrap group"
                     >
-                        {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
-                        Create
+                        {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Plus className="w-5 h-5 text-[#d5a22d] group-hover:rotate-90 transition-transform" />}
+                        Initialize Faculty
                     </button>
                 </form>
             </div>
 
             {/* List */}
-            <div className="bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden">
+            <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="bg-[#36335e] text-white">
-                                <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Faculty / Department Name</th>
-                                <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Curriculum Size</th>
-                                <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em] text-center">Actions</th>
+                                <th className="px-10 py-6 text-xs font-black uppercase tracking-widest text-white/70">Faculty / Department Name</th>
+                                <th className="px-10 py-6 text-xs font-black uppercase tracking-widest text-white/70">Curriculum Volume</th>
+                                <th className="px-10 py-6 text-xs font-black uppercase tracking-widest text-white/70 text-center">Actions</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-50">
+                        <tbody className="divide-y divide-slate-50">
                             {departments.length === 0 ? (
                                 <tr>
-                                    <td colSpan={3} className="px-6 py-12 text-center text-gray-400 font-medium italic">
-                                        No departments found. Create one above to get started.
+                                    <td colSpan={3} className="px-10 py-20 text-center bg-slate-50/20">
+                                        <div className="flex flex-col items-center gap-3">
+                                            <div className="w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center shadow-sm border border-slate-100">
+                                                <Layers className="w-8 h-8 text-slate-200" />
+                                            </div>
+                                            <div>
+                                                <p className="text-lg font-black text-[#36335e] tracking-tight">No departments initialized</p>
+                                                <p className="text-sm font-bold text-slate-400 mt-1">Start by creating your first academic faculty above.</p>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             ) : (
                                 departments.map((dept) => (
-                                    <tr key={dept.id} className="hover:bg-gray-50/50 transition-colors duration-200 group">
-                                        <td className="px-6 py-5">
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-10 h-10 rounded-full bg-[#36335e]/5 flex items-center justify-center text-[#36335e] group-hover:bg-[#36335e] group-hover:text-[#d5a22d] transition-all">
-                                                    <Layers className="w-5 h-5" />
+                                    <tr key={dept.id} className="hover:bg-slate-50/80 transition-all duration-300 group border-l-4 border-transparent hover:border-[#d5a22d]">
+                                        <td className="px-10 py-6">
+                                            <div className="flex items-center gap-5">
+                                                <div className="w-12 h-12 rounded-2xl bg-[#36335e]/5 flex items-center justify-center text-[#36335e] group-hover:bg-[#36335e] group-hover:text-[#d5a22d] transition-all duration-500 shadow-sm">
+                                                    <Layers className="w-6 h-6" />
                                                 </div>
-                                                <h4 className="font-black text-[#36335e] group-hover:text-[#d5a22d] transition-colors uppercase truncate">
+                                                <h4 className="font-black text-[#36335e] group-hover:text-[#d5a22d] transition-colors text-[15px] tracking-tight truncate">
                                                     {dept.name}
                                                 </h4>
                                             </div>
                                         </td>
-                                        <td className="px-6 py-5">
-                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-gray-50 rounded-lg border border-gray-100 text-[10px] font-black text-gray-500 uppercase tracking-widest group-hover:bg-[#36335e]/5 group-hover:text-[#36335e] transition-all">
-                                                <span>{dept._count?.programs || 0} Programs</span>
+                                        <td className="px-10 py-6">
+                                            <div className="inline-flex items-center gap-3 px-4 py-2 bg-slate-50 rounded-xl border border-slate-100 text-[10px] font-black text-slate-500 uppercase tracking-widest group-hover:bg-[#36335e] group-hover:text-white group-hover:border-[#36335e] transition-all shadow-sm">
+                                                <GraduationCap className="w-4 h-4" />
+                                                <span>{dept._count?.programs || 0} Programs Active</span>
                                             </div>
                                         </td>
-                                        <td className="px-6 py-5">
+                                        <td className="px-10 py-6">
                                             <div className="flex items-center justify-center">
                                                 <button
                                                     onClick={() => handleDelete(dept.id)}
                                                     disabled={isDeleting === dept.id}
-                                                    className="p-2.5 text-rose-600 hover:bg-rose-600 hover:text-white rounded-xl transition-all border border-transparent hover:border-rose-100"
-                                                    title="Delete Department"
+                                                    className="w-11 h-11 flex items-center justify-center text-rose-300 hover:bg-rose-600 hover:text-white rounded-xl transition-all border border-slate-100 hover:border-rose-600 bg-white shadow-sm disabled:opacity-50"
+                                                    title="Remove Department"
                                                 >
                                                     {isDeleting === dept.id ? <Loader2 className="w-5 h-5 animate-spin" /> : <Trash2 className="w-5 h-5" />}
                                                 </button>

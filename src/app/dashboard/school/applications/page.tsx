@@ -1,10 +1,11 @@
 import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
 import { redirect } from 'next/navigation';
-import { Prisma, ApplicationStatus } from '@prisma/client';
-import { FileText } from 'lucide-react';
+import { Prisma } from '@prisma/client';
+import { FileText, Users } from 'lucide-react';
 import ApplicantListClient from '@/components/school/ApplicantListClient';
 import ExportButton from '@/components/school/ExportButton';
+import { PageHeader } from '@/components/ui/PageHeader';
 
 export default async function SchoolApplicationsPage({
     searchParams,
@@ -26,6 +27,11 @@ export default async function SchoolApplicationsPage({
     }
 
     if (!universityId) redirect('/dashboard');
+
+    const university = await prisma.university.findUnique({
+        where: { id: universityId },
+        select: { name: true }
+    });
 
     // ── Parse search params ──────────────────────────────────────────────────
     const params = await searchParams;
@@ -63,7 +69,6 @@ export default async function SchoolApplicationsPage({
         sortBy === 'name-asc'   ? { prospect: { fullName: 'asc' } } :
         sortBy === 'oldest'     ? { createdAt: 'asc' }              :
         sortBy === 'newest'     ? { createdAt: 'desc' }             :
-        // Default: rank ascending (nulls last via Prisma nulls: 'last')
         { rank: { sort: 'asc', nulls: 'last' } };
 
     // ── Paginated fetch ───────────────────────────────────────────────────────
@@ -95,31 +100,29 @@ export default async function SchoolApplicationsPage({
 
     const totalPages = Math.ceil(total / itemsPerPage);
 
-    // ── Render ────────────────────────────────────────────────────────────────
     return (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12">
-            <div className="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden">
-
-                {/* ── Unified navy header — same bg as table thead ── */}
-                <div className="bg-[#1d1b41] px-6 py-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div>
-                        <h1 className="text-base font-black text-white tracking-[0.15em] uppercase">
-                            Applicant Registry
-                        </h1>
-                        <p className="text-white/40 mt-0.5 font-medium text-[11px]">
-                            Review, rank, and action student applications across all programmes.
-                        </p>
+        <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-20">
+            <PageHeader 
+                preTitle={
+                    <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] border border-[#d5a22d]/20 text-[10px] font-black uppercase tracking-[0.2em]">
+                        <Users className="w-3.5 h-3.5" />
+                        Admissions Pipeline
                     </div>
-                    <div className="flex flex-wrap items-center gap-3">
+                }
+                title="Applicant Registry"
+                subtitle={
+                    <>
+                        Managing <span className="font-bold text-[#d5a22d]">{total}</span> active applications for <span className="font-bold text-[#36335e]">{university?.name}</span>.
+                    </>
+                }
+                action={
+                    <div className="flex items-center gap-3">
                         <ExportButton />
-                        <div className="flex items-center gap-2 px-3 py-2 bg-[#d5a22d]/20 text-[#d5a22d] rounded-xl text-[10px] font-black uppercase tracking-[0.2em] border border-[#d5a22d]/20">
-                            <FileText className="w-3.5 h-3.5" />
-                            <span>{total} Applications</span>
-                        </div>
                     </div>
-                </div>
+                }
+            />
 
-                {/* ── Filter bar + table (no extra card wrapper) ── */}
+            <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden">
                 <ApplicantListClient
                     applicants={applicants as any}
                     programs={universityPrograms}

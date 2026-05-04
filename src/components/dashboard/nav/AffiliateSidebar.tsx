@@ -10,7 +10,9 @@ export default function AffiliateSidebar() {
     const pathname = usePathname();
 
     const isActive = (href: string) =>
-        pathname === href || pathname.startsWith(href + '/');
+        href === '/dashboard/affiliate'
+            ? pathname === '/dashboard/affiliate'
+            : pathname === href || pathname.startsWith(href + '/');
 
     return (
         <>

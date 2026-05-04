@@ -266,37 +266,47 @@ export default async function UniversityDashboard() {
 
 
     // Calculate stats & Analytics
+    const [stats, programs] = await Promise.all([
+        getSchoolStats(university.id),
+        (prisma.program as any).findMany({
+            where: { universityId: university.id },
+            select: { id: true, name: true, intake: true },
+            orderBy: { name: 'asc' }
+        }) as Promise<any[]>
+    ]);
+
     const { 
         statusChartData, 
         programChartData, 
         totalApplications,
         taskQueue,
         yieldChartData
-    } = await getSchoolStats(university.id);
+    } = stats;
 
-    // Fetch all programs with their specific counts for cards
-    const programsWithStats = await (prisma.program as any).findMany({
-        where: { universityId: university.id },
-        select: {
-            id: true,
-            name: true,
-            intake: true,
-            applications: {
-                select: {
-                    id: true,
-                    status: true,
-                    rank: true,
-                }
-            }
-        },
-        orderBy: { name: 'asc' }
-    }) as any[];
+    const appCounts = await (prisma.application as any).groupBy({
+        by: ['programId', 'status'],
+        where: { programId: { in: programs.map(p => p.id) } },
+        _count: { id: true }
+    });
 
-    const programmeCardsData = programsWithStats.map(p => {
-        const total = p.applications.length;
-        const ranked = p.applications.filter((a: any) => a.rank !== null).length;
-        const offersIssued = p.applications.filter((a: any) => a.status === 'OFFER_ISSUED').length;
-        const offersAccepted = p.applications.filter((a: any) => ['OFFER_ACCEPTED', 'ENROLLED'].includes(a.status)).length;
+    const rankCounts = await (prisma.application as any).groupBy({
+        by: ['programId'],
+        where: { programId: { in: programs.map(p => p.id) }, rank: { not: null } },
+        _count: { id: true }
+    });
+
+    const programmeCardsData = programs.map(p => {
+        const pCounts = appCounts.filter((c: any) => c.programId === p.id);
+        const total = pCounts.reduce((acc: number, curr: any) => acc + curr._count.id, 0);
+        const ranked = rankCounts.find((c: any) => c.programId === p.id)?._count.id || 0;
+        
+        const offersIssued = pCounts
+            .filter((c: any) => c.status === 'OFFER_ISSUED')
+            .reduce((acc: number, curr: any) => acc + curr._count.id, 0);
+            
+        const offersAccepted = pCounts
+            .filter((c: any) => ['OFFER_ACCEPTED', 'ENROLLED'].includes(c.status))
+            .reduce((acc: number, curr: any) => acc + curr._count.id, 0);
         
         return {
             programId: p.id,

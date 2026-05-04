@@ -53,7 +53,16 @@ export async function getSchoolStats(universityId: string) {
         throw new Error("Unauthorized access to school stats");
     }
 
-    const [statusCounts, programCounts] = await Promise.all([
+    const [
+        statusCounts, 
+        programCounts, 
+        yieldData, 
+        allPrograms, 
+        meritScoreBuckets, 
+        pendingScoring, 
+        pendingOffers, 
+        pendingRedirections
+    ] = await Promise.all([
         prisma.application.groupBy({
             by: ['status'],
             where: { program: { universityId } },
@@ -65,14 +74,56 @@ export async function getSchoolStats(universityId: string) {
             _count: { id: true },
             orderBy: { _count: { id: 'desc' } },
             take: 5
+        }),
+        prisma.application.groupBy({
+            by: ['programId', 'status'],
+            where: {
+                program: { universityId },
+                status: { in: ['OFFER_ISSUED', 'OFFER_ACCEPTED', 'ENROLLED'] },
+            },
+            _count: { id: true },
+        }),
+        prisma.program.findMany({
+            where: { universityId },
+            select: { id: true, name: true }
+        }),
+        prisma.$queryRaw<Array<{ bucket: string; count: bigint }>>`
+            SELECT 
+                CASE 
+                    WHEN "meritScore" <= 20 THEN '0–20'
+                    WHEN "meritScore" <= 40 THEN '21–40'
+                    WHEN "meritScore" <= 60 THEN '41–60'
+                    WHEN "meritScore" <= 80 THEN '61–80'
+                    ELSE '81–100'
+                END AS bucket,
+                COUNT(*) AS count
+            FROM "Application"
+            INNER JOIN "Program" ON "Application"."programId" = "Program"."id"
+            WHERE "Program"."universityId" = ${universityId}
+            AND "meritScore" IS NOT NULL
+            GROUP BY bucket
+        `,
+        prisma.application.count({
+            where: {
+                program: { universityId },
+                status: { in: ['SUBMITTED', 'UNIVERSITY_REVIEW'] },
+                rank: null,
+            }
+        }),
+        prisma.application.count({
+            where: {
+                program: { universityId },
+                status: { in: ['SUBMITTED', 'UNIVERSITY_REVIEW'] },
+                rank: { not: null },
+            }
+        }),
+        prisma.application.count({
+            where: {
+                program: { universityId },
+                alternativeStatus: 'PENDING',
+            }
         })
     ]);
-
-    // Get program names for the labels
-    const topPrograms = await prisma.program.findMany({
-        where: { id: { in: programCounts.map(p => p.programId) } },
-        select: { id: true, name: true }
-    });
 
     const statusChartData = statusCounts.map(s => ({
         name: s.status.replace(/_/g, ' '),
@@ -80,19 +131,9 @@ export async function getSchoolStats(universityId: string) {
     }));
 
     const programChartData = programCounts.map(p => ({
-        name: topPrograms.find(tp => tp.id === p.programId)?.name || 'Unknown',
+        name: allPrograms.find(tp => tp.id === p.programId)?.name || 'Unknown',
         value: p._count.id
     }));
-
-    // ── Yield rate: OFFER_ISSUED vs OFFER_ACCEPTED per top programme ──
-    const yieldData = await prisma.application.groupBy({
-        by: ['programId', 'status'],
-        where: {
-            program: { universityId },
-            status: { in: ['OFFER_ISSUED', 'OFFER_ACCEPTED', 'ENROLLED'] },
-        },
-        _count: { id: true },
-    });
 
     const yieldByProgram: Record<string, { issued: number; accepted: number }> = {};
     for (const row of yieldData) {
@@ -101,67 +142,20 @@ export async function getSchoolStats(universityId: string) {
         if (row.status === 'OFFER_ACCEPTED' || row.status === 'ENROLLED') yieldByProgram[row.programId].accepted += row._count.id;
     }
 
-    const allPrograms = await prisma.program.findMany({
-        where: { universityId },
-        select: { id: true, name: true }
-    });
-
     const yieldChartData = allPrograms.map(p => ({
         name: p.name,
         offered: (yieldByProgram[p.id]?.issued ?? 0) + (yieldByProgram[p.id]?.accepted ?? 0),
         accepted: yieldByProgram[p.id]?.accepted ?? 0,
     })).filter(d => d.offered > 0);
 
-    // ── Merit score distribution (buckets) ──
-    const scored = await prisma.application.findMany({
-        where: {
-            program: { universityId },
-            meritScore: { not: null },
-        },
-        select: { meritScore: true },
-    });
-
-    const buckets = [
-        { label: '0–20', min: 0, max: 20, count: 0 },
-        { label: '21–40', min: 21, max: 40, count: 0 },
-        { label: '41–60', min: 41, max: 60, count: 0 },
-        { label: '61–80', min: 61, max: 80, count: 0 },
-        { label: '81–100', min: 81, max: 100, count: 0 },
+    const meritDistributionMap = new Map(meritScoreBuckets.map(b => [b.bucket, Number(b.count)]));
+    const meritDistribution = [
+        { name: '0–20', value: meritDistributionMap.get('0–20') || 0 },
+        { name: '21–40', value: meritDistributionMap.get('21–40') || 0 },
+        { name: '41–60', value: meritDistributionMap.get('41–60') || 0 },
+        { name: '61–80', value: meritDistributionMap.get('61–80') || 0 },
+        { name: '81–100', value: meritDistributionMap.get('81–100') || 0 },
     ];
-    for (const app of scored) {
-        const s = app.meritScore!;
-        for (const b of buckets) {
-            if (s >= b.min && s <= b.max) { b.count++; break; }
-        }
-    }
-    const meritDistribution = buckets.map(({ label, count }) => ({ name: label, value: count }));
-
-    // ── Task queue counts ──
-    const [pendingScoring, pendingOffers, pendingRedirections] = await Promise.all([
-        // Applications submitted but not yet scored (rank is null)
-        prisma.application.count({
-            where: {
-                program: { universityId },
-                status: { in: ['SUBMITTED', 'UNIVERSITY_REVIEW'] },
-                rank: null,
-            }
-        }),
-        // Ranked but offer not yet issued
-        prisma.application.count({
-            where: {
-                program: { universityId },
-                status: { in: ['SUBMITTED', 'UNIVERSITY_REVIEW'] },
-                rank: { not: null },
-            }
-        }),
-        // Redirections awaiting student response
-        prisma.application.count({
-            where: {
-                program: { universityId },
-                alternativeStatus: 'PENDING',
-            }
-        }),
-    ]);
 
     return {
         statusChartData,

@@ -10,7 +10,9 @@ export default function AdminSidebar() {
     const pathname = usePathname();
 
     const isActive = (href: string) =>
-        pathname === href || pathname.startsWith(href + '/');
+        href === '/dashboard/admin'
+            ? pathname === '/dashboard/admin'
+            : pathname === href || pathname.startsWith(href + '/');
 
     return (
         <>

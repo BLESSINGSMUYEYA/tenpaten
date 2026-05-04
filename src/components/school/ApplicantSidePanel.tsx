@@ -12,8 +12,6 @@ import { format } from 'date-fns';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
-// ── Types ────────────────────────────────────────────────────────────────────
-
 interface StatusHistoryEntry {
     id: string;
     status: string;
@@ -45,8 +43,6 @@ interface ApplicantSidePanelProps {
     onClose: () => void;
 }
 
-// ── Collapsible section ───────────────────────────────────────────────────────
-
 function Section({
     title,
     defaultOpen = false,
@@ -61,23 +57,21 @@ function Section({
         <div className="border-b border-slate-100 last:border-0">
             <button
                 onClick={() => setOpen(!open)}
-                className="w-full flex items-center justify-between px-6 py-4 hover:bg-slate-50 transition-colors group"
+                className="w-full flex items-center justify-between px-8 py-5 hover:bg-slate-50/50 transition-all group"
             >
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-[#36335e] transition-colors">
+                <span className="text-xs font-black text-[#36335e]/60 group-hover:text-[#36335e] transition-colors">
                     {title}
                 </span>
                 {open ? (
-                    <ChevronUp className="w-4 h-4 text-slate-300 group-hover:text-[#36335e]" />
+                    <ChevronUp className="w-4.5 h-4.5 text-[#d5a22d]" />
                 ) : (
-                    <ChevronDown className="w-4 h-4 text-slate-300 group-hover:text-[#36335e]" />
+                    <ChevronDown className="w-4.5 h-4.5 text-slate-300 group-hover:text-[#36335e]" />
                 )}
             </button>
-            {open && <div className="px-6 pb-5 space-y-3">{children}</div>}
+            {open && <div className="px-8 pb-6 space-y-4">{children}</div>}
         </div>
     );
 }
-
-// ── Score bar ─────────────────────────────────────────────────────────────────
 
 function ScoreBar({ label, score }: { label: string; score: number }) {
     const color =
@@ -86,22 +80,20 @@ function ScoreBar({ label, score }: { label: string; score: number }) {
         score >= 40 ? 'bg-amber-400' : 'bg-rose-400';
 
     return (
-        <div className="space-y-1.5">
+        <div className="space-y-2">
             <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-slate-600">{label}</span>
+                <span className="font-bold text-slate-500">{label}</span>
                 <span className="font-black text-[#36335e]">{score}</span>
             </div>
-            <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+            <div className="h-2 bg-slate-100 rounded-full overflow-hidden shadow-inner">
                 <div
-                    className={`h-full rounded-full transition-all duration-700 ${color}`}
+                    className={`h-full rounded-full transition-all duration-1000 ${color}`}
                     style={{ width: `${score}%` }}
                 />
             </div>
         </div>
     );
 }
-
-// ── Main component ────────────────────────────────────────────────────────────
 
 export default function ApplicantSidePanel({ applicant, onClose }: ApplicantSidePanelProps) {
     const router = useRouter();
@@ -133,76 +125,73 @@ export default function ApplicantSidePanel({ applicant, onClose }: ApplicantSide
 
     return (
         <>
-            {/* Backdrop (mobile) */}
             <div
-                className="fixed inset-0 bg-black/20 z-30 lg:hidden"
+                className="fixed inset-0 bg-[#36335e]/20 backdrop-blur-sm z-30 lg:hidden"
                 onClick={onClose}
             />
 
-            {/* Panel */}
-            <div className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-white border-l border-slate-100 shadow-2xl z-40 flex flex-col animate-in slide-in-from-right duration-300 overflow-hidden">
+            <div className="fixed right-0 top-0 bottom-0 w-full max-w-lg bg-white border-l border-slate-100 shadow-2xl z-40 flex flex-col animate-in slide-in-from-right duration-500 overflow-hidden">
                 {/* Header */}
-                <div className="bg-[#1d1b41] text-white p-6 shrink-0">
-                    <div className="flex items-start justify-between gap-4">
-                        <div className="flex items-center gap-4 min-w-0">
-                            <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white font-black text-lg shrink-0">
+                <div className="bg-[#36335e] text-white p-8 shrink-0 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#d5a22d]/10 rounded-full blur-2xl -mr-16 -mt-16" />
+                    <div className="flex items-start justify-between gap-4 relative z-10">
+                        <div className="flex items-center gap-5 min-w-0">
+                            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-[#d5a22d] font-black text-xl shrink-0 shadow-lg border border-white/10">
                                 {applicant.prospect.fullName.charAt(0)}
                             </div>
                             <div className="min-w-0">
-                                <h2 className="font-black text-lg tracking-tight leading-tight truncate">
+                                <h2 className="font-black text-xl tracking-tight leading-tight truncate">
                                     {applicant.prospect.fullName}
                                 </h2>
-                                <p className="text-white/50 text-xs font-medium truncate mt-0.5">
+                                <p className="text-white/60 text-sm font-medium truncate mt-1">
                                     {applicant.prospect.email}
                                 </p>
                             </div>
                         </div>
                         <button
                             onClick={onClose}
-                            className="p-2 rounded-xl hover:bg-white/10 text-white/60 hover:text-white transition-colors shrink-0"
+                            className="p-2.5 rounded-xl hover:bg-white/10 text-white/40 hover:text-white transition-all shrink-0"
                         >
-                            <X className="w-5 h-5" />
+                            <X className="w-6 h-6" />
                         </button>
                     </div>
 
-                    {/* Summary row */}
-                    <div className="flex items-center gap-3 mt-5 flex-wrap">
+                    <div className="flex items-center gap-3 mt-6 flex-wrap relative z-10">
                         <StatusBadge status={applicant.status} size="sm" />
                         {applicant.rank !== null && (
-                            <span className="px-2.5 py-1 rounded-full bg-white/10 text-[9px] font-black uppercase tracking-widest text-white/80">
+                            <span className="px-3 py-1 rounded-full bg-white/10 text-[10px] font-black uppercase tracking-widest text-white/80 border border-white/5">
                                 Rank #{applicant.rank}
                             </span>
                         )}
                         {applicant.meritScore !== null && (
-                            <span className="px-2.5 py-1 rounded-full bg-[#d5a22d]/20 text-[9px] font-black uppercase tracking-widest text-[#d5a22d]">
+                            <span className="px-3 py-1 rounded-full bg-[#d5a22d]/20 text-[10px] font-black uppercase tracking-widest text-[#d5a22d] border border-[#d5a22d]/10">
                                 {scoreLabel} · {applicant.meritScore}
                             </span>
                         )}
                     </div>
 
-                    {/* Programme */}
-                    <div className="flex items-center gap-2 mt-4 text-xs font-bold text-white/60">
-                        <GraduationCap className="w-3.5 h-3.5 text-[#d5a22d]" />
+                    <div className="flex items-center gap-2 mt-5 text-sm font-bold text-white/60 relative z-10">
+                        <GraduationCap className="w-4 h-4 text-[#d5a22d]" />
                         {applicant.program.name}
                     </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex items-center gap-2 px-6 py-4 border-b border-slate-100 bg-slate-50/50 shrink-0">
+                {/* Actions */}
+                <div className="flex items-center gap-3 px-8 py-5 border-b border-slate-100 bg-slate-50/50 shrink-0">
                     {canIssueOffer && (
                         <Button
                             onClick={handleIssueOffer}
                             disabled={isPending}
-                            className="flex-1 h-10 bg-[#36335e] hover:bg-[#2a284a] text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-md shadow-[#36335e]/20 transition-all"
+                            className="flex-1 h-12 bg-[#36335e] hover:bg-[#2a284a] text-white rounded-2xl text-xs font-black uppercase tracking-widest shadow-xl shadow-[#36335e]/20 transition-all active:scale-95"
                         >
                             {isPending ? (
                                 <span className="flex items-center gap-2">
-                                    <div className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                                     Issuing...
                                 </span>
                             ) : (
-                                <span className="flex items-center gap-1.5">
-                                    <Send className="w-3.5 h-3.5" /> Issue Offer
+                                <span className="flex items-center gap-2">
+                                    <Send className="w-4 h-4" /> Issue Offer
                                 </span>
                             )}
                         </Button>
@@ -210,105 +199,97 @@ export default function ApplicantSidePanel({ applicant, onClose }: ApplicantSide
                     <Button
                         onClick={() => setShowOverride(true)}
                         variant="outline"
-                        className="h-10 px-4 rounded-xl text-xs font-black uppercase tracking-widest border-amber-200 text-amber-700 hover:bg-amber-50 transition-all"
+                        className="h-12 px-6 rounded-2xl text-xs font-black uppercase tracking-widest border-amber-200 text-amber-700 hover:bg-amber-50 transition-all"
                     >
-                        <AlertTriangle className="w-3.5 h-3.5 mr-1.5" />
+                        <AlertTriangle className="w-4 h-4 mr-2" />
                         Override
                     </Button>
                     <Link
                         href={`/dashboard/school/applications/${applicant.id}`}
-                        className="h-10 w-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-400 hover:text-[#36335e] hover:border-[#36335e]/30 hover:bg-[#36335e]/5 transition-all shrink-0"
-                        title="Open full detail view"
+                        className="h-12 w-12 flex items-center justify-center rounded-2xl border border-slate-200 text-slate-400 hover:text-[#36335e] hover:border-[#36335e]/30 hover:bg-[#36335e]/5 transition-all shrink-0"
                     >
-                        <ExternalLink className="w-4 h-4" />
+                        <ExternalLink className="w-5 h-5" />
                     </Link>
                 </div>
 
-                {/* Scrollable Sections */}
-                <div className="flex-1 overflow-y-auto">
-
-                    {/* Factor Scores */}
+                {/* Content */}
+                <div className="flex-1 overflow-y-auto custom-scrollbar">
                     {applicant.meritScore !== null && (
-                        <Section title="Merit Score Breakdown">
+                        <Section title="Merit Breakdown" defaultOpen>
                             <ScoreBar
-                                label="Overall Merit"
+                                label="Overall Decision Score"
                                 score={applicant.meritScore}
                             />
-                            {applicant.academicInfo?.gpa && (
-                                <div className="p-3 bg-slate-50 rounded-xl flex items-center justify-between text-xs">
-                                    <span className="font-bold text-slate-500">GPA / Grade</span>
-                                    <span className="font-black text-[#36335e]">{applicant.academicInfo.gpa}</span>
-                                </div>
-                            )}
-                            {applicant.academicInfo?.testScore && (
-                                <div className="p-3 bg-slate-50 rounded-xl flex items-center justify-between text-xs">
-                                    <span className="font-bold text-slate-500">{applicant.academicInfo.testType || 'Test Score'}</span>
-                                    <span className="font-black text-[#36335e]">{applicant.academicInfo.testScore}</span>
-                                </div>
-                            )}
-                            {applicant.academicInfo?.highestQualification && (
-                                <div className="p-3 bg-slate-50 rounded-xl flex items-center justify-between text-xs">
-                                    <span className="font-bold text-slate-500">Qualification</span>
-                                    <span className="font-black text-[#36335e] capitalize">{applicant.academicInfo.highestQualification.replace(/_/g, ' ')}</span>
-                                </div>
-                            )}
+                            <div className="grid grid-cols-2 gap-3 mt-4">
+                                {applicant.academicInfo?.gpa && (
+                                    <div className="p-4 bg-slate-50 rounded-2xl flex flex-col gap-1 border border-slate-100">
+                                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">GPA / Grade</span>
+                                        <span className="font-black text-[#36335e] text-base">{applicant.academicInfo.gpa}</span>
+                                    </div>
+                                )}
+                                {applicant.academicInfo?.testScore && (
+                                    <div className="p-4 bg-slate-50 rounded-2xl flex flex-col gap-1 border border-slate-100">
+                                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{applicant.academicInfo.testType || 'Test Score'}</span>
+                                        <span className="font-black text-[#36335e] text-base">{applicant.academicInfo.testScore}</span>
+                                    </div>
+                                )}
+                            </div>
                         </Section>
                     )}
 
-                    {/* Activities */}
                     {applicant.activitiesInfo && Object.keys(applicant.activitiesInfo).length > 0 && (
-                        <Section title="Merit & Achievements">
-                            <div className="space-y-2">
+                        <Section title="Scholastic Achievements">
+                            <div className="space-y-3">
                                 {Object.entries(applicant.activitiesInfo).slice(0, 5).map(([key, value]: [string, any]) => (
-                                    <div key={key} className="p-3 bg-slate-50 rounded-xl text-xs">
-                                        <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-0.5">
+                                    <div key={key} className="p-4 bg-slate-50 rounded-2xl border border-slate-100 group hover:bg-white transition-all">
+                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 leading-none">
                                             {key.replace(/([A-Z])/g, ' $1').trim()}
                                         </p>
-                                        <p className="font-bold text-slate-700 line-clamp-2">{value?.toString()}</p>
+                                        <p className="text-sm font-bold text-slate-700 leading-relaxed">{value?.toString()}</p>
                                     </div>
                                 ))}
                             </div>
                         </Section>
                     )}
 
-                    {/* Redirection History */}
                     {applicant.alternativeProgramId && (
-                        <Section title="Redirection History">
-                            <div className={`p-4 rounded-2xl border text-xs font-bold flex items-center gap-2 ${applicant.alternativeStatus === 'ACCEPTED' ? 'bg-emerald-50 border-emerald-100 text-emerald-700' : applicant.alternativeStatus === 'REJECTED' ? 'bg-rose-50 border-rose-100 text-rose-700' : 'bg-amber-50 border-amber-100 text-amber-700'}`}>
-                                <div className="w-2 h-2 rounded-full bg-current animate-pulse" />
-                                Alternative programme suggested — student response:{' '}
-                                <span className="font-black">{applicant.alternativeStatus ?? 'Pending'}</span>
+                        <Section title="Admissions Redirection">
+                            <div className={`p-5 rounded-[1.5rem] border text-sm font-bold flex flex-col gap-3 ${applicant.alternativeStatus === 'ACCEPTED' ? 'bg-emerald-50 border-emerald-100 text-emerald-700' : applicant.alternativeStatus === 'REJECTED' ? 'bg-rose-50 border-rose-100 text-rose-700' : 'bg-amber-50 border-amber-100 text-amber-700'}`}>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-2.5 h-2.5 rounded-full bg-current animate-pulse" />
+                                    Alternative suggestion response
+                                </div>
+                                <p className="font-black text-lg">{applicant.alternativeStatus ?? 'Pending Response'}</p>
                             </div>
                         </Section>
                     )}
 
-                    {/* Audit Trail */}
-                    <Section title="Audit Trail" defaultOpen={false}>
+                    <Section title="Decision Audit Trail">
                         {applicant.statusHistory.length === 0 ? (
-                            <p className="text-xs text-slate-400 font-medium">No history yet.</p>
+                            <p className="text-sm text-slate-400 font-bold text-center py-4">No activity recorded yet.</p>
                         ) : (
-                            <div className="space-y-2">
+                            <div className="space-y-3">
                                 {applicant.statusHistory.map((entry) => (
                                     <div
                                         key={entry.id}
-                                        className={`p-3 rounded-xl border text-xs space-y-1 ${entry.isOverride ? 'bg-amber-50 border-amber-100' : 'bg-slate-50 border-slate-100'}`}
+                                        className={`p-4 rounded-2xl border text-sm space-y-2 ${entry.isOverride ? 'bg-amber-50 border-amber-100 shadow-sm' : 'bg-slate-50 border-slate-100'}`}
                                     >
                                         <div className="flex items-center justify-between">
-                                            <span className={`font-black uppercase tracking-widest text-[9px] ${entry.isOverride ? 'text-amber-700' : 'text-slate-500'}`}>
+                                            <span className={`font-black uppercase tracking-widest text-[10px] ${entry.isOverride ? 'text-amber-700' : 'text-[#36335e]/60'}`}>
                                                 {entry.isOverride && '⚠ Override · '}{entry.status.replace(/_/g, ' ')}
                                             </span>
-                                            <span className="text-[9px] text-slate-400 font-medium flex items-center gap-1">
-                                                <Clock className="w-3 h-3" />
+                                            <span className="text-[10px] text-slate-400 font-bold flex items-center gap-1.5">
+                                                <Clock className="w-3.5 h-3.5" />
                                                 {format(new Date(entry.createdAt), 'dd MMM yy HH:mm')}
                                             </span>
                                         </div>
                                         {entry.overrideReason && (
-                                            <p className="text-amber-700 font-bold text-[10px]">
-                                                Reason: {entry.overrideReason}
-                                            </p>
+                                            <div className="p-2 bg-white rounded-lg text-amber-700 font-bold text-[11px] border border-amber-100">
+                                                {entry.overrideReason}
+                                            </div>
                                         )}
                                         {entry.note && (
-                                            <p className="text-slate-500 font-medium">{entry.note}</p>
+                                            <p className="text-slate-500 font-bold text-xs leading-relaxed">{entry.note}</p>
                                         )}
                                     </div>
                                 ))}
@@ -316,14 +297,13 @@ export default function ApplicantSidePanel({ applicant, onClose }: ApplicantSide
                         )}
                     </Section>
 
-                    {/* Applied date */}
-                    <div className="px-6 py-4 text-[9px] font-bold text-slate-300 uppercase tracking-widest">
-                        Applied {format(new Date(applicant.createdAt), 'dd MMM yyyy')}
+                    <div className="px-8 py-8 text-[11px] font-black text-slate-300 uppercase tracking-[0.2em] border-t border-slate-50 flex items-center justify-between">
+                        <span>Application Initialized</span>
+                        <span>{format(new Date(applicant.createdAt), 'dd MMM yyyy')}</span>
                     </div>
                 </div>
             </div>
 
-            {/* Override Modal */}
             {showOverride && (
                 <OverrideModal
                     applicationId={applicant.id}

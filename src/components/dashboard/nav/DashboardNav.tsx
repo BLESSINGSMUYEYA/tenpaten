@@ -46,7 +46,12 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
 
     const homeUrl = getHomeUrl(role);
 
-    const isActive = (path: string) => pathname === path || (path !== '/dashboard' && pathname.startsWith(path));
+    const isActive = (path: string) => {
+        // Special case for dashboard home URLs to prevent over-matching on sub-pages
+        const isHomeUrl = ['/dashboard', '/dashboard/school', '/dashboard/admin', '/dashboard/country-director', '/dashboard/affiliate'].includes(path);
+        if (isHomeUrl) return pathname === path;
+        return pathname === path || pathname.startsWith(path + '/');
+    };
 
     return (
         <>

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, LazyMotion, domAnimation, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { ReactNode, useEffect, useState } from 'react';
 import { usePerformance } from '@/components/providers/PerformanceProvider';
@@ -40,45 +40,46 @@ export default function PageTransition({ children }: PageTransitionProps) {
   }
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.div
-        key={pathname}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        variants={{
-          initial: {
-            opacity: 0,
-            y: isMobile ? 15 : 0,
-            x: isMobile ? 0 : 15,
-            filter: 'blur(4px)',
-          },
-          animate: {
-            opacity: 1,
-            y: 0,
-            x: 0,
-            filter: 'blur(0px)',
-            transition: {
-              duration: 0.3,
-              // Custom cubic-bezier for a "Premium" snappy, elastic feel
-              ease: [0.22, 1, 0.36, 1],
+    <LazyMotion features={domAnimation}>
+      <AnimatePresence mode="popLayout" initial={false}>
+        <m.div
+          key={pathname}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          variants={{
+            initial: {
+              opacity: 0,
+              scale: 0.98,
+              y: isMobile ? 15 : 0,
+              x: isMobile ? 0 : 15,
             },
-          },
-          exit: {
-            opacity: 0,
-            y: isMobile ? -15 : 0,
-            x: isMobile ? 0 : -15,
-            filter: 'blur(4px)',
-            transition: {
-              duration: 0.2,
-              ease: "easeInOut",
+            animate: {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              x: 0,
+              transition: {
+                duration: 0.3,
+                ease: [0.22, 1, 0.36, 1],
+              },
             },
-          },
-        }}
-        className="w-full h-full will-change-[transform,opacity]"
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+            exit: {
+              opacity: 0,
+              scale: 0.98,
+              y: isMobile ? -15 : 0,
+              x: isMobile ? 0 : -15,
+              transition: {
+                duration: 0.2,
+                ease: "easeInOut",
+              },
+            },
+          }}
+          className="w-full h-full will-change-[transform,opacity]"
+        >
+          {children}
+        </m.div>
+      </AnimatePresence>
+    </LazyMotion>
   );
 }

@@ -10,7 +10,9 @@ export default function CountryDirectorSidebar() {
     const pathname = usePathname();
 
     const isActive = (href: string) =>
-        pathname === href || pathname.startsWith(href + '/');
+        href === '/dashboard/country-director'
+            ? pathname === '/dashboard/country-director'
+            : pathname === href || pathname.startsWith(href + '/');
 
     return (
         <div className="flex flex-col h-full overflow-y-auto custom-scrollbar">

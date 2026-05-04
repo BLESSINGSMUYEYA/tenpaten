@@ -17,9 +17,5 @@ export default async function SchoolProgramsPage() {
         );
     }
 
-    return (
-        <main className="max-w-7xl mx-auto px-2 md:px-4 py-2 md:py-4">
-            <ProgramPageClient university={university} />
-        </main>
-    );
+    return <ProgramPageClient university={university} />;
 }

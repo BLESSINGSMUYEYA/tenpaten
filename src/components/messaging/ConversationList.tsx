@@ -69,42 +69,44 @@ export default function ConversationList({ conversations: initialConversations }
 
     return (
         <div className="flex flex-col h-full bg-[#f8f9fc]">
-            {/* Header / New Message */}
-            <div className="p-6 bg-white border-b border-gray-100 flex items-center justify-between">
-                <div>
-                    <h2 className="text-xl font-black text-[#1d1b41] tracking-tight uppercase">Messages</h2>
-                    <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest mt-0.5">Inbox ({conversations.filter(c => c.isUnread).length} Unread)</p>
+            {/* ── Navy & Gold Header ── */}
+            <div className="px-6 py-5 bg-[#1d1b41] flex flex-col gap-4 shrink-0">
+                <div className="flex items-center justify-between">
+                    <div>
+                        <h2 className="text-base font-black text-white tracking-[0.15em] uppercase">Messages</h2>
+                        <p className="text-[10px] text-white/50 font-black uppercase tracking-[0.2em] mt-0.5">
+                            Inbox ({conversations.filter(c => c.isUnread).length} Unread)
+                        </p>
+                    </div>
+                    <button 
+                        onClick={() => setIsModalOpen(true)}
+                        className="w-9 h-9 rounded-xl bg-[#d5a22d] text-[#1d1b41] flex items-center justify-center shadow-lg shadow-[#1d1b41]/20 hover:bg-[#b58825] active:scale-95 transition-all"
+                    >
+                        <Plus className="w-4 h-4 font-black" />
+                    </button>
                 </div>
-                <button 
-                    onClick={() => setIsModalOpen(true)}
-                    className="w-10 h-10 rounded-xl bg-[#d5a22d] text-white flex items-center justify-center shadow-lg shadow-[#d5a22d]/20 hover:scale-105 active:scale-95 transition-all"
-                >
-                    <Plus className="w-5 h-5" />
-                </button>
-            </div>
 
-            {/* Search Bar */}
-            <div className="px-6 py-4 border-b border-gray-100 bg-white/50 backdrop-blur-sm">
+                {/* Search Bar inside header */}
                 <div className="relative group">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 group-focus-within:text-[#d5a22d] transition-colors" />
                     <input
                         type="text"
                         placeholder="Search conversations..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-transparent rounded-2xl text-sm focus:outline-none focus:ring-4 focus:ring-[#d5a22d]/5 focus:border-[#d5a22d] focus:bg-white transition-all placeholder:text-gray-400 font-medium"
+                        className="w-full pl-9 pr-4 py-2.5 bg-white/10 border border-white/10 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#d5a22d]/50 focus:bg-white/15 transition-all placeholder:text-white/30 text-white font-medium"
                     />
                 </div>
             </div>
 
             {/* List */}
-            <div className="flex-1 overflow-y-auto custom-scrollbar pt-4">
+            <div className="flex-1 overflow-y-auto custom-scrollbar pt-2 pb-4 bg-white">
                 {filteredConversations.length === 0 ? (
-                    <div className="py-20 flex flex-col items-center justify-center p-8 text-center">
-                        <div className="w-16 h-16 rounded-[2rem] bg-gray-100 flex items-center justify-center mb-4">
-                            <MessageSquare className="w-8 h-8 text-gray-300" />
+                    <div className="py-16 flex flex-col items-center justify-center p-8 text-center">
+                        <div className="w-16 h-16 rounded-2xl bg-[#1d1b41]/5 border border-[#1d1b41]/10 flex items-center justify-center mb-4">
+                            <MessageSquare className="w-8 h-8 text-[#1d1b41]/30" />
                         </div>
-                        <p className="text-sm text-gray-400 font-medium">
+                        <p className="text-[11px] text-slate-400 font-black uppercase tracking-[0.1em]">
                             {searchQuery ? `No matches for "${searchQuery}"` : "No active conversations"}
                         </p>
                     </div>
@@ -122,30 +124,29 @@ export default function ConversationList({ conversations: initialConversations }
                             <Link
                                 key={conv.id}
                                 href={`/dashboard/messages?id=${conv.id}`}
-                                className={`group flex items-center gap-4 p-4 mx-4 my-1.5 rounded-[1.75rem] transition-all duration-300 relative ${isActive
-                                    ? 'bg-[#1d1b41] text-white shadow-xl shadow-[#1d1b41]/20 scale-[1.02] z-10'
-                                    : conv.isUnread ? 'bg-white shadow-sm border border-blue-50' : 'hover:bg-white hover:shadow-sm text-gray-700'
+                                className={`group flex items-center gap-4 px-5 py-3 mx-2 my-1 rounded-2xl transition-all duration-300 relative border border-transparent ${isActive
+                                    ? 'bg-[#1d1b41] text-white shadow-lg shadow-[#1d1b41]/20 z-10'
+                                    : conv.isUnread ? 'bg-amber-50/50 border-amber-100/50' : 'hover:bg-slate-50 hover:border-slate-100 text-[#1d1b41]'
                                     }`}
                             >
                                 {/* Avatar */}
                                 <div className="relative flex-shrink-0">
-                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center font-black text-lg shadow-sm transition-transform group-hover:rotate-3 ${isActive
-                                        ? 'bg-white/10 text-white'
-                                        : 'bg-gradient-to-br from-[#1d1b41]/5 to-[#1d1b41]/10 text-[#1d1b41]'
+                                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-black text-sm shadow-sm transition-transform group-hover:rotate-3 border ${isActive
+                                        ? 'bg-white/10 text-white border-white/20'
+                                        : 'bg-white text-[#1d1b41] border-[#1d1b41]/10'
                                         }`}>
                                         {conv.otherUser.profilePhoto ? (
                                             <img
                                                 src={conv.otherUser.profilePhoto}
                                                 alt=""
-                                                className="w-full h-full object-cover rounded-2xl"
+                                                className="w-full h-full object-cover rounded-xl"
                                             />
                                         ) : (
                                             initials
                                         )}
                                     </div>
                                     {conv.isUnread && (
-                                        <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#d5a22d] border-2 border-white rounded-full flex items-center justify-center animate-bounce shadow-sm z-20">
-                                            <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+                                        <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#d5a22d] border-2 border-white rounded-full flex items-center justify-center shadow-sm z-20">
                                         </div>
                                     )}
                                 </div>
@@ -154,25 +155,25 @@ export default function ConversationList({ conversations: initialConversations }
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-center justify-between mb-0.5">
                                         <div className="flex items-center gap-2 overflow-hidden">
-                                            <h4 className={`text-sm truncate pr-2 tracking-tight ${isActive ? 'text-white' : conv.isUnread ? 'font-black text-gray-900' : 'font-bold text-gray-700'
+                                            <h4 className={`text-sm truncate pr-2 tracking-tight ${isActive ? 'text-white' : conv.isUnread ? 'font-black text-[#1d1b41]' : 'font-bold text-[#1d1b41]'
                                                 }`}>
                                                 {conv.otherUser.fullName || 'User'}
                                             </h4>
                                             {!isActive && (
-                                                <span className={`px-1.5 py-0.5 rounded-md text-[7px] font-black uppercase tracking-tighter ${
-                                                    conv.otherUser.role === 'SCHOOL_ADMIN' ? 'bg-blue-50 text-blue-600' : 'bg-gray-100 text-gray-500'
+                                                <span className={`px-1.5 py-0.5 rounded-md text-[8px] font-black uppercase tracking-widest border ${
+                                                    conv.otherUser.role === 'SCHOOL_ADMIN' ? 'bg-[#1d1b41]/5 text-[#1d1b41] border-[#1d1b41]/10' : 'bg-slate-50 text-slate-400 border-slate-100'
                                                 }`}>
                                                     {conv.otherUser.role === 'SCHOOL_ADMIN' ? 'School' : 'Student'}
                                                 </span>
                                             )}
                                         </div>
-                                        <span className={`text-[9px] font-black uppercase tracking-widest flex-shrink-0 ${isActive ? 'text-white/60' : conv.isUnread ? 'text-[#d5a22d]' : 'text-gray-400'
+                                        <span className={`text-[9px] font-black uppercase tracking-[0.1em] flex-shrink-0 ${isActive ? 'text-white/60' : conv.isUnread ? 'text-[#d5a22d]' : 'text-slate-400'
                                             }`} suppressHydrationWarning>
                                             {formatMessageDate(conv.updatedAt)}
                                         </span>
                                     </div>
                                     <div className="flex items-center justify-between gap-2">
-                                        <p className={`text-[11px] truncate leading-none ${isActive ? 'text-white/70' : conv.isUnread ? 'font-bold text-[#1d1b41]' : 'text-gray-500 font-medium'
+                                        <p className={`text-[11px] truncate leading-snug ${isActive ? 'text-white/70' : conv.isUnread ? 'font-bold text-[#1d1b41]' : 'text-slate-500 font-medium'
                                             }`}>
                                             {conv.lastMessage?.content || 'Started a conversation'}
                                         </p>
@@ -180,8 +181,8 @@ export default function ConversationList({ conversations: initialConversations }
                                         {/* Actions */}
                                         <button 
                                             onClick={(e) => handleDelete(conv.id, e)}
-                                            className={`opacity-0 group-hover:opacity-100 p-1.5 rounded-lg transition-all ${
-                                                isActive ? 'text-white/40 hover:text-white hover:bg-white/10' : 'text-gray-300 hover:text-red-500 hover:bg-red-50'
+                                            className={`opacity-0 group-hover:opacity-100 p-1.5 rounded-lg transition-all border ${
+                                                isActive ? 'text-white/40 hover:text-white border-white/10 hover:bg-white/10' : 'text-slate-300 hover:text-rose-500 border-slate-100 hover:bg-rose-50 hover:border-rose-100'
                                             }`}
                                         >
                                             <Archive className="w-3.5 h-3.5" />

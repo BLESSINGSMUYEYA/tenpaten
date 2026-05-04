@@ -2,7 +2,7 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import { getUniversityForAdmin } from '@/lib/data';
 import RequirementSettings from '@/components/school/RequirementSettings';
-import { FileText } from 'lucide-react';
+import { FileText, Building2 } from 'lucide-react';
 import { PageHeader } from '@/components/ui/PageHeader';
 
 export default async function SchoolRequirementsPage() {
@@ -12,7 +12,7 @@ export default async function SchoolRequirementsPage() {
         redirect('/login');
     }
 
-    if (session.user.role !== 'SCHOOL_ADMIN') {
+    if ((session.user as any).role !== 'SCHOOL_ADMIN') {
         redirect('/dashboard');
     }
 
@@ -38,22 +38,23 @@ export default async function SchoolRequirementsPage() {
     }
 
     return (
-        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12">
-            {/* Header Section */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <h1 className="text-2xl sm:text-3xl font-black text-[#36335e] tracking-tight">Application Requirements</h1>
-                    <p className="text-gray-500 mt-1 font-medium italic">Customize specific document and information requirements for student applications.</p>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-[#d5a22d]/10 text-[#d5a22d] rounded-xl text-sm font-black uppercase tracking-widest border border-[#d5a22d]/20">
-                    <FileText className="w-4 h-4" />
-                    <span>Configuration Engine</span>
-                </div>
-            </div>
+        <div className="max-w-7xl mx-auto space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-20">
+            <PageHeader 
+                preTitle={
+                    <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] border border-[#d5a22d]/20 text-[10px] font-black uppercase tracking-[0.2em]">
+                        <Building2 className="w-3.5 h-3.5" />
+                        Institutional Setup
+                    </div>
+                }
+                title="Application Requirements"
+                subtitle={
+                    <>
+                        Customize document and information requirements for <span className="font-bold text-[#d5a22d]">{university.name}</span> applications.
+                    </>
+                }
+            />
 
-            <div className="space-y-6">
-                <RequirementSettings university={university} />
-            </div>
+            <RequirementSettings university={university} />
         </div>
     );
 }
