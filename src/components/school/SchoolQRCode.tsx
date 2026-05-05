@@ -2,20 +2,22 @@
 
 import { useRef, useState, useTransition, useCallback } from 'react';
 import { QRCodeCanvas, QRCodeSVG } from 'qrcode.react';
-import { Download, Copy, Check, Edit2, X, Loader2, AlertCircle, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Download, Copy, Check, Edit2, X, Loader2, AlertCircle, ExternalLink, Sparkles } from 'lucide-react';
 import { updateUniversitySlug, checkSlugAvailability } from '@/lib/actions/university';
 
 interface SchoolQRCodeProps {
     universityId: string;
     universityName: string;
     slug: string | null;
+    initialEditMode?: boolean;
 }
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://tenpaten.com';
 
-export default function SchoolQRCode({ universityId, universityName, slug: initialSlug }: SchoolQRCodeProps) {
+export default function SchoolQRCode({ universityId, universityName, slug: initialSlug, initialEditMode = false }: SchoolQRCodeProps) {
     const [slug, setSlug] = useState(initialSlug);
-    const [editMode, setEditMode] = useState(false);
+    const [editMode, setEditMode] = useState(initialEditMode);
     const [draftSlug, setDraftSlug] = useState(initialSlug ?? '');
     const [slugStatus, setSlugStatus] = useState<'idle' | 'checking' | 'available' | 'taken' | 'invalid'>('idle');
     const [isPending, startTransition] = useTransition();
@@ -155,23 +157,56 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
                     </button>
                 </div>
             ) : (
-                <div className="flex flex-col items-center gap-6">
-                    {/* DISPLAY: SVG (Razor sharp on all screens) */}
-                    <div className="p-5 bg-white rounded-3xl shadow-2xl shadow-black/30 ring-4 ring-[#d5a22d]/20 overflow-hidden">
-                        <QRCodeSVG
-                            value={shortUrl!}
-                            size={220}
-                            level="H"
-                            bgColor="#ffffff"
-                            fgColor="#1a1b41"
-                            imageSettings={{
-                                src: '/tenpaten-logo-navy.png',
-                                height: 28,
-                                width: 80,
-                                excavate: true,
-                            }}
-                        />
-                    </div>
+                <div className="flex flex-col items-center gap-8">
+                    {/* Premium QR Container with Tilt Effect and Scanning Animation */}
+                    <motion.div 
+                        whileHover={{ scale: 1.02, rotateY: 5, rotateX: 5 }}
+                        className="relative group p-1 rounded-[2.5rem] bg-gradient-to-br from-[#d5a22d]/40 via-white/5 to-[#d5a22d]/20 shadow-2xl shadow-black/40"
+                    >
+                        <div className="relative p-6 bg-[#ffffff] rounded-[2.2rem] overflow-hidden">
+                            {/* Scanning Line Animation */}
+                            <motion.div 
+                                animate={{ 
+                                    top: ["0%", "100%", "0%"],
+                                    opacity: [0, 1, 0]
+                                }}
+                                transition={{ 
+                                    duration: 3, 
+                                    repeat: Infinity, 
+                                    ease: "linear" 
+                                }}
+                                className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#d5a22d] to-transparent z-10 pointer-events-none"
+                            />
+
+                            {/* Corner Accents */}
+                            <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[#d5a22d]/30 rounded-tl-lg" />
+                            <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#d5a22d]/30 rounded-tr-lg" />
+                            <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-[#d5a22d]/30 rounded-bl-lg" />
+                            <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-[#d5a22d]/30 rounded-br-lg" />
+
+                            {/* DISPLAY: SVG (Razor sharp on all screens) */}
+                            <QRCodeSVG
+                                value={shortUrl!}
+                                size={200}
+                                level="H"
+                                bgColor="#ffffff"
+                                fgColor="#1a1b41"
+                                imageSettings={{
+                                    src: '/tenpaten-logo-navy.png',
+                                    height: 24,
+                                    width: 70,
+                                    excavate: true,
+                                }}
+                            />
+                        </div>
+
+                        {/* Floating Badge */}
+                        <div className="absolute -top-3 -right-3 px-3 py-1 bg-[#d5a22d] rounded-full shadow-lg border border-white/20">
+                            <span className="text-[9px] font-black text-white uppercase tracking-tighter flex items-center gap-1">
+                                <Sparkles className="w-2.5 h-2.5" /> Official
+                            </span>
+                        </div>
+                    </motion.div>
 
                     {/* HIDDEN: High-Res Canvas for Downloads */}
                     <div className="hidden">
@@ -192,33 +227,55 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
                     </div>
 
                     {/* Short URL display */}
-                    <div className="text-center">
+                    <div className="text-center space-y-1">
+                        <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Active Link</p>
                         <a
                             href={shortUrl!}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-[#d5a22d] font-black text-sm hover:underline"
+                            className="inline-flex items-center gap-1.5 text-[#d5a22d] font-black text-lg hover:underline decoration-2 underline-offset-4"
                         >
                             {displayUrl}
-                            <ExternalLink className="w-3.5 h-3.5" />
+                            <ExternalLink className="w-4 h-4" />
                         </a>
                     </div>
 
                     {/* Action buttons */}
-                    <div className="flex items-center gap-3 w-full">
+                    <div className="flex items-center gap-4 w-full">
                         <button
                             onClick={handleDownload}
-                            className="flex-1 flex items-center justify-center gap-2 py-3.5 bg-[#d5a22d] text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-[#b89531] transition-all hover:scale-105 active:scale-95 shadow-lg shadow-[#d5a22d]/20"
+                            className="flex-[2] flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-[#d5a22d] to-[#b89531] text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:brightness-110 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl shadow-[#d5a22d]/20 relative overflow-hidden group"
                         >
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                             <Download className="w-4 h-4" />
-                            Download High-Res
+                            Download Kit
                         </button>
                         <button
                             onClick={handleCopy}
-                            className="flex-1 flex items-center justify-center gap-2 py-3.5 bg-white/10 text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-white/20 transition-all border border-white/10"
+                            className="flex-1 flex items-center justify-center gap-2 py-4 bg-white/5 text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-white/10 transition-all border border-white/10"
                         >
-                            {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                            {copied ? 'Copied!' : 'Copy Link'}
+                            <AnimatePresence mode="wait">
+                                {copied ? (
+                                    <motion.div
+                                        key="check"
+                                        initial={{ scale: 0.5, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        exit={{ scale: 0.5, opacity: 0 }}
+                                    >
+                                        <Check className="w-4 h-4 text-emerald-400" />
+                                    </motion.div>
+                                ) : (
+                                    <motion.div
+                                        key="copy"
+                                        initial={{ scale: 0.5, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        exit={{ scale: 0.5, opacity: 0 }}
+                                    >
+                                        <Copy className="w-4 h-4" />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                            {copied ? 'Done!' : 'Copy'}
                         </button>
                     </div>
                 </div>

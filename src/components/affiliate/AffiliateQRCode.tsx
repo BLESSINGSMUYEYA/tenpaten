@@ -2,7 +2,8 @@
 
 import { useState, useRef } from 'react';
 import { QRCodeSVG, QRCodeCanvas } from 'qrcode.react';
-import { Download, Share2, Copy, CheckCircle2, Image as ImageIcon, FileText, Loader2, Send, Twitter } from 'lucide-react';
+import { Download, Share2, Copy, CheckCircle2, Image as ImageIcon, FileText, Loader2, Send, Twitter, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { toast } from 'sonner';
@@ -152,30 +153,65 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                 </div>
 
                 {view === 'qr' ? (
-                    <div className="p-8 bg-white rounded-3xl shadow-xl border border-gray-100 flex flex-col items-center gap-4">
-                        <div className="relative group">
-                            <div className="absolute -inset-4 bg-gradient-to-tr from-[#d5a22d]/20 to-transparent rounded-[40px] blur-2xl opacity-50 group-hover:opacity-100 transition-opacity" />
-                            <div className="relative bg-white p-4 rounded-2xl">
+                    <div className="flex flex-col items-center gap-6">
+                        {/* Premium QR Container with Tilt Effect and Scanning Animation */}
+                        <motion.div 
+                            whileHover={{ scale: 1.02, rotateY: 5, rotateX: 5 }}
+                            className="relative group p-1 rounded-[2.5rem] bg-gradient-to-br from-[#d5a22d]/40 via-white/5 to-[#d5a22d]/20 shadow-2xl shadow-black/40"
+                        >
+                            <div className="relative p-6 bg-[#ffffff] rounded-[2.2rem] overflow-hidden">
+                                {/* Scanning Line Animation */}
+                                <motion.div 
+                                    animate={{ 
+                                        top: ["0%", "100%", "0%"],
+                                        opacity: [0, 1, 0]
+                                    }}
+                                    transition={{ 
+                                        duration: 3, 
+                                        repeat: Infinity, 
+                                        ease: "linear" 
+                                    }}
+                                    className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#d5a22d] to-transparent z-10 pointer-events-none"
+                                />
+
+                                {/* Corner Accents */}
+                                <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[#d5a22d]/30 rounded-tl-lg" />
+                                <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#d5a22d]/30 rounded-tr-lg" />
+                                <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-[#d5a22d]/30 rounded-bl-lg" />
+                                <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-[#d5a22d]/30 rounded-br-lg" />
+
+                                {/* DISPLAY: SVG */}
                                 <QRCodeSVG
+                                    id="affiliate-qr-main-svg"
                                     value={referralLink}
-                                    size={240}
+                                    size={200}
                                     level="H"
                                     includeMargin={false}
                                     imageSettings={{
                                         src: "/favicon.png",
                                         x: undefined,
                                         y: undefined,
-                                        height: 50,
-                                        width: 50,
+                                        height: 35,
+                                        width: 35,
                                         excavate: true,
                                     }}
                                     fgColor="#1a1b4d"
                                 />
                             </div>
-                        </div>
+
+                            {/* Floating Badge */}
+                            <div className="absolute -top-2 -right-2 px-3 py-1 bg-[#d5a22d] rounded-full shadow-lg border border-white/20">
+                                <span className="text-[8px] font-black text-white uppercase tracking-tighter flex items-center gap-1">
+                                    <Sparkles className="w-2 h-2" /> Affiliate
+                                </span>
+                            </div>
+                        </motion.div>
+
                         <div className="text-center">
-                            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-1">Affiliate Code</p>
-                            <p className="text-xl font-black text-[#1a1b4d] tracking-tighter">{referralCode}</p>
+                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-1">Referral Code</p>
+                            <p className="text-2xl font-black text-[#1a1b4d] tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-[#1a1b4d] to-[#36335e]">
+                                {referralCode}
+                            </p>
                         </div>
                     </div>
                 ) : (

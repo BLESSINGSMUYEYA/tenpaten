@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { 
     FileText, CheckCircle2, Clock, AlertCircle, Users, Sparkles, 
     MessageSquare, Building2, ArrowRight, ImageIcon, Search, 
-    ChevronRight, LayoutDashboard, GraduationCap 
+    ChevronRight, LayoutDashboard, GraduationCap, QrCode
 } from 'lucide-react';
 import Link from 'next/link';
 import { submitUniversityForReview } from '@/app/actions/universityActions';
@@ -16,8 +16,10 @@ import StatsCard from '@/components/dashboard/analytics/StatsCard';
 import SchoolDashboardCharts from '@/components/dashboard/analytics/SchoolDashboardCharts';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { EmptyState } from '@/components/ui/EmptyState';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { getHomeUrl } from '@/lib/navigation';
 import SchoolQRCode from '@/components/school/SchoolQRCode';
+import CopySchoolLink from '@/components/school/CopySchoolLink';
 import LiveActivityFeed from '@/components/school/LiveActivityFeed';
 import TaskQueue from '@/components/school/TaskQueue';
 import ProgrammeCard from '@/components/school/ProgrammeCard';
@@ -352,6 +354,27 @@ export default async function UniversityDashboard() {
                                 View Applications
                             </Button>
                         </Link>
+
+                        <Dialog>
+                            <DialogTrigger asChild>
+                                <Button variant="outline" className="h-12 w-12 p-0 bg-white border-none rounded-2xl shadow-sm hover:bg-slate-50 transition-all transform hover:scale-105 active:scale-95">
+                                    <QrCode className="w-5 h-5 text-[#36335e]" />
+                                </Button>
+                            </DialogTrigger>
+                            <DialogContent className="sm:max-w-[500px] p-0 bg-transparent border-none shadow-none overflow-visible">
+                                <DialogHeader className="sr-only">
+                                    <DialogTitle>Marketing QR Code</DialogTitle>
+                                    <DialogDescription>
+                                        Scan or download the marketing QR code for {university.name}.
+                                    </DialogDescription>
+                                </DialogHeader>
+                                <SchoolQRCode 
+                                    universityId={university.id} 
+                                    universityName={university.name} 
+                                    slug={(university as any).slug ?? null} 
+                                />
+                            </DialogContent>
+                        </Dialog>
                     </>
                 }
             />
@@ -431,13 +454,12 @@ export default async function UniversityDashboard() {
                     {/* Live Activity Feed */}
                     <LiveActivityFeed universityId={university.id} />
 
-                    {/* QR Code & Branded Short URL */}
-                    <SchoolQRCode
+                    {/* Compact QR Code & Branded Short URL Access */}
+                    <CopySchoolLink
                         universityId={university.id}
                         universityName={university.name}
                         slug={(university as any).slug ?? null}
                     />
-
                     <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 relative overflow-hidden group hover:border-[#36335e]/20 transition-colors">
                         <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
                             <Users className="w-24 h-24 text-[#36335e] rotate-12" />
