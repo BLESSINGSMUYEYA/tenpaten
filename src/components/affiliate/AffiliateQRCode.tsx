@@ -19,7 +19,8 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
     const [downloading, setDownloading] = useState(false);
     const flyerRef = useRef<HTMLDivElement>(null);
 
-    const referralLink = `${typeof window !== 'undefined' ? window.location.origin : 'https://tenpaten.com'}/register?ref=${referralCode}&src=qr`;
+    const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://tenpaten.com');
+    const referralLink = `${BASE_URL}/register?ref=${referralCode}&src=qr`;
 
     const downloadFlyer = async (format: 'png' | 'jpg') => {
         if (!flyerRef.current) return;

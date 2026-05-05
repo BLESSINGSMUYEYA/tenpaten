@@ -11,7 +11,8 @@ interface LinksPageClientProps {
 
 function LinksTool({ referralCode }: LinksPageClientProps) {
     const [copied, setCopied] = useState(false);
-    const referralLink = `${typeof window !== 'undefined' ? window.location.origin : APP_URL}/register?ref=${referralCode}`;
+    const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || (typeof window !== 'undefined' ? window.location.origin : APP_URL);
+    const referralLink = `${BASE_URL}/register?ref=${referralCode}`;
 
     const handleCopy = async () => {
         try {
