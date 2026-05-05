@@ -6,12 +6,19 @@ import { logAction } from '@/lib/audit';
 import { createNotification } from '../notifications';
 import { sendApplicationStatusEmail } from '../email-templates';
 import { pusherServer } from '../pusher';
+import { cookies } from 'next/headers';
 
 export async function submitApplication(prevState: string | undefined, formData: FormData) {
     const user = await requireRole('PROSPECT'); // Security check
 
     const programId = formData.get('programId') as string;
-    const referralCode = formData.get('referralCode') as string;
+    let referralCode = formData.get('referralCode') as string;
+
+    // Fallback to cookie if no code provided
+    if (!referralCode) {
+        const cookieStore = await cookies();
+        referralCode = cookieStore.get('tenpaten_ref')?.value || '';
+    }
 
     if (!programId) {
         return 'Please select a program.';
@@ -296,8 +303,15 @@ export async function saveApplicationDraft(data: any) {
     if (!programId) throw new Error("Program ID is required");
 
     let affiliateId: string | undefined;
-    if (referralCode) {
-        const affiliate = await prisma.affiliateProfile.findUnique({ where: { referralCode } });
+    let finalReferralCode = referralCode;
+
+    if (!finalReferralCode) {
+        const cookieStore = await cookies();
+        finalReferralCode = cookieStore.get('tenpaten_ref')?.value || '';
+    }
+
+    if (finalReferralCode) {
+        const affiliate = await prisma.affiliateProfile.findUnique({ where: { referralCode: finalReferralCode } });
         if (affiliate) affiliateId = affiliate.id;
     }
 
@@ -362,8 +376,15 @@ export async function submitFullApplication(data: any) {
     }
 
     let affiliateId: string | undefined;
-    if (referralCode) {
-        const affiliate = await prisma.affiliateProfile.findUnique({ where: { referralCode } });
+    let finalReferralCode = referralCode;
+
+    if (!finalReferralCode) {
+        const cookieStore = await cookies();
+        finalReferralCode = cookieStore.get('tenpaten_ref')?.value || '';
+    }
+
+    if (finalReferralCode) {
+        const affiliate = await prisma.affiliateProfile.findUnique({ where: { referralCode: finalReferralCode } });
         if (affiliate) affiliateId = affiliate.id;
     }
 
