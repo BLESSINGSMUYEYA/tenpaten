@@ -67,29 +67,11 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
                         {/* Navigation Links */}
                         <nav className="flex-1 py-3 space-y-0.5 overflow-y-auto custom-scrollbar">
-                            {role === 'PROSPECT' && <StudentSidebar isEnrolled={isEnrolled} />}
+                            {role === 'PROSPECT' && <StudentSidebar isEnrolled={isEnrolled} hasAffiliateAccess={hasAffiliateAccess} />}
                             {role === 'SCHOOL_ADMIN' && <SchoolSidebar />}
                             {role === 'COUNTRY_DIRECTOR' && <CountryDirectorSidebar />}
                             {role === 'AFFILIATE' && <AffiliateSidebar />}
                             {role === 'SUPER_ADMIN' && <AdminSidebar />}
-
-                            {/* Affiliate section for users with affiliate access */}
-                            {hasAffiliateAccess && (
-                                <>
-                                    <div className="pt-4 pb-2 px-4">
-                                        <span className="text-[10px] font-black text-[#d5a22d]/70 uppercase tracking-[0.2em]">Affiliate</span>
-                                    </div>
-                                    <Link
-                                        href="/dashboard/affiliate"
-                                        className="flex items-center gap-3 mx-2 px-3 py-2.5 rounded-lg text-white/60 hover:bg-white/5 hover:text-white border-l-2 border-transparent transition-all group"
-                                    >
-                                        <div className="w-8 h-8 rounded-lg bg-white/5 group-hover:bg-white/10 flex items-center justify-center">
-                                            <Users className="w-4 h-4 text-white/60 group-hover:text-white" />
-                                        </div>
-                                        <span className="font-semibold text-sm">Affiliate Dashboard</span>
-                                    </Link>
-                                </>
-                            )}
                         </nav>
 
                         {/* Bottom Section — Settings + Sign Out */}

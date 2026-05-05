@@ -38,11 +38,17 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
     const roleLabel = role ? (roleLabelMap[role] || role) : 'User';
 
     const configKey = role && roleKeyMap[role] ? roleKeyMap[role] : null;
-    const navLinks = [
-        ...(configKey ? navigationConfig[configKey] : []),
+    const baseLinks = configKey ? [...navigationConfig[configKey]] : [];
+    const messagesIndex = baseLinks.findIndex(l => l.name === 'Messages');
+    
+    const dynamicLinks = [
         ...(role === 'PROSPECT' && isEnrolled ? [{ name: 'Affiliate Program', href: '/dashboard/affiliate', icon: Users }] : []),
         ...(hasAffiliateAccess && role !== 'AFFILIATE' ? [{ name: 'Affiliate Dashboard', href: '/dashboard/affiliate', icon: Users }] : []),
     ];
+
+    const navLinks = messagesIndex !== -1 
+        ? [...baseLinks.slice(0, messagesIndex), ...dynamicLinks, ...baseLinks.slice(messagesIndex)]
+        : [...baseLinks, ...dynamicLinks];
 
     const homeUrl = getHomeUrl(role);
 

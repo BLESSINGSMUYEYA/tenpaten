@@ -243,7 +243,7 @@ export async function getAffiliateFinancialSummary() {
     const session = await auth();
     const user = session?.user as any;
 
-    if (!user || user.role !== 'AFFILIATE') {
+    if (!user || (user.role !== 'AFFILIATE' && !user.affiliateApproved)) {
         throw new Error('Unauthorized');
     }
 
@@ -284,7 +284,7 @@ export async function requestAffiliatePayout(amount: number) {
     const session = await auth();
     const user = session?.user as any;
 
-    if (!user || user.role !== 'AFFILIATE') {
+    if (!user || (user.role !== 'AFFILIATE' && !user.affiliateApproved)) {
         throw new Error('Unauthorized');
     }
 
