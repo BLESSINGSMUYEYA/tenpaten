@@ -27,9 +27,16 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
         setDownloading(true);
         try {
             const options = {
-                quality: 0.95,
-                pixelRatio: 3, // High quality (3x resolution)
-                backgroundColor: '#1a1b4d',
+                quality: 1,
+                pixelRatio: 4, // Ultra high quality
+                backgroundColor: '#1a1b41', // Match the card bg exactly
+                width: 340,
+                height: 480, // Fixed size for stable capture
+                style: {
+                    borderRadius: '24px',
+                    margin: '0',
+                    transform: 'scale(1)',
+                }
             };
 
             const dataUrl = format === 'png' 
@@ -98,7 +105,7 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                     onClick={() => setView('qr')}
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${
                         view === 'qr' 
-                        ? 'bg-white dark:bg-[#1a1b4d] text-[#1a1b4d] dark:text-[#d5a22d] shadow-sm' 
+                        ? 'bg-white dark:bg-[#1a1b41] text-[#1a1b41] dark:text-[#d5a22d] shadow-sm' 
                         : 'text-gray-500 hover:text-gray-700'
                     }`}
                 >
@@ -108,7 +115,7 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                     onClick={() => setView('flyer')}
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${
                         view === 'flyer' 
-                        ? 'bg-white dark:bg-[#1a1b4d] text-[#1a1b4d] dark:text-[#d5a22d] shadow-sm' 
+                        ? 'bg-white dark:bg-[#1a1b41] text-[#1a1b41] dark:text-[#d5a22d] shadow-sm' 
                         : 'text-gray-500 hover:text-gray-700'
                     }`}
                 >
@@ -133,7 +140,7 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                             width: 220,
                             excavate: true,
                         }}
-                        fgColor="#1a1b4d"
+                        fgColor="#1a1b41"
                     />
                     <QRCodeCanvas
                         id="affiliate-qr-canvas"
@@ -149,7 +156,7 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                             width: 220,
                             excavate: true,
                         }}
-                        fgColor="#1a1b4d"
+                        fgColor="#1a1b41"
                     />
                 </div>
 
@@ -196,7 +203,7 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                                         width: 35,
                                         excavate: true,
                                     }}
-                                    fgColor="#1a1b4d"
+                                    fgColor="#1a1b41"
                                 />
                             </div>
 
@@ -210,13 +217,16 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
 
                         <div className="text-center">
                             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-1">Referral Code</p>
-                            <p className="text-2xl font-black text-[#1a1b4d] tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-[#1a1b4d] to-[#36335e]">
+                            <p className="text-2xl font-black text-[#1a1b41] tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-[#1a1b41] to-[#36335e]">
                                 {referralCode}
                             </p>
                         </div>
                     </div>
                 ) : (
-                    <div ref={flyerRef} className="w-full max-w-[340px] aspect-[1/1.414] bg-[#1a1b4d] rounded-3xl p-8 relative overflow-hidden flex flex-col shadow-2xl border border-white/10">
+                    <div 
+                        ref={flyerRef} 
+                        className="w-[340px] h-[480px] bg-[#1a1b41] rounded-3xl p-8 relative overflow-hidden flex flex-col shadow-2xl border border-white/10 shrink-0"
+                    >
                         {/* Flyer background elements */}
                         <div className="absolute top-[-10%] right-[-10%] w-[150px] h-[150px] bg-[#d5a22d]/20 rounded-full blur-3xl" />
                         <div className="absolute bottom-[-5%] left-[-5%] w-[100px] h-[100px] bg-[#36335e]/40 rounded-full blur-2xl" />
@@ -237,7 +247,7 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                                         value={referralLink}
                                         size={160}
                                         level="H"
-                                        fgColor="#1a1b4d"
+                                        fgColor="#1a1b41"
                                         imageSettings={{
                                             src: "/favicon.png",
                                             x: undefined,
