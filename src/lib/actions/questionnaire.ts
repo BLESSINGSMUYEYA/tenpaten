@@ -11,7 +11,7 @@ export type QuestionnaireQuestionData = {
     key: string;
     title: string;
     description?: string;
-    type: 'select' | 'searchable-select' | 'text';
+    type: 'select' | 'searchable-select' | 'text' | 'grid';
     category?: string;
     placeholder?: string;
     options?: QuestionOption[];

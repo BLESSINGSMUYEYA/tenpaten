@@ -23,6 +23,7 @@ const typeLabels: Record<string, string> = {
     select: 'Dropdown',
     'searchable-select': 'Searchable Dropdown',
     text: 'Free Text',
+    grid: 'Grid (Cards)',
 };
 
 const categoryLabels: Record<string, string> = {
@@ -83,7 +84,7 @@ function QuestionCard({ question, isFirst, isLast, onRefresh }: {
         key: question.key,
         title: question.title,
         description: question.description ?? '',
-        type: question.type as 'select' | 'searchable-select' | 'text',
+        type: question.type as 'select' | 'searchable-select' | 'text' | 'grid',
         category: question.category,
         placeholder: question.placeholder ?? '',
         options: opts,
@@ -187,11 +188,12 @@ function QuestionCard({ question, isFirst, isLast, onRefresh }: {
                         </div>
                         <div>
                             <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-1.5">Input Type</label>
-                            <select value={editData.type} onChange={e => setEditData(d => ({ ...d, type: e.target.value as 'select' | 'searchable-select' | 'text' }))}
+                            <select value={editData.type} onChange={e => setEditData(d => ({ ...d, type: e.target.value as 'select' | 'searchable-select' | 'text' | 'grid' }))}
                                 className="w-full px-4 py-3 text-sm rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#d5a22d]/20 focus:border-[#d5a22d] font-bold text-[#36335e]">
                                 <option value="select">Dropdown</option>
                                 <option value="searchable-select">Searchable Dropdown</option>
                                 <option value="text">Free Text</option>
+                                <option value="grid">Grid (Cards)</option>
                             </select>
                         </div>
                     </div>
@@ -305,11 +307,12 @@ export default function QuestionnaireManager({ initialQuestions }: { initialQues
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-1.5">Type</label>
-                            <select value={newQ.type} onChange={e => setNewQ(d => ({ ...d, type: e.target.value as 'select' | 'searchable-select' | 'text' }))}
+                            <select value={newQ.type} onChange={e => setNewQ(d => ({ ...d, type: e.target.value as 'select' | 'searchable-select' | 'text' | 'grid' }))}
                                 className="w-full px-4 py-3 text-sm rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#d5a22d]/20 focus:border-[#d5a22d] font-bold text-[#36335e]">
                                 <option value="select">Dropdown</option>
                                 <option value="searchable-select">Searchable Dropdown</option>
                                 <option value="text">Free Text</option>
+                                <option value="grid">Grid (Cards)</option>
                             </select>
                         </div>
                         <div>
