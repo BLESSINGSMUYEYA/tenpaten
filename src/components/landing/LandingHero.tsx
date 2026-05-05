@@ -29,23 +29,21 @@ function DashboardPreviewCard() {
                 </div>
 
                 {/* Hero banner — "YOUR FUTURE STARTS HERE" */}
-                <div className="relative h-32 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#1a1b41] via-[#2a2b5f] to-[#1a1b41]" />
-                    <div className="absolute inset-0 bg-[url('/images/hero/hero1.png')] bg-cover bg-center opacity-20" />
+                    <div className="absolute inset-0 bg-[url('/images/students/hero-student.png')] bg-cover bg-center opacity-30 saturate-[0.8]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1b41] via-transparent to-transparent" />
                     <div className="absolute inset-0 flex items-center px-6">
                         <div>
-                            <p className="text-[#d5a22d] text-[9px] font-black tracking-[0.3em] uppercase mb-1">Good Morning</p>
+                            <p className="text-[#d5a22d] text-[9px] font-black tracking-[0.3em] uppercase mb-1">Welcome Back</p>
                             <p className="text-white font-black text-xl uppercase leading-none tracking-tight">Your Future</p>
                             <p className="text-white font-black text-xl uppercase leading-none tracking-tight">Starts Here</p>
                         </div>
                         <div className="ml-auto px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
                             <div className="flex items-center gap-1.5">
                                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                                <span className="text-white text-[8px] font-black uppercase tracking-widest">Portal Ready</span>
+                                <span className="text-white text-[8px] font-black uppercase tracking-widest">Active</span>
                             </div>
                         </div>
                     </div>
-                </div>
 
                 {/* Application cards row */}
                 <div className="bg-white p-4 space-y-3">
@@ -152,12 +150,26 @@ export function LandingHero() {
                             initial={{ opacity: 0, y: -12 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
-                            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#d5a22d]/30 bg-[#d5a22d]/10 w-fit mb-8"
+                            className="flex items-center gap-4 mb-8"
                         >
-                            <span className="w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
-                            <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.35em]">
-                                Proudly Malawian — Applications Open
-                            </span>
+                            <div className="relative">
+                                <div className="w-14 h-14 rounded-full border-2 border-[#d5a22d] p-0.5 shadow-lg shadow-[#d5a22d]/20">
+                                    <img 
+                                        src="/images/students/hero-student.png" 
+                                        alt="Tenpaten Student" 
+                                        className="w-full h-full rounded-full object-cover"
+                                    />
+                                </div>
+                                <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-[#0f1030] flex items-center justify-center">
+                                    <CheckCircle className="w-3 h-3 text-white" />
+                                </div>
+                            </div>
+                            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#d5a22d]/30 bg-[#d5a22d]/10">
+                                <span className="w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
+                                <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.35em]">
+                                    Proudly Malawian — Applications Open
+                                </span>
+                            </div>
                         </motion.div>
 
                         {/* Headline */}
