@@ -236,7 +236,7 @@ export function LandingHero() {
                                 </div>
                                 <button
                                     type="submit"
-                                    className="bg-[#d5a22d] text-[#1a1b41] px-8 py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[11px] flex items-center justify-center gap-2 hover:bg-white transition-colors shadow-lg shadow-[#d5a22d]/20 active:scale-95 shrink-0"
+                                    className="hidden sm:flex bg-[#d5a22d] text-[#1a1b41] px-8 py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[11px] items-center justify-center gap-2 hover:bg-white transition-colors shadow-lg shadow-[#d5a22d]/20 active:scale-95 shrink-0"
                                 >
                                     Search <ArrowRight className="w-4 h-4" />
                                 </button>
