@@ -28,34 +28,9 @@ function RegisterContent({ questions, countries }: { questions: QuestionData[], 
     // Questionnaire step (before the registration form)
     if (showQuestionnaire) {
         return (
-            <div className="min-h-screen bg-white flex flex-col selection:bg-[#d5a22d]/20">
-                {/* Minimal top bar */}
-                <header className="flex items-center px-6 sm:px-12 py-6 border-b border-gray-100">
-                    <TenpatenLogo variant="navy" />
-                </header>
-
-                <div className="flex-1 flex flex-col items-center justify-center px-4 py-12">
-                    <div className="w-full max-w-2xl">
-                        <div className="mb-10 text-center">
-                            <motion.div
-                                initial={{ opacity: 0, y: -12 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#d5a22d]/25 bg-[#d5a22d]/8 mb-6"
-                            >
-                                <span className="w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
-                                <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.35em]">
-                                    Future Path Discovery
-                                </span>
-                            </motion.div>
-                            <h1 className="text-4xl sm:text-5xl font-black text-[#1a1b41] leading-tight tracking-tight uppercase mb-4">
-                                Let&apos;s get to <span className="text-[#d5a22d]">know you</span>
-                            </h1>
-                            <p className="text-gray-400 text-lg font-medium max-w-md mx-auto">
-                                Answer a few questions to help us personalise your university journey in Malawi.
-                            </p>
-                        </div>
-                        <StudentQuestionnaire questions={questions} onComplete={handleQuestionnaireComplete} />
-                    </div>
+            <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4 sm:p-8 selection:bg-[#d5a22d]/20">
+                <div className="w-full max-w-2xl">
+                    <StudentQuestionnaire questions={questions} onComplete={handleQuestionnaireComplete} />
                 </div>
             </div>
         );

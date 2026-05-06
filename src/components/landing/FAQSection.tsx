@@ -11,7 +11,7 @@ const faqs = [
     },
     {
         q: 'Which universities are on the platform?',
-        a: 'We partner with accredited institutions across Malawi — including the University of Malawi (UNIMA), Mzuzu University, LUANAR, and many more. New institutions are added regularly. You can browse the full list after signing up.',
+        a: 'We partner with accredited institutions across Malawi and globally — including the University of Malawi (UNIMA), Blantyre International University (BIU), Noida International University, and Chandigarh University. New institutions are added regularly.',
     },
     {
         q: 'How do I track my application after submitting?',

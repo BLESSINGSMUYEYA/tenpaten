@@ -14,9 +14,9 @@ const features = [
         visual: (
             <div className="w-full space-y-3">
                 {[
-                    { name: 'University of Malawi', prog: 'B.Sc. Computer Science', match: '98%' },
-                    { name: 'Mzuzu University', prog: 'B.Eng. Electrical Engineering', match: '91%' },
-                    { name: 'LUANAR', prog: 'B.Sc. Agriculture', match: '85%' },
+                    { name: 'BIU', prog: 'B.A. Business Administration', match: '95%' },
+                    { name: 'Noida International', prog: 'M.Tech Engineering', match: '91%' },
+                    { name: 'Chandigarh University', prog: 'B.Sc. Nursing', match: '88%' },
                 ].map((item, i) => (
                     <motion.div
                         key={i}

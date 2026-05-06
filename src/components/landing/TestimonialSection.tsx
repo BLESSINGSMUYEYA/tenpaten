@@ -22,7 +22,7 @@ const testimonials = [
         name: 'Alinafe Mwale',
         school: 'Lilongwe Girls Secondary',
         content:
-            "I found a scholarship I didn't even know existed through Tenpaten. The platform surfaced it automatically based on my profile. I got funding and a place at LUANAR. Highly recommend.",
+            "I found a scholarship I didn't even know existed through Tenpaten. The platform surfaced it automatically based on my profile. I got funding and a place at BIU. Highly recommend.",
     },
 ];
 

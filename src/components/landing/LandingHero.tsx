@@ -41,14 +41,14 @@ export function LandingHero() {
                     initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.85, delay: 0.1 }}
-                    className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-black text-white leading-[0.95] tracking-tighter uppercase mb-6 max-w-4xl"
+                    className="text-3xl sm:text-4xl lg:text-[2.85rem] xl:text-[3.25rem] font-black text-white leading-[1.05] tracking-tight uppercase mb-6 max-w-3xl"
                 >
                     Your one-stop platform{' '}
                     <span className="relative inline-block">
                         <span className="relative z-10 text-[#d5a22d]">for university</span>
                         {/* Animated underline */}
                         <svg
-                            className="absolute -bottom-2 left-0 w-full h-3 z-0"
+                            className="absolute -bottom-1.5 left-0 w-full h-2 z-0"
                             viewBox="0 0 400 12"
                             preserveAspectRatio="none"
                             aria-hidden="true"
@@ -74,7 +74,7 @@ export function LandingHero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.25 }}
-                    className="text-white/60 text-xl lg:text-2xl font-medium leading-relaxed max-w-2xl mb-12"
+                    className="text-white/60 text-lg lg:text-xl font-medium leading-relaxed max-w-xl mb-12"
                 >
                     Get matched. Apply directly. Track your progress.{' '}
                     <span className="text-white/90 font-bold">All in one place.</span>
