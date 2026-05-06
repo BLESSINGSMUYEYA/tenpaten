@@ -123,7 +123,7 @@ export default function ForStudentsPage() {
                         <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.35em]">For Students</span>
                     </motion.div>
                     <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-                        className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[0.95] tracking-tighter uppercase mb-6">
+                        className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.05] tracking-tighter mb-6">
                         Apply to university.<br />
                         <span className="text-[#d5a22d]">From anywhere in Malawi.</span>
                     </motion.h1>
@@ -151,7 +151,7 @@ export default function ForStudentsPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">Simple Process</span>
-                        <h2 className="text-4xl lg:text-5xl font-black text-[#1a1b41] mt-4 tracking-tighter uppercase leading-[0.9]">
+                        <h2 className="text-4xl lg:text-5xl font-black text-[#1a1b41] mt-4 tracking-tighter leading-[1.1]">
                             Ready in 4 steps.
                         </h2>
                         <p className="text-gray-500 font-medium text-lg mt-4 max-w-xl mx-auto">
@@ -181,7 +181,7 @@ export default function ForStudentsPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-16">
                         <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">Everything You Need</span>
-                        <h2 className="text-4xl lg:text-5xl font-black text-white mt-4 tracking-tighter uppercase leading-[0.9]">
+                        <h2 className="text-4xl lg:text-5xl font-black text-white mt-4 tracking-tighter leading-[1.1]">
                             And dozens of tools<br /><span className="text-[#d5a22d]">to get you where you need to be.</span>
                         </h2>
                     </div>
@@ -247,7 +247,7 @@ export default function ForStudentsPage() {
                             <span className="w-1.5 h-1.5 rounded-full bg-[#d5a22d] animate-pulse" />
                             <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.35em]">Yes, you read that right</span>
                         </div>
-                        <h2 className="text-5xl lg:text-6xl font-black text-white tracking-tighter uppercase leading-[0.9] mb-6">
+                        <h2 className="text-5xl lg:text-6xl font-black text-white tracking-tighter leading-[1.1] mb-6">
                             It&apos;s completely free.
                         </h2>
                         <p className="text-white/55 text-xl font-medium mb-12">

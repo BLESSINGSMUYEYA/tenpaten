@@ -30,6 +30,7 @@ export function rateLimit(
     }
 
     if (record.count >= limit) {
+        console.warn(`🛑 Rate limit exceeded for identifier: ${identifier}`);
         return false; // Rate limit exceeded
     }
 

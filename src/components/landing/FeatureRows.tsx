@@ -179,7 +179,7 @@ export function FeatureRows() {
                                 </div>
 
                                 {/* Headline */}
-                                <h2 className={`text-4xl lg:text-5xl font-black tracking-tighter uppercase leading-[0.9] mb-6 ${feat.dark ? 'text-white' : 'text-[#1a1b41]'}`}>
+                                <h2 className={`text-4xl lg:text-5xl font-black tracking-tighter leading-[1.1] mb-6 ${feat.dark ? 'text-white' : 'text-[#1a1b41]'}`}>
                                     {feat.headline}
                                 </h2>
 

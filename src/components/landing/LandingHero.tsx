@@ -41,7 +41,7 @@ export function LandingHero() {
                     initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.85, delay: 0.1 }}
-                    className="text-3xl sm:text-4xl lg:text-[2.85rem] xl:text-[3.25rem] font-black text-white leading-[1.05] tracking-tight uppercase mb-6 max-w-3xl"
+                    className="text-3xl sm:text-4xl lg:text-[2.85rem] xl:text-[3.25rem] font-black text-white leading-[1.1] tracking-tight mb-6 max-w-3xl"
                 >
                     Your one-stop platform{' '}
                     <span className="relative inline-block">

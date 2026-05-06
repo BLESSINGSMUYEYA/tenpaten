@@ -131,7 +131,7 @@ export function UniversitySection() {
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d5a22d]/30 bg-[#d5a22d]/10 text-[#d5a22d] text-[10px] font-black tracking-[0.3em] mb-5 uppercase">
                         Partnership Opportunity
                     </div>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1a1b41] tracking-tighter uppercase leading-[0.9] mb-4">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1a1b41] tracking-tighter leading-[1.1] mb-4">
                         Your Digital<br />
                         <span className="text-[#d5a22d]">Admissions Workspace</span>
                     </h2>
@@ -175,7 +175,7 @@ export function UniversitySection() {
                                     {active.chip}
                                 </div>
 
-                                <h3 className="text-2xl lg:text-3xl font-black text-[#1a1b41] uppercase tracking-tighter leading-[0.9] mb-4">
+                                <h3 className="text-2xl lg:text-3xl font-black text-[#1a1b41] tracking-tighter leading-[1.1] mb-4">
                                     {active.headline}
                                 </h3>
                                 <p className="text-gray-500 font-bold leading-relaxed mb-8">

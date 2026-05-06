@@ -156,7 +156,8 @@ export async function sendVerificationEmail(email: string, otp: string, name: st
     }
 
     try {
-        await resend.emails.send({
+        console.log(`📧 Attempting to send verification email to: ${email}...`);
+        const data = await resend.emails.send({
             from: EMAIL_SENDER,
             to: email,
             subject: 'Tenpaten Apply: Verify your email',
@@ -183,8 +184,9 @@ export async function sendVerificationEmail(email: string, otp: string, name: st
                 </div>
             `
         });
+        console.log(`✅ Verification email sent successfully to ${email}. ID: ${data.data?.id}`);
     } catch (error) {
-        console.error('Failed to send verification email:', error);
+        console.error(`❌ Failed to send verification email to ${email}:`, error);
     }
 }
 
