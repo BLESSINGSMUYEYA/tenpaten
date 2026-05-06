@@ -101,9 +101,9 @@ const features = [
                     transition={{ duration: 0.5 }}
                     className="flex items-start gap-3"
                 >
-                    <div className="w-8 h-8 rounded-xl bg-[#1a1b41] flex items-center justify-center text-[8px] text-[#d5a22d] font-black shrink-0">UM</div>
+                    <div className="w-8 h-8 rounded-xl bg-[#1a1b41] flex items-center justify-center text-[8px] text-[#d5a22d] font-black shrink-0">CU</div>
                     <div className="bg-white border border-gray-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-[80%] shadow-sm">
-                        <p className="text-[11px] font-black text-[#1a1b41] mb-0.5">UNIMA Admissions</p>
+                        <p className="text-[11px] font-black text-[#1a1b41] mb-0.5">CU Admissions</p>
                         <p className="text-gray-500 text-xs">Your application has been received. Results will be out by 15 June.</p>
                     </div>
                 </motion.div>
@@ -126,7 +126,7 @@ const features = [
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="flex items-start gap-3"
                 >
-                    <div className="w-8 h-8 rounded-xl bg-[#1a1b41] flex items-center justify-center text-[8px] text-[#d5a22d] font-black shrink-0">UM</div>
+                    <div className="w-8 h-8 rounded-xl bg-[#1a1b41] flex items-center justify-center text-[8px] text-[#d5a22d] font-black shrink-0">CU</div>
                     <div className="bg-white border border-gray-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-[80%] shadow-sm">
                         <p className="text-gray-500 text-xs">No — upload it directly on the platform. No physical copies needed.</p>
                     </div>
