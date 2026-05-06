@@ -9,16 +9,31 @@ export function LandingHero() {
         <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden selection:bg-[#d5a22d]/30 text-center">
             {/* ── Background ── */}
             <div className="absolute inset-0 z-0">
+                {/* Base Dark Color */}
                 <div className="absolute inset-0 bg-[#0f1030]" />
-                {/* Gradient orbs */}
-                <div className="absolute top-[-10%] left-[15%] w-[700px] h-[700px] rounded-full bg-[#1a1b41] opacity-70 blur-[120px]" />
-                <div className="absolute bottom-[-5%] right-[10%] w-[500px] h-[500px] rounded-full bg-[#2a1a60] opacity-50 blur-[130px]" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#d5a22d] opacity-[0.04] blur-[90px]" />
-                {/* Dot grid */}
+                
+                {/* Background Image - African students/graduation theme */}
+                <motion.img
+                    initial={{ scale: 1.1, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 0.6 }}
+                    transition={{ duration: 1.5, ease: 'easeOut' }}
+                    src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=2070"
+                    alt="African secondary school students in a classroom"
+                    className="absolute inset-0 w-full h-full object-cover"
+                />
+
+                {/* Overlays to darken the image for text readability */}
+                <div className="absolute inset-0 bg-[#0f1030]/60 mix-blend-multiply z-10" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0f1030]/50 via-transparent to-[#0f1030] z-10" />
+
+                {/* Dot grid pattern */}
                 <div
-                    className="absolute inset-0 opacity-[0.06]"
+                    className="absolute inset-0 opacity-[0.1] z-20"
                     style={{ backgroundImage: 'radial-gradient(#d5a22d 1px, transparent 1px)', backgroundSize: '48px 48px' }}
                 />
+                
+                {/* Subtle light leak */}
+                <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#d5a22d] opacity-[0.03] blur-[120px] z-20" />
             </div>
 
             <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-24 lg:pt-44 lg:pb-32 flex flex-col items-center">
