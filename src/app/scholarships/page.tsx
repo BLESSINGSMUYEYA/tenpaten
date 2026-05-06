@@ -15,9 +15,7 @@ export default function ScholarshipsPage() {
             {/* Nav */}
             <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1a1b41]/95 backdrop-blur-xl border-b border-white/10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-                    <Link href="/">
-                        <TenpatenLogo variant="white" />
-                    </Link>
+                    <TenpatenLogo variant="white" />
                     <Link
                         href="/register?type=student"
                         className="px-6 py-2.5 bg-[#d5a22d] text-[#1a1b41] rounded-xl text-xs font-black uppercase tracking-widest hover:bg-white transition-all shadow-xl shadow-[#d5a22d]/20"

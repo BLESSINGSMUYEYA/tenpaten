@@ -56,9 +56,9 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
 
     if (!questions || questions.length === 0) {
         return (
-            <div className="w-full max-w-md mx-auto p-8 bg-white/5 backdrop-blur-xl rounded-[2.5rem] border border-white/10 text-center">
-                <p className="text-white/40 text-sm mb-6">No discovery path configured yet.</p>
-                <Button onClick={() => onComplete({})} className="w-full h-14 rounded-2xl bg-[#d5a22d] text-[#1a1b41] font-black uppercase tracking-widest">
+            <div className="w-full max-w-md mx-auto p-8 bg-gray-50 rounded-[2.5rem] border border-gray-100 text-center">
+                <p className="text-gray-400 text-sm mb-6">No discovery path configured yet.</p>
+                <Button onClick={() => onComplete({})} className="w-full h-14 rounded-2xl bg-[#d5a22d] text-white font-black uppercase tracking-widest">
                     Continue to Register
                 </Button>
             </div>
@@ -103,8 +103,8 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                 >
                     <Sparkles className="w-10 h-10 text-[#d5a22d]" />
                 </motion.div>
-                <h2 className="text-2xl font-black text-white uppercase tracking-tight mb-4">Finding Your Matches</h2>
-                <p className="text-white/40 text-lg">Analysing Malawian universities for your profile...</p>
+                <h2 className="text-2xl font-black text-[#1a1b41] uppercase tracking-tight mb-4">Finding Your Matches</h2>
+                <p className="text-gray-400 text-lg">Analysing Malawian universities for your profile...</p>
             </div>
         );
     }
@@ -114,20 +114,20 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="w-full max-w-lg mx-auto space-y-8 p-8 sm:p-12 bg-white/5 backdrop-blur-2xl rounded-[2.5rem] border border-white/10 text-center shadow-2xl"
+                className="w-full max-w-lg mx-auto space-y-8 p-8 sm:p-12 bg-white rounded-[2.5rem] border border-gray-100 text-center shadow-xl"
             >
                 <div className="w-20 h-20 bg-[#d5a22d] rounded-3xl flex items-center justify-center mx-auto shadow-lg shadow-[#d5a22d]/20 rotate-3">
-                    <CheckCircle2 className="w-10 h-10 text-[#1a1b41]" />
+                    <CheckCircle2 className="w-10 h-10 text-white" />
                 </div>
                 <div>
-                    <h2 className="text-3xl font-black text-white uppercase tracking-tight mb-4">Path Discovered!</h2>
-                    <p className="text-white/60 text-lg leading-relaxed">
+                    <h2 className="text-3xl font-black text-[#1a1b41] uppercase tracking-tight mb-4">Path Discovered!</h2>
+                    <p className="text-gray-500 text-lg leading-relaxed">
                         We&apos;ve found several universities and programs that match your goals. Create your account to see your personalized recommendations.
                     </p>
                 </div>
                 <Button
                     onClick={() => onComplete(answers)}
-                    className="w-full h-16 rounded-[1.25rem] bg-[#d5a22d] hover:bg-white text-[#1a1b41] font-black text-lg uppercase tracking-[0.2em] shadow-xl shadow-[#d5a22d]/20 transition-all active:scale-95"
+                    className="w-full h-16 rounded-[1.25rem] bg-[#d5a22d] hover:bg-[#b89531] text-white font-black text-lg uppercase tracking-[0.2em] shadow-xl shadow-[#d5a22d]/20 transition-all active:scale-95"
                 >
                     See My Matches <ArrowRight className="w-6 h-6 ml-2" />
                 </Button>
@@ -138,11 +138,11 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
     return (
         <div className="w-full max-w-2xl mx-auto space-y-10">
             {/* Minimal Progress Bar */}
-            <div className="relative h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+            <div className="relative h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
                 <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${progress}%` }}
-                    className="absolute inset-y-0 left-0 bg-[#d5a22d] rounded-full shadow-[0_0_15px_rgba(213,162,45,0.5)]"
+                    className="absolute inset-y-0 left-0 bg-[#d5a22d] rounded-full shadow-sm"
                 />
             </div>
 
@@ -156,11 +156,11 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                     className="space-y-8"
                 >
                     <div className="text-center">
-                        <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mb-3">
+                        <h2 className="text-3xl sm:text-4xl font-black text-[#1a1b41] uppercase tracking-tight mb-3">
                             {currentQuestion.title}
                         </h2>
                         {currentQuestion.description && (
-                            <p className="text-white/40 text-lg">
+                            <p className="text-gray-400 text-lg">
                                 {currentQuestion.description}
                             </p>
                         )}
@@ -176,19 +176,19 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                                         className={`group relative p-6 rounded-[2rem] border-2 transition-all flex flex-col items-center gap-4 text-center ${
                                             answers[currentQuestion.key] === option.value
                                             ? 'bg-[#d5a22d] border-[#d5a22d] shadow-lg shadow-[#d5a22d]/20'
-                                            : 'bg-white/5 border-white/5 hover:border-white/20 hover:bg-white/10'
+                                            : 'bg-gray-50 border-gray-50 hover:border-gray-100 hover:bg-gray-100'
                                         }`}
                                     >
                                         <span className="text-4xl mb-2 grayscale group-hover:grayscale-0 transition-all">
                                             {ICON_MAP[option.value] || option.icon || ICON_MAP.default}
                                         </span>
                                         <span className={`text-[11px] font-black uppercase tracking-widest leading-tight ${
-                                            answers[currentQuestion.key] === option.value ? 'text-[#1a1b41]' : 'text-white/60'
+                                            answers[currentQuestion.key] === option.value ? 'text-white' : 'text-gray-500'
                                         }`}>
                                             {option.label}
                                         </span>
                                         {answers[currentQuestion.key] === option.value && (
-                                            <motion.div layoutId="active-ring" className="absolute inset-0 border-2 border-white/20 rounded-[2rem]" />
+                                            <motion.div layoutId="active-ring" className="absolute inset-0 border-2 border-black/5 rounded-[2rem]" />
                                         )}
                                     </button>
                                 ))}
@@ -198,12 +198,12 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                                 <div className="relative" ref={dropdownRef}>
                                     <button 
                                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                        className="w-full h-16 px-6 text-left bg-white/5 border border-white/10 rounded-2xl text-white font-bold flex items-center justify-between hover:bg-white/10 transition-all"
+                                        className="w-full h-16 px-6 text-left bg-gray-50 border border-gray-100 rounded-2xl text-[#1a1b41] font-bold flex items-center justify-between hover:bg-gray-100 transition-all"
                                     >
-                                        <span className={answers[currentQuestion.key] ? 'text-white' : 'text-white/30'}>
+                                        <span className={answers[currentQuestion.key] ? 'text-[#1a1b41]' : 'text-gray-300'}>
                                             {options.find(o => o.value === answers[currentQuestion.key])?.label || currentQuestion.placeholder || 'Select an option...'}
                                         </span>
-                                        <ChevronRight className={`w-5 h-5 transition-transform ${isDropdownOpen ? 'rotate-90' : ''}`} />
+                                        <ChevronRight className={`w-5 h-5 transition-transform text-gray-400 ${isDropdownOpen ? 'rotate-90' : ''}`} />
                                     </button>
                                     
                                     <AnimatePresence>
@@ -212,7 +212,7 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                                                 initial={{ opacity: 0, y: 10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 exit={{ opacity: 0, y: 10 }}
-                                                className="absolute z-50 w-full mt-2 p-2 bg-[#1a1b41] border border-white/10 rounded-2xl shadow-2xl max-h-64 overflow-y-auto"
+                                                className="absolute z-50 w-full mt-2 p-2 bg-white border border-gray-100 rounded-2xl shadow-xl max-h-64 overflow-y-auto"
                                             >
                                                 {options.map((option) => (
                                                     <button
@@ -220,8 +220,8 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                                                         onClick={() => { handleSelect(option.value); setIsDropdownOpen(false); }}
                                                         className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all ${
                                                             answers[currentQuestion.key] === option.value 
-                                                            ? 'bg-[#d5a22d] text-[#1a1b41]' 
-                                                            : 'text-white/60 hover:bg-white/5 hover:text-white'
+                                                            ? 'bg-[#d5a22d] text-white' 
+                                                            : 'text-gray-500 hover:bg-gray-50 hover:text-[#1a1b41]'
                                                         }`}
                                                     >
                                                         {option.label}
@@ -239,7 +239,7 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                                     value={answers[currentQuestion.key] || ''}
                                     onChange={e => handleSelect(e.target.value)}
                                     placeholder={currentQuestion.placeholder || 'Type your answer...'}
-                                    className="w-full h-16 px-6 bg-white/5 border border-white/10 rounded-2xl text-white font-bold placeholder:text-white/20 focus:outline-none focus:border-[#d5a22d] transition-all"
+                                    className="w-full h-16 px-6 bg-gray-50 border border-gray-100 rounded-2xl text-[#1a1b41] font-bold placeholder:text-gray-300 focus:outline-none focus:border-[#d5a22d] transition-all"
                                 />
                             </div>
                         )}
@@ -249,14 +249,14 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                         <button
                             onClick={handleBack}
                             disabled={currentStep === 0}
-                            className="h-14 px-8 rounded-2xl border border-white/10 text-white font-black uppercase tracking-widest text-xs hover:bg-white/5 disabled:opacity-0 transition-all flex items-center gap-2"
+                            className="h-14 px-8 rounded-2xl border border-gray-100 text-gray-400 font-black uppercase tracking-widest text-xs hover:bg-gray-50 disabled:opacity-0 transition-all flex items-center gap-2"
                         >
                             <ChevronLeft className="w-4 h-4" /> Back
                         </button>
                         <Button
                             onClick={handleNext}
                             disabled={!canContinue}
-                            className="h-14 flex-1 rounded-2xl bg-[#d5a22d] hover:bg-white text-[#1a1b41] font-black uppercase tracking-widest text-xs transition-all active:scale-95 disabled:opacity-50 shadow-lg shadow-[#d5a22d]/10"
+                            className="h-14 flex-1 rounded-2xl bg-[#d5a22d] hover:bg-[#b89531] text-white font-black uppercase tracking-widest text-xs transition-all active:scale-95 disabled:opacity-50 shadow-lg shadow-[#d5a22d]/10"
                         >
                             {isLastStep ? 'Discover My Path' : 'Continue'} <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>
@@ -265,7 +265,7 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
             </AnimatePresence>
 
             <div className="text-center">
-                <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em]">
+                <p className="text-[10px] font-black text-gray-300 uppercase tracking-[0.4em]">
                     Step {currentStep + 1} of {questions.length}
                 </p>
             </div>

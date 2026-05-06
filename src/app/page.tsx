@@ -2,17 +2,21 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, Users, Layers } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { TenpatenLogo } from '@/components/branding/TenpatenLogo';
 
 import { LandingHero } from '@/components/landing/LandingHero';
 import { StatsBar } from '@/components/landing/StatsBar';
-import { RoleSelection } from '@/components/landing/RoleSelection';
-import { FeaturesGrid } from '@/components/landing/FeaturesGrid';
-import { UniversitySection } from '@/components/landing/UniversitySection';
-import { TrustSection } from '@/components/landing/TrustSection';
-import { PartnershipJourney } from '@/components/landing/PartnershipJourney';
+import { FeatureRows } from '@/components/landing/FeatureRows';
 import { TestimonialSection } from '@/components/landing/TestimonialSection';
+import { FAQSection } from '@/components/landing/FAQSection';
+import { FinalCTABanner } from '@/components/landing/FinalCTABanner';
+
+const navLinks = [
+  { href: '/for-students', label: 'For Students' },
+  { href: '/for-institutions', label: 'For Institutions' },
+  { href: '/scholarships', label: 'Scholarships' },
+];
 
 export default function Home() {
   const [mobileNav, setMobileNav] = useState(false);
@@ -29,11 +33,7 @@ export default function Home() {
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-10">
-            {[
-              { href: '#features', label: 'Features' },
-              { href: '#roles', label: 'Roles' },
-              { href: '#universities', label: 'Institutions' },
-            ].map((link) => (
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -81,25 +81,15 @@ export default function Home() {
         {mobileNav && (
           <div className="md:hidden bg-[#1a1b41] border-t border-white/5 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300 rounded-b-[2.5rem] overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 py-10">
-              <div className="space-y-3">
-                {[
-                  { href: '#features', label: 'Features', sub: 'Platform Tools', icon: Layers },
-                  { href: '#roles', label: 'Roles', sub: 'Tailored Experience', icon: Users },
-                  { href: '#universities', label: 'Institutions', sub: 'Partnership Info', icon: Layers },
-                ].map((item) => (
+              <div className="space-y-2">
+                {navLinks.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileNav(false)}
-                    className="group flex items-center gap-4 px-6 py-5 rounded-2xl bg-white/5 hover:bg-[#d5a22d] hover:text-[#1a1b41] transition-all duration-300"
+                    className="flex items-center px-6 py-4 rounded-2xl bg-white/5 hover:bg-[#d5a22d] hover:text-[#1a1b41] transition-all duration-300 text-sm font-black uppercase tracking-widest text-white/70"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-[#d5a22d] group-hover:bg-white/20 group-hover:text-[#1a1b41] transition-all">
-                      <item.icon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-black uppercase tracking-widest text-[#d5a22d] group-hover:text-[#1a1b41]">{item.label}</p>
-                      <p className="text-[10px] opacity-60 font-bold uppercase tracking-widest">{item.sub}</p>
-                    </div>
+                    {item.label}
                   </Link>
                 ))}
               </div>
@@ -115,7 +105,7 @@ export default function Home() {
                   href="/register?type=student"
                   className="flex items-center justify-center px-4 py-4 rounded-xl text-[10px] font-black text-[#1a1b41] bg-[#d5a22d] hover:bg-white transition-all shadow-lg shadow-[#d5a22d]/10 uppercase tracking-widest"
                 >
-                  Join Now
+                  Get Started
                 </Link>
               </div>
             </div>
@@ -126,12 +116,10 @@ export default function Home() {
       {/* ── Page Sections ── */}
       <LandingHero />
       <StatsBar />
-      <FeaturesGrid />
-      <RoleSelection />
-      <UniversitySection />
-      <PartnershipJourney light />
-      <TrustSection />
+      <FeatureRows />
       <TestimonialSection />
+      <FAQSection />
+      <FinalCTABanner />
 
       {/* ── Footer ── */}
       <footer className="bg-[#0f1030] py-24 lg:py-32 relative overflow-hidden border-t border-white/5">

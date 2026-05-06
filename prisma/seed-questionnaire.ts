@@ -8,67 +8,36 @@ const prisma = new PrismaClient();
 
 const questions = [
     {
-        key: 'nationality',
-        title: 'What is your nationality?',
-        description: 'This helps us find universities that accept students from your country.',
-        type: 'searchable-select',
-        placeholder: 'Type to search your country...',
+        key: 'fieldOfInterest',
+        title: 'What do you want to study?',
+        description: 'Select your primary area of interest to see relevant programmes.',
+        type: 'grid',
+        placeholder: 'Select a field',
         order: 0,
+        category: 'PROSPECT',
         active: true,
         options: [
-            { value: 'algeria', label: '🇩🇿 Algeria (+213)' },
-            { value: 'angola', label: '🇦🇴 Angola (+244)' },
-            { value: 'benin', label: '🇧🇯 Benin (+229)' },
-            { value: 'botswana', label: '🇧🇼 Botswana (+267)' },
-            { value: 'burkina_faso', label: '🇧🇫 Burkina Faso (+226)' },
-            { value: 'burundi', label: '🇧🇮 Burundi (+257)' },
-            { value: 'cameroon', label: '🇨🇲 Cameroon (+237)' },
-            { value: 'chad', label: '🇹🇩 Chad (+235)' },
-            { value: 'congo_drc', label: '🇨🇩 Congo DRC (+243)' },
-            { value: 'congo_republic', label: '🇨🇬 Congo Republic (+242)' },
-            { value: 'cote_divoire', label: "🇨🇮 Côte d'Ivoire (+225)" },
-            { value: 'egypt', label: '🇪🇬 Egypt (+20)' },
-            { value: 'ethiopia', label: '🇪🇹 Ethiopia (+251)' },
-            { value: 'ghana', label: '🇬🇭 Ghana (+233)' },
-            { value: 'guinea', label: '🇬🇳 Guinea (+224)' },
-            { value: 'kenya', label: '🇰🇪 Kenya (+254)' },
-            { value: 'lesotho', label: '🇱🇸 Lesotho (+266)' },
-            { value: 'liberia', label: '🇱🇷 Liberia (+231)' },
-            { value: 'madagascar', label: '🇲🇬 Madagascar (+261)' },
-            { value: 'malawi', label: '🇲🇼 Malawi (+265)' },
-            { value: 'mali', label: '🇲🇱 Mali (+223)' },
-            { value: 'mauritius', label: '🇲🇺 Mauritius (+230)' },
-            { value: 'morocco', label: '🇲🇦 Morocco (+212)' },
-            { value: 'mozambique', label: '🇲🇿 Mozambique (+258)' },
-            { value: 'namibia', label: '🇳🇦 Namibia (+264)' },
-            { value: 'niger', label: '🇳🇪 Niger (+227)' },
-            { value: 'nigeria', label: '🇳🇬 Nigeria (+234)' },
-            { value: 'rwanda', label: '🇷🇼 Rwanda (+250)' },
-            { value: 'senegal', label: '🇸🇳 Senegal (+221)' },
-            { value: 'sierra_leone', label: '🇸🇱 Sierra Leone (+232)' },
-            { value: 'south_africa', label: '🇿🇦 South Africa (+27)' },
-            { value: 'south_sudan', label: '🇸🇸 South Sudan (+211)' },
-            { value: 'sudan', label: '🇸🇩 Sudan (+249)' },
-            { value: 'eswatini', label: '🇸🇿 Eswatini (+268)' },
-            { value: 'tanzania', label: '🇹🇿 Tanzania (+255)' },
-            { value: 'togo', label: '🇹🇬 Togo (+228)' },
-            { value: 'tunisia', label: '🇹🇳 Tunisia (+216)' },
-            { value: 'uganda', label: '🇺🇬 Uganda (+256)' },
-            { value: 'zambia', label: '🇿🇲 Zambia (+260)' },
-            { value: 'zimbabwe', label: '🇿🇼 Zimbabwe (+263)' },
+            { value: 'medicine', label: 'Medicine & Health' },
+            { value: 'engineering', label: 'Engineering' },
+            { value: 'tech', label: 'Computing & Tech' },
+            { value: 'business', label: 'Business & Finance' },
+            { value: 'arts', label: 'Arts & Humanities' },
+            { value: 'law', label: 'Law & Governance' },
+            { value: 'science', label: 'Natural Sciences' },
         ]
     },
     {
         key: 'highestEducation',
-        title: 'What is your highest level of education?',
-        description: 'We will match you with programs that fit your academic background.',
+        title: 'Your highest education?',
+        description: 'We will match you with programs that fit your academic level.',
         type: 'select',
         placeholder: 'Select education level',
         order: 1,
+        category: 'PROSPECT',
         active: true,
         options: [
-            { value: 'high_school', label: 'High School / Secondary School' },
-            { value: 'diploma', label: 'Diploma / Associate Degree' },
+            { value: 'high_school', label: 'High School / Secondary' },
+            { value: 'diploma', label: 'Diploma / Associate' },
             { value: 'bachelors', label: "Bachelor's Degree" },
             { value: 'masters', label: "Master's Degree" },
             { value: 'phd', label: 'PhD / Doctorate' },
@@ -76,46 +45,32 @@ const questions = [
     },
     {
         key: 'desiredDestination',
-        title: 'Where do you want to study?',
-        description: 'Pick your dream study destination.',
+        title: 'Preferred destination?',
+        description: 'Where would you like to pursue your studies?',
         type: 'select',
         placeholder: 'Select destination',
         order: 2,
+        category: 'PROSPECT',
         active: true,
         options: [
-            { value: 'malawi', label: 'Malawi' },
-            { value: 'india', label: 'India' },
-        ]
-    },
-    {
-        key: 'englishProficiency',
-        title: 'What is your level of English proficiency?',
-        description: 'Select the option that best represents your English language skills or test status.',
-        type: 'select',
-        placeholder: 'Select English test status',
-        order: 3,
-        active: true,
-        options: [
-            { value: 'fluent', label: 'Fluent / Native Speaker' },
-            { value: 'advanced', label: 'Advanced (C1/C2)' },
-            { value: 'intermediate', label: 'Intermediate (B1/B2)' },
-            { value: 'basic', label: 'Basic / Beginner' },
+            { value: 'malawi', label: '🇲🇼 Malawi (Local)' },
+            { value: 'india', label: '🇮🇳 India (International)' },
+            { value: 'both', label: '🌍 Open to both' },
         ]
     },
     {
         key: 'startDate',
-        title: 'When do you plan to start studying?',
-        description: 'Helps us find intakes that are open for you.',
+        title: 'When do you want to start?',
+        description: 'This helps us find universities with open intakes.',
         type: 'select',
         placeholder: 'Select start date',
-        order: 4,
-        active: true,
+        order: 3,
         category: 'PROSPECT',
+        active: true,
         options: [
             { value: 'asap', label: 'As soon as possible' },
             { value: 'next_6_months', label: 'In the next 6 months' },
-            { value: 'next_year', label: 'In 1 year' },
-            { value: 'unsure', label: "I'm not sure yet" },
+            { value: 'next_year', label: 'Next year' },
         ]
     },
     // University Category Questions
@@ -137,7 +92,7 @@ const questions = [
     },
     {
         key: 'studentCapacity',
-        title: 'Approximate Student Capacity',
+        title: 'Student Capacity',
         description: 'How many students do you currently enroll?',
         type: 'select',
         placeholder: 'Select capacity',
@@ -155,11 +110,17 @@ const questions = [
 
 async function main() {
     console.log('Seeding questionnaire questions...');
+    
+    // Deactivate all existing questions first to ensure only the ones in our list are active
+    await prisma.questionnaireQuestion.updateMany({
+        data: { active: false }
+    });
+
     for (const q of questions) {
         await prisma.questionnaireQuestion.upsert({
             where: { key: q.key },
-            update: { ...q },
-            create: { ...q as any },
+            update: { ...q, active: true },
+            create: { ...q as any, active: true },
         });
         console.log(`  ✓ ${q.key} (${q.category || 'PROSPECT'})`);
     }

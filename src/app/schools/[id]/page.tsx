@@ -41,9 +41,7 @@ export default async function PublicSchoolPage({ params }: { params: Promise<{ i
         <main className="min-h-screen bg-[#1a1b41] text-white font-sans">
             {/* Nav */}
             <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1a1b41]/90 backdrop-blur-md border-b border-white/10 h-16 flex items-center px-6">
-                <Link href="/" className="flex items-center">
-                    <TenpatenLogo variant="white" />
-                </Link>
+                <TenpatenLogo variant="white" />
                 <div className="ml-auto flex items-center gap-4">
                     <Link
                         href={`/login?callbackUrl=/dashboard/schools/${university.id}`}
