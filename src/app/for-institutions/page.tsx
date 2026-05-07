@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Menu, X, ArrowRight, BarChart2, MessageSquare, Users, ShieldCheck, Zap, Globe2, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { TenpatenLogo } from '@/components/branding/TenpatenLogo';
+import Image from 'next/image';
 
 // ─── Shared Nav ───────────────────────────────────────────────────────────────
 function Nav() {
@@ -104,19 +105,19 @@ const steps = [
 // ─── Team ─────────────────────────────────────────────────────────────────────
 const team = [
     {
-        initials: 'BM',
+        image: '/images/testimonials/blessings_user.jpg',
         name: 'Blessings Muyeya',
         role: 'Co-Founder & CEO',
         bio: 'Blessings built Tenpaten to democratise higher education access across Malawi — starting with removing the biggest barrier: geography.',
     },
     {
-        initials: 'JP',
+        image: '/images/testimonials/jairos_user.jpg',
         name: 'Jairos Phiri',
         role: 'Co-Founder & International Partnerships Director',
         bio: 'Jairos leads our institutional relationships and international strategy, ensuring every partner university gets a seamless, transparent experience.',
     },
     {
-        initials: 'DC',
+        image: '/images/testimonials/davie_user.jpg',
         name: 'Davie Chilembo',
         role: 'National Director',
         bio: 'Davie oversees national operations and institutional onboarding — connecting universities and students across all regions of Malawi.',
@@ -248,8 +249,13 @@ export default function ForInstitutionsPage() {
                                 <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#d5a22d] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 {/* Avatar header */}
                                 <div className="bg-[#1a1b41] px-8 py-10 flex flex-col items-center text-center">
-                                    <div className="w-20 h-20 rounded-[1.25rem] bg-[#d5a22d]/15 border-2 border-[#d5a22d]/30 flex items-center justify-center text-[#d5a22d] text-2xl font-black mb-4 group-hover:bg-[#d5a22d]/25 transition-all duration-300">
-                                        {member.initials}
+                                    <div className="w-20 h-20 rounded-[1.25rem] overflow-hidden bg-[#d5a22d]/15 border-2 border-[#d5a22d]/30 flex items-center justify-center text-[#d5a22d] text-2xl font-black mb-4 group-hover:border-[#d5a22d]/60 transition-all duration-300 relative">
+                                        <Image
+                                            src={member.image}
+                                            alt={member.name}
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                        />
                                     </div>
                                     <p className="text-white font-black text-lg uppercase tracking-tight leading-none">{member.name}</p>
                                     <div className="flex items-center gap-1.5 mt-2">

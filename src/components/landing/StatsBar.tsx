@@ -18,22 +18,28 @@ const allChips = [...chips, ...chips];
 
 export function StatsBar() {
     return (
-        <div className="bg-[#0f1030] border-y border-white/8 py-5 overflow-hidden relative select-none">
+        <div className="bg-[#0f1030] border-y border-white/5 py-8 overflow-hidden relative select-none">
+            {/* Background pattern */}
+            <div
+                className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                style={{ backgroundImage: 'radial-gradient(#d5a22d 1px, transparent 1px)', backgroundSize: '48px 48px' }}
+            />
+
             {/* Fade edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#0f1030] to-transparent pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#0f1030] to-transparent pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-[#0f1030] to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-[#0f1030] to-transparent pointer-events-none" />
 
             <div
-                className="flex gap-4 w-max will-change-transform"
-                style={{ animation: 'marquee-chips 30s linear infinite' }}
+                className="flex gap-6 w-max will-change-transform"
+                style={{ animation: 'marquee-chips 40s linear infinite' }}
             >
                 {allChips.map((chip, i) => (
                     <div
                         key={i}
-                        className="flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-white/10 bg-white/4 whitespace-nowrap shrink-0"
+                        className="flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-xl whitespace-nowrap shrink-0 group hover:border-[#d5a22d]/30 transition-colors"
                     >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#d5a22d] shrink-0" />
-                        <span className="text-white/50 text-[10px] font-black uppercase tracking-[0.25em]">
+                        <div className="w-2 h-2 rounded-full bg-[#d5a22d] shadow-[0_0_10px_rgba(213,162,45,0.5)] shrink-0" />
+                        <span className="text-white/60 text-[11px] font-black uppercase tracking-[0.3em] group-hover:text-white transition-colors">
                             {chip}
                         </span>
                     </div>

@@ -247,10 +247,10 @@ export default function ForStudentsPage() {
                             <span className="w-1.5 h-1.5 rounded-full bg-[#d5a22d] animate-pulse" />
                             <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.35em]">Yes, you read that right</span>
                         </div>
-                        <h2 className="text-5xl lg:text-6xl font-black text-white tracking-tighter leading-[1.1] mb-6">
+                        <h2 className="text-4xl lg:text-5xl font-black text-white tracking-tighter leading-[1.1] mb-4">
                             It&apos;s completely free.
                         </h2>
-                        <p className="text-white/55 text-xl font-medium mb-12">
+                        <p className="text-white/55 text-lg font-medium mb-8">
                             Get the services of a professional admissions advisor — at zero cost.
                         </p>
                         <Link href="/register?type=student"

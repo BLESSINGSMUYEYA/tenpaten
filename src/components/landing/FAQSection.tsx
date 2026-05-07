@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, HelpCircle } from 'lucide-react';
+import Image from 'next/image';
 
 const faqs = [
     {
@@ -27,69 +28,115 @@ export function FAQSection() {
     const [open, setOpen] = useState<number | null>(null);
 
     return (
-        <section className="bg-slate-50 py-20 lg:py-32">
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Header */}
-                <div className="text-center mb-14">
-                    <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">Frequently Asked</span>
-                    <h2 className="text-4xl lg:text-5xl font-black text-[#1a1b41] mt-4 tracking-tighter uppercase leading-[0.9]">
-                        Still Unsure?
-                    </h2>
-                    <p className="text-gray-500 font-medium text-lg mt-4">
-                        We&apos;ve got answers. Or reach out at{' '}
-                        <a href="mailto:support@tenpaten.com" className="text-[#d5a22d] hover:underline font-bold">
-                            support@tenpaten.com
-                        </a>
-                    </p>
-                </div>
-
-                {/* Accordion */}
-                <div className="space-y-3">
-                    {faqs.map((faq, i) => (
-                        <div
-                            key={i}
-                            className={`rounded-2xl border transition-all duration-300 overflow-hidden ${open === i
-                                ? 'border-[#d5a22d]/40 bg-white shadow-lg shadow-[#d5a22d]/5'
-                                : 'border-gray-200 bg-white hover:border-[#d5a22d]/25'
-                                }`}
-                        >
-                            <button
-                                onClick={() => setOpen(open === i ? null : i)}
-                                className="w-full flex items-center justify-between gap-4 px-7 py-5 text-left"
-                                aria-expanded={open === i}
+        <section className="bg-white py-24 lg:py-40 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                    {/* Left: Content */}
+                    <div>
+                        {/* Header */}
+                        <div className="mb-14 text-center lg:text-left">
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#d5a22d]/20 bg-[#d5a22d]/5 text-[#d5a22d] text-[10px] font-black tracking-[0.3em] mb-6 uppercase"
                             >
-                                <span className={`text-sm font-black uppercase tracking-wide transition-colors ${open === i ? 'text-[#d5a22d]' : 'text-[#1a1b41]'}`}>
-                                    {faq.q}
-                                </span>
-                                <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${open === i
-                                    ? 'bg-[#d5a22d] text-[#1a1b41]'
-                                    : 'bg-gray-100 text-gray-400'
-                                    }`}>
-                                    {open === i
-                                        ? <Minus className="w-4 h-4" />
-                                        : <Plus className="w-4 h-4" />
-                                    }
-                                </div>
-                            </button>
-
-                            <AnimatePresence>
-                                {open === i && (
-                                    <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: 'auto', opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                                    >
-                                        <div className="px-7 pb-6 border-t border-gray-100">
-                                            <p className="text-gray-500 font-medium text-sm leading-relaxed pt-5">
-                                                {faq.a}
-                                            </p>
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
+                                <HelpCircle className="w-3.5 h-3.5" />
+                                Support Center
+                            </motion.div>
+                            <h2 className="text-4xl lg:text-6xl font-black text-[#1a1b41] tracking-tighter uppercase leading-[0.9] mb-6">
+                                Still<br />
+                                <span className="text-[#d5a22d]">Unsure?</span>
+                            </h2>
+                            <p className="text-gray-500 font-medium text-lg max-w-md mx-auto lg:mx-0">
+                                We&apos;ve got answers. Or reach out at{' '}
+                                <a href="mailto:support@tenpaten.com" className="text-[#d5a22d] hover:underline font-bold">
+                                    support@tenpaten.com
+                                </a>
+                            </p>
                         </div>
-                    ))}
+
+                        {/* Accordion */}
+                        <div className="space-y-4">
+                            {faqs.map((faq, i) => (
+                                <div
+                                    key={i}
+                                    className={`rounded-2xl border transition-all duration-300 overflow-hidden ${open === i
+                                        ? 'border-[#d5a22d]/40 bg-white shadow-2xl shadow-[#d5a22d]/10'
+                                        : 'border-gray-100 bg-slate-50/50 hover:border-[#d5a22d]/25 hover:bg-white'
+                                        }`}
+                                >
+                                    <button
+                                        onClick={() => setOpen(open === i ? null : i)}
+                                        className="w-full flex items-center justify-between gap-4 px-7 py-6 text-left"
+                                        aria-expanded={open === i}
+                                    >
+                                        <span className={`text-sm font-black uppercase tracking-wide transition-colors ${open === i ? 'text-[#d5a22d]' : 'text-[#1a1b41]'}`}>
+                                            {faq.q}
+                                        </span>
+                                        <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${open === i
+                                            ? 'bg-[#d5a22d] text-[#1a1b41]'
+                                            : 'bg-white border border-gray-100 text-gray-400'
+                                            }`}>
+                                            {open === i
+                                                ? <Minus className="w-4 h-4" />
+                                                : <Plus className="w-4 h-4" />
+                                            }
+                                        </div>
+                                    </button>
+
+                                    <AnimatePresence>
+                                        {open === i && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: 'auto', opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                            >
+                                                <div className="px-7 pb-8 border-t border-gray-50">
+                                                    <p className="text-gray-500 font-medium text-base leading-relaxed pt-6">
+                                                        {faq.a}
+                                                    </p>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Right: Image */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="relative"
+                    >
+                        <div className="aspect-[3/4] relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-slate-50">
+                            <Image
+                                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800"
+                                alt="Student support"
+                                fill
+                                className="object-cover transition-transform duration-1000 hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#1a1b41]/60 via-transparent to-transparent" />
+                            
+                            {/* Floating Card */}
+                            <div className="absolute bottom-10 left-10 right-10 bg-[#d5a22d] p-8 rounded-3xl shadow-2xl">
+                                <p className="text-[#1a1b41] font-black text-2xl tracking-tighter leading-[1] mb-2 uppercase">
+                                    Need direct help?
+                                </p>
+                                <p className="text-[#1a1b41]/70 text-sm font-bold leading-snug">
+                                    Our support team is Malawian and available 24/7 to guide you through your applications.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Decorative Shape */}
+                        <div className="absolute -z-10 -bottom-12 -right-12 w-64 h-64 bg-[#d5a22d]/10 rounded-full blur-3xl" />
+                    </motion.div>
                 </div>
             </div>
         </section>

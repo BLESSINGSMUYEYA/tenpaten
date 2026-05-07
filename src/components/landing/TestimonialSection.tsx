@@ -1,88 +1,97 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const testimonials = [
     {
-        initials: 'CK',
-        name: 'Chisomo Kamanga',
-        school: 'Blantyre Secondary School',
+        image: '/images/testimonials/blessings_user.jpg',
+        name: 'Blessings Muyeya',
+        school: 'Polytechnic (UNIMA)',
         content:
-            "I never thought applying to university could be this straightforward. I submitted to three institutions in one afternoon without leaving my house. Tenpaten changed everything for me.",
+            "Tenpaten made my university transition seamless. I applied, tracked my status, and got my admission letter without a single trip to the registry. It's a game-changer for Malawian students.",
     },
     {
-        initials: 'TN',
-        name: 'Takondwa Nkhoma',
-        school: 'Mzuzu Boys Secondary',
+        image: '/images/testimonials/jairos_user.jpg',
+        name: 'Jairos Banda',
+        school: 'Lilongwe University (LUANAR)',
         content:
-            "The messaging feature is what got me. I actually spoke directly with the admissions office at UNIMA — no agents, no confusion. I knew exactly where my application stood the whole time.",
+            "I discovered scholarship opportunities I never knew existed. Tenpaten matched my profile and guided me through the entire process. I'm now studying my dream course thanks to this platform.",
     },
     {
-        initials: 'AM',
-        name: 'Alinafe Mwale',
-        school: 'Lilongwe Girls Secondary',
+        image: '/images/testimonials/davie_user.jpg',
+        name: 'Davie Phiri',
+        school: 'Mzuzu University',
         content:
-            "I found a scholarship I didn't even know existed through Tenpaten. The platform surfaced it automatically based on my profile. I got funding and a place at BIU. Highly recommend.",
+            "The direct line to admissions is what sets this platform apart. I had questions about my documents and got answers in minutes. No agents, no stress. Just direct results.",
     },
 ];
 
 export function TestimonialSection() {
     return (
-        <section className="py-20 lg:py-32 bg-[#0f1030] relative overflow-hidden">
+        <section className="py-24 lg:py-40 bg-[#0f1030] relative overflow-hidden">
             {/* Dot grid */}
             <div
                 className="absolute inset-0 opacity-[0.05] pointer-events-none"
                 style={{ backgroundImage: 'radial-gradient(#d5a22d 1px, transparent 1px)', backgroundSize: '48px 48px' }}
             />
             {/* Gold gradient orb */}
-            <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#d5a22d] opacity-[0.04] blur-[100px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#d5a22d] opacity-[0.03] blur-[120px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header */}
-                <div className="text-center mb-16 lg:mb-20">
-                    <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">From Others Around Malawi</span>
-                    <h2 className="text-4xl sm:text-5xl font-black text-white mt-4 tracking-tighter uppercase leading-[0.9]">
-                        Don&apos;t just take it from us.
+                <div className="text-center mb-20 lg:mb-24">
+                    <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.4em] uppercase">Student Success Stories</span>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mt-6 tracking-tighter uppercase leading-[0.9]">
+                        Trusted by the<br /><span className="text-[#d5a22d]">Next Generation.</span>
                     </h2>
-                    <p className="text-white/45 font-medium text-lg mt-4 max-w-xl mx-auto">
-                        Real students. Real applications. Real results.
+                    <p className="text-white/40 font-medium text-lg mt-6 max-w-xl mx-auto">
+                        Real students from Malawi's top institutions sharing their Tenpaten experience.
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-5 lg:gap-6">
+                <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
                     {testimonials.map((item, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 24 }}
+                            initial={{ opacity: 0, y: 32 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.12 }}
-                            className="group relative rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#d5a22d]/30 hover:bg-white/8 transition-all duration-500 overflow-hidden flex flex-col"
+                            transition={{ duration: 0.6, delay: index * 0.15 }}
+                            className="group relative flex flex-col h-full"
                         >
-                            {/* Gold top border on hover */}
-                            <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#d5a22d] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                            {/* Card header */}
-                            <div className="bg-[#1a1b41] border-b border-white/5 px-6 py-4 flex items-center gap-3">
-                                <div className="w-9 h-9 rounded-xl bg-[#d5a22d]/20 border border-[#d5a22d]/30 flex items-center justify-center text-[#d5a22d] text-[11px] font-black shrink-0">
-                                    {item.initials}
-                                </div>
-                                <div>
-                                    <p className="text-white font-black text-sm leading-none">{item.name}</p>
-                                    <div className="flex items-center gap-1.5 mt-0.5">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#d5a22d]" />
-                                        <p className="text-[#d5a22d] text-[9px] font-black uppercase tracking-[0.25em]">{item.school}</p>
+                            {/* Image Container with premium frame */}
+                            <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-8 border border-white/10 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
+                                <Image
+                                    src={item.image}
+                                    alt={item.name}
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#0f1030] via-transparent to-transparent opacity-60" />
+                                
+                                {/* School Badge */}
+                                <div className="absolute bottom-6 left-6 right-6">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#d5a22d] text-[#1a1b41] text-[9px] font-black uppercase tracking-widest">
+                                        <span className="w-1 h-1 rounded-full bg-[#1a1b41] animate-pulse" />
+                                        {item.school}
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Quote */}
-                            <div className="p-6 lg:p-8 flex-1 flex flex-col">
-                                <div className="text-[#d5a22d]/20 text-5xl font-serif leading-none mb-2 group-hover:text-[#d5a22d]/40 transition-colors duration-500">&ldquo;</div>
-                                <p className="text-white/60 font-medium leading-relaxed flex-1 italic text-sm lg:text-base">
-                                    {item.content}
+                            {/* Content */}
+                            <div className="px-2">
+                                <div className="flex items-center gap-4 mb-4">
+                                    <div className="h-[1px] w-8 bg-[#d5a22d]/30" />
+                                    <h4 className="text-white font-black text-xl tracking-tight">{item.name}</h4>
+                                </div>
+                                <p className="text-white/50 font-medium leading-relaxed italic text-base lg:text-lg">
+                                    &ldquo;{item.content}&rdquo;
                                 </p>
                             </div>
+
+                            {/* Decorative element */}
+                            <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#d5a22d] opacity-[0.02] blur-2xl group-hover:opacity-[0.05] transition-opacity duration-500" />
                         </motion.div>
                     ))}
                 </div>

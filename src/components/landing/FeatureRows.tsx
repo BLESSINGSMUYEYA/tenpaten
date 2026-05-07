@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Globe2, FileText, MessageSquare, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 const features = [
     {
@@ -11,6 +12,7 @@ const features = [
         headline: 'Find universities that fit. Zero guesswork.',
         body: 'Browse accredited institutions from every district in Malawi — compare programmes, entry requirements, and tuition fees in seconds. No more travelling district-to-district just to get a prospectus.',
         icon: Globe2,
+        image: '/images/testimonials/blessings.png',
         visual: (
             <div className="w-full space-y-3">
                 {[
@@ -49,6 +51,7 @@ const features = [
         headline: "Applications that don't require a bus ride.",
         body: 'Apply to multiple universities from your phone or laptop. One profile. One submission. No paperwork, no travel, no printing. Your documents are stored securely and reused automatically.',
         icon: FileText,
+        image: '/images/testimonials/jairos.png',
         visual: (
             <div className="w-full space-y-3">
                 {/* Progress tracker */}
@@ -91,6 +94,7 @@ const features = [
         headline: 'Talk directly to admissions. No middlemen.',
         body: 'Our verified messaging system connects you directly with admissions offices across Malawi — no WhatsApp confusion, no unverified agents, no uncertainty about who you are really talking to.',
         icon: MessageSquare,
+        image: '/images/testimonials/david.png',
         visual: (
             <div className="w-full space-y-3">
                 {/* Chat bubbles */}
@@ -144,7 +148,7 @@ export function FeatureRows() {
             {features.map((feat, idx) => (
                 <div
                     key={feat.id}
-                    className={`py-20 lg:py-32 relative overflow-hidden ${feat.dark ? 'bg-[#1a1b41]' : 'bg-slate-50'}`}
+                    className={`py-20 lg:py-40 relative overflow-hidden ${feat.dark ? 'bg-[#1a1b41]' : 'bg-slate-50'}`}
                 >
                     {/* Subtle dot grid */}
                     <div
@@ -179,12 +183,12 @@ export function FeatureRows() {
                                 </div>
 
                                 {/* Headline */}
-                                <h2 className={`text-4xl lg:text-5xl font-black tracking-tighter leading-[1.1] mb-6 ${feat.dark ? 'text-white' : 'text-[#1a1b41]'}`}>
+                                <h2 className={`text-4xl lg:text-6xl font-black tracking-tighter leading-[1] mb-8 ${feat.dark ? 'text-white' : 'text-[#1a1b41]'}`}>
                                     {feat.headline}
                                 </h2>
 
                                 {/* Body */}
-                                <p className={`text-lg font-medium leading-relaxed mb-10 max-w-xl ${feat.dark ? 'text-white/55' : 'text-gray-500'}`}>
+                                <p className={`text-lg lg:text-xl font-medium leading-relaxed mb-10 max-w-xl ${feat.dark ? 'text-white/55' : 'text-gray-500'}`}>
                                     {feat.body}
                                 </p>
 
@@ -199,15 +203,41 @@ export function FeatureRows() {
                             </motion.div>
 
                             {/* Visual side */}
-                            <motion.div
-                                initial={{ opacity: 0, x: feat.flip ? -32 : 32 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.7, delay: 0.1 }}
-                                className={`${feat.flip ? 'lg:order-1' : ''} ${feat.dark ? 'bg-white/5 border border-white/10' : 'bg-white border border-gray-100'} rounded-[2.5rem] p-8 lg:p-10 shadow-2xl`}
-                            >
-                                {feat.visual}
-                            </motion.div>
+                            <div className={`relative ${feat.flip ? 'lg:order-1' : ''}`}>
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.7 }}
+                                    className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10"
+                                >
+                                    <div className="aspect-square relative">
+                                        <Image
+                                            src={feat.image}
+                                            alt={feat.headline}
+                                            fill
+                                            className="object-cover transition-transform duration-1000 hover:scale-105"
+                                        />
+                                        <div className={`absolute inset-0 bg-gradient-to-t ${feat.dark ? 'from-[#1a1b41]' : 'from-slate-900/60'} via-transparent to-transparent opacity-60`} />
+                                    </div>
+
+                                    {/* UI Overlay Card */}
+                                    <div className="absolute bottom-6 left-6 right-6 lg:bottom-10 lg:left-10 lg:right-10">
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.5, delay: 0.3 }}
+                                            className={`${feat.dark ? 'bg-white/10 backdrop-blur-xl border-white/20' : 'bg-white/95 backdrop-blur-sm border-gray-100'} rounded-3xl p-6 shadow-2xl border`}
+                                        >
+                                            {feat.visual}
+                                        </motion.div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Decorative shape */}
+                                <div className={`absolute -z-10 -top-8 -left-8 w-64 h-64 rounded-full ${feat.dark ? 'bg-[#d5a22d]/10' : 'bg-slate-200'} blur-3xl`} />
+                            </div>
                         </div>
                     </div>
                 </div>

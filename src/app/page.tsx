@@ -8,7 +8,6 @@ import { TenpatenLogo } from '@/components/branding/TenpatenLogo';
 import { LandingHero } from '@/components/landing/LandingHero';
 import { StatsBar } from '@/components/landing/StatsBar';
 import { FeatureRows } from '@/components/landing/FeatureRows';
-import { TestimonialSection } from '@/components/landing/TestimonialSection';
 import { FAQSection } from '@/components/landing/FAQSection';
 import { FinalCTABanner } from '@/components/landing/FinalCTABanner';
 
@@ -117,7 +116,6 @@ export default function Home() {
       <LandingHero />
       <StatsBar />
       <FeatureRows />
-      <TestimonialSection />
       <FAQSection />
       <FinalCTABanner />
 
