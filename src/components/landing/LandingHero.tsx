@@ -10,13 +10,13 @@ export function LandingHero() {
         <section className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center items-center overflow-hidden selection:bg-[#d5a22d]/30 text-center">
             {/* ── Background ── */}
             <div className="absolute inset-0 z-0">
-                {/* Base Dark Color */}
-                <div className="absolute inset-0 bg-[#0f1030]" />
+                {/* Base Fallback Color */}
+                <div className="absolute inset-0 bg-black" />
                 
                 {/* Background Image - Premium African students theme */}
                 <motion.div
                     initial={{ scale: 1.1, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 0.7 }}
+                    animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1.8, ease: 'easeOut' }}
                     className="absolute inset-0"
                 >
@@ -29,10 +29,11 @@ export function LandingHero() {
                     />
                 </motion.div>
 
-                {/* Overlays to darken the image for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0f1030] via-[#0f1030]/80 to-transparent z-10 hidden lg:block" />
-                <div className="absolute inset-0 bg-[#0f1030]/60 mix-blend-multiply z-10" />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0f1030]/50 via-transparent to-[#0f1030] z-10" />
+                {/* Subtle overlay to improve text visibility */}
+                <div className="absolute inset-0 bg-[#0f1030]/55 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 z-10" />
+
+
 
                 {/* Dot grid pattern */}
                 <div
@@ -44,8 +45,8 @@ export function LandingHero() {
                 <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#d5a22d] opacity-[0.05] blur-[120px] z-20" />
             </div>
 
-            <div className="relative z-30 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-24 flex flex-col items-center lg:items-start lg:text-left">
-                <div className="max-w-3xl">
+            <div className="relative z-30 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-24 flex flex-col items-center text-center">
+                <div className="max-w-4xl flex flex-col items-center">
                     {/* ── Trust badge ── */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -64,7 +65,7 @@ export function LandingHero() {
                         initial={{ opacity: 0, y: 28 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.85, delay: 0.1 }}
-                        className="text-4xl sm:text-5xl lg:text-[4.5rem] font-black text-white leading-[1.05] tracking-tighter mb-8"
+                        className="text-4xl sm:text-5xl lg:text-[4.5rem] font-black text-white leading-[1.15] tracking-tighter mb-8"
                     >
                         Your one-stop platform<br />
                         <span className="text-[#d5a22d]">for university</span> applications.
@@ -75,7 +76,7 @@ export function LandingHero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.25 }}
-                        className="text-white/70 text-lg lg:text-xl font-medium leading-relaxed max-w-2xl mb-12"
+                        className="text-white/70 text-lg lg:text-xl font-medium leading-relaxed max-w-3xl mb-12"
                     >
                         Get matched. Apply directly. Track your progress.<br className="hidden sm:block" />
                         <span className="text-white font-black border-b-2 border-[#d5a22d]/50 pb-0.5">All in one place.</span>
@@ -86,7 +87,7 @@ export function LandingHero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="flex flex-col sm:flex-row items-center gap-5"
+                        className="flex flex-col sm:flex-row items-center justify-center gap-5"
                     >
                         <Link
                             href="/register?type=student"
@@ -111,7 +112,7 @@ export function LandingHero() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.65 }}
-                        className="mt-16 flex flex-col sm:flex-row items-center sm:items-start gap-4 text-white/40"
+                        className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 text-white/40"
                     >
                         {/* Avatar stack */}
                         <div className="flex -space-x-3">
@@ -124,7 +125,7 @@ export function LandingHero() {
                                 </div>
                             ))}
                         </div>
-                        <div className="space-y-1">
+                        <div className="space-y-1 flex flex-col items-center">
                             <p className="text-[11px] font-black uppercase tracking-[0.2em]">
                                 <span className="text-white">Trusted by students</span> across Malawi
                             </p>

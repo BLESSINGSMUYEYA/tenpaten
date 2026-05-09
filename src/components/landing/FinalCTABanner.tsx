@@ -16,7 +16,11 @@ export function FinalCTABanner() {
                     fill
                     className="object-cover opacity-40 mix-blend-overlay"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f1030] via-[#0f1030]/80 to-[#0f1030]" />
+                <div className="absolute inset-0 bg-[#0f1030]/15" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f1030] via-transparent to-[#0f1030]" />
+
+
+
             </div>
 
             {/* Background glows */}
