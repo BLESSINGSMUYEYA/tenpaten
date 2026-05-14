@@ -28,8 +28,8 @@ function RegisterContent({ questions, countries }: { questions: QuestionData[], 
     // Questionnaire step (before the registration form)
     if (showQuestionnaire) {
         return (
-            <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4 sm:p-8 selection:bg-[#d5a22d]/20">
-                <div className="w-full max-w-2xl">
+            <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4 sm:p-8 selection:bg-[#d5a22d]/20">
+                <div className="w-full max-w-md">
                     <StudentQuestionnaire questions={questions} onComplete={handleQuestionnaireComplete} />
                 </div>
             </div>
