@@ -64,9 +64,9 @@ function IntroScreen({ onStart }: { onStart: () => void }) {
             {/* Hero image */}
             <div className="relative h-44 overflow-hidden">
                 <img
-                    src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=700&q=80"
-                    alt="Students on campus"
-                    className="w-full h-full object-cover object-top"
+                    src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=700&q=80"
+                    alt="Students in a classroom"
+                    className="w-full h-full object-cover object-center"
                 />
                 {/* subtle bottom fade only — keeps image clearly visible */}
                 <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
