@@ -1,5 +1,6 @@
 import { getApplicationsByCountry } from '@/lib/data';
 import Link from 'next/link';
+import RegionalApplicationFilters from './RegionalApplicationFilters';
 import { Button } from '@/components/ui/button';
 import { FileText, Search, Filter, Calendar, GraduationCap, Building2, User, ArrowRight } from 'lucide-react';
 import { ApplicationStatus } from '@prisma/client';
@@ -11,11 +12,15 @@ export default async function Page({
 }: {
     searchParams?: Promise<{
         page?: string;
+        search?: string;
+        status?: string;
+        sort?: string;
     }>;
 }) {
-    const { page } = (await searchParams) || {};
+    const params = (await searchParams) || {};
+    const { page, search: query, status, sort } = params;
     const currentPage = Number(page) || 1;
-    const { applications, metadata } = await getApplicationsByCountry(currentPage);
+    const { applications, metadata } = await getApplicationsByCountry(currentPage, 10, query, status, sort);
 
     return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12">
@@ -32,22 +37,7 @@ export default async function Page({
             </div>
 
             {/* Toolbar */}
-            <div className="flex flex-wrap items-center gap-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm">
-                <div className="flex-1 min-w-[300px] relative group">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d5a22d] transition-colors" />
-                    <input
-                        type="text"
-                        placeholder="Search by student name, email, or university..."
-                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border-transparent focus:bg-white focus:border-[#d5a22d]/30 focus:ring-0 rounded-xl text-sm font-medium transition-all"
-                    />
-                </div>
-                <div className="flex items-center gap-2">
-                    <Button variant="outline" className="rounded-xl border-gray-200 text-gray-600 font-bold flex gap-2">
-                        <Filter className="w-4 h-4" />
-                        <span>Sort & Filter</span>
-                    </Button>
-                </div>
-            </div>
+            <RegionalApplicationFilters />
 
             {/* Applications Table */}
             <div className="bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden">
@@ -119,17 +109,21 @@ export default async function Page({
                     </p>
                     <div className="flex items-center gap-2">
                         <Button
-                            disabled={!metadata.hasPrevPage}
+                            asChild
                             variant="outline"
-                            className="rounded-xl text-xs font-black uppercase tracking-[0.1em]"
+                            className={`rounded-xl text-xs font-black uppercase tracking-[0.1em] ${!metadata.hasPrevPage ? 'pointer-events-none opacity-50' : ''}`}
                         >
-                            Previous
+                            <Link href={`?page=${currentPage - 1}${query ? `&search=${query}` : ''}${status ? `&status=${status}` : ''}${sort ? `&sort=${sort}` : ''}`}>
+                                Previous
+                            </Link>
                         </Button>
                         <Button
-                            disabled={!metadata.hasNextPage}
-                            className="bg-[#36335e] text-[#d5a22d] hover:bg-[#2a284a] rounded-xl text-xs font-black uppercase tracking-[0.1em]"
+                            asChild
+                            className={`bg-[#36335e] text-[#d5a22d] hover:bg-[#2a284a] rounded-xl text-xs font-black uppercase tracking-[0.1em] ${!metadata.hasNextPage ? 'pointer-events-none opacity-50' : ''}`}
                         >
-                            Next
+                            <Link href={`?page=${currentPage + 1}${query ? `&search=${query}` : ''}${status ? `&status=${status}` : ''}${sort ? `&sort=${sort}` : ''}`}>
+                                Next
+                            </Link>
                         </Button>
                     </div>
                 </div>

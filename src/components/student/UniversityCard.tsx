@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useMemo } from 'react';
 import Image from 'next/image';
-import { Building2, MapPin, GraduationCap, Wallet, BookOpen, Star, ShieldCheck, Award, Zap } from 'lucide-react';
+import { Building2, MapPin, GraduationCap, Wallet, BookOpen, ShieldCheck, Award, Zap, CheckCircle } from 'lucide-react';
 import { usePerformance } from '@/components/providers/PerformanceProvider';
 
 interface Program {
@@ -35,9 +35,11 @@ interface UniversityCardProps {
     matchingProgram?: Program | null;
     featureMode?: boolean;
     layout?: 'vertical' | 'horizontal';
+    onToggleCompare?: (id: string) => void;
+    isComparing?: boolean;
 }
 
-export default function UniversityCard({ university, matchingProgram, featureMode, layout = 'vertical' }: UniversityCardProps) {
+export default function UniversityCard({ university, matchingProgram, featureMode, layout = 'vertical', onToggleCompare, isComparing }: UniversityCardProps) {
     const { isLiteMode } = usePerformance();
 
     if (featureMode) {
@@ -74,7 +76,13 @@ export default function UniversityCard({ university, matchingProgram, featureMod
             <>
                 {/* Mobile View: Forced Initial Vertical Layout (< md) */}
                 <div className="md:hidden">
-                    <UniversityCard university={university} matchingProgram={matchingProgram} layout="vertical" />
+                    <UniversityCard 
+                        university={university} 
+                        matchingProgram={matchingProgram} 
+                        layout="vertical" 
+                        onToggleCompare={onToggleCompare} 
+                        isComparing={isComparing} 
+                    />
                 </div>
 
                 {/* Desktop View: Horizontal List Layout (>= md) */}
@@ -112,15 +120,21 @@ export default function UniversityCard({ university, matchingProgram, featureMod
                                 </div>
                             </div>
 
-                            {/* Rank Badge - Compact */}
+                        {/* Compare Toggle */}
                             <div className="flex items-center gap-3 shrink-0">
-                                <div className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gray-50 border border-gray-100 shadow-sm group-hover:bg-[#d5a22d]/5 group-hover:border-[#d5a22d]/20 transition-all">
-                                    <Star className="w-3.5 h-3.5 text-[#d5a22d] fill-[#d5a22d]" />
-                                    <span className="text-[11px] font-black text-[#36335e] tracking-tight">
-                                        {(university.programCount * 120 + 450).toLocaleString()}
-                                    </span>
-                                </div>
-
+                                {onToggleCompare && (
+                                    <button
+                                        onClick={() => onToggleCompare(university.id)}
+                                        className={`p-2.5 rounded-xl border transition-all active:scale-90 ${
+                                            isComparing 
+                                                ? 'bg-[#d5a22d] border-[#d5a22d] text-white shadow-lg shadow-[#d5a22d]/20' 
+                                                : 'bg-white border-gray-200 text-gray-400 hover:text-[#d5a22d] hover:border-[#d5a22d]'
+                                        }`}
+                                        title="Compare University"
+                                    >
+                                        <CheckCircle className="w-4 h-4" />
+                                    </button>
+                                )}
                             </div>
                         </div>
 
@@ -230,15 +244,21 @@ export default function UniversityCard({ university, matchingProgram, featureMod
                             )}
                         </div>
                         
-                        {/* Rank Badge & Save */}
+                        {/* Compare Toggle */}
                         <div className="flex items-center gap-2 shrink-0">
-                            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-50 border border-gray-100 shadow-sm group-hover:bg-[#d5a22d]/5 group-hover:border-[#d5a22d]/20 transition-all">
-                                <Star className="w-3 h-3 text-[#d5a22d] fill-[#d5a22d]" />
-                                <span className="text-[10px] font-black text-[#36335e] tracking-tight">
-                                    {(university.programCount * 120 + 450).toLocaleString()}
-                                </span>
-                            </div>
-
+                            {onToggleCompare && (
+                                <button
+                                    onClick={() => onToggleCompare(university.id)}
+                                    className={`p-2 rounded-xl border transition-all active:scale-90 ${
+                                        isComparing 
+                                            ? 'bg-[#d5a22d] border-[#d5a22d] text-white shadow-lg shadow-[#d5a22d]/20' 
+                                            : 'bg-white border-gray-200 text-gray-400 hover:text-[#d5a22d] hover:border-[#d5a22d]'
+                                    }`}
+                                    title="Compare University"
+                                >
+                                    <CheckCircle className="w-4 h-4" />
+                                </button>
+                            )}
                         </div>
                     </div>
 

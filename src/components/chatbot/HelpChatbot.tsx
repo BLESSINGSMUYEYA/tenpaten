@@ -4,8 +4,10 @@ import { useState, useRef, useEffect } from 'react';
 import { useChatbot } from './ChatbotContext';
 import { MessageSquare, X, Send, Bot, User, HelpCircle, Sparkles, RefreshCcw, ArrowDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 export default function HelpChatbot() {
+    const pathname = usePathname();
     const { isOpen, messages, isLoading, toggleChat, sendMessage, clearChat } = useChatbot();
     const [input, setInput] = useState('');
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -15,6 +17,10 @@ export default function HelpChatbot() {
             scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
         }
     }, [messages, isLoading]);
+
+    if (pathname === '/dashboard/colleges') {
+        return null;
+    }
 
     const handleSend = (e?: React.FormEvent) => {
         e?.preventDefault();

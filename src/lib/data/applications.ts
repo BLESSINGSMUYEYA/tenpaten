@@ -38,7 +38,13 @@ export async function getLatestDraftApplication() {
     }
 }
 
-export async function getApplicationsByCountry(page: number = 1, limit: number = 10) {
+export async function getApplicationsByCountry(
+    page: number = 1, 
+    limit: number = 10,
+    query?: string,
+    status?: string,
+    sort?: string
+) {
     const session = await auth();
     if (!session?.user?.email) return { applications: [], metadata: { total: 0, page, limit, totalPages: 0 } };
 
@@ -51,13 +57,33 @@ export async function getApplicationsByCountry(page: number = 1, limit: number =
         if (!user?.managedCountry) return { applications: [], metadata: { total: 0, page, limit, totalPages: 0 } };
 
         const skip = (page - 1) * limit;
-        const whereClause = {
+        const whereClause: any = {
             program: {
                 university: {
                     countryId: user.managedCountry.id
                 }
             }
         };
+
+        if (status) {
+            whereClause.status = status;
+        }
+
+        if (query) {
+            whereClause.OR = [
+                { prospect: { fullName: { contains: query, mode: 'insensitive' } } },
+                { prospect: { email: { contains: query, mode: 'insensitive' } } },
+                { program: { name: { contains: query, mode: 'insensitive' } } },
+                { program: { university: { name: { contains: query, mode: 'insensitive' } } } }
+            ];
+        }
+
+        const orderByClause: any = {};
+        if (sort === 'oldest') {
+            orderByClause.createdAt = 'asc';
+        } else {
+            orderByClause.createdAt = 'desc';
+        }
 
         const [applications, total] = await Promise.all([
             prisma.application.findMany({
@@ -72,7 +98,7 @@ export async function getApplicationsByCountry(page: number = 1, limit: number =
                         }
                     }
                 },
-                orderBy: { createdAt: 'desc' }
+                orderBy: orderByClause
             }),
             prisma.application.count({ where: whereClause })
         ]);

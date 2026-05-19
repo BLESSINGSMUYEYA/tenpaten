@@ -5,6 +5,8 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import UniversityCard from './UniversityCard';
 import { Search, Filter, X, ChevronDown, Sparkles } from 'lucide-react';
 import Fuse from 'fuse.js';
+import ComparisonMatrix from './ComparisonMatrix';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface Program {
     id: string;
@@ -37,7 +39,6 @@ interface University {
 interface UniversitiesListProps {
     universities: University[];
     allCountries?: { id: string; name: string }[];
-    hideUntilSearch?: boolean;
     children?: React.ReactNode;
 }
 
@@ -46,16 +47,28 @@ type SortOption = 'name-asc' | 'name-desc' | 'newest';
 export default function UniversitiesList({
     universities,
     allCountries,
-    hideUntilSearch = false,
     children
 }: UniversitiesListProps) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    // Internal state for immediate UI feedback (searching)
     const [searchQuery, setSearchQuery] = useState(searchParams.get('query') || '');
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+    const [compareShortlist, setCompareShortlist] = useState<string[]>([]);
+    const [isComparingOpen, setIsComparingOpen] = useState(false);
+
+    const handleToggleCompare = useCallback((id: string) => {
+        setCompareShortlist(prev => {
+            if (prev.includes(id)) {
+                return prev.filter(x => x !== id);
+            }
+            if (prev.length >= 3) {
+                return prev;
+            }
+            return [...prev, id];
+        });
+    }, []);
 
     // Fuse.js implementation for client-side fuzzy search
     const fuse = useMemo(() => {
@@ -75,8 +88,22 @@ export default function UniversitiesList({
 
     const displayUniversities = useMemo(() => {
         if (!searchQuery) return universities;
-        return fuse.search(searchQuery).map(result => result.item);
-    }, [searchQuery, universities, fuse]);
+
+        const localFuse = new Fuse(universities, {
+            keys: [
+                'name',
+                'description',
+                'programs.name',
+                'programs.majors',
+                'country'
+            ],
+            threshold: 0.35,
+            ignoreLocation: true,
+            distance: 100
+        });
+
+        return localFuse.search(searchQuery).map(result => result.item);
+    }, [searchQuery, universities]);
 
     // Debounced search effect
     useEffect(() => {
@@ -134,6 +161,8 @@ export default function UniversitiesList({
                     </p>
                 </div>
             </div>
+
+
 
             {/* Unified Search & Discovery Hub - Sticky at top when searching */}
             <div className={`z-[100] transition-all duration-500 max-w-3xl mx-auto w-full group/hub ${isSearchActive ? 'sticky top-2' : '-mt-4'}`}>
@@ -224,10 +253,9 @@ export default function UniversitiesList({
             </div>
 
             {children}
-            
+
             {/* Results Section */}
-            {(!hideUntilSearch || isSearchActive) && (
-                <div className="space-y-8 animate-in fade-in duration-1000">
+            <div className="space-y-8 animate-in fade-in duration-1000">
                     <div className="flex items-center justify-between border-b border-gray-100 pb-2">
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">
                             Found <span className="text-[#36335e]">{displayUniversities.length}</span> verified results
@@ -252,12 +280,58 @@ export default function UniversitiesList({
                                     university={uni}
                                     matchingProgram={uni.matchingProgram}
                                     layout={viewMode === 'grid' ? 'vertical' : 'horizontal'}
+                                    onToggleCompare={handleToggleCompare}
+                                    isComparing={compareShortlist.includes(uni.id)}
                                 />
                             ))}
                         </div>
                     )}
                 </div>
-            )}
+            {/* Comparison Floating Drawer */}
+            <AnimatePresence>
+                {compareShortlist.length > 0 && (
+                    <motion.div
+                        initial={{ y: 100, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: 100, opacity: 0 }}
+                        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[140] w-[calc(100vw-2rem)] sm:w-[480px] bg-[#1d1b41] border border-white/10 rounded-3xl p-5 shadow-2xl flex items-center justify-between gap-6"
+                    >
+                        <div className="text-left space-y-0.5">
+                            <h4 className="text-white text-sm font-black uppercase tracking-tight">Compare Selection</h4>
+                            <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest">{compareShortlist.length} of 3 universities selected</p>
+                        </div>
+                        <div className="flex gap-2">
+                            <button
+                                onClick={() => setCompareShortlist([])}
+                                className="px-4 py-2.5 rounded-xl border border-white/10 hover:bg-white/5 text-white/80 text-[10px] font-black uppercase tracking-widest transition-colors"
+                            >
+                                Clear
+                            </button>
+                            <button
+                                onClick={() => setIsComparingOpen(true)}
+                                disabled={compareShortlist.length < 2}
+                                className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
+                                    compareShortlist.length < 2 
+                                        ? 'bg-white/10 text-white/30 cursor-not-allowed' 
+                                        : 'bg-[#d5a22d] text-[#1d1b41] hover:bg-[#b89531] shadow-lg shadow-[#d5a22d]/20 active:scale-95'
+                                }`}
+                            >
+                                Compare Now
+                            </button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Comparison Matrix Modal */}
+            <AnimatePresence>
+                {isComparingOpen && (
+                    <ComparisonMatrix 
+                        universities={universities.filter(u => compareShortlist.includes(u.id))}
+                        onClose={() => setIsComparingOpen(false)}
+                    />
+                )}
+            </AnimatePresence>
         </div>
     );
 }

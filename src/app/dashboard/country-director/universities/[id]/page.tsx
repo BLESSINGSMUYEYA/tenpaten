@@ -1,5 +1,5 @@
 import { getUniversity } from '@/lib/data';
-import ProgramManagementClient from './ProgramManagementClient';
+import ProgramPageClient from '@/app/dashboard/school/programs/ProgramPageClient';
 import InitiateMessage from '@/components/messaging/InitiateMessage';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -141,7 +141,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                 </div>
 
                 <div className="lg:col-span-2">
-                    <ProgramManagementClient university={university} />
+                    <ProgramPageClient university={university} universityId={university.id} />
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@ const ProgramList       = dynamic(() => import('@/components/school/ProgramList'
 const ProgramForm       = dynamic(() => import('@/components/school/ProgramForm'), { ssr: false });
 const BulkUploadModal   = dynamic(() => import('@/components/school/BulkUploadModal'), { ssr: false });
 
-export default function ProgramPageClient({ university }: { university: any }) {
+export default function ProgramPageClient({ university, universityId }: { university: any, universityId?: string }) {
     const [activeTab, setActiveTab]               = useState<'programs' | 'departments'>('programs');
     const [isEditingProgram, setIsEditingProgram] = useState(false);
     const [editingProgramData, setEditingProgramData] = useState<any>(null);
@@ -113,6 +113,7 @@ export default function ProgramPageClient({ university }: { university: any }) {
                         <ProgramForm
                             departments={departments}
                             initialData={editingProgramData}
+                            universityId={universityId}
                             onClose={() => setIsEditingProgram(false)}
                         />
                     )}
@@ -121,12 +122,13 @@ export default function ProgramPageClient({ university }: { university: any }) {
                         <BulkUploadModal
                             onClose={() => setIsBulkUploadModalOpen(false)}
                             departments={departments}
+                            universityId={universityId}
                         />
                     )}
                 </div>
             ) : (
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <DepartmentManager departments={departments} />
+                    <DepartmentManager departments={departments} universityId={universityId} />
                 </div>
             )}
         </div>

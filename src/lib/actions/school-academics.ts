@@ -25,7 +25,7 @@ const ProgramSchema = z.object({
 
 // --- Helpers ---
 
-async function getUniversityManager(targetUniversityId?: string) {
+export async function getUniversityManager(targetUniversityId?: string) {
     const session = await auth();
     const user = session?.user as any;
 

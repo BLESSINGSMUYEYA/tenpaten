@@ -10,7 +10,7 @@ interface Department {
     _count?: { programs: number };
 }
 
-export default function DepartmentManager({ departments }: { departments: Department[] }) {
+export default function DepartmentManager({ departments, universityId }: { departments: Department[], universityId?: string }) {
     const [name, setName] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isDeleting, setIsDeleting] = useState<string | null>(null);
@@ -20,7 +20,7 @@ export default function DepartmentManager({ departments }: { departments: Depart
         if (!name.trim()) return;
 
         setIsLoading(true);
-        await createDepartment({ name });
+        await createDepartment({ name }, universityId);
         setName('');
         setIsLoading(false);
     };

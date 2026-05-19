@@ -6,10 +6,10 @@ import DashboardFAQs from '@/components/student/DashboardFAQs';
 export default function StudentLayoutClient({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     
-    // Hide Smart Help on detail pages to give more room
-    const isDetailPage = pathname.includes('/dashboard/schools/') || pathname.includes('/dashboard/programs/');
+    // Hide Smart Help on detail pages to give more room, on colleges browse page to allow premium full-width grid layout, and on the main dashboard home.
+    const hideSidebar = pathname.includes('/dashboard/schools/') || pathname.includes('/dashboard/programs/') || pathname === '/dashboard/colleges' || pathname === '/dashboard';
 
-    if (isDetailPage) {
+    if (hideSidebar) {
         return (
             <div className="w-full">
                 {children}

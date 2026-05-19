@@ -9,9 +9,10 @@ import { toast } from 'sonner';
 interface BulkUploadModalProps {
     onClose: () => void;
     departments: any[];
+    universityId?: string;
 }
 
-export default function BulkUploadModal({ onClose, departments }: BulkUploadModalProps) {
+export default function BulkUploadModal({ onClose, departments, universityId }: BulkUploadModalProps) {
     const [file, setFile] = useState<File | null>(null);
     const [previewData, setPreviewData] = useState<any[]>([]);
     const [isProcessing, setIsProcessing] = useState(false);
@@ -131,7 +132,7 @@ export default function BulkUploadModal({ onClose, departments }: BulkUploadModa
                 requirements: p.requirements,
                 intake: p.intake,
                 departmentId: p.departmentId,
-            })));
+            })), universityId);
 
             if (result.error) {
                 toast.error(result.error);

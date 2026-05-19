@@ -3,6 +3,7 @@
 import prisma from '@/lib/prisma';
 import { auth } from '@/auth';
 import { revalidatePath } from 'next/cache';
+import { getUniversityManager } from './school-academics';
 
 export async function upsertProgram(data: {
     id?: string;
@@ -14,13 +15,13 @@ export async function upsertProgram(data: {
     requirements?: string;
     intake?: string;
     departmentId?: string;
-}) {
-    const session = await auth();
-    const universityId = (session?.user as any)?.managedUniversityId;
+}, targetUniversityId?: string) {
+    const admin = await getUniversityManager(targetUniversityId);
 
-    if (!session?.user || session.user.role !== 'SCHOOL_ADMIN' || !universityId) {
+    if (!admin) {
         return { error: 'Unauthorized' };
     }
+    const universityId = admin.universityId;
 
     try {
         if (data.id) {
@@ -73,13 +74,13 @@ export async function upsertProgram(data: {
     }
 }
 
-export async function deleteProgram(id: string) {
-    const session = await auth();
-    const universityId = (session?.user as any)?.managedUniversityId;
+export async function deleteProgram(id: string, targetUniversityId?: string) {
+    const admin = await getUniversityManager(targetUniversityId);
 
-    if (!session?.user || session.user.role !== 'SCHOOL_ADMIN' || !universityId) {
+    if (!admin) {
         return { error: 'Unauthorized' };
     }
+    const universityId = admin.universityId;
 
     try {
         const existing = await prisma.program.findUnique({
@@ -113,13 +114,13 @@ export async function bulkAddPrograms(programsData: Array<{
     requirements?: string;
     intake?: string;
     departmentId: string;
-}>) {
-    const session = await auth();
-    const universityId = (session?.user as any)?.managedUniversityId;
+}>, targetUniversityId?: string) {
+    const admin = await getUniversityManager(targetUniversityId);
 
-    if (!session?.user || session.user.role !== 'SCHOOL_ADMIN' || !universityId) {
+    if (!admin) {
         return { error: 'Unauthorized' };
     }
+    const universityId = admin.universityId;
 
     try {
         // Validate departments exist in this university
