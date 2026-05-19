@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Menu, X, ArrowRight, CheckCircle, Globe2, FileText, MessageSquare, Award, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { TenpatenLogo } from '@/components/branding/TenpatenLogo';
+import InstallPwaButton from '@/components/providers/InstallPwaButton';
 
 // ─── Shared Nav ───────────────────────────────────────────────────────────────
 function Nav() {
@@ -262,7 +263,8 @@ export default function ForStudentsPage() {
             </section>
 
             {/* ── Footer ── */}
-            <footer className="bg-[#0f1030] border-t border-white/5 py-10 text-center">
+            <footer className="bg-[#0f1030] border-t border-white/5 py-12 flex flex-col items-center gap-4 text-center">
+                <InstallPwaButton />
                 <p className="text-white/20 text-[10px] font-black uppercase tracking-[0.4em]">
                     &copy; {new Date().getFullYear()} Tenpaten Apply. All rights reserved.
                 </p>

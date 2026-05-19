@@ -10,6 +10,7 @@ import { StatsBar } from '@/components/landing/StatsBar';
 import { FeatureRows } from '@/components/landing/FeatureRows';
 import { FAQSection } from '@/components/landing/FAQSection';
 import { FinalCTABanner } from '@/components/landing/FinalCTABanner';
+import InstallPwaButton from '@/components/providers/InstallPwaButton';
 
 const navLinks = [
   { href: '/for-students', label: 'For Students' },
@@ -182,9 +183,12 @@ export default function Home() {
             <p className="text-white/20 text-[10px] font-black uppercase tracking-[0.4em]">
               &copy; {new Date().getFullYear()} Tenpaten Apply. All rights reserved.
             </p>
-            <div className="flex items-center gap-6">
-              <span className="w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
-              <span className="text-white/30 text-[10px] font-black uppercase tracking-widest">System Status: Operational</span>
+            <div className="flex flex-wrap items-center gap-6">
+              <InstallPwaButton />
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
+                <span className="text-white/30 text-[10px] font-black uppercase tracking-widest">System Status: Operational</span>
+              </div>
             </div>
           </div>
         </div>

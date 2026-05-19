@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import NextAuthProvider from "@/components/providers/NextAuthProvider";
@@ -6,6 +6,7 @@ import { PerformanceProvider } from "@/components/providers/PerformanceProvider"
 import { Toaster } from "sonner";
 import PusherWrapper from "@/components/providers/PusherWrapper";
 import ReferralTracker from "@/components/providers/ReferralTracker";
+import PwaRegister from "@/components/providers/PwaRegister";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -14,7 +15,19 @@ const outfit = Outfit({
   display: 'swap',
 });
 
+export const viewport: Viewport = {
+  themeColor: "#1a1b41",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Tenpaten",
+  },
   title: {
     default: "Tenpaten Apply | Global Education Platform",
     template: "%s | Tenpaten Apply"
@@ -69,6 +82,7 @@ export default function RootLayout({
       >
         <NextAuthProvider>
           <PerformanceProvider>
+            <PwaRegister />
             {children}
             <PusherWrapper />
             <ReferralTracker />
