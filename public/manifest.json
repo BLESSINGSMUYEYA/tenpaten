@@ -4,7 +4,7 @@
   "description": "Global education recruitment platform connecting global institutions and qualified students.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1a1b41",
+  "background_color": "#ffffff",
   "theme_color": "#1a1b41",
   "orientation": "portrait",
   "scope": "/",
