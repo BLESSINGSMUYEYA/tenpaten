@@ -32,7 +32,7 @@ export function LandingHero() {
         <section className="relative pt-44 pb-32 lg:pt-64 lg:pb-48 overflow-hidden flex flex-col justify-center items-center text-center">
             {/* Background decorative elements */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-br from-indigo-100/50 via-purple-50/30 to-transparent blur-[120px] rounded-full opacity-60" />
+              <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-linear-to-br from-indigo-100/50 via-purple-50/30 to-transparent blur-[120px] rounded-full opacity-60" />
             </div>
 
             {/* Floating Avatars matching the image style */}
@@ -59,7 +59,7 @@ export function LandingHero() {
                 >
                   <h1 className="text-3xl md:text-4xl lg:text-[4rem] font-black text-[#1a1b41] mb-8 tracking-tighter uppercase leading-[0.95] text-balance">
                     Redefine Your <br />
-                    <span className="text-[#d5a22d]">Education</span> <br />
+                    <span className="text-brand-accent">Education</span> <br />
                     Experience
                   </h1>
 
@@ -76,7 +76,7 @@ export function LandingHero() {
                   className="max-w-2xl mx-auto"
                 >
                   <form onSubmit={handleSearch} className="relative group">
-                    <div className="flex flex-col sm:flex-row items-center bg-white rounded-[2rem] p-2 lg:p-3 shadow-[0_30px_60px_rgba(26,27,65,0.12)] border border-gray-100 group-focus-within:border-[#d5a22d]/50 transition-all duration-500">
+                    <div className="flex flex-col sm:flex-row items-center bg-white rounded-[2rem] p-2 lg:p-3 shadow-[0_30px_60px_rgba(26,27,65,0.12)] border border-gray-100 group-focus-within:border-brand-accent/50 transition-all duration-500">
                       <div className="flex-1 flex items-center px-6 py-2">
                         <Search className="w-5 h-5 text-gray-400 mr-4 shrink-0" />
                         <input
@@ -90,7 +90,7 @@ export function LandingHero() {
                       
                       <button
                         type="submit"
-                        className="w-full sm:w-auto bg-[#36335e] text-white px-8 py-4 lg:px-10 rounded-2xl lg:rounded-[1.5rem] font-black uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-3 hover:bg-[#d5a22d] transition-all shadow-xl shadow-[#36335e]/20 active:scale-95"
+                        className="w-full sm:w-auto bg-brand-primary text-white px-8 py-4 lg:px-10 rounded-2xl lg:rounded-[1.5rem] font-black uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-3 hover:bg-brand-accent transition-all shadow-xl shadow-brand-primary/20 active:scale-95"
                       >
                         <Sparkles className="w-4 h-4" />
                         Search Programs

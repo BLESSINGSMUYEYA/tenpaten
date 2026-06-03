@@ -80,7 +80,7 @@ export default function FinancePageClient() {
                     </button>
                     <button 
                         onClick={() => setIsPayoutModalOpen(true)}
-                        className="flex items-center gap-2 px-4 py-2 bg-[#d5a22d] text-[#1d1b41] font-black rounded-xl text-[10px] uppercase tracking-[0.15em] hover:bg-[#b58825] transition-all shadow-lg"
+                        className="flex items-center gap-2 px-4 py-2 bg-brand-accent text-[#1d1b41] font-black rounded-xl text-[10px] uppercase tracking-[0.15em] hover:bg-[#b58825] transition-all shadow-lg"
                     >
                         <ArrowUpRight className="w-3.5 h-3.5" />
                         Request Payout
@@ -92,16 +92,16 @@ export default function FinancePageClient() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {/* Available Balance Card */}
                 <div className="bg-[#1d1b41] text-white rounded-3xl p-6 relative overflow-hidden group shadow-xl">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#d5a22d]/10 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:scale-150 transition-transform duration-700" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/10 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:scale-150 transition-transform duration-700" />
                     <div className="relative z-10 flex flex-col justify-between h-full">
                         <div className="flex items-center justify-between mb-6">
-                            <div className="w-10 h-10 rounded-xl bg-[#d5a22d]/20 backdrop-blur-md flex items-center justify-center border border-[#d5a22d]/30">
-                                <Wallet className="w-5 h-5 text-[#d5a22d]" />
+                            <div className="w-10 h-10 rounded-xl bg-brand-accent/20 backdrop-blur-md flex items-center justify-center border border-brand-accent/30">
+                                <Wallet className="w-5 h-5 text-brand-accent" />
                             </div>
                             <span className="text-[10px] font-black uppercase tracking-[0.2em] bg-white/10 px-3 py-1 rounded-lg border border-white/10">Available Balance</span>
                         </div>
                         <div>
-                            <p className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.2em] mb-1">Total Receivable</p>
+                            <p className="text-brand-accent text-[10px] font-black uppercase tracking-[0.2em] mb-1">Total Receivable</p>
                             <h2 className="text-3xl font-black tracking-tight">{summary.availableBalance.toLocaleString()} <span className="text-lg opacity-70">{currency}</span></h2>
                         </div>
                     </div>
@@ -147,7 +147,7 @@ export default function FinancePageClient() {
                         <button 
                             onClick={() => setActiveTab('transactions')}
                             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-[0.15em] transition-all ${
-                                activeTab === 'transactions' ? 'bg-[#1d1b41] text-[#d5a22d] shadow-md' : 'text-slate-500 hover:text-[#1d1b41]'
+                                activeTab === 'transactions' ? 'bg-[#1d1b41] text-brand-accent shadow-md' : 'text-slate-500 hover:text-[#1d1b41]'
                             }`}
                         >
                             <History className="w-3.5 h-3.5" />
@@ -156,7 +156,7 @@ export default function FinancePageClient() {
                         <button 
                             onClick={() => setActiveTab('payouts')}
                             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-[0.15em] transition-all ${
-                                activeTab === 'payouts' ? 'bg-[#1d1b41] text-[#d5a22d] shadow-md' : 'text-slate-500 hover:text-[#1d1b41]'
+                                activeTab === 'payouts' ? 'bg-[#1d1b41] text-brand-accent shadow-md' : 'text-slate-500 hover:text-[#1d1b41]'
                             }`}
                         >
                             <CreditCard className="w-3.5 h-3.5" />
@@ -201,7 +201,7 @@ export default function FinancePageClient() {
                                     <tr key={tx.id} className="hover:bg-slate-50/50 transition-colors group">
                                         <td className="px-6 py-4">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-full bg-[#1d1b41]/5 flex items-center justify-center text-[10px] font-black text-[#1d1b41] group-hover:bg-[#1d1b41] group-hover:text-[#d5a22d] transition-all border border-[#1d1b41]/10">
+                                                <div className="w-8 h-8 rounded-full bg-[#1d1b41]/5 flex items-center justify-center text-[10px] font-black text-[#1d1b41] group-hover:bg-[#1d1b41] group-hover:text-brand-accent transition-all border border-[#1d1b41]/10">
                                                     {tx.user.fullName.charAt(0)}
                                                 </div>
                                                 <div>
@@ -215,7 +215,7 @@ export default function FinancePageClient() {
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="flex flex-col">
-                                                <span className="text-[9px] font-black text-[#d5a22d] bg-[#d5a22d]/10 px-2 py-0.5 rounded-md w-fit uppercase tracking-widest border border-[#d5a22d]/20 mb-1">Application Fee</span>
+                                                <span className="text-[9px] font-black text-brand-accent bg-brand-accent/10 px-2 py-0.5 rounded-md w-fit uppercase tracking-widest border border-brand-accent/20 mb-1">Application Fee</span>
                                                 <span className="text-[11px] font-bold text-slate-500 truncate max-w-[150px]">{tx.application?.program?.name}</span>
                                             </div>
                                         </td>

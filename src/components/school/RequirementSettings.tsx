@@ -70,11 +70,11 @@ export default function RequirementSettings({ university }: UniversityRequiremen
             {/* ── Section Group 1: Application Window ── */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-1 space-y-4">
-                    <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#d5a22d]/10 border border-[#d5a22d]/20 text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.2em]">
+                    <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-[10px] font-black uppercase tracking-[0.2em]">
                         <Clock className="w-3.5 h-3.5" />
                         Timeframe Control
                     </div>
-                    <h3 className="text-2xl font-black text-[#36335e] tracking-tight">Global Application Window</h3>
+                    <h3 className="text-2xl font-black text-brand-primary tracking-tight">Global Application Window</h3>
                     <p className="text-slate-500 font-bold text-sm leading-relaxed">
                         Define the operational period for admissions across all programmes. The portal will automatically lock outside these dates.
                     </p>
@@ -90,7 +90,7 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                                         type="date"
                                         value={openDate}
                                         onChange={(e) => setOpenDate(e.target.value)}
-                                        className="w-full h-14 px-6 rounded-2xl bg-slate-50 border-none focus:ring-4 focus:ring-[#36335e]/10 focus:bg-white transition-all text-sm font-bold text-[#36335e] shadow-sm"
+                                        className="w-full h-14 px-6 rounded-2xl bg-slate-50 border-none focus:ring-4 focus:ring-brand-primary/10 focus:bg-white transition-all text-sm font-bold text-brand-primary shadow-sm"
                                     />
                                 </div>
                             </div>
@@ -101,17 +101,17 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                                         type="date"
                                         value={closeDate}
                                         onChange={(e) => setCloseDate(e.target.value)}
-                                        className="w-full h-14 px-6 rounded-2xl bg-slate-50 border-none focus:ring-4 focus:ring-[#36335e]/10 focus:bg-white transition-all text-sm font-bold text-[#36335e] shadow-sm"
+                                        className="w-full h-14 px-6 rounded-2xl bg-slate-50 border-none focus:ring-4 focus:ring-brand-primary/10 focus:bg-white transition-all text-sm font-bold text-brand-primary shadow-sm"
                                     />
                                 </div>
                             </div>
                         </div>
                         
-                        <div className="mt-8 flex items-start gap-4 p-5 bg-[#36335e]/5 rounded-[1.5rem] border border-[#36335e]/10">
+                        <div className="mt-8 flex items-start gap-4 p-5 bg-brand-primary/5 rounded-[1.5rem] border border-brand-primary/10">
                             <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm shrink-0">
-                                <Info className="w-5 h-5 text-[#d5a22d]" />
+                                <Info className="w-5 h-5 text-brand-accent" />
                             </div>
-                            <p className="text-xs font-bold text-[#36335e]/70 leading-relaxed uppercase tracking-wide py-1">
+                            <p className="text-xs font-bold text-brand-primary/70 leading-relaxed uppercase tracking-wide py-1">
                                 Ensure these dates match your institutional calendar. System automation handles locking and unlocking.
                             </p>
                         </div>
@@ -122,11 +122,11 @@ export default function RequirementSettings({ university }: UniversityRequiremen
             {/* ── Section Group 2: Data Collection ── */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-1 space-y-4">
-                    <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#36335e]/10 border border-[#36335e]/20 text-[#36335e] text-[10px] font-black uppercase tracking-[0.2em]">
+                    <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-[10px] font-black uppercase tracking-[0.2em]">
                         <Settings2 className="w-3.5 h-3.5" />
                         Strategy Engine
                     </div>
-                    <h3 className="text-2xl font-black text-[#36335e] tracking-tight">Data Collection Strategy</h3>
+                    <h3 className="text-2xl font-black text-brand-primary tracking-tight">Data Collection Strategy</h3>
                     <p className="text-slate-500 font-bold text-sm leading-relaxed">
                         Configure the student profile data required for a complete application. Essential fields ensure high-quality candidate filtering.
                     </p>
@@ -138,11 +138,11 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                             {sections.map((section) => (
                                 <div key={section.id} className="p-6 flex items-center justify-between gap-6 hover:bg-slate-50/50 transition-all group">
                                     <div className="flex items-center gap-5">
-                                        <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-[#36335e] group-hover:text-[#d5a22d] transition-all duration-300 shadow-sm">
+                                        <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-brand-primary group-hover:text-brand-accent transition-all duration-300 shadow-sm">
                                             <section.icon className="w-6 h-6" />
                                         </div>
                                         <div>
-                                            <h4 className="font-black text-[#36335e] text-lg tracking-tight leading-tight mb-1">{section.label}</h4>
+                                            <h4 className="font-black text-brand-primary text-lg tracking-tight leading-tight mb-1">{section.label}</h4>
                                             <p className="text-sm font-bold text-slate-400">{section.description}</p>
                                         </div>
                                     </div>
@@ -154,10 +154,10 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                                             onChange={() => toggleSection(section.id)}
                                             className="sr-only peer"
                                         />
-                                        <div className="w-14 h-7 bg-slate-100 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-7 peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#36335e] shadow-inner"></div>
+                                        <div className="w-14 h-7 bg-slate-100 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-7 peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-primary shadow-inner"></div>
                                         <span className="ml-4 text-[10px] font-black uppercase tracking-[0.2em] hidden sm:inline w-24 text-right">
                                             {requirements[section.id]
-                                                ? <span className="text-[#d5a22d]">Required</span>
+                                                ? <span className="text-brand-accent">Required</span>
                                                 : <span className="text-slate-300">Optional</span>
                                             }
                                         </span>
@@ -176,7 +176,7 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                         <Upload className="w-3.5 h-3.5" />
                         Verification Hub
                     </div>
-                    <h3 className="text-2xl font-black text-[#36335e] tracking-tight">Verifiable Documentation</h3>
+                    <h3 className="text-2xl font-black text-brand-primary tracking-tight">Verifiable Documentation</h3>
                     <p className="text-slate-500 font-bold text-sm leading-relaxed">
                         Toggle the essential digital documents students must provide for proof of eligibility.
                     </p>
@@ -198,8 +198,8 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                                     }}
                                     className={`px-6 py-3 rounded-2xl border-2 text-[11px] font-black uppercase tracking-[0.15em] transition-all transform active:scale-95 ${
                                         requirements.requiredDocuments?.includes(doc.value)
-                                            ? 'bg-[#36335e] border-[#36335e] text-[#d5a22d] shadow-xl shadow-[#36335e]/20'
-                                            : 'bg-white border-slate-100 text-slate-400 hover:border-[#36335e]/30 hover:text-[#36335e]'
+                                            ? 'bg-brand-primary border-brand-primary text-brand-accent shadow-xl shadow-brand-primary/20'
+                                            : 'bg-white border-slate-100 text-slate-400 hover:border-brand-primary/30 hover:text-brand-primary'
                                     }`}
                                 >
                                     {doc.label}
@@ -217,7 +217,7 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                         <FileText className="w-3.5 h-3.5" />
                         Admission Policy
                     </div>
-                    <h3 className="text-2xl font-black text-[#36335e] tracking-tight">Institutional Criteria</h3>
+                    <h3 className="text-2xl font-black text-brand-primary tracking-tight">Institutional Criteria</h3>
                     <p className="text-slate-500 font-bold text-sm leading-relaxed">
                         Specify admission standards, academic prerequisites, and language proficiency expectations.
                     </p>
@@ -232,7 +232,7 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                                 onChange={(e) => setRequirements({ ...requirements, academicRequirements: e.target.value })}
                                 placeholder={"Minimum GPA of 3.0\nHigh school diploma\nSAT/ACT scores"}
                                 rows={4}
-                                className="w-full px-6 py-5 rounded-2xl bg-slate-50 border-none focus:ring-4 focus:ring-[#36335e]/10 focus:bg-white transition-all text-sm font-bold text-[#36335e] resize-none placeholder:text-slate-300 shadow-sm"
+                                className="w-full px-6 py-5 rounded-2xl bg-slate-50 border-none focus:ring-4 focus:ring-brand-primary/10 focus:bg-white transition-all text-sm font-bold text-brand-primary resize-none placeholder:text-slate-300 shadow-sm"
                             />
                         </div>
                         <div className="space-y-3">
@@ -242,7 +242,7 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                                 onChange={(e) => setRequirements({ ...requirements, languageRequirements: e.target.value })}
                                 placeholder={"IELTS 6.5 minimum\nTOEFL 80 minimum"}
                                 rows={3}
-                                className="w-full px-6 py-5 rounded-2xl bg-slate-50 border-none focus:ring-4 focus:ring-[#36335e]/10 focus:bg-white transition-all text-sm font-bold text-[#36335e] resize-none placeholder:text-slate-300 shadow-sm"
+                                className="w-full px-6 py-5 rounded-2xl bg-slate-50 border-none focus:ring-4 focus:ring-brand-primary/10 focus:bg-white transition-all text-sm font-bold text-brand-primary resize-none placeholder:text-slate-300 shadow-sm"
                             />
                         </div>
                         <div className="space-y-3">
@@ -252,7 +252,7 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                                 onChange={(e) => setRequirements({ ...requirements, additionalNote: e.target.value })}
                                 placeholder="Any other important information for applicants..."
                                 rows={3}
-                                className="w-full px-6 py-5 rounded-2xl bg-slate-50 border-none focus:ring-4 focus:ring-[#36335e]/10 focus:bg-white transition-all text-sm font-bold text-[#36335e] resize-none placeholder:text-slate-300 shadow-sm"
+                                className="w-full px-6 py-5 rounded-2xl bg-slate-50 border-none focus:ring-4 focus:ring-brand-primary/10 focus:bg-white transition-all text-sm font-bold text-brand-primary resize-none placeholder:text-slate-300 shadow-sm"
                             />
                         </div>
                     </div>
@@ -265,7 +265,7 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                     {message && (
                         <div className={`mb-4 px-6 py-4 rounded-2xl flex items-center gap-4 text-xs font-black uppercase tracking-widest border shadow-xl animate-in slide-in-from-bottom-4 duration-500 ${
                             message.type === 'success'
-                                ? 'bg-[#36335e] text-[#d5a22d] border-[#d5a22d]/20'
+                                ? 'bg-brand-primary text-brand-accent border-brand-accent/20'
                                 : 'bg-rose-600 text-white border-rose-500'
                         }`}>
                             {message.type === 'success' ? <CheckCircle2 className="w-5 h-5 shrink-0" /> : <AlertCircle className="w-5 h-5 shrink-0" />}
@@ -283,7 +283,7 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                         <button
                             onClick={handleSave}
                             disabled={isSaving}
-                            className="flex-1 md:flex-none flex items-center justify-center gap-3 px-12 py-4 bg-[#36335e] text-white rounded-2xl font-black uppercase tracking-[0.2em] text-sm hover:bg-[#2a284a] transition-all shadow-xl shadow-[#36335e]/20 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 group"
+                            className="flex-1 md:flex-none flex items-center justify-center gap-3 px-12 py-4 bg-brand-primary text-white rounded-2xl font-black uppercase tracking-[0.2em] text-sm hover:bg-brand-primary-hover transition-all shadow-xl shadow-brand-primary/20 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 group"
                         >
                             {isSaving ? (
                                 <>
@@ -292,7 +292,7 @@ export default function RequirementSettings({ university }: UniversityRequiremen
                                 </>
                             ) : (
                                 <>
-                                    <Sparkles className="w-4 h-4 text-[#d5a22d] group-hover:scale-125 transition-transform" />
+                                    <Sparkles className="w-4 h-4 text-brand-accent group-hover:scale-125 transition-transform" />
                                     Deploy Requirements
                                 </>
                             )}

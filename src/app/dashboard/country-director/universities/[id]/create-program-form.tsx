@@ -41,7 +41,7 @@ export default function CreateProgramForm({ universityId }: { universityId: stri
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="flex gap-2 items-end">
-                        <div className="flex-grow space-y-2">
+                        <div className="grow space-y-2">
                             <Label htmlFor="programName" className="sr-only">Program Name</Label>
                             <Input id="programName" name="name" placeholder="Program Name (e.g. B.Sc in CS)" required />
                         </div>

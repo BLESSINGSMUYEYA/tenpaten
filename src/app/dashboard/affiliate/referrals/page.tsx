@@ -16,13 +16,13 @@ export default async function Page() {
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#36335e]/10 text-[#36335e] text-[10px] font-black uppercase tracking-[0.2em] mb-2">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-black uppercase tracking-[0.2em] mb-2">
                         <Users className="w-3 h-3" />
                         Referral Network
                     </div>
-                    <h1 className="text-2xl font-black text-[#36335e] tracking-tight">My Referrals</h1>
+                    <h1 className="text-2xl font-black text-brand-primary tracking-tight">My Referrals</h1>
                 </div>
-                <Link href="/dashboard/affiliate" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-bold text-[#36335e] hover:border-[#d5a22d]/40 transition-colors self-start sm:self-auto">
+                <Link href="/dashboard/affiliate" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-bold text-brand-primary hover:border-brand-accent/40 transition-colors self-start sm:self-auto">
                     <ArrowLeft className="w-4 h-4" />
                     Dashboard
                 </Link>
@@ -42,7 +42,7 @@ export default async function Page() {
                                 <Icon className="w-5 h-5" />
                             </div>
                             <div>
-                                <div className="text-xl font-black text-[#36335e]">{s.value}</div>
+                                <div className="text-xl font-black text-brand-primary">{s.value}</div>
                                 <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{s.label}</div>
                             </div>
                         </div>
@@ -57,11 +57,11 @@ export default async function Page() {
                         <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-4">
                             <Users className="w-8 h-8 text-gray-200" />
                         </div>
-                        <h3 className="text-base font-black text-[#36335e] mb-1">No Referrals Yet</h3>
+                        <h3 className="text-base font-black text-brand-primary mb-1">No Referrals Yet</h3>
                         <p className="text-sm text-gray-400 max-w-xs">
                             Share your referral link to start building your network. Every enrolled student earns you a commission.
                         </p>
-                        <Link href="/dashboard/affiliate/links" className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#36335e] text-white text-sm font-bold hover:bg-[#2a284a] transition-colors">
+                        <Link href="/dashboard/affiliate/links" className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-primary text-white text-sm font-bold hover:bg-brand-primary-hover transition-colors">
                             Get Sharing Tools →
                         </Link>
                     </div>
@@ -80,7 +80,7 @@ export default async function Page() {
                             {referrals.map((ref) => (
                                 <tr key={ref.id} className="hover:bg-gray-50/50 transition-colors">
                                     <td className="px-5 py-4">
-                                        <div className="font-bold text-sm text-[#36335e]">{ref.prospect.fullName}</div>
+                                        <div className="font-bold text-sm text-brand-primary">{ref.prospect.fullName}</div>
                                         <div className="text-xs text-slate-400 md:hidden">{ref.program.university.name}</div>
                                     </td>
                                     <td className="px-4 py-4 hidden md:table-cell">

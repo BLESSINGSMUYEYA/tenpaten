@@ -28,7 +28,7 @@ function RegisterContent({ questions, countries }: { questions: QuestionData[], 
     // Questionnaire step (before the registration form)
     if (showQuestionnaire) {
         return (
-            <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4 sm:p-8 selection:bg-[#d5a22d]/20">
+            <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4 sm:p-8 selection:bg-brand-accent/20">
                 <div className="w-full max-w-md">
                     <StudentQuestionnaire questions={questions} onComplete={handleQuestionnaireComplete} />
                 </div>
@@ -52,7 +52,7 @@ function RegisterContent({ questions, countries }: { questions: QuestionData[], 
 
 export default function RegisterPageClient({ questions, countries }: { questions: QuestionData[], countries: any[] }) {
     return (
-        <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-[#1a1b4d] to-[#12132e]" />}>
+        <Suspense fallback={<div className="min-h-screen bg-linear-to-br from-[#1a1b4d] to-[#12132e]" />}>
             <RegisterContent questions={questions} countries={countries} />
         </Suspense>
     );

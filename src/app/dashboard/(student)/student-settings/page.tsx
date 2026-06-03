@@ -55,8 +55,8 @@ export default async function SettingsPage() {
     return (
         <div className="space-y-6">
             <div>
-                <h1 className="text-3xl font-black text-[#36335e] tracking-tight">
-                    Profile <span className="text-[#d5a22d]">Settings</span>
+                <h1 className="text-3xl font-black text-brand-primary tracking-tight">
+                    Profile <span className="text-brand-accent">Settings</span>
                 </h1>
                 <p className="text-sm text-gray-500 mt-1">
                     Manage your account, personal information, and application documents.

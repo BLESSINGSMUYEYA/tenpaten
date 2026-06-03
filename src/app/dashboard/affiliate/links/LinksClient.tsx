@@ -63,10 +63,10 @@ function LinksTool({ referralCode }: LinksPageClientProps) {
     return (
         <div className="space-y-6">
             {/* Referral Link Card */}
-            <div className="bg-gradient-to-br from-[#36335e] to-[#2a284a] rounded-2xl p-6 text-white space-y-4">
+            <div className="bg-linear-to-br from-brand-primary to-brand-primary-hover rounded-2xl p-6 text-white space-y-4">
                 <div className="flex items-center gap-3 mb-1">
                     <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center">
-                        <Link2 className="w-4 h-4 text-[#d5a22d]" />
+                        <Link2 className="w-4 h-4 text-brand-accent" />
                     </div>
                     <div>
                         <h3 className="text-base font-black">Your Referral Link</h3>
@@ -82,7 +82,7 @@ function LinksTool({ referralCode }: LinksPageClientProps) {
                     />
                     <button
                         onClick={handleCopy}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold text-sm transition-all ${copied ? 'bg-green-500 text-white' : 'bg-[#d5a22d] hover:bg-[#c49228] text-white'
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold text-sm transition-all ${copied ? 'bg-green-500 text-white' : 'bg-brand-accent hover:bg-[#c49228] text-white'
                             }`}
                     >
                         {copied ? <><CheckCircle2 className="w-4 h-4" /> Copied!</> : <><Copy className="w-4 h-4" /> Copy</>}
@@ -118,7 +118,7 @@ function LinksTool({ referralCode }: LinksPageClientProps) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {tips.map(tip => (
                         <div key={tip.title} className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                            <div className="text-sm font-black text-[#36335e] mb-1">{tip.title}</div>
+                            <div className="text-sm font-black text-brand-primary mb-1">{tip.title}</div>
                             <div className="text-xs text-slate-500 leading-relaxed">{tip.body}</div>
                         </div>
                     ))}

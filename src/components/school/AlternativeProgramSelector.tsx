@@ -82,7 +82,7 @@ export default function AlternativeProgramSelector({ applicationId }: { applicat
                 <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
                     <div className="bg-white rounded-[2.5rem] max-w-lg w-full max-h-[80vh] overflow-hidden flex flex-col shadow-2xl animate-in zoom-in duration-300">
                         <div className="p-8 border-b border-gray-100 flex items-center justify-between">
-                            <h3 className="text-xl font-black text-[#36335e] flex items-center gap-2 uppercase tracking-tight">
+                            <h3 className="text-xl font-black text-brand-primary flex items-center gap-2 uppercase tracking-tight">
                                 <Search className="w-5 h-5 text-indigo-500" />
                                 {isSuccess ? 'Work Done!' : 'Alternative Programs'}
                             </h3>
@@ -96,14 +96,14 @@ export default function AlternativeProgramSelector({ applicationId }: { applicat
                                         <CheckCircle2 className="w-10 h-10" />
                                     </div>
                                     <div className="space-y-2">
-                                        <h4 className="text-2xl font-black text-[#36335e] tracking-tight">Request Successfully Logged</h4>
+                                        <h4 className="text-2xl font-black text-brand-primary tracking-tight">Request Successfully Logged</h4>
                                         <p className="text-sm text-slate-500 font-medium max-w-[320px] mx-auto">
                                             {successMessage} <span className="font-bold text-indigo-600">{suggestedProgram}</span>.
                                         </p>
                                     </div>
                                     <button 
                                         onClick={() => setIsOpen(false)}
-                                        className="px-10 py-4 bg-[#36335e] text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-[#36335e]/20"
+                                        className="px-10 py-4 bg-brand-primary text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-brand-primary/20"
                                     >
                                         Close Portal
                                     </button>
@@ -113,7 +113,7 @@ export default function AlternativeProgramSelector({ applicationId }: { applicat
                                     <div className="w-16 h-16 rounded-2xl bg-indigo-50 flex items-center justify-center mb-6">
                                         <RefreshCw className="w-8 h-8 animate-spin text-indigo-400" />
                                     </div>
-                                    <p className="font-bold text-[#36335e] uppercase tracking-widest text-[10px]">Analyzing academic profile...</p>
+                                    <p className="font-bold text-brand-primary uppercase tracking-widest text-[10px]">Analyzing academic profile...</p>
                                 </div>
                             ) : error ? (
                                 <div className="p-6 bg-rose-50 border border-rose-100 text-rose-600 rounded-2xl text-sm font-bold flex items-center gap-3">
@@ -143,7 +143,7 @@ export default function AlternativeProgramSelector({ applicationId }: { applicat
                                             >
                                                 <div className="flex items-center gap-4">
                                                     <div className="relative">
-                                                        <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-[#36335e]/20 group-hover:text-[#36335e] transition-colors">
+                                                        <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-brand-primary/20 group-hover:text-brand-primary transition-colors">
                                                             <CheckCircle2 className="w-6 h-6" />
                                                         </div>
                                                         <div className="absolute -top-1 -right-1 px-2 py-0.5 bg-green-500 text-white text-[8px] font-black rounded-lg shadow-lg">
@@ -151,7 +151,7 @@ export default function AlternativeProgramSelector({ applicationId }: { applicat
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <h4 className="font-black text-[#36335e] uppercase tracking-tight leading-none mb-1.5 group-hover:text-indigo-600 transition-colors">
+                                                        <h4 className="font-black text-brand-primary uppercase tracking-tight leading-none mb-1.5 group-hover:text-indigo-600 transition-colors">
                                                             {match.program.name}
                                                         </h4>
                                                         <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
@@ -165,7 +165,7 @@ export default function AlternativeProgramSelector({ applicationId }: { applicat
                                                         onClick={() => handleSuggest(match.program.id, match.program.name)}
                                                         disabled={isSending}
                                                         title="Suggest to Student"
-                                                        className="h-11 px-5 border border-[#36335e]/10 hover:bg-slate-50 disabled:opacity-50 text-[#36335e] rounded-xl text-[10px] font-black uppercase tracking-widest transition-all transform active:scale-95 whitespace-nowrap"
+                                                        className="h-11 px-5 border border-brand-primary/10 hover:bg-slate-50 disabled:opacity-50 text-brand-primary rounded-xl text-[10px] font-black uppercase tracking-widest transition-all transform active:scale-95 whitespace-nowrap"
                                                     >
                                                         Suggest
                                                     </button>
@@ -173,7 +173,7 @@ export default function AlternativeProgramSelector({ applicationId }: { applicat
                                                         onClick={() => handleForceSwitch(match.program.id, match.program.name)}
                                                         disabled={isSending}
                                                         title="Force Switch Immediately"
-                                                        className="h-11 px-5 bg-[#36335e] hover:bg-black disabled:opacity-50 text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-[#36335e]/20 transition-all transform active:scale-95 flex items-center gap-2 whitespace-nowrap"
+                                                        className="h-11 px-5 bg-brand-primary hover:bg-black disabled:opacity-50 text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-brand-primary/20 transition-all transform active:scale-95 flex items-center gap-2 whitespace-nowrap"
                                                     >
                                                         <Zap className="w-3.5 h-3.5 fill-current" />
                                                         Instant Switch

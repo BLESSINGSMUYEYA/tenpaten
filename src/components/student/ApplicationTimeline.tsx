@@ -27,10 +27,10 @@ export default function ApplicationTimeline({ currentStatus, statusHistory }: Ap
     return (
         <div className="space-y-4 sm:space-y-6">
             <div className="flex items-center gap-2 mb-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#d5a22d]" />
+                <div className="w-1.5 h-1.5 rounded-full bg-brand-accent" />
                 <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">Live Tracking</span>
             </div>
-            <h3 className="text-base font-black text-[#36335e] tracking-tight">
+            <h3 className="text-base font-black text-brand-primary tracking-tight">
                 Application Progress
             </h3>
 
@@ -57,7 +57,7 @@ export default function ApplicationTimeline({ currentStatus, statusHistory }: Ap
                                 <div className={`flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border-2 transition-all shadow-sm ${isCompleted
                                     ? 'bg-emerald-500 border-emerald-500 shadow-emerald-200'
                                     : isCurrent
-                                        ? 'bg-[#d5a22d] border-[#d5a22d] shadow-[#d5a22d]/30 animate-pulse'
+                                        ? 'bg-brand-accent border-brand-accent shadow-brand-accent/30 animate-pulse'
                                         : 'bg-white border-gray-100'
                                     }`}>
                                     {isCompleted ? (
@@ -71,7 +71,7 @@ export default function ApplicationTimeline({ currentStatus, statusHistory }: Ap
 
                                 {/* Content */}
                                 <div className="flex-1 min-w-0 pt-0.5 sm:pt-1">
-                                    <div className={`text-sm font-black tracking-tight ${isCompleted || isCurrent ? 'text-[#36335e]' : 'text-slate-300'
+                                    <div className={`text-sm font-black tracking-tight ${isCompleted || isCurrent ? 'text-brand-primary' : 'text-slate-300'
                                         }`}>
                                         {stage.label}
                                     </div>
@@ -82,7 +82,7 @@ export default function ApplicationTimeline({ currentStatus, statusHistory }: Ap
 
                                     {/* Estimated Time */}
                                     {(isCurrent || isPending) && (
-                                        <div className="flex items-center gap-1.5 mt-2.5 text-[9px] font-black text-[#d5a22d] bg-[#d5a22d]/5 w-fit px-2 py-1 rounded-md uppercase tracking-[0.1em] border border-[#d5a22d]/10">
+                                        <div className="flex items-center gap-1.5 mt-2.5 text-[9px] font-black text-brand-accent bg-brand-accent/5 w-fit px-2 py-1 rounded-md uppercase tracking-[0.1em] border border-brand-accent/10">
                                             <Clock className="w-3 h-3" />
                                             Est: {stage.estimate}
                                         </div>
@@ -104,7 +104,7 @@ export default function ApplicationTimeline({ currentStatus, statusHistory }: Ap
 
                                 {/* Status badge */}
                                 {isCurrent && (
-                                    <span className="flex-shrink-0 px-3 py-1.5 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] text-[9px] font-black uppercase tracking-[0.2em] border border-[#d5a22d]/20">
+                                    <span className="flex-shrink-0 px-3 py-1.5 rounded-full bg-brand-accent/10 text-brand-accent text-[9px] font-black uppercase tracking-[0.2em] border border-brand-accent/20">
                                         Active
                                     </span>
                                 )}
@@ -120,7 +120,7 @@ export default function ApplicationTimeline({ currentStatus, statusHistory }: Ap
                             <Check className="w-4 h-4 text-white" />
                         </div>
                         <div className="flex-1 min-w-0 pt-0.5">
-                            <div className="text-sm font-black text-[#36335e]">
+                            <div className="text-sm font-black text-brand-primary">
                                 Application Rejected
                             </div>
                             <div className="text-[9px] font-bold uppercase tracking-widest text-red-400 mt-0.5">

@@ -59,13 +59,13 @@ function Section({
                 onClick={() => setOpen(!open)}
                 className="w-full flex items-center justify-between px-8 py-5 hover:bg-slate-50/50 transition-all group"
             >
-                <span className="text-xs font-black text-[#36335e]/60 group-hover:text-[#36335e] transition-colors">
+                <span className="text-xs font-black text-brand-primary/60 group-hover:text-brand-primary transition-colors">
                     {title}
                 </span>
                 {open ? (
-                    <ChevronUp className="w-4.5 h-4.5 text-[#d5a22d]" />
+                    <ChevronUp className="w-4.5 h-4.5 text-brand-accent" />
                 ) : (
-                    <ChevronDown className="w-4.5 h-4.5 text-slate-300 group-hover:text-[#36335e]" />
+                    <ChevronDown className="w-4.5 h-4.5 text-slate-300 group-hover:text-brand-primary" />
                 )}
             </button>
             {open && <div className="px-8 pb-6 space-y-4">{children}</div>}
@@ -76,14 +76,14 @@ function Section({
 function ScoreBar({ label, score }: { label: string; score: number }) {
     const color =
         score >= 80 ? 'bg-emerald-500' :
-        score >= 60 ? 'bg-[#d5a22d]' :
+        score >= 60 ? 'bg-brand-accent' :
         score >= 40 ? 'bg-amber-400' : 'bg-rose-400';
 
     return (
         <div className="space-y-2">
             <div className="flex items-center justify-between text-xs">
                 <span className="font-bold text-slate-500">{label}</span>
-                <span className="font-black text-[#36335e]">{score}</span>
+                <span className="font-black text-brand-primary">{score}</span>
             </div>
             <div className="h-2 bg-slate-100 rounded-full overflow-hidden shadow-inner">
                 <div
@@ -126,17 +126,17 @@ export default function ApplicantSidePanel({ applicant, onClose }: ApplicantSide
     return (
         <>
             <div
-                className="fixed inset-0 bg-[#36335e]/20 backdrop-blur-sm z-30 lg:hidden"
+                className="fixed inset-0 bg-brand-primary/20 backdrop-blur-sm z-30 lg:hidden"
                 onClick={onClose}
             />
 
             <div className="fixed right-0 top-0 bottom-0 w-full max-w-lg bg-white border-l border-slate-100 shadow-2xl z-40 flex flex-col animate-in slide-in-from-right duration-500 overflow-hidden">
                 {/* Header */}
-                <div className="bg-[#36335e] text-white p-8 shrink-0 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#d5a22d]/10 rounded-full blur-2xl -mr-16 -mt-16" />
+                <div className="bg-brand-primary text-white p-8 shrink-0 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/10 rounded-full blur-2xl -mr-16 -mt-16" />
                     <div className="flex items-start justify-between gap-4 relative z-10">
                         <div className="flex items-center gap-5 min-w-0">
-                            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-[#d5a22d] font-black text-xl shrink-0 shadow-lg border border-white/10">
+                            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-brand-accent font-black text-xl shrink-0 shadow-lg border border-white/10">
                                 {applicant.prospect.fullName.charAt(0)}
                             </div>
                             <div className="min-w-0">
@@ -164,14 +164,14 @@ export default function ApplicantSidePanel({ applicant, onClose }: ApplicantSide
                             </span>
                         )}
                         {applicant.meritScore !== null && (
-                            <span className="px-3 py-1 rounded-full bg-[#d5a22d]/20 text-[10px] font-black uppercase tracking-widest text-[#d5a22d] border border-[#d5a22d]/10">
+                            <span className="px-3 py-1 rounded-full bg-brand-accent/20 text-[10px] font-black uppercase tracking-widest text-brand-accent border border-brand-accent/10">
                                 {scoreLabel} · {applicant.meritScore}
                             </span>
                         )}
                     </div>
 
                     <div className="flex items-center gap-2 mt-5 text-sm font-bold text-white/60 relative z-10">
-                        <GraduationCap className="w-4 h-4 text-[#d5a22d]" />
+                        <GraduationCap className="w-4 h-4 text-brand-accent" />
                         {applicant.program.name}
                     </div>
                 </div>
@@ -182,7 +182,7 @@ export default function ApplicantSidePanel({ applicant, onClose }: ApplicantSide
                         <Button
                             onClick={handleIssueOffer}
                             disabled={isPending}
-                            className="flex-1 h-12 bg-[#36335e] hover:bg-[#2a284a] text-white rounded-2xl text-xs font-black uppercase tracking-widest shadow-xl shadow-[#36335e]/20 transition-all active:scale-95"
+                            className="flex-1 h-12 bg-brand-primary hover:bg-brand-primary-hover text-white rounded-2xl text-xs font-black uppercase tracking-widest shadow-xl shadow-brand-primary/20 transition-all active:scale-95"
                         >
                             {isPending ? (
                                 <span className="flex items-center gap-2">
@@ -206,7 +206,7 @@ export default function ApplicantSidePanel({ applicant, onClose }: ApplicantSide
                     </Button>
                     <Link
                         href={`/dashboard/school/applications/${applicant.id}`}
-                        className="h-12 w-12 flex items-center justify-center rounded-2xl border border-slate-200 text-slate-400 hover:text-[#36335e] hover:border-[#36335e]/30 hover:bg-[#36335e]/5 transition-all shrink-0"
+                        className="h-12 w-12 flex items-center justify-center rounded-2xl border border-slate-200 text-slate-400 hover:text-brand-primary hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all shrink-0"
                     >
                         <ExternalLink className="w-5 h-5" />
                     </Link>
@@ -224,13 +224,13 @@ export default function ApplicantSidePanel({ applicant, onClose }: ApplicantSide
                                 {applicant.academicInfo?.gpa && (
                                     <div className="p-4 bg-slate-50 rounded-2xl flex flex-col gap-1 border border-slate-100">
                                         <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">GPA / Grade</span>
-                                        <span className="font-black text-[#36335e] text-base">{applicant.academicInfo.gpa}</span>
+                                        <span className="font-black text-brand-primary text-base">{applicant.academicInfo.gpa}</span>
                                     </div>
                                 )}
                                 {applicant.academicInfo?.testScore && (
                                     <div className="p-4 bg-slate-50 rounded-2xl flex flex-col gap-1 border border-slate-100">
                                         <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{applicant.academicInfo.testType || 'Test Score'}</span>
-                                        <span className="font-black text-[#36335e] text-base">{applicant.academicInfo.testScore}</span>
+                                        <span className="font-black text-brand-primary text-base">{applicant.academicInfo.testScore}</span>
                                     </div>
                                 )}
                             </div>
@@ -275,7 +275,7 @@ export default function ApplicantSidePanel({ applicant, onClose }: ApplicantSide
                                         className={`p-4 rounded-2xl border text-sm space-y-2 ${entry.isOverride ? 'bg-amber-50 border-amber-100 shadow-sm' : 'bg-slate-50 border-slate-100'}`}
                                     >
                                         <div className="flex items-center justify-between">
-                                            <span className={`font-black uppercase tracking-widest text-[10px] ${entry.isOverride ? 'text-amber-700' : 'text-[#36335e]/60'}`}>
+                                            <span className={`font-black uppercase tracking-widest text-[10px] ${entry.isOverride ? 'text-amber-700' : 'text-brand-primary/60'}`}>
                                                 {entry.isOverride && '⚠ Override · '}{entry.status.replace(/_/g, ' ')}
                                             </span>
                                             <span className="text-[10px] text-slate-400 font-bold flex items-center gap-1.5">

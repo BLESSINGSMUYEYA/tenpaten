@@ -130,7 +130,7 @@ export default function FinancialInfoForm({ user, onNext }: FinancialInfoFormPro
                                 type="checkbox"
                                 checked={formData.requestFinancialAid}
                                 onChange={(e) => setFormData({ ...formData, requestFinancialAid: e.target.checked })}
-                                className="w-5 h-5 rounded border-2 border-gray-300 text-[#d5a22d] focus:ring-[#d5a22d] transition-colors peer"
+                                className="w-5 h-5 rounded border-2 border-gray-300 text-brand-accent focus:ring-brand-accent transition-colors peer"
                             />
                         </div>
                         <div>
@@ -167,7 +167,7 @@ export default function FinancialInfoForm({ user, onNext }: FinancialInfoFormPro
                             type="submit"
                             disabled={isLoading}
                             onClick={() => setAction('next')}
-                            className="w-full sm:w-auto bg-gradient-to-r from-[#d5a22d] to-[#b89531] hover:from-[#b89531] hover:to-[#a07f2a] text-white"
+                            className="w-full sm:w-auto bg-linear-to-r from-brand-accent to-[#b89531] hover:from-[#b89531] hover:to-[#a07f2a] text-white"
                         >
                             {isLoading && action === 'next' ? (
                                 <>

@@ -19,7 +19,7 @@ const BentoCards = [
         preview: (
             <div className="mt-4 space-y-2">
                 {[
-                    { label: 'Draft', w: 'w-3/4', color: 'bg-[#d5a22d]' },
+                    { label: 'Draft', w: 'w-3/4', color: 'bg-brand-accent' },
                     { label: 'Under Review', w: 'w-1/2', color: 'bg-blue-400' },
                     { label: 'Accepted', w: 'w-1/4', color: 'bg-green-400' },
                 ].map((bar, i) => (
@@ -44,8 +44,8 @@ const BentoCards = [
         id: 'smarthelp',
         col: 'lg:col-span-1',
         chip: 'AI POWERED',
-        chipColor: 'bg-[#d5a22d]/10 text-[#d5a22d] border-[#d5a22d]/20',
-        dotColor: 'bg-[#d5a22d]',
+        chipColor: 'bg-brand-accent/10 text-brand-accent border-brand-accent/20',
+        dotColor: 'bg-brand-accent',
         icon: Zap,
         title: 'Smart Help',
         sub: 'Get instant answers about applications, programme requirements, and institutions across Malawi — with context-aware AI assistance.',
@@ -71,7 +71,7 @@ const BentoCards = [
         sub: 'Explore and compare programmes at accredited institutions across Malawi. Search by district, course, or institution type.',
         preview: (
             <div className="mt-4 flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-100 bg-gray-50">
-                <Globe2 className="w-4 h-4 text-[#d5a22d]" />
+                <Globe2 className="w-4 h-4 text-brand-accent" />
                 <span className="text-gray-400 text-[10px] font-medium">Search programs or colleges...</span>
             </div>
         ),
@@ -131,10 +131,10 @@ export function FeaturesGrid() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header */}
                 <div className="text-center mb-12 lg:mb-16">
-                    <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">What We Do</span>
+                    <span className="text-brand-accent text-[10px] font-black tracking-[0.3em] uppercase">What We Do</span>
                     <h2 className="text-3xl lg:text-5xl font-black text-[#1a1b41] mt-4 tracking-tighter uppercase leading-[0.9]">
                         A Centralised Platform<br />
-                        <span className="text-[#d5a22d]">For Institutions & Students</span>
+                        <span className="text-brand-accent">For Institutions & Students</span>
                     </h2>
                     <p className="text-gray-500 font-bold text-base lg:text-lg mt-4 max-w-2xl mx-auto">
                         Tenpaten Apply provides a centralised platform serving both institutions and students — digital application management, wider recruitment reach, and real-time tracking.
@@ -152,12 +152,12 @@ export function FeaturesGrid() {
                             transition={{ duration: 0.5, delay: i * 0.08 }}
                             className={`${card.col} group relative rounded-[2rem] border overflow-hidden transition-all duration-500 hover:-translate-y-1.5 ${
                                 card.dark
-                                    ? 'bg-[#1a1b41] border-white/10 hover:border-[#d5a22d]/30 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)]'
-                                    : 'bg-white border-gray-100 hover:border-[#d5a22d]/30 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.05)] hover:shadow-[0_48px_80px_-24px_rgba(213,162,45,0.08)]'
+                                    ? 'bg-[#1a1b41] border-white/10 hover:border-brand-accent/30 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)]'
+                                    : 'bg-white border-gray-100 hover:border-brand-accent/30 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.05)] hover:shadow-[0_48px_80px_-24px_rgba(213,162,45,0.08)]'
                             }`}
                         >
                             {/* Gold top border on hover */}
-                            <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#d5a22d] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute top-0 left-8 right-8 h-[2px] bg-linear-to-r from-transparent via-brand-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             <div className="p-8 lg:p-10">
                                 {/* Chip */}
@@ -168,14 +168,14 @@ export function FeaturesGrid() {
 
                                 {/* Icon */}
                                 <div className={`w-11 h-11 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 ${
-                                    card.dark ? 'bg-[#d5a22d]/10' : 'bg-[#1a1b41]/5'
+                                    card.dark ? 'bg-brand-accent/10' : 'bg-[#1a1b41]/5'
                                 }`}>
-                                    <card.icon className={`w-5 h-5 ${card.dark ? 'text-[#d5a22d]' : 'text-[#1a1b41]'}`} />
+                                    <card.icon className={`w-5 h-5 ${card.dark ? 'text-brand-accent' : 'text-[#1a1b41]'}`} />
                                 </div>
 
                                 {/* Title */}
                                 <h3 className={`text-xl font-black uppercase tracking-tighter leading-none mb-2 ${
-                                    card.dark ? 'text-white group-hover:text-[#d5a22d]' : 'text-[#1a1b41] group-hover:text-[#d5a22d]'
+                                    card.dark ? 'text-white group-hover:text-brand-accent' : 'text-[#1a1b41] group-hover:text-brand-accent'
                                 } transition-colors duration-300`}>
                                     {card.title}
                                 </h3>

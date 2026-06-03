@@ -62,7 +62,7 @@ export default function InstallPwaButton() {
   return (
     <button
       onClick={handleInstallClick}
-      className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#d5a22d] text-[#1a1b41] rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:shadow-xl hover:shadow-[#d5a22d]/20 transition-all active:scale-95 duration-300 cursor-pointer"
+      className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-accent text-[#1a1b41] rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:shadow-xl hover:shadow-brand-accent/20 transition-all active:scale-95 duration-300 cursor-pointer"
     >
       <Download className="w-3.5 h-3.5" />
       Install App

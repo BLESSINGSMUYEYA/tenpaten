@@ -129,8 +129,8 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
             {/* Header */}
             <div>
                 <div className="flex items-center gap-2 mb-1">
-                    <div className="w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#d5a22d]">Marketing Kit</span>
+                    <div className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.25em] text-brand-accent">Marketing Kit</span>
                 </div>
                 <h2 className="text-xl font-black text-white tracking-tight">Your QR Code & Short URL</h2>
                 <p className="text-xs text-gray-400 mt-1 font-medium leading-relaxed">
@@ -141,7 +141,7 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
             {!slug ? (
                 <div className="flex flex-col items-center gap-5 py-4">
                     <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-                        <AlertCircle className="w-10 h-10 text-[#d5a22d]/60" />
+                        <AlertCircle className="w-10 h-10 text-brand-accent/60" />
                     </div>
                     <div className="text-center">
                         <p className="text-white font-bold mb-1">No short URL yet</p>
@@ -151,7 +151,7 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
                     </div>
                     <button
                         onClick={() => setEditMode(true)}
-                        className="px-6 py-3 bg-[#d5a22d] text-white rounded-xl text-sm font-black hover:bg-[#b89531] transition-all"
+                        className="px-6 py-3 bg-brand-accent text-white rounded-xl text-sm font-black hover:bg-[#b89531] transition-all"
                     >
                         Set Short URL
                     </button>
@@ -161,7 +161,7 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
                     {/* Premium QR Container with Tilt Effect and Scanning Animation */}
                     <motion.div 
                         whileHover={{ scale: 1.02, rotateY: 5, rotateX: 5 }}
-                        className="relative group p-1 rounded-[2.5rem] bg-gradient-to-br from-[#d5a22d]/40 via-white/5 to-[#d5a22d]/20 shadow-2xl shadow-black/40"
+                        className="relative group p-1 rounded-[2.5rem] bg-linear-to-br from-brand-accent/40 via-white/5 to-brand-accent/20 shadow-2xl shadow-black/40"
                     >
                         <div className="relative p-6 bg-[#ffffff] rounded-[2.2rem] overflow-hidden">
                             {/* Scanning Line Animation */}
@@ -175,14 +175,14 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
                                     repeat: Infinity, 
                                     ease: "linear" 
                                 }}
-                                className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#d5a22d] to-transparent z-10 pointer-events-none"
+                                className="absolute left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-brand-accent to-transparent z-10 pointer-events-none"
                             />
 
                             {/* Corner Accents */}
-                            <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[#d5a22d]/30 rounded-tl-lg" />
-                            <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#d5a22d]/30 rounded-tr-lg" />
-                            <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-[#d5a22d]/30 rounded-bl-lg" />
-                            <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-[#d5a22d]/30 rounded-br-lg" />
+                            <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-brand-accent/30 rounded-tl-lg" />
+                            <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-brand-accent/30 rounded-tr-lg" />
+                            <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-brand-accent/30 rounded-bl-lg" />
+                            <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-brand-accent/30 rounded-br-lg" />
 
                             {/* DISPLAY: SVG (Razor sharp on all screens) */}
                             <QRCodeSVG
@@ -201,7 +201,7 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
                         </div>
 
                         {/* Floating Badge */}
-                        <div className="absolute -top-3 -right-3 px-3 py-1 bg-[#d5a22d] rounded-full shadow-lg border border-white/20">
+                        <div className="absolute -top-3 -right-3 px-3 py-1 bg-brand-accent rounded-full shadow-lg border border-white/20">
                             <span className="text-[9px] font-black text-white uppercase tracking-tighter flex items-center gap-1">
                                 <Sparkles className="w-2.5 h-2.5" /> Official
                             </span>
@@ -233,7 +233,7 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
                             href={shortUrl!}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-[#d5a22d] font-black text-lg hover:underline decoration-2 underline-offset-4"
+                            className="inline-flex items-center gap-1.5 text-brand-accent font-black text-lg hover:underline decoration-2 underline-offset-4"
                         >
                             {displayUrl}
                             <ExternalLink className="w-4 h-4" />
@@ -244,9 +244,9 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
                     <div className="flex items-center gap-4 w-full">
                         <button
                             onClick={handleDownload}
-                            className="flex-[2] flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-[#d5a22d] to-[#b89531] text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:brightness-110 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl shadow-[#d5a22d]/20 relative overflow-hidden group"
+                            className="flex-[2] flex items-center justify-center gap-2 py-4 bg-linear-to-r from-brand-accent to-[#b89531] text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:brightness-110 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl shadow-brand-accent/20 relative overflow-hidden group"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                            <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                             <Download className="w-4 h-4" />
                             Download Kit
                         </button>
@@ -288,7 +288,7 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
                     {!editMode && slug && (
                         <button
                             onClick={() => { setEditMode(true); setDraftSlug(slug); }}
-                            className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-[#d5a22d] hover:text-[#b89531] transition-colors"
+                            className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-brand-accent hover:text-[#b89531] transition-colors"
                         >
                             <Edit2 className="w-3 h-3" />
                             Customize
@@ -298,7 +298,7 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
 
                 {editMode ? (
                     <div className="space-y-3">
-                        <div className="flex items-center bg-[#1a1b41] rounded-2xl border border-white/10 overflow-hidden focus-within:border-[#d5a22d]/50 transition-colors">
+                        <div className="flex items-center bg-[#1a1b41] rounded-2xl border border-white/10 overflow-hidden focus-within:border-brand-accent/50 transition-colors">
                             <span className="pl-4 text-xs text-gray-500 font-bold whitespace-nowrap">tenpaten.com/s/</span>
                             <input
                                 type="text"
@@ -325,7 +325,7 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
                             <button
                                 onClick={handleSave}
                                 disabled={isPending || slugStatus === 'taken' || slugStatus === 'invalid' || slugStatus === 'checking' || draftSlug.length < 3}
-                                className="flex-1 py-3 bg-[#d5a22d] text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-[#b89531] transition-all disabled:opacity-40"
+                                className="flex-1 py-3 bg-brand-accent text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-[#b89531] transition-all disabled:opacity-40"
                             >
                                 {isPending ? 'Saving…' : 'Save URL'}
                             </button>
@@ -341,7 +341,7 @@ export default function SchoolQRCode({ universityId, universityName, slug: initi
                 ) : (
                     <div className="px-4 py-3 bg-[#1a1b41] rounded-2xl border border-white/8 text-sm font-bold text-gray-400">
                         {slug ? (
-                            <span className="text-white">tenpaten.com/s/<span className="text-[#d5a22d]">{slug}</span></span>
+                            <span className="text-white">tenpaten.com/s/<span className="text-brand-accent">{slug}</span></span>
                         ) : (
                             <span className="text-gray-600 italic">Not set</span>
                         )}

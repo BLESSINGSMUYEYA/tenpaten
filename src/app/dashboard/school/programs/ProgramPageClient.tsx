@@ -33,7 +33,7 @@ export default function ProgramPageClient({ university, universityId }: { univer
             
             <PageHeader 
                 preTitle={
-                    <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] border border-[#d5a22d]/20 text-[10px] font-black uppercase tracking-[0.2em]">
+                    <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent border border-brand-accent/20 text-[10px] font-black uppercase tracking-[0.2em]">
                         <BookOpen className="w-3.5 h-3.5" />
                         Curriculum Engine
                     </div>
@@ -41,7 +41,7 @@ export default function ProgramPageClient({ university, universityId }: { univer
                 title="Academic Curriculum"
                 subtitle={
                     <>
-                        Manage departments, programs, and course intakes for <span className="font-bold text-[#d5a22d]">{university.name}</span>.
+                        Manage departments, programs, and course intakes for <span className="font-bold text-brand-accent">{university.name}</span>.
                     </>
                 }
                 action={
@@ -50,22 +50,22 @@ export default function ProgramPageClient({ university, universityId }: { univer
                             onClick={() => setActiveTab('programs')}
                             className={`flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-[0.15em] transition-all transform active:scale-95 ${
                                 activeTab === 'programs'
-                                    ? 'bg-[#36335e] text-[#d5a22d] shadow-lg'
-                                    : 'text-slate-400 hover:text-[#36335e]'
+                                    ? 'bg-brand-primary text-brand-accent shadow-lg'
+                                    : 'text-slate-400 hover:text-brand-primary'
                             }`}
                         >
-                            <GraduationCap className={`w-4 h-4 ${activeTab === 'programs' ? 'text-[#d5a22d]' : 'text-slate-300'}`} />
+                            <GraduationCap className={`w-4 h-4 ${activeTab === 'programs' ? 'text-brand-accent' : 'text-slate-300'}`} />
                             Programmes
                         </button>
                         <button
                             onClick={() => setActiveTab('departments')}
                             className={`flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-[0.15em] transition-all transform active:scale-95 ${
                                 activeTab === 'departments'
-                                    ? 'bg-[#36335e] text-[#d5a22d] shadow-lg'
-                                    : 'text-slate-400 hover:text-[#36335e]'
+                                    ? 'bg-brand-primary text-brand-accent shadow-lg'
+                                    : 'text-slate-400 hover:text-brand-primary'
                             }`}
                         >
-                            <Layers className={`w-4 h-4 ${activeTab === 'departments' ? 'text-[#d5a22d]' : 'text-slate-300'}`} />
+                            <Layers className={`w-4 h-4 ${activeTab === 'departments' ? 'text-brand-accent' : 'text-slate-300'}`} />
                             Departments
                         </button>
                     </div>
@@ -78,29 +78,29 @@ export default function ProgramPageClient({ university, universityId }: { univer
                         <div className="flex flex-wrap items-center gap-4 px-8 py-6 border-b border-slate-50 bg-slate-50/30">
                             {/* Search */}
                             <div className="flex-1 min-w-[300px] relative group">
-                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400 group-focus-within:text-[#36335e] transition-colors" />
+                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400 group-focus-within:text-brand-primary transition-colors" />
                                 <input
                                     type="text"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     placeholder="Search programs or levels..."
-                                    className="w-full h-12 pl-12 pr-4 bg-white rounded-2xl text-sm font-bold text-[#36335e] border-none focus:ring-4 focus:ring-[#36335e]/10 transition-all shadow-sm placeholder:text-slate-300"
+                                    className="w-full h-12 pl-12 pr-4 bg-white rounded-2xl text-sm font-bold text-brand-primary border-none focus:ring-4 focus:ring-brand-primary/10 transition-all shadow-sm placeholder:text-slate-300"
                                 />
                             </div>
 
                             <div className="flex items-center gap-3">
                                 <button
                                     onClick={() => setIsBulkUploadModalOpen(true)}
-                                    className="h-12 flex items-center gap-2.5 px-6 bg-white border border-slate-100 text-[#36335e] font-black rounded-2xl text-[10px] uppercase tracking-[0.2em] hover:bg-slate-50 transition-all shadow-sm"
+                                    className="h-12 flex items-center gap-2.5 px-6 bg-white border border-slate-100 text-brand-primary font-black rounded-2xl text-[10px] uppercase tracking-[0.2em] hover:bg-slate-50 transition-all shadow-sm"
                                 >
-                                    <Upload className="w-4 h-4 text-[#d5a22d]" />
+                                    <Upload className="w-4 h-4 text-brand-accent" />
                                     Bulk Upload
                                 </button>
                                 <button
                                     onClick={handleCreateProgram}
-                                    className="h-12 flex items-center gap-2.5 px-6 bg-[#36335e] text-white font-black rounded-2xl text-[10px] uppercase tracking-[0.2em] hover:bg-[#2a284a] transition-all shadow-xl shadow-[#36335e]/20 active:scale-95 group"
+                                    className="h-12 flex items-center gap-2.5 px-6 bg-brand-primary text-white font-black rounded-2xl text-[10px] uppercase tracking-[0.2em] hover:bg-brand-primary-hover transition-all shadow-xl shadow-brand-primary/20 active:scale-95 group"
                                 >
-                                    <Plus className="w-4 h-4 text-[#d5a22d] group-hover:rotate-90 transition-transform" />
+                                    <Plus className="w-4 h-4 text-brand-accent group-hover:rotate-90 transition-transform" />
                                     Add Programme
                                 </button>
                             </div>

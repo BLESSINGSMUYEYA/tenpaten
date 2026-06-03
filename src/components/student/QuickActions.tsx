@@ -92,7 +92,7 @@ export default function QuickActions({
     return (
         <div className="rounded-xl bg-white border border-gray-200 p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-linear-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
                     <Zap className="w-5 h-5 text-white" />
                 </div>
                 <div>

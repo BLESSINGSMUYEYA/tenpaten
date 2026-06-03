@@ -215,7 +215,7 @@ export default function WorkExperienceForm({ user, onNext }: WorkExperienceFormP
                             type="submit"
                             disabled={isLoading}
                             onClick={() => setAction('next')}
-                            className="w-full sm:w-auto bg-gradient-to-r from-[#d5a22d] to-[#b89531] hover:from-[#b89531] hover:to-[#a07f2a] text-white"
+                            className="w-full sm:w-auto bg-linear-to-r from-brand-accent to-[#b89531] hover:from-[#b89531] hover:to-[#a07f2a] text-white"
                         >
                             {isLoading && action === 'next' ? (
                                 <>

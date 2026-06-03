@@ -20,10 +20,10 @@ export default function EnrollmentAreaChart({ data, title = "Application Trends"
         <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100/50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.03)] h-[480px] flex flex-col group hover:shadow-[0_48px_80px_-24px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-1">
             <div className="flex items-center justify-between mb-10">
                 <div>
-                   <h3 className="text-xl font-black text-[#36335e] tracking-tight flex items-center gap-3 lowercase first-letter:uppercase">{title}</h3>
+                   <h3 className="text-xl font-black text-brand-primary tracking-tight flex items-center gap-3 lowercase first-letter:uppercase">{title}</h3>
                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">Enrollment Velocity</p>
                 </div>
-                <select className="text-[10px] font-black uppercase tracking-widest border border-slate-100 bg-slate-50 rounded-xl p-3 text-[#36335e] focus:ring-4 focus:ring-[#d5a22d]/10 outline-none transition-all cursor-pointer">
+                <select className="text-[10px] font-black uppercase tracking-widest border border-slate-100 bg-slate-50 rounded-xl p-3 text-brand-primary focus:ring-4 focus:ring-brand-accent/10 outline-none transition-all cursor-pointer">
                     <option>Last 6 Months</option>
                     <option>Last Year</option>
                 </select>

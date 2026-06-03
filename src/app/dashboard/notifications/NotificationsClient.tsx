@@ -90,7 +90,7 @@ export default function NotificationsClient() {
                 <button
                     onClick={handleMarkAllRead}
                     disabled={isActionLoading || !notifications.some(n => !n.read)}
-                    className="flex items-center justify-center gap-2 px-5 py-3 bg-[#d5a22d] hover:bg-[#b88e24] disabled:opacity-50 disabled:hover:bg-[#d5a22d] text-white text-xs font-black uppercase tracking-widest rounded-2xl shadow-lg shadow-[#d5a22d]/20 transition-all active:scale-95"
+                    className="flex items-center justify-center gap-2 px-5 py-3 bg-brand-accent hover:bg-[#b88e24] disabled:opacity-50 disabled:hover:bg-brand-accent text-white text-xs font-black uppercase tracking-widest rounded-2xl shadow-lg shadow-brand-accent/20 transition-all active:scale-95"
                 >
                     <CheckCheck className="w-4 h-4" />
                     {isActionLoading ? 'Processing...' : 'Mark all read'}
@@ -125,7 +125,7 @@ export default function NotificationsClient() {
             <div className="bg-white rounded-3xl border border-gray-100 shadow-xl shadow-[#1d1b41]/5 overflow-hidden">
                 {isLoading ? (
                     <div className="p-20 flex flex-col items-center justify-center space-y-4">
-                        <div className="w-12 h-12 border-4 border-indigo-100 border-t-[#d5a22d] rounded-full animate-spin" />
+                        <div className="w-12 h-12 border-4 border-indigo-100 border-t-brand-accent rounded-full animate-spin" />
                         <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">Loading Notifications...</p>
                     </div>
                 ) : notifications.length === 0 ? (
@@ -151,7 +151,7 @@ export default function NotificationsClient() {
                                             {getIcon(n.type)}
                                         </div>
                                     </div>
-                                    <div className="flex-grow min-w-0">
+                                    <div className="grow min-w-0">
                                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-2">
                                             <h4 className={`text-base tracking-tight ${n.read ? 'text-slate-700 font-bold' : 'text-[#1d1b41] font-black'}`}>
                                                 {n.title}
@@ -179,7 +179,7 @@ export default function NotificationsClient() {
                                             {!n.read && (
                                                 <button
                                                     onClick={() => handleMarkRead(n.id)}
-                                                    className="text-[10px] font-black text-[#d5a22d] hover:text-[#b88e24] uppercase tracking-widest transition-colors flex items-center gap-1.5"
+                                                    className="text-[10px] font-black text-brand-accent hover:text-[#b88e24] uppercase tracking-widest transition-colors flex items-center gap-1.5"
                                                 >
                                                     <CheckCheck className="w-3.5 h-3.5" />
                                                     Mark as read
@@ -188,7 +188,7 @@ export default function NotificationsClient() {
                                         </div>
                                     </div>
                                     {!n.read && (
-                                        <div className="absolute top-6 right-6 w-2.5 h-2.5 bg-[#d5a22d] rounded-full shadow-lg shadow-[#d5a22d]/40 animate-pulse" />
+                                        <div className="absolute top-6 right-6 w-2.5 h-2.5 bg-brand-accent rounded-full shadow-lg shadow-brand-accent/40 animate-pulse" />
                                     )}
                                 </div>
                             </div>

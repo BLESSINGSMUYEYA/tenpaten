@@ -28,7 +28,7 @@ export default async function ApplicationsPage() {
                             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                                 <Link
                                     href="/dashboard/apply"
-                                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#1d1b41] hover:bg-[#2a284a] text-white font-black text-xs uppercase tracking-widest shadow-lg hover:shadow-xl transition-all"
+                                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#1d1b41] hover:bg-brand-primary-hover text-white font-black text-xs uppercase tracking-widest shadow-lg hover:shadow-xl transition-all"
                                 >
                                     <Plus className="w-5 h-5" />
                                     <span>Create Application</span>
@@ -57,9 +57,9 @@ export default async function ApplicationsPage() {
                             </div>
                             <Link
                                 href="/dashboard/apply"
-                                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#1d1b41] text-white hover:bg-[#2a284a] font-black text-[11px] uppercase tracking-widest shadow-xl transition-all hover:scale-105 active:scale-95"
+                                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#1d1b41] text-white hover:bg-brand-primary-hover font-black text-[11px] uppercase tracking-widest shadow-xl transition-all hover:scale-105 active:scale-95"
                             >
-                                <Plus className="w-4 h-4 text-[#d5a22d]" />
+                                <Plus className="w-4 h-4 text-brand-accent" />
                                 <span>New Application</span>
                             </Link>
                         </div>

@@ -62,7 +62,7 @@ export default function CopyReferralLink({ referralCode }: { referralCode: strin
                         onClick={handleCopy}
                         className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all whitespace-nowrap ${copied
                                 ? 'bg-green-500 text-white'
-                                : 'bg-[#d5a22d] hover:bg-[#c49228] text-white'
+                                : 'bg-brand-accent hover:bg-[#c49228] text-white'
                             }`}
                     >
                         {copied ? (

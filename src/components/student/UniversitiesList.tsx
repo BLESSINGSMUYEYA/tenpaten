@@ -149,12 +149,12 @@ export default function UniversitiesList({
             {/* Conditional Gemini-style Hero - Hides when searching */}
             <div className={`relative transition-all duration-700 ease-in-out origin-top border-b border-transparent ${isSearchActive ? 'max-h-0 opacity-0 overflow-hidden mb-0 pb-0' : 'max-h-[300px] opacity-100 py-12 sm:py-16 px-6'}`}>
                 <div className="max-w-3xl mx-auto text-center space-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.3em] animate-in fade-in slide-in-from-bottom-2 duration-700">
-                        <Sparkles className="w-3 h-3 text-[#d5a22d]" />
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent text-[10px] font-black uppercase tracking-[0.3em] animate-in fade-in slide-in-from-bottom-2 duration-700">
+                        <Sparkles className="w-3 h-3 text-brand-accent" />
                         Explore the Future
                     </div>
-                    <h1 className="text-3xl sm:text-4xl font-black text-[#36335e] tracking-tight leading-tight">
-                        What would you like to <span className="text-[#d5a22d]">study?</span>
+                    <h1 className="text-3xl sm:text-4xl font-black text-brand-primary tracking-tight leading-tight">
+                        What would you like to <span className="text-brand-accent">study?</span>
                     </h1>
                     <p className="text-sm text-slate-500 font-medium max-w-lg mx-auto">
                         Search across hundreds of verified programs and world-class universities around the globe.
@@ -166,18 +166,18 @@ export default function UniversitiesList({
 
             {/* Unified Search & Discovery Hub - Sticky at top when searching */}
             <div className={`z-[100] transition-all duration-500 max-w-3xl mx-auto w-full group/hub ${isSearchActive ? 'sticky top-2' : '-mt-4'}`}>
-                <div className={`bg-white rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_40px_rgb(0,0,0,0.08)] border border-gray-100 transition-all duration-500 overflow-hidden ${isSearchActive ? 'shadow-xl border-[#d5a22d]/20 ring-4 ring-[#d5a22d]/5' : ''}`}>
+                <div className={`bg-white rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_40px_rgb(0,0,0,0.08)] border border-gray-100 transition-all duration-500 overflow-hidden ${isSearchActive ? 'shadow-xl border-brand-accent/20 ring-4 ring-brand-accent/5' : ''}`}>
                     {/* Search Field */}
                     <div className="p-1 border-b border-gray-50 flex items-center">
                         <div className="pl-6 pointer-events-none">
-                            <Search className="w-5 h-5 text-[#36335e]/40 group-focus-within:text-[#d5a22d] transition-colors" />
+                            <Search className="w-5 h-5 text-brand-primary/40 group-focus-within:text-brand-accent transition-colors" />
                         </div>
                         <input
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Find your dream program or university..."
-                            className="flex-1 pl-4 pr-6 py-5 bg-transparent outline-none text-sm sm:text-base font-bold text-[#36335e] placeholder:text-gray-300 placeholder:font-medium"
+                            className="flex-1 pl-4 pr-6 py-5 bg-transparent outline-none text-sm sm:text-base font-bold text-brand-primary placeholder:text-gray-300 placeholder:font-medium"
                         />
                         {isSearchActive && (
                             <button
@@ -197,7 +197,7 @@ export default function UniversitiesList({
                             <select
                                 value={searchParams.get('country') || 'all'}
                                 onChange={(e) => updateFilters({ country: e.target.value })}
-                                className="appearance-none pl-4 pr-9 py-2 rounded-xl bg-white border border-gray-200 text-[10px] font-black text-[#36335e] uppercase tracking-wider cursor-pointer hover:border-[#d5a22d]/30 transition-all outline-none"
+                                className="appearance-none pl-4 pr-9 py-2 rounded-xl bg-white border border-gray-200 text-[10px] font-black text-brand-primary uppercase tracking-wider cursor-pointer hover:border-brand-accent/30 transition-all outline-none"
                             >
                                 <option value="all">Everywhere</option>
                                 {allCountries?.map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
@@ -210,7 +210,7 @@ export default function UniversitiesList({
                             <select
                                 value={searchParams.get('level') || 'all'}
                                 onChange={(e) => updateFilters({ level: e.target.value })}
-                                className="appearance-none pl-4 pr-9 py-2 rounded-xl bg-white border border-gray-200 text-[10px] font-black text-[#36335e] uppercase tracking-wider cursor-pointer hover:border-[#d5a22d]/30 transition-all outline-none"
+                                className="appearance-none pl-4 pr-9 py-2 rounded-xl bg-white border border-gray-200 text-[10px] font-black text-brand-primary uppercase tracking-wider cursor-pointer hover:border-brand-accent/30 transition-all outline-none"
                             >
                                 <option value="all">All Levels</option>
                                 {levels.map(l => <option key={l} value={l}>{l}</option>)}
@@ -223,7 +223,7 @@ export default function UniversitiesList({
                             <select
                                 value={searchParams.get('sortBy') || 'name-asc'}
                                 onChange={(e) => updateFilters({ sortBy: e.target.value })}
-                                className="appearance-none pl-4 pr-9 py-2 rounded-xl bg-white border border-gray-100 text-[10px] font-black text-[#36335e] uppercase tracking-wider cursor-pointer hover:border-[#d5a22d]/30 transition-all outline-none"
+                                className="appearance-none pl-4 pr-9 py-2 rounded-xl bg-white border border-gray-100 text-[10px] font-black text-brand-primary uppercase tracking-wider cursor-pointer hover:border-brand-accent/30 transition-all outline-none"
                             >
                                 <option value="name-asc">A to Z</option>
                                 <option value="name-desc">Z to A</option>
@@ -237,13 +237,13 @@ export default function UniversitiesList({
                         <div className="hidden md:flex items-center gap-1 bg-white p-1 rounded-xl border border-gray-100 shadow-sm">
                             <button
                                 onClick={() => setViewMode('grid')}
-                                className={`p-1.5 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-[#36335e] text-white' : 'text-gray-400 hover:text-[#36335e]'}`}
+                                className={`p-1.5 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-brand-primary text-white' : 'text-gray-400 hover:text-brand-primary'}`}
                             >
                                 <Filter className="w-3.5 h-3.5" />
                             </button>
                             <button
                                 onClick={() => setViewMode('list')}
-                                className={`p-1.5 rounded-lg transition-all ${viewMode === 'list' ? 'bg-[#36335e] text-white' : 'text-gray-400 hover:text-[#36335e]'}`}
+                                className={`p-1.5 rounded-lg transition-all ${viewMode === 'list' ? 'bg-brand-primary text-white' : 'text-gray-400 hover:text-brand-primary'}`}
                             >
                                 <X className="w-3.5 h-3.5 rotate-45" />
                             </button>
@@ -258,7 +258,7 @@ export default function UniversitiesList({
             <div className="space-y-8 animate-in fade-in duration-1000">
                     <div className="flex items-center justify-between border-b border-gray-100 pb-2">
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">
-                            Found <span className="text-[#36335e]">{displayUniversities.length}</span> verified results
+                            Found <span className="text-brand-primary">{displayUniversities.length}</span> verified results
                         </p>
                     </div>
 
@@ -267,7 +267,7 @@ export default function UniversitiesList({
                             <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mx-auto mb-6 transform hover:rotate-12 transition-transform">
                                 <Search className="w-8 h-8 text-gray-300" />
                             </div>
-                            <h3 className="text-xl font-black text-[#36335e] tracking-tight mb-2">No Match Found</h3>
+                            <h3 className="text-xl font-black text-brand-primary tracking-tight mb-2">No Match Found</h3>
                             <p className="text-slate-500 text-sm font-medium max-w-sm mx-auto">
                                 We couldn't find anything matching your search. Try different keywords or broaden your filters.
                             </p>
@@ -313,7 +313,7 @@ export default function UniversitiesList({
                                 className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
                                     compareShortlist.length < 2 
                                         ? 'bg-white/10 text-white/30 cursor-not-allowed' 
-                                        : 'bg-[#d5a22d] text-[#1d1b41] hover:bg-[#b89531] shadow-lg shadow-[#d5a22d]/20 active:scale-95'
+                                        : 'bg-brand-accent text-[#1d1b41] hover:bg-[#b89531] shadow-lg shadow-brand-accent/20 active:scale-95'
                                 }`}
                             >
                                 Compare Now

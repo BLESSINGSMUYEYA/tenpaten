@@ -62,10 +62,10 @@ export default function NewConversationModal({ isOpen, onClose }: { isOpen: bool
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1d1b41]/40 backdrop-blur-sm animate-in fade-in duration-300">
             <div className="bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden border border-gray-100 animate-in zoom-in-95 duration-300">
                 {/* Header */}
-                <div className="p-6 bg-gradient-to-br from-[#1d1b41] to-[#2a1b41] text-white flex items-center justify-between">
+                <div className="p-6 bg-linear-to-br from-[#1d1b41] to-[#2a1b41] text-white flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                            <UserPlus className="w-5 h-5 text-[#d5a22d]" />
+                            <UserPlus className="w-5 h-5 text-brand-accent" />
                         </div>
                         <div>
                             <h3 className="font-black text-lg tracking-tight uppercase">New Message</h3>
@@ -83,13 +83,13 @@ export default function NewConversationModal({ isOpen, onClose }: { isOpen: bool
                 {/* Search */}
                 <div className="p-6 border-b border-gray-100">
                     <div className="relative group">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-brand-accent transition-colors" />
                         <input
                             type="text"
                             placeholder="Search by name or email..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-11 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:ring-4 focus:ring-[#d5a22d]/5 focus:border-[#d5a22d] transition-all placeholder:text-gray-400 font-medium"
+                            className="w-full pl-11 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:ring-4 focus:ring-brand-accent/5 focus:border-brand-accent transition-all placeholder:text-gray-400 font-medium"
                             autoFocus
                         />
                     </div>
@@ -99,7 +99,7 @@ export default function NewConversationModal({ isOpen, onClose }: { isOpen: bool
                 <div className="max-h-[400px] overflow-y-auto custom-scrollbar p-3">
                     {loading ? (
                         <div className="py-20 flex flex-col items-center justify-center">
-                            <div className="w-8 h-8 border-4 border-[#d5a22d] border-t-transparent rounded-full animate-spin mb-4" />
+                            <div className="w-8 h-8 border-4 border-brand-accent border-t-transparent rounded-full animate-spin mb-4" />
                             <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Loading contacts...</p>
                         </div>
                     ) : filteredContacts.length === 0 ? (
@@ -116,7 +116,7 @@ export default function NewConversationModal({ isOpen, onClose }: { isOpen: bool
                                     className="w-full flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-50 transition-all group text-left relative"
                                 >
                                     <div className="relative flex-shrink-0">
-                                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1d1b41]/5 to-[#1d1b41]/10 flex items-center justify-center text-[#1d1b41] font-black text-lg group-hover:scale-105 transition-transform">
+                                        <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#1d1b41]/5 to-[#1d1b41]/10 flex items-center justify-center text-[#1d1b41] font-black text-lg group-hover:scale-105 transition-transform">
                                             {contact.profilePhoto ? (
                                                 <img src={contact.profilePhoto} alt="" className="w-full h-full object-cover rounded-xl" />
                                             ) : (
@@ -140,7 +140,7 @@ export default function NewConversationModal({ isOpen, onClose }: { isOpen: bool
                                             {contact.role === 'SCHOOL_ADMIN' ? 'University Unit' : contact.role}
                                         </span>
                                         {initiating === contact.id && (
-                                            <div className="w-4 h-4 border-2 border-gray-300 border-t-[#d5a22d] rounded-full animate-spin" />
+                                            <div className="w-4 h-4 border-2 border-gray-300 border-t-brand-accent rounded-full animate-spin" />
                                         )}
                                     </div>
                                 </button>
@@ -152,7 +152,7 @@ export default function NewConversationModal({ isOpen, onClose }: { isOpen: bool
                 {/* Footer Tip */}
                 <div className="p-6 bg-gray-50/50 border-t border-gray-100 flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center">
-                        <GraduationCap className="w-4 h-4 text-[#d5a22d]" />
+                        <GraduationCap className="w-4 h-4 text-brand-accent" />
                     </div>
                     <p className="text-[10px] text-gray-500 leading-tight">
                         <span className="font-bold text-gray-900">Pro-tip:</span> You can only message university staff for programs you have active applications for.

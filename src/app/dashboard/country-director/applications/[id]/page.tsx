@@ -20,7 +20,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
     const documents = application.documents as any[] || [];
 
     const getStatusStyles = (status: string) => {
-        if (status === 'SUBMITTED') return 'bg-[#1d1b41] text-[#d5a22d] border-[#1d1b41] shadow-[#1d1b41]/20';
+        if (status === 'SUBMITTED') return 'bg-[#1d1b41] text-brand-accent border-[#1d1b41] shadow-[#1d1b41]/20';
         if (status === 'REJECTED') return 'bg-rose-50 text-rose-700 border-rose-100';
         return 'bg-emerald-50 text-emerald-700 border-emerald-100';
     };
@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         <div className="max-w-7xl mx-auto space-y-10 pb-20 animate-in fade-in slide-in-from-bottom-6 duration-1000">
             {/* Admissions Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 p-10 bg-white rounded-[3rem] border border-gray-100 shadow-2xl shadow-slate-200/50 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#d5a22d]/5 rounded-full blur-3xl -mr-32 -mt-32" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-accent/5 rounded-full blur-3xl -mr-32 -mt-32" />
                 
                 <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
                     <Link
@@ -45,7 +45,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-black text-[#1d1b41] tracking-tight leading-none">{application.prospect.fullName}</h1>
                         <p className="text-slate-500 font-bold flex flex-wrap items-center gap-3 text-sm">
-                            <span className="flex items-center gap-2 text-[#d5a22d]"><GraduationCap className="w-5 h-5" /> {application.program.name}</span>
+                            <span className="flex items-center gap-2 text-brand-accent"><GraduationCap className="w-5 h-5" /> {application.program.name}</span>
                             <span className="text-slate-200">|</span>
                             <span className="flex items-center gap-2"><Building2 className="w-5 h-5 text-slate-300" /> {application.program.university.name}</span>
                         </p>
@@ -73,7 +73,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                             <h2 className="text-2xl font-black text-[#1d1b41] tracking-tight mb-1">Status Progression</h2>
                             <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Application Lifecycle Tracker</p>
                         </div>
-                        <div className="text-[10px] font-black text-[#d5a22d] bg-[#d5a22d]/5 px-4 py-2 rounded-full uppercase tracking-widest border border-[#d5a22d]/10">
+                        <div className="text-[10px] font-black text-brand-accent bg-brand-accent/5 px-4 py-2 rounded-full uppercase tracking-widest border border-brand-accent/10">
                             Authorized Regional Review
                         </div>
                     </div>
@@ -104,7 +104,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                         <Card className="border-none shadow-xl shadow-[#1d1b41]/5 rounded-[3rem] overflow-hidden group">
                             <CardHeader className="bg-slate-50/30 border-b border-slate-50 p-10 pb-6">
                                 <CardTitle className="text-lg font-black text-[#1d1b41] flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-[#1d1b41]/5 flex items-center justify-center text-[#1d1b41] group-hover:bg-[#1d1b41] group-hover:text-[#d5a22d] transition-all">
+                                    <div className="w-10 h-10 rounded-xl bg-[#1d1b41]/5 flex items-center justify-center text-[#1d1b41] group-hover:bg-[#1d1b41] group-hover:text-brand-accent transition-all">
                                         <User className="w-5 h-5" />
                                     </div>
                                     Personal Dossier
@@ -128,7 +128,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                         <Card className="border-none shadow-xl shadow-[#1d1b41]/5 rounded-[3rem] overflow-hidden group">
                             <CardHeader className="bg-slate-50/30 border-b border-slate-50 p-10 pb-6">
                                 <CardTitle className="text-lg font-black text-[#1d1b41] flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-[#d5a22d]/10 flex items-center justify-center text-[#d5a22d] group-hover:bg-[#d5a22d] group-hover:text-[#1d1b41] transition-all">
+                                    <div className="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-[#1d1b41] transition-all">
                                         <GraduationCap className="w-5 h-5" />
                                     </div>
                                     Academic Profile
@@ -153,7 +153,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                     <Card className="border-none shadow-2xl shadow-[#1d1b41]/5 rounded-[3rem] overflow-hidden bg-white">
                         <CardHeader className="bg-slate-50/50 border-b border-slate-100 p-10">
                             <CardTitle className="text-2xl font-black text-[#1d1b41] tracking-tight flex items-center gap-6">
-                                <div className="p-4 rounded-2xl bg-[#d5a22d]/10 text-[#d5a22d] border border-[#d5a22d]/10">
+                                <div className="p-4 rounded-2xl bg-brand-accent/10 text-brand-accent border border-brand-accent/10">
                                     <FileText className="w-7 h-7" />
                                 </div>
                                 Verification Vault
@@ -170,9 +170,9 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                                     {documents.map((doc: any, index: number) => (
                                         <div key={index} className="flex items-center justify-between p-6 rounded-[2rem] bg-white border border-slate-100 hover:shadow-2xl hover:shadow-[#1d1b41]/10 hover:border-[#1d1b41]/20 transition-all group overflow-hidden relative">
-                                            <div className="absolute top-0 right-0 w-12 h-12 bg-[#d5a22d]/5 rounded-full -mr-6 -mt-6 blur-xl" />
+                                            <div className="absolute top-0 right-0 w-12 h-12 bg-brand-accent/5 rounded-full -mr-6 -mt-6 blur-xl" />
                                             <div className="flex items-center gap-5 relative z-10">
-                                                <div className="h-14 w-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-[#1d1b41] group-hover:text-[#d5a22d] transition-all">
+                                                <div className="h-14 w-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-[#1d1b41] group-hover:text-brand-accent transition-all">
                                                     <FileText className="w-7 h-7" />
                                                 </div>
                                                 <div className="max-w-[140px]">
@@ -199,7 +199,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                         <CardHeader className="p-10 pb-6">
                             <CardTitle className="text-2xl font-black flex items-center gap-4 relative z-10">
                                 <div className="p-3 rounded-2xl bg-white/10 backdrop-blur-md shadow-xl border border-white/10">
-                                    <Building2 className="w-6 h-6 text-[#d5a22d]" />
+                                    <Building2 className="w-6 h-6 text-brand-accent" />
                                 </div>
                                 Academy Logic
                             </CardTitle>
@@ -207,7 +207,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                         <CardContent className="p-10 pt-0 space-y-8 relative z-10">
                             <div className="bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-8 border border-white/10 group-hover:bg-white/10 transition-all">
                                 <h4 className="text-3xl font-black tracking-tight leading-none text-white">{application.program.university.name}</h4>
-                                <p className="text-[#d5a22d] text-xs font-black mt-3 uppercase tracking-[0.2em]">{application.program.name}</p>
+                                <p className="text-brand-accent text-xs font-black mt-3 uppercase tracking-[0.2em]">{application.program.name}</p>
 
                                 <Separator className="bg-white/10 my-8" />
 
@@ -242,7 +242,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                                 {application.statusHistory.map((history, idx) => (
                                     <div key={history.id} className="relative pl-12 group">
                                         <div className={`absolute left-0 top-1.5 w-5 h-5 rounded-full border-4 border-white shadow-xl transition-all duration-700
-                                            ${idx === 0 ? 'bg-[#1d1b41] ring-8 ring-[#1d1b41]/5 scale-125' : 'bg-slate-200 group-hover:bg-[#d5a22d]'}`} />
+                                            ${idx === 0 ? 'bg-[#1d1b41] ring-8 ring-[#1d1b41]/5 scale-125' : 'bg-slate-200 group-hover:bg-brand-accent'}`} />
                                         <div className="space-y-1">
                                             <p className="text-[9px] font-black text-slate-300 uppercase tracking-widest">{new Date(history.createdAt).toLocaleDateString()}</p>
                                             <p className={`text-sm font-black tracking-tight ${idx === 0 ? 'text-[#1d1b41]' : 'text-slate-500'}`}>{history.status.replace(/_/g, ' ')}</p>

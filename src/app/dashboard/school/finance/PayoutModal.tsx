@@ -65,7 +65,7 @@ export default function PayoutModal({ isOpen, onClose, availableBalance, currenc
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             <div 
-                className="absolute inset-0 bg-[#36335e]/40 backdrop-blur-md transition-opacity duration-500 animate-in fade-in"
+                className="absolute inset-0 bg-brand-primary/40 backdrop-blur-md transition-opacity duration-500 animate-in fade-in"
                 onClick={onClose}
             />
             
@@ -75,7 +75,7 @@ export default function PayoutModal({ isOpen, onClose, availableBalance, currenc
                 
                 <div className="p-8 relative z-10">
                     <div className="flex items-center justify-between mb-8">
-                        <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-[#36335e]">
+                        <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-brand-primary">
                             <Wallet className="w-6 h-6" />
                         </div>
                         <button 
@@ -89,14 +89,14 @@ export default function PayoutModal({ isOpen, onClose, availableBalance, currenc
                     {!isSuccess ? (
                         <>
                             <div className="mb-8">
-                                <h3 className="text-2xl font-black text-[#36335e] tracking-tight">Request Payout</h3>
+                                <h3 className="text-2xl font-black text-brand-primary tracking-tight">Request Payout</h3>
                                 <p className="text-slate-500 font-medium text-sm mt-1 italic">Transfer your earnings to your registered bank account.</p>
                             </div>
 
                             <div className="bg-slate-50 rounded-2xl p-4 mb-8 flex items-center justify-between border border-slate-100">
                                 <div>
                                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Available for Withdrawal</p>
-                                    <p className="text-xl font-black text-[#36335e]">{availableBalance.toLocaleString()} {currency}</p>
+                                    <p className="text-xl font-black text-brand-primary">{availableBalance.toLocaleString()} {currency}</p>
                                 </div>
                                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-indigo-500 shadow-sm">
                                     <Info className="w-5 h-5" />
@@ -115,7 +115,7 @@ export default function PayoutModal({ isOpen, onClose, availableBalance, currenc
                                             value={amount}
                                             onChange={(e) => setAmount(e.target.value)}
                                             placeholder="Enter amount"
-                                            className="pl-16 h-16 rounded-2xl border-slate-100 bg-slate-50 focus:bg-white text-lg font-black text-[#36335e] transition-all"
+                                            className="pl-16 h-16 rounded-2xl border-slate-100 bg-slate-50 focus:bg-white text-lg font-black text-brand-primary transition-all"
                                             required
                                         />
                                         <div className="absolute right-6 top-1/2 -translate-y-1/2 font-black text-slate-300">
@@ -131,7 +131,7 @@ export default function PayoutModal({ isOpen, onClose, availableBalance, currenc
                                 <Button 
                                     type="submit"
                                     disabled={isSubmitting || !amount || parseFloat(amount) <= 0}
-                                    className="w-full h-16 rounded-[1.25rem] bg-[#36335e] hover:bg-[#2a284a] text-white font-black text-lg gap-3 shadow-xl shadow-indigo-900/10 transition-all active:scale-95 disabled:opacity-50"
+                                    className="w-full h-16 rounded-[1.25rem] bg-brand-primary hover:bg-brand-primary-hover text-white font-black text-lg gap-3 shadow-xl shadow-indigo-900/10 transition-all active:scale-95 disabled:opacity-50"
                                 >
                                     {isSubmitting ? 'Processing Request...' : 'Submit Request'}
                                     {!isSubmitting && <ArrowRight className="w-5 h-5" />}
@@ -143,10 +143,10 @@ export default function PayoutModal({ isOpen, onClose, availableBalance, currenc
                             <div className="w-20 h-20 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 scale-110 shadow-lg shadow-emerald-500/10">
                                 <CheckCircle2 className="w-10 h-10" />
                             </div>
-                            <h3 className="text-2xl font-black text-[#36335e] tracking-tight mb-2">Request Successful!</h3>
+                            <h3 className="text-2xl font-black text-brand-primary tracking-tight mb-2">Request Successful!</h3>
                             <p className="text-slate-500 font-medium italic mb-2">We've received your payout request.</p>
                             <div className="inline-block px-4 py-2 bg-slate-50 rounded-full border border-slate-100">
-                                <p className="text-[10px] font-black text-[#36335e] uppercase tracking-[0.2em]">{amount} {currency} • PENDING APPROVAL</p>
+                                <p className="text-[10px] font-black text-brand-primary uppercase tracking-[0.2em]">{amount} {currency} • PENDING APPROVAL</p>
                             </div>
                         </div>
                     )}

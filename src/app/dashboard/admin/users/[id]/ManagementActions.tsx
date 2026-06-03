@@ -89,9 +89,9 @@ export default function UserManagementActions({ userId, currentStatus, userName 
                         <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 mb-6">
                             <AlertTriangle className="w-8 h-8" />
                         </div>
-                        <AlertDialogTitle className="text-2xl font-black text-[#36335e]">Terminate User Identity?</AlertDialogTitle>
+                        <AlertDialogTitle className="text-2xl font-black text-brand-primary">Terminate User Identity?</AlertDialogTitle>
                         <AlertDialogDescription className="text-gray-500 font-medium text-base mt-2">
-                            This action is final. All data associated with <span className="text-[#36335e] font-black">{userName}</span> will be permanently purged from the platform registry.
+                            This action is final. All data associated with <span className="text-brand-primary font-black">{userName}</span> will be permanently purged from the platform registry.
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter className="mt-8 gap-3">

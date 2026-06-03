@@ -15,7 +15,7 @@ export default function SchoolLandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <main className="min-h-screen bg-[#1a1b41] selection:bg-[#d5a22d]/30">
+        <main className="min-h-screen bg-[#1a1b41] selection:bg-brand-accent/30">
             {/* Navigation Bar */}
             <nav className={`fixed top-0 left-0 right-0 z-50 bg-[#1a1b41]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300 ${isMenuOpen ? 'h-auto pb-6' : 'h-16 md:h-20'}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
@@ -24,14 +24,14 @@ export default function SchoolLandingPage() {
                     </div>
 
                     <div className="hidden md:flex items-center gap-8">
-                        <Link href="#features" className="text-sm font-semibold text-gray-300 hover:text-[#d5a22d] transition-colors">Solutions</Link>
-                        <Link href="#partners" className="text-sm font-semibold text-gray-300 hover:text-[#d5a22d] transition-colors">Our Partners</Link>
+                        <Link href="#features" className="text-sm font-semibold text-gray-300 hover:text-brand-accent transition-colors">Solutions</Link>
+                        <Link href="#partners" className="text-sm font-semibold text-gray-300 hover:text-brand-accent transition-colors">Our Partners</Link>
                     </div>
 
                     <div className="flex items-center gap-2 sm:gap-4">
                         <Link
                             href="mailto:sales@tenpaten.com"
-                            className="px-4 sm:px-6 py-2 sm:py-2.5 bg-[#d5a22d] text-white rounded-xl text-xs sm:text-sm font-bold hover:bg-[#b89531] hover:shadow-lg hover:shadow-[#d5a22d]/20 transition-all active:scale-95 whitespace-nowrap"
+                            className="px-4 sm:px-6 py-2 sm:py-2.5 bg-brand-accent text-white rounded-xl text-xs sm:text-sm font-bold hover:bg-[#b89531] hover:shadow-lg hover:shadow-brand-accent/20 transition-all active:scale-95 whitespace-nowrap"
                         >
                             Inquire Now
                         </Link>
@@ -79,20 +79,20 @@ export default function SchoolLandingPage() {
                         className="w-full h-full object-cover opacity-[0.04] select-none"
                     />
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
-                        <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#36335e]/40 rounded-full blur-[120px]" />
-                        <div className="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-[#d5a22d]/10 rounded-full blur-[100px]" />
+                        <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-brand-primary/40 rounded-full blur-[120px]" />
+                        <div className="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-brand-accent/10 rounded-full blur-[100px]" />
                     </div>
                 </div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#36335e]/50 border border-[#36335e] text-white text-sm font-bold mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 backdrop-blur-sm">
-                        <Building2 className="w-4 h-4 text-[#d5a22d]" />
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/50 border border-brand-primary text-white text-sm font-bold mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 backdrop-blur-sm">
+                        <Building2 className="w-4 h-4 text-brand-accent" />
                         <span>Institutional Partnership Program</span>
                     </div>
 
                     <h1 className="text-3xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15] mb-6 animate-in fade-in slide-in-from-bottom-6 duration-1000">
                         Modernize Your Global <br className="hidden lg:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#d5a22d] to-white bg-300% animate-gradient">
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-brand-accent to-white bg-300% animate-gradient">
                             Recruitment Strategy
                         </span>
                     </h1>
@@ -106,7 +106,7 @@ export default function SchoolLandingPage() {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-500">
                         <Link
                             href="mailto:sales@tenpaten.com"
-                            className="w-full sm:w-auto px-8 py-3 bg-[#d5a22d] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#b89531] transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#d5a22d]/20 text-sm"
+                            className="w-full sm:w-auto px-8 py-3 bg-brand-accent text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#b89531] transition-all hover:scale-105 active:scale-95 shadow-xl shadow-brand-accent/20 text-sm"
                         >
                             Contact Sales
                             <ArrowRight className="w-5 h-5" />
@@ -126,9 +126,9 @@ export default function SchoolLandingPage() {
                     </div>
 
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                        <div className="group p-8 rounded-[2rem] bg-[#23244a] border border-white/5 hover:border-[#d5a22d]/30 hover:bg-[#23244a] transition-all duration-500 hover:shadow-2xl hover:shadow-[#d5a22d]/10">
+                        <div className="group p-8 rounded-[2rem] bg-[#23244a] border border-white/5 hover:border-brand-accent/30 hover:bg-[#23244a] transition-all duration-500 hover:shadow-2xl hover:shadow-brand-accent/10">
                             <div className="w-12 h-12 bg-[#1a1b41] rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform mb-6 border border-white/10">
-                                <Users className="w-7 h-7 text-[#d5a22d]" />
+                                <Users className="w-7 h-7 text-brand-accent" />
                             </div>
                             <h3 className="text-lg font-bold text-white mb-3">Verified Student Pool</h3>
                             <p className="text-gray-400 text-[13px] leading-relaxed">
@@ -136,9 +136,9 @@ export default function SchoolLandingPage() {
                             </p>
                         </div>
 
-                        <div className="group p-8 rounded-[2rem] bg-[#23244a] border border-white/5 hover:border-[#d5a22d]/30 hover:bg-[#23244a] transition-all duration-500 hover:shadow-2xl hover:shadow-[#d5a22d]/10">
+                        <div className="group p-8 rounded-[2rem] bg-[#23244a] border border-white/5 hover:border-brand-accent/30 hover:bg-[#23244a] transition-all duration-500 hover:shadow-2xl hover:shadow-brand-accent/10">
                             <div className="w-12 h-12 bg-[#1a1b41] rounded-xl flex items-center justify-center shadow-lg group-hover:-rotate-6 transition-transform mb-6 border border-white/10">
-                                <LayoutDashboard className="w-7 h-7 text-[#d5a22d]" />
+                                <LayoutDashboard className="w-7 h-7 text-brand-accent" />
                             </div>
                             <h3 className="text-lg font-bold text-white mb-3">Admission Workspace</h3>
                             <p className="text-gray-400 text-[13px] leading-relaxed">
@@ -146,9 +146,9 @@ export default function SchoolLandingPage() {
                             </p>
                         </div>
 
-                        <div className="group p-8 rounded-[2rem] bg-[#23244a] border border-white/5 hover:border-[#d5a22d]/30 hover:bg-[#23244a] transition-all duration-500 hover:shadow-2xl hover:shadow-[#d5a22d]/10">
+                        <div className="group p-8 rounded-[2rem] bg-[#23244a] border border-white/5 hover:border-brand-accent/30 hover:bg-[#23244a] transition-all duration-500 hover:shadow-2xl hover:shadow-brand-accent/10">
                             <div className="w-12 h-12 bg-[#1a1b41] rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform mb-6 border border-white/10">
-                                <Trophy className="w-7 h-7 text-[#d5a22d]" />
+                                <Trophy className="w-7 h-7 text-brand-accent" />
                             </div>
                             <h3 className="text-lg font-bold text-white mb-3">Performance Data</h3>
                             <p className="text-gray-400 text-[13px] leading-relaxed">
@@ -175,18 +175,18 @@ export default function SchoolLandingPage() {
                         <div className="space-y-4">
                             <h4 className="font-bold text-white">Partner Portal</h4>
                             <ul className="space-y-2 text-sm text-gray-400 font-medium">
-                                <li><Link href="/" className="hover:text-[#d5a22d] transition-colors">Prospective Students</Link></li>
-                                <li><Link href="mailto:sales@tenpaten.com" className="hover:text-[#d5a22d] transition-colors">Partnership Inquiries</Link></li>
+                                <li><Link href="/" className="hover:text-brand-accent transition-colors">Prospective Students</Link></li>
+                                <li><Link href="mailto:sales@tenpaten.com" className="hover:text-brand-accent transition-colors">Partnership Inquiries</Link></li>
                             </ul>
                         </div>
 
                         <div className="space-y-4">
                             <h4 className="font-bold text-white">Resources</h4>
                             <ul className="space-y-2 text-sm text-gray-400 font-medium">
-                                <li><Link href="/help" className="hover:text-[#d5a22d] transition-colors">School Help Center</Link></li>
-                                <li><Link href="/contact" className="hover:text-[#d5a22d] transition-colors">Contact Support</Link></li>
-                                <li><Link href="/privacy" className="hover:text-[#d5a22d] transition-colors">Privacy Policy</Link></li>
-                                <li><Link href="/terms" className="hover:text-[#d5a22d] transition-colors">Partner Terms</Link></li>
+                                <li><Link href="/help" className="hover:text-brand-accent transition-colors">School Help Center</Link></li>
+                                <li><Link href="/contact" className="hover:text-brand-accent transition-colors">Contact Support</Link></li>
+                                <li><Link href="/privacy" className="hover:text-brand-accent transition-colors">Privacy Policy</Link></li>
+                                <li><Link href="/terms" className="hover:text-brand-accent transition-colors">Partner Terms</Link></li>
                             </ul>
                         </div>
                     </div>

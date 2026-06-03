@@ -2,21 +2,25 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import prisma from '@/lib/prisma';
 import ScholarshipManager from '@/components/school/scholarships/ScholarshipManager';
+import { getActiveSchoolId } from '@/lib/getActiveSchool';
 
 export default async function SchoolScholarshipsPage() {
     const session = await auth();
+    const userRole = (session?.user as any)?.role;
 
     if (!session?.user?.email) {
         redirect('/login');
     }
 
-    if (session.user.role !== 'SCHOOL_ADMIN') {
+    if (userRole !== 'SCHOOL_ADMIN' && userRole !== 'SCHOOL_SUPER_AGENT') {
         redirect('/dashboard');
     }
 
     let universityId = (session?.user as any)?.managedUniversityId;
 
-    if (!universityId && session?.user?.id) {
+    if (userRole === 'SCHOOL_SUPER_AGENT') {
+        universityId = await getActiveSchoolId();
+    } else if (!universityId && session?.user?.id) {
         const dbUser = await prisma.user.findUnique({
             where: { id: session.user.id },
             select: { managedUniversityId: true }
@@ -27,7 +31,7 @@ export default async function SchoolScholarshipsPage() {
     if (!universityId) {
         return (
             <div className="flex flex-col items-center justify-center min-h-[400px]">
-                <h2 className="text-xl font-black text-[#36335e]">University not found</h2>
+                <h2 className="text-xl font-black text-brand-primary">University not found</h2>
             </div>
         );
     }

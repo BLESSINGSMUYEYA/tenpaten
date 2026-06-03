@@ -23,7 +23,7 @@ export default function DashboardError({
             <div className="space-y-6 max-w-md bg-white p-10 rounded-[2.5rem] shadow-xl border border-rose-100 animate-in fade-in zoom-in duration-500">
                 <AlertCircle className="w-16 h-16 text-rose-500 mx-auto animate-pulse" />
                 
-                <h1 className="text-2xl font-black text-[#36335e]">
+                <h1 className="text-2xl font-black text-brand-primary">
                     {isDbError ? 'Database Connection Error' : 'Something went wrong!'}
                 </h1>
                 
@@ -36,14 +36,14 @@ export default function DashboardError({
                 <div className="pt-4 flex flex-col gap-3">
                     <button
                         onClick={() => reset()}
-                        className="w-full py-4 bg-[#36335e] hover:bg-[#d5a22d] text-white rounded-2xl font-black uppercase tracking-widest text-xs transition-colors shadow-lg shadow-[#36335e]/20"
+                        className="w-full py-4 bg-brand-primary hover:bg-brand-accent text-white rounded-2xl font-black uppercase tracking-widest text-xs transition-colors shadow-lg shadow-brand-primary/20"
                     >
                         Try Again
                     </button>
                     
                     <Link
                         href="/"
-                        className="w-full py-4 bg-gray-50 hover:bg-gray-100 text-[#36335e] rounded-2xl font-black uppercase tracking-widest text-xs transition-colors"
+                        className="w-full py-4 bg-gray-50 hover:bg-gray-100 text-brand-primary rounded-2xl font-black uppercase tracking-widest text-xs transition-colors"
                     >
                         Return Home
                     </Link>

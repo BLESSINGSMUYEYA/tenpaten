@@ -14,6 +14,8 @@ export function getHomeUrl(role?: Role | string | null): string {
             return '/dashboard/affiliate';
         case 'SUPER_ADMIN':
             return '/dashboard/admin';
+        case 'SCHOOL_SUPER_AGENT':
+            return '/dashboard/super-agent';
         default:
             return '/dashboard';
     }

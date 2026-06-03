@@ -31,7 +31,9 @@ export async function getUniversityManager(targetUniversityId?: string) {
 
     if (!user) return null;
 
-    const universityId = targetUniversityId || user.managedUniversityId;
+    const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+    const activeId = user.role === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : user.managedUniversityId;
+    const universityId = targetUniversityId || activeId;
 
     if (!universityId) return null;
 
@@ -47,8 +49,10 @@ export async function getUniversityManager(targetUniversityId?: string) {
         if (!country || !university || university.countryId !== country.id) {
             return null;
         }
-    } else if (user.role === 'SCHOOL_ADMIN') {
-        if (universityId !== user.managedUniversityId) {
+    } else if (user.role === 'SCHOOL_ADMIN' || user.role === 'SCHOOL_SUPER_AGENT') {
+        const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+        const activeId = user.role === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : user.managedUniversityId;
+        if (universityId !== activeId) {
             return null;
         }
     } else if (user.role !== 'SUPER_ADMIN') {

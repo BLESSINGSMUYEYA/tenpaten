@@ -48,7 +48,7 @@ export default function ComparisonMatrix({ universities, onClose }: ComparisonMa
                 {/* Header */}
                 <div className="p-6 sm:p-8 bg-[#1d1b41] text-white flex items-center justify-between border-b border-white/10 shrink-0">
                     <div className="space-y-1 text-left">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d5a22d]/20 text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.25em]">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/20 text-brand-accent text-[10px] font-black uppercase tracking-[0.25em]">
                             <GraduationCap className="w-3.5 h-3.5" />
                             Curriculum Comparator
                         </div>
@@ -63,15 +63,15 @@ export default function ComparisonMatrix({ universities, onClose }: ComparisonMa
                 </div>
 
                 {/* Matrix Content */}
-                <div className="flex-grow overflow-y-auto p-6 sm:p-8 custom-scrollbar space-y-8">
+                <div className="grow overflow-y-auto p-6 sm:p-8 custom-scrollbar space-y-8">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
                         {universities.map((uni) => (
                             <div 
                                 key={uni.id}
-                                className="bg-gray-50/50 border border-gray-100 rounded-[2rem] p-6 flex flex-col gap-6 relative group hover:border-[#d5a22d]/20 hover:bg-white hover:shadow-xl transition-all duration-300"
+                                className="bg-gray-50/50 border border-gray-100 rounded-[2rem] p-6 flex flex-col gap-6 relative group hover:border-brand-accent/20 hover:bg-white hover:shadow-xl transition-all duration-300"
                             >
                                 {/* Gold Header Decor */}
-                                <div className="absolute top-0 left-6 right-6 h-[2px] bg-[#d5a22d] opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="absolute top-0 left-6 right-6 h-[2px] bg-brand-accent opacity-0 group-hover:opacity-100 transition-opacity" />
 
                                 {/* University Identity */}
                                 <div className="flex items-center gap-4 border-b border-gray-100 pb-4">
@@ -84,13 +84,13 @@ export default function ComparisonMatrix({ universities, onClose }: ComparisonMa
                                                 className="object-contain p-2" 
                                             />
                                         ) : (
-                                            <Building2 className="w-6 h-6 text-[#36335e]/40" />
+                                            <Building2 className="w-6 h-6 text-brand-primary/40" />
                                         )}
                                     </div>
                                     <div className="text-left">
-                                        <h3 className="font-black text-[#36335e] text-base leading-tight line-clamp-1">{uni.name}</h3>
+                                        <h3 className="font-black text-brand-primary text-base leading-tight line-clamp-1">{uni.name}</h3>
                                         <div className="flex items-center gap-1.5 text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">
-                                            <MapPin className="w-3 h-3 text-[#d5a22d]" />
+                                            <MapPin className="w-3 h-3 text-brand-accent" />
                                             {uni.country}
                                         </div>
                                     </div>
@@ -102,11 +102,11 @@ export default function ComparisonMatrix({ universities, onClose }: ComparisonMa
                                     <div className="space-y-2">
                                         <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em]">Security & Trust</h4>
                                         <div className="flex flex-wrap gap-2">
-                                            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#d5a22d]/10 text-[#d5a22d] border border-[#d5a22d]/20 text-[9px] font-black uppercase tracking-[0.15em]">
+                                            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-brand-accent/10 text-brand-accent border border-brand-accent/20 text-[9px] font-black uppercase tracking-[0.15em]">
                                                 <ShieldCheck className="w-3.5 h-3.5" />
                                                 Accredited
                                             </div>
-                                            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#36335e]/5 text-[#36335e]/60 border border-gray-100 text-[9px] font-black uppercase tracking-[0.15em]">
+                                            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-brand-primary/5 text-brand-primary/60 border border-gray-100 text-[9px] font-black uppercase tracking-[0.15em]">
                                                 <Award className="w-3.5 h-3.5" />
                                                 Choice Tier
                                             </div>
@@ -135,11 +135,11 @@ export default function ComparisonMatrix({ universities, onClose }: ComparisonMa
                                     <div className="space-y-2.5">
                                         <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em]">Academic Programs</h4>
                                         <div className="space-y-1.5">
-                                            <div className="flex justify-between items-center text-xs font-bold text-[#36335e]">
+                                            <div className="flex justify-between items-center text-xs font-bold text-brand-primary">
                                                 <span>Total Active Courses:</span>
-                                                <span className="font-black text-sm text-[#d5a22d]">{uni.programCount}</span>
+                                                <span className="font-black text-sm text-brand-accent">{uni.programCount}</span>
                                             </div>
-                                            <div className="flex justify-between items-center text-xs font-bold text-[#36335e]">
+                                            <div className="flex justify-between items-center text-xs font-bold text-brand-primary">
                                                 <span>Departments/Faculties:</span>
                                                 <span className="font-black text-sm">{uni.departments.length}</span>
                                             </div>
@@ -153,14 +153,14 @@ export default function ComparisonMatrix({ universities, onClose }: ComparisonMa
                                             {uni.programs.slice(0, 3).map((p) => (
                                                 <div 
                                                     key={p.id} 
-                                                    className="px-3.5 py-2.5 rounded-xl bg-white border border-gray-100 flex items-center justify-between text-xs font-bold text-[#36335e]"
+                                                    className="px-3.5 py-2.5 rounded-xl bg-white border border-gray-100 flex items-center justify-between text-xs font-bold text-brand-primary"
                                                 >
                                                     <span className="truncate max-w-[130px]">{p.name}</span>
-                                                    <span className="text-[10px] text-[#d5a22d] font-black uppercase shrink-0">{p.level}</span>
+                                                    <span className="text-[10px] text-brand-accent font-black uppercase shrink-0">{p.level}</span>
                                                 </div>
                                             ))}
                                             {uni.programs.length > 3 && (
-                                                <p className="text-[10px] text-[#d5a22d] font-black uppercase tracking-wider text-center pt-1">+ {uni.programs.length - 3} More Programs</p>
+                                                <p className="text-[10px] text-brand-accent font-black uppercase tracking-wider text-center pt-1">+ {uni.programs.length - 3} More Programs</p>
                                             )}
                                         </div>
                                     </div>
@@ -174,7 +174,7 @@ export default function ComparisonMatrix({ universities, onClose }: ComparisonMa
                 <div className="p-6 bg-gray-50 border-t border-gray-100 flex items-center justify-end gap-3 shrink-0">
                     <button 
                         onClick={onClose}
-                        className="px-6 py-3 rounded-xl bg-[#36335e] text-white hover:bg-[#2a284a] text-xs font-black uppercase tracking-widest transition-all"
+                        className="px-6 py-3 rounded-xl bg-brand-primary text-white hover:bg-brand-primary-hover text-xs font-black uppercase tracking-widest transition-all"
                     >
                         Back to Search
                     </button>

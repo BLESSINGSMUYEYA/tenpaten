@@ -66,7 +66,7 @@ export default function ProgrammeCard({
             <button
                 onClick={handleRunScoring}
                 disabled={isPending}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#1d1b41] text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-[#2a284a] disabled:opacity-50 transition-all"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#1d1b41] text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-brand-primary-hover disabled:opacity-50 transition-all"
             >
                 {isPending ? (
                     <>
@@ -85,7 +85,7 @@ export default function ProgrammeCard({
         cta = (
             <Link
                 href={`/dashboard/school/applications?programId=${programId}&sortBy=rank`}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#d5a22d] text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-[#b08523] transition-colors shadow-md shadow-[#d5a22d]/20"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-brand-accent text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-[#b08523] transition-colors shadow-md shadow-brand-accent/20"
             >
                 <Send className="w-3.5 h-3.5" />
                 Issue Offers ({rankedApps - offersIssued} ready)
@@ -134,7 +134,7 @@ export default function ProgrammeCard({
                         </div>
                         <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
                             <div
-                                className="h-full rounded-full bg-gradient-to-r from-[#36335e] to-[#d5a22d] transition-all duration-700"
+                                className="h-full rounded-full bg-linear-to-r from-brand-primary to-brand-accent transition-all duration-700"
                                 style={{ width: `${fillPct}%` }}
                             />
                         </div>
@@ -150,8 +150,8 @@ export default function ProgrammeCard({
                         <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Ranked</p>
                         <p className="text-lg font-black text-[#1d1b41] mt-0.5">{rankedApps}</p>
                     </div>
-                    <div className="p-3 bg-[#d5a22d]/5 rounded-2xl">
-                        <p className="text-[9px] font-black text-[#d5a22d] uppercase tracking-widest">Offers Out</p>
+                    <div className="p-3 bg-brand-accent/5 rounded-2xl">
+                        <p className="text-[9px] font-black text-brand-accent uppercase tracking-widest">Offers Out</p>
                         <p className="text-lg font-black text-[#1d1b41] mt-0.5">{offersIssued}</p>
                     </div>
                 </div>

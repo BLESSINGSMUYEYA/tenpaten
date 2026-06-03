@@ -253,6 +253,30 @@ export async function getUniversityForAdmin() {
             }
         });
 
+        if (user?.role === 'SCHOOL_SUPER_AGENT') {
+            const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+            const activeSchoolId = await getActiveSchoolId();
+            if (activeSchoolId) {
+                return prisma.university.findUnique({
+                    where: { id: activeSchoolId },
+                    include: {
+                        programs: {
+                            include: {
+                                applications: true,
+                                department: true
+                            }
+                        },
+                        departments: {
+                            include: {
+                                _count: { select: { programs: true } }
+                            }
+                        }
+                    }
+                });
+            }
+            return null;
+        }
+
         return user?.managedUniversity;
     } catch (error) {
         console.error('Failed to fetch university for admin:', error);

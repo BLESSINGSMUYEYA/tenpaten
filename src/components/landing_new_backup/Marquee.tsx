@@ -31,7 +31,7 @@ export function Marquee() {
               <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.4em] text-white/40 italic">
                 {item}
               </span>
-              <div className="w-2 h-2 rounded-full bg-[#d5a22d]/40" />
+              <div className="w-2 h-2 rounded-full bg-brand-accent/40" />
             </div>
           ))}
           {/* Duplicate set for seamless loop */}
@@ -40,7 +40,7 @@ export function Marquee() {
               <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.4em] text-white/40 italic">
                 {item}
               </span>
-              <div className="w-2 h-2 rounded-full bg-[#d5a22d]/40" />
+              <div className="w-2 h-2 rounded-full bg-brand-accent/40" />
             </div>
           ))}
         </motion.div>

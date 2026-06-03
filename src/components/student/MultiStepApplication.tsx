@@ -357,7 +357,7 @@ export default function MultiStepApplication({
                             alt="Successful application celebration"
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-white via-transparent to-transparent" />
                         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center justify-center w-20 h-20 rounded-full bg-white shadow-xl animate-bounce">
                             <CheckCircle2 className="w-12 h-12 text-green-500" />
                         </div>
@@ -380,7 +380,7 @@ export default function MultiStepApplication({
                         </div>
                         <Button
                             onClick={() => router.push('/dashboard/applications')}
-                            className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
+                            className="bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
                         >
                             View My Applications
                         </Button>
@@ -395,7 +395,7 @@ export default function MultiStepApplication({
         <div className="w-full space-y-6">
             {/* Completion Success Section */}
             {trackerOnly && isComplete && !showForm && (
-                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 p-8 text-white shadow-xl animate-in fade-in zoom-in duration-500">
+                <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-indigo-600 via-purple-600 to-blue-700 p-8 text-white shadow-xl animate-in fade-in zoom-in duration-500">
                     <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                         <div className="space-y-4 max-w-xl">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold uppercase tracking-wider">
@@ -471,7 +471,7 @@ export default function MultiStepApplication({
 
             {/* Header for Tracker mode */}
             {trackerOnly && (!isComplete || showForm) && (
-                <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6 bg-gradient-to-r from-indigo-50/50 to-purple-50/50 p-6 rounded-2xl border border-indigo-100/50">
+                <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6 bg-linear-to-r from-indigo-50/50 to-purple-50/50 p-6 rounded-2xl border border-indigo-100/50">
                     <div className="space-y-1">
                         <p className="text-base text-gray-500 max-w-md">
                             Your profile is {localPercentage}% complete. Finish the remaining sections to boost your admission chances.
@@ -523,8 +523,8 @@ export default function MultiStepApplication({
                     {/* Optional Fade effects for scrolling */}
                     {trackerOnly && (
                         <>
-                            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none opacity-0 sm:opacity-100" />
-                            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none opacity-0 sm:opacity-100" />
+                            <div className="absolute left-0 top-0 bottom-0 w-8 bg-linear-to-r from-white to-transparent z-10 pointer-events-none opacity-0 sm:opacity-100" />
+                            <div className="absolute right-0 top-0 bottom-0 w-8 bg-linear-to-l from-white to-transparent z-10 pointer-events-none opacity-0 sm:opacity-100" />
                         </>
                     )}
 
@@ -610,7 +610,7 @@ export default function MultiStepApplication({
                 <Card className="shadow-lg border-2 border-gray-200 animate-in fade-in slide-in-from-top-4 duration-300">
                     <CardHeader className="space-y-3 pb-6 flex flex-row items-start justify-between">
                         <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
                                 {(() => {
                                     const Icon = activeSteps[currentStepIndex].icon;
                                     return <Icon className="w-6 h-6 text-white" />;
@@ -1019,7 +1019,7 @@ export default function MultiStepApplication({
                         {/* Step Content: Review */}
                         {currentStepId === 'review' && (
                             <div className="space-y-6">
-                                <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-6">
+                                <div className="bg-linear-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-6">
                                     <h3 className="text-lg font-semibold text-gray-900 mb-4">Review Your Application</h3>
 
                                     <div className="space-y-4">
@@ -1117,7 +1117,7 @@ export default function MultiStepApplication({
                                     <Button
                                         type="button"
                                         onClick={handleNext}
-                                        className="px-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
+                                        className="px-6 bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
                                     >
                                         Next
                                     </Button>
@@ -1126,7 +1126,7 @@ export default function MultiStepApplication({
                                         type="button"
                                         onClick={handleSubmit}
                                         disabled={isSubmitting}
-                                        className="px-6 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+                                        className="px-6 bg-linear-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
                                     >
                                         {isSubmitting ? 'Saving...' : (mode === 'profile' ? 'Save Profile' : 'Submit Application')}
                                     </Button>

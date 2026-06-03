@@ -23,13 +23,13 @@ type ApplicationCardProps = {
 
 const statusConfig: Record<string, { color: string; bgColor: string; borderColor: string; label: string; icon: React.ReactNode }> = {
     DRAFT: { color: 'text-slate-700', bgColor: 'bg-gray-100', borderColor: 'border-gray-200', label: 'Draft', icon: <FileText className="w-4 h-4" /> },
-    PAYMENT_PENDING: { color: 'text-[#d5a22d]', bgColor: 'bg-[#d5a22d]/5', borderColor: 'border-[#d5a22d]/20', label: 'Payment', icon: <Clock className="w-4 h-4" /> },
+    PAYMENT_PENDING: { color: 'text-brand-accent', bgColor: 'bg-brand-accent/5', borderColor: 'border-brand-accent/20', label: 'Payment', icon: <Clock className="w-4 h-4" /> },
     SUBMITTED: { color: 'text-[#1d1b41]', bgColor: 'bg-[#1d1b41]/5', borderColor: 'border-[#1d1b41]/10', label: 'Submitted', icon: <CheckCircle2 className="w-4 h-4" /> },
     COUNTRY_REVIEW: { color: 'text-[#1d1b41]', bgColor: 'bg-[#1d1b41]/5', borderColor: 'border-[#1d1b41]/10', label: 'Region Review', icon: <Clock className="w-4 h-4" /> },
     UNIVERSITY_REVIEW: { color: 'text-[#1d1b41]', bgColor: 'bg-[#1d1b41]/5', borderColor: 'border-[#1d1b41]/10', label: 'Uni Review', icon: <Clock className="w-4 h-4" /> },
     OFFER_ISSUED: { color: 'text-emerald-700', bgColor: 'bg-emerald-50', borderColor: 'border-emerald-200', label: 'Offer Issued', icon: <CheckCircle2 className="w-4 h-4" /> },
     OFFER_ACCEPTED: { color: 'text-emerald-700', bgColor: 'bg-emerald-50', borderColor: 'border-emerald-200', label: 'Accepted', icon: <CheckCircle2 className="w-4 h-4" /> },
-    ENROLLED: { color: 'text-[#d5a22d]', bgColor: 'bg-[#d5a22d]/10', borderColor: 'border-[#d5a22d]/30', label: 'Enrolled', icon: <CheckCircle2 className="w-4 h-4" /> },
+    ENROLLED: { color: 'text-brand-accent', bgColor: 'bg-brand-accent/10', borderColor: 'border-brand-accent/30', label: 'Enrolled', icon: <CheckCircle2 className="w-4 h-4" /> },
     REJECTED: { color: 'text-rose-700', bgColor: 'bg-rose-50', borderColor: 'border-rose-200', label: 'Rejected', icon: <AlertCircle className="w-4 h-4" /> },
 };
 
@@ -48,15 +48,15 @@ export default function ApplicationCard({ application, showProgress = true }: Ap
     };
 
     return (
-        <div className="group relative overflow-hidden rounded-3xl bg-white border border-gray-100 hover:border-[#d5a22d]/20 shadow-sm hover:shadow-xl hover:shadow-[#1d1b41]/5 transition-all duration-500 hover:-translate-y-1">
+        <div className="group relative overflow-hidden rounded-3xl bg-white border border-gray-100 hover:border-brand-accent/20 shadow-sm hover:shadow-xl hover:shadow-[#1d1b41]/5 transition-all duration-500 hover:-translate-y-1">
             <div className="p-6 text-left">
                 {/* Header */}
                 <div className="flex items-start justify-between gap-4 mb-6">
                     <div className="flex-1 min-w-0">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-[#d5a22d] mb-1">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-brand-accent mb-1">
                             Application Entry
                         </p>
-                        <h3 className="text-lg font-black text-[#1d1b41] mb-1 group-hover:text-[#d5a22d] transition-colors leading-tight line-clamp-1">
+                        <h3 className="text-lg font-black text-[#1d1b41] mb-1 group-hover:text-brand-accent transition-colors leading-tight line-clamp-1">
                             {application.program.name}
                         </h3>
                         <div className="flex items-center gap-2 text-xs text-slate-500">
@@ -113,7 +113,7 @@ export default function ApplicationCard({ application, showProgress = true }: Ap
             </div>
 
             {/* Decorative gradient overlay on hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#d5a22d]/0 to-[#d5a22d]/0 group-hover:from-[#d5a22d]/5 group-hover:to-[#d5a22d]/5 transition-all duration-300 pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-br from-brand-accent/0 to-brand-accent/0 group-hover:from-brand-accent/5 group-hover:to-brand-accent/5 transition-all duration-300 pointer-events-none" />
         </div>
     );
 }

@@ -16,21 +16,21 @@ export default function StudentStats({ stats }: StudentStatsProps) {
             label: 'Total Applications',
             value: stats.total,
             icon: FileText,
-            color: 'from-[#36335e] to-purple-600',
-            bgColor: 'bg-[#36335e]/5',
-            iconBg: 'bg-[#36335e]/10',
-            iconColor: 'text-[#36335e]',
-            borderColor: 'border-[#36335e]/20',
+            color: 'from-brand-primary to-purple-600',
+            bgColor: 'bg-brand-primary/5',
+            iconBg: 'bg-brand-primary/10',
+            iconColor: 'text-brand-primary',
+            borderColor: 'border-brand-primary/20',
         },
         {
             label: 'Submitted',
             value: stats.submitted,
             icon: Send,
-            color: 'from-[#d5a22d] to-[#b89531]',
-            bgColor: 'bg-[#d5a22d]/10',
-            iconBg: 'bg-[#d5a22d]/20',
-            iconColor: 'text-[#d5a22d]',
-            borderColor: 'border-[#d5a22d]/40',
+            color: 'from-brand-accent to-[#b89531]',
+            bgColor: 'bg-brand-accent/10',
+            iconBg: 'bg-brand-accent/20',
+            iconColor: 'text-brand-accent',
+            borderColor: 'border-brand-accent/40',
             badge: stats.submitted > 0 ? { icon: Flame, label: 'Active', color: 'text-orange-600' } : null,
         },
     ];
@@ -62,10 +62,10 @@ export default function StudentStats({ stats }: StudentStatsProps) {
                             show: { opacity: 1, y: 0 }
                         }}
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                        className={`group relative overflow-hidden rounded-3xl bg-white border border-gray-100 hover:border-[#d5a22d]/30 shadow-sm hover:shadow-md p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1`}
+                        className={`group relative overflow-hidden rounded-3xl bg-white border border-gray-100 hover:border-brand-accent/30 shadow-sm hover:shadow-md p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1`}
                     >
                         {/* Gradient overlay on hover */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-300 pointer-events-none`} />
+                        <div className={`absolute inset-0 bg-linear-to-br ${stat.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-300 pointer-events-none`} />
 
                         <div className="relative">
                             {/* Icon with badge */}
@@ -81,7 +81,7 @@ export default function StudentStats({ stats }: StudentStatsProps) {
                             </div>
 
                             {/* Value */}
-                            <div className="text-2xl font-black text-[#36335e] mb-0.5">
+                            <div className="text-2xl font-black text-brand-primary mb-0.5">
                                 {stat.value}
                             </div>
 

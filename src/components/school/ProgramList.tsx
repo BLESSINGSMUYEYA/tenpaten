@@ -49,7 +49,7 @@ export default function ProgramList({ programs, onEdit }: ProgramListProps) {
         <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
                 <thead>
-                    <tr className="bg-[#36335e] text-white">
+                    <tr className="bg-brand-primary text-white">
                         <th className="px-8 py-5 text-xs font-black uppercase tracking-widest text-white/70">Programme Identity</th>
                         <th className="px-5 py-5 text-xs font-black uppercase tracking-widest text-white/70">Department & Level</th>
                         <th className="px-5 py-5 text-xs font-black uppercase tracking-widest text-white/70">Logistics</th>
@@ -59,24 +59,24 @@ export default function ProgramList({ programs, onEdit }: ProgramListProps) {
                 </thead>
                 <tbody className="divide-y divide-slate-50">
                     {programs.map((program) => (
-                        <tr key={program.id} className="hover:bg-slate-50/80 transition-all duration-300 group border-l-4 border-transparent hover:border-[#d5a22d]">
+                        <tr key={program.id} className="hover:bg-slate-50/80 transition-all duration-300 group border-l-4 border-transparent hover:border-brand-accent">
                             <td className="px-8 py-6">
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-2xl bg-[#36335e]/5 flex items-center justify-center text-[#36335e] group-hover:bg-[#36335e] group-hover:text-[#d5a22d] transition-all duration-500 shadow-sm">
+                                    <div className="w-12 h-12 rounded-2xl bg-brand-primary/5 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-brand-accent transition-all duration-500 shadow-sm">
                                         <BookOpen className="w-6 h-6" />
                                     </div>
-                                    <h4 className="font-black text-[#36335e] group-hover:text-[#d5a22d] transition-colors text-[15px] tracking-tight leading-tight max-w-[280px]">
+                                    <h4 className="font-black text-brand-primary group-hover:text-brand-accent transition-colors text-[15px] tracking-tight leading-tight max-w-[280px]">
                                         {program.name}
                                     </h4>
                                 </div>
                             </td>
                             <td className="px-5 py-6">
                                 <div className="space-y-1.5">
-                                    <div className="text-sm font-black text-[#36335e]">
+                                    <div className="text-sm font-black text-brand-primary">
                                         {program.department?.name || 'Unassigned Faculty'}
                                     </div>
                                     <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#d5a22d]" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-brand-accent" />
                                         {program.level || 'Standard Degree'}
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@ export default function ProgramList({ programs, onEdit }: ProgramListProps) {
                             <td className="px-5 py-6">
                                 <div className="space-y-2">
                                     <div className="flex items-center gap-2.5 text-xs font-bold text-slate-600">
-                                        <Clock className="w-4 h-4 text-[#d5a22d]" />
+                                        <Clock className="w-4 h-4 text-brand-accent" />
                                         <span>{program.duration || 'Flexible Duration'}</span>
                                     </div>
                                     <div className="flex items-center gap-2.5 text-[10px] font-black text-slate-400 uppercase tracking-[0.15em]">
@@ -95,7 +95,7 @@ export default function ProgramList({ programs, onEdit }: ProgramListProps) {
                             </td>
                             <td className="px-5 py-6">
                                 <div className="flex flex-col gap-1">
-                                    <span className="text-sm font-black text-[#36335e]">
+                                    <span className="text-sm font-black text-brand-primary">
                                         {program.baseTuition ? `$${program.baseTuition.toLocaleString()}` : 'Fees Pending'}
                                     </span>
                                     <span className="text-[9px] font-bold text-slate-300 uppercase tracking-widest">Base Rate</span>
@@ -106,13 +106,13 @@ export default function ProgramList({ programs, onEdit }: ProgramListProps) {
                                     {onEdit ? (
                                         <button
                                             onClick={() => onEdit(program)}
-                                            className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-[#36335e] hover:text-[#d5a22d] transition-all shadow-sm border border-slate-100"
+                                            className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-brand-primary hover:text-brand-accent transition-all shadow-sm border border-slate-100"
                                         >
                                             <Pencil className="w-4 h-4" />
                                         </button>
                                     ) : (
                                         <Link href={`/dashboard/school/programs/${program.id}`}>
-                                            <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-[#36335e] hover:text-[#d5a22d] transition-all shadow-sm border border-slate-100">
+                                            <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-brand-primary hover:text-brand-accent transition-all shadow-sm border border-slate-100">
                                                 <Pencil className="w-4 h-4" />
                                             </div>
                                         </Link>

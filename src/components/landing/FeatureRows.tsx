@@ -29,14 +29,14 @@ const features = [
                         className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm"
                     >
                         <div className="w-10 h-10 rounded-xl bg-[#1a1b41] flex items-center justify-center shrink-0">
-                            <Globe2 className="w-5 h-5 text-[#d5a22d]" />
+                            <Globe2 className="w-5 h-5 text-brand-accent" />
                         </div>
                         <div className="flex-1 min-w-0">
                             <p className="text-[#1a1b41] text-xs font-black uppercase tracking-wide truncate">{item.name}</p>
                             <p className="text-gray-400 text-[11px] font-medium truncate">{item.prog}</p>
                         </div>
-                        <div className="px-3 py-1.5 rounded-full bg-[#d5a22d]/10 border border-[#d5a22d]/20">
-                            <span className="text-[#d5a22d] text-[10px] font-black">{item.match}</span>
+                        <div className="px-3 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20">
+                            <span className="text-brand-accent text-[10px] font-black">{item.match}</span>
                         </div>
                     </motion.div>
                 ))}
@@ -68,12 +68,12 @@ const features = [
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: i * 0.1 }}
                         className={`flex items-center gap-4 px-5 py-3.5 rounded-2xl border ${s.done
-                            ? 'bg-[#d5a22d]/5 border-[#d5a22d]/20'
+                            ? 'bg-brand-accent/5 border-brand-accent/20'
                             : 'bg-white border-gray-100'
                             }`}
                     >
                         <div className={`w-8 h-8 rounded-xl flex items-center justify-center text-[10px] font-black shrink-0 ${s.done
-                            ? 'bg-[#d5a22d] text-[#1a1b41]'
+                            ? 'bg-brand-accent text-[#1a1b41]'
                             : 'bg-gray-100 text-gray-400'
                             }`}>
                             {s.done ? '✓' : s.step}
@@ -105,7 +105,7 @@ const features = [
                     transition={{ duration: 0.5 }}
                     className="flex items-start gap-3"
                 >
-                    <div className="w-8 h-8 rounded-xl bg-[#1a1b41] flex items-center justify-center text-[8px] text-[#d5a22d] font-black shrink-0">CU</div>
+                    <div className="w-8 h-8 rounded-xl bg-[#1a1b41] flex items-center justify-center text-[8px] text-brand-accent font-black shrink-0">CU</div>
                     <div className="bg-white border border-gray-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-[80%] shadow-sm">
                         <p className="text-[11px] font-black text-[#1a1b41] mb-0.5">CU Admissions</p>
                         <p className="text-gray-500 text-xs">Your application has been received. Results will be out by 15 June.</p>
@@ -118,10 +118,10 @@ const features = [
                     transition={{ duration: 0.5, delay: 0.15 }}
                     className="flex items-start gap-3 justify-end"
                 >
-                    <div className="bg-[#d5a22d] rounded-2xl rounded-tr-none px-4 py-3 max-w-[75%]">
+                    <div className="bg-brand-accent rounded-2xl rounded-tr-none px-4 py-3 max-w-[75%]">
                         <p className="text-[#1a1b41] text-xs font-medium">Thank you! Do I need to submit my MSCE certificate in person?</p>
                     </div>
-                    <div className="w-8 h-8 rounded-xl bg-[#d5a22d]/20 border border-[#d5a22d]/30 flex items-center justify-center text-[8px] text-[#d5a22d] font-black shrink-0">ME</div>
+                    <div className="w-8 h-8 rounded-xl bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center text-[8px] text-brand-accent font-black shrink-0">ME</div>
                 </motion.div>
                 <motion.div
                     initial={{ opacity: 0, y: 12 }}
@@ -130,7 +130,7 @@ const features = [
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="flex items-start gap-3"
                 >
-                    <div className="w-8 h-8 rounded-xl bg-[#1a1b41] flex items-center justify-center text-[8px] text-[#d5a22d] font-black shrink-0">CU</div>
+                    <div className="w-8 h-8 rounded-xl bg-[#1a1b41] flex items-center justify-center text-[8px] text-brand-accent font-black shrink-0">CU</div>
                     <div className="bg-white border border-gray-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-[80%] shadow-sm">
                         <p className="text-gray-500 text-xs">No — upload it directly on the platform. No physical copies needed.</p>
                     </div>
@@ -159,7 +159,7 @@ export function FeatureRows() {
                         }}
                     />
                     {feat.dark && (
-                        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#d5a22d] opacity-[0.04] blur-[120px] pointer-events-none" />
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-brand-accent opacity-[0.04] blur-[120px] pointer-events-none" />
                     )}
 
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -174,10 +174,10 @@ export function FeatureRows() {
                             >
                                 {/* Eyebrow */}
                                 <div className="flex items-center gap-2.5 mb-6">
-                                    <div className={`w-6 h-6 rounded-lg flex items-center justify-center ${feat.dark ? 'bg-[#d5a22d]/10' : 'bg-[#1a1b41]/8'}`}>
-                                        <feat.icon className={`w-3.5 h-3.5 ${feat.dark ? 'text-[#d5a22d]' : 'text-[#1a1b41]'}`} />
+                                    <div className={`w-6 h-6 rounded-lg flex items-center justify-center ${feat.dark ? 'bg-brand-accent/10' : 'bg-[#1a1b41]/8'}`}>
+                                        <feat.icon className={`w-3.5 h-3.5 ${feat.dark ? 'text-brand-accent' : 'text-[#1a1b41]'}`} />
                                     </div>
-                                    <span className={`text-[10px] font-black uppercase tracking-[0.3em] ${feat.dark ? 'text-[#d5a22d]' : 'text-[#d5a22d]'}`}>
+                                    <span className={`text-[10px] font-black uppercase tracking-[0.3em] ${feat.dark ? 'text-brand-accent' : 'text-brand-accent'}`}>
                                         {feat.eyebrow}
                                     </span>
                                 </div>
@@ -195,7 +195,7 @@ export function FeatureRows() {
                                 {/* Learn more link */}
                                 <Link
                                     href="/register?type=student"
-                                    className={`inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] group ${feat.dark ? 'text-[#d5a22d]' : 'text-[#1a1b41]'}`}
+                                    className={`inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] group ${feat.dark ? 'text-brand-accent' : 'text-[#1a1b41]'}`}
                                 >
                                     Get Started
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -218,7 +218,7 @@ export function FeatureRows() {
                                             fill
                                             className="object-cover transition-transform duration-1000 hover:scale-105"
                                         />
-                                        <div className={`absolute inset-0 bg-gradient-to-t ${feat.dark ? 'from-[#1a1b41]' : 'from-slate-900/60'} via-transparent to-transparent opacity-60`} />
+                                        <div className={`absolute inset-0 bg-linear-to-t ${feat.dark ? 'from-[#1a1b41]' : 'from-slate-900/60'} via-transparent to-transparent opacity-60`} />
                                     </div>
 
                                     {/* UI Overlay Card */}
@@ -236,7 +236,7 @@ export function FeatureRows() {
                                 </motion.div>
 
                                 {/* Decorative shape */}
-                                <div className={`absolute -z-10 -top-8 -left-8 w-64 h-64 rounded-full ${feat.dark ? 'bg-[#d5a22d]/10' : 'bg-slate-200'} blur-3xl`} />
+                                <div className={`absolute -z-10 -top-8 -left-8 w-64 h-64 rounded-full ${feat.dark ? 'bg-brand-accent/10' : 'bg-slate-200'} blur-3xl`} />
                             </div>
                         </div>
                     </div>

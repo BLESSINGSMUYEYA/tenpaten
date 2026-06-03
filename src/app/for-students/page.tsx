@@ -23,17 +23,17 @@ function Nav() {
                 <div className="hidden md:flex items-center gap-10">
                     {links.map(l => (
                         <Link key={l.href} href={l.href}
-                            className="text-[11px] uppercase tracking-[0.25em] font-black text-white/60 hover:text-[#d5a22d] transition-all relative group">
+                            className="text-[11px] uppercase tracking-[0.25em] font-black text-white/60 hover:text-brand-accent transition-all relative group">
                             {l.label}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#d5a22d] transition-all group-hover:w-full" />
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all group-hover:w-full" />
                         </Link>
                     ))}
                 </div>
                 <div className="flex items-center gap-4">
-                    <Link href="/login" className="hidden sm:inline-flex px-6 py-2.5 text-[11px] uppercase tracking-[0.2em] font-black text-white hover:text-[#d5a22d] transition-all">Sign In</Link>
-                    <Link href="/register?type=student" className="hidden sm:inline-flex px-8 py-3 bg-[#d5a22d] text-[#1a1b41] rounded-xl text-[11px] uppercase tracking-[0.2em] font-black hover:bg-white transition-all active:scale-95">Get Started</Link>
+                    <Link href="/login" className="hidden sm:inline-flex px-6 py-2.5 text-[11px] uppercase tracking-[0.2em] font-black text-white hover:text-brand-accent transition-all">Sign In</Link>
+                    <Link href="/register?type=student" className="hidden sm:inline-flex px-8 py-3 bg-brand-accent text-[#1a1b41] rounded-xl text-[11px] uppercase tracking-[0.2em] font-black hover:bg-white transition-all active:scale-95">Get Started</Link>
                     <button onClick={() => setOpen(!open)} className="md:hidden p-2.5 rounded-xl text-white hover:bg-white/10 border border-white/10">
-                        {open ? <X className="w-5 h-5 text-[#d5a22d]" /> : <Menu className="w-5 h-5" />}
+                        {open ? <X className="w-5 h-5 text-brand-accent" /> : <Menu className="w-5 h-5" />}
                     </button>
                 </div>
             </div>
@@ -41,13 +41,13 @@ function Nav() {
                 <div className="md:hidden bg-[#1a1b41] border-t border-white/5 px-6 py-10 space-y-2 rounded-b-[2.5rem]">
                     {links.map(l => (
                         <Link key={l.href} href={l.href} onClick={() => setOpen(false)}
-                            className="flex px-6 py-4 rounded-2xl bg-white/5 hover:bg-[#d5a22d] hover:text-[#1a1b41] text-sm font-black uppercase tracking-widest text-white/70 transition-all">
+                            className="flex px-6 py-4 rounded-2xl bg-white/5 hover:bg-brand-accent hover:text-[#1a1b41] text-sm font-black uppercase tracking-widest text-white/70 transition-all">
                             {l.label}
                         </Link>
                     ))}
                     <div className="pt-6 mt-4 border-t border-white/5 grid grid-cols-2 gap-4">
                         <Link href="/login" className="flex items-center justify-center py-4 rounded-xl text-[10px] font-black text-white bg-white/5 uppercase tracking-widest">Sign In</Link>
-                        <Link href="/register?type=student" className="flex items-center justify-center py-4 rounded-xl text-[10px] font-black text-[#1a1b41] bg-[#d5a22d] uppercase tracking-widest">Get Started</Link>
+                        <Link href="/register?type=student" className="flex items-center justify-center py-4 rounded-xl text-[10px] font-black text-[#1a1b41] bg-brand-accent uppercase tracking-widest">Get Started</Link>
                     </div>
                 </div>
             )}
@@ -107,7 +107,7 @@ const testimonials = [
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function ForStudentsPage() {
     return (
-        <main className="min-h-screen font-sans selection:bg-[#d5a22d]/30">
+        <main className="min-h-screen font-sans selection:bg-brand-accent/30">
             <Nav />
 
             {/* ── Hero ── */}
@@ -119,14 +119,14 @@ export default function ForStudentsPage() {
                 </div>
                 <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-24">
                     <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-                        className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[#d5a22d]/25 bg-[#d5a22d]/8 mb-10">
-                        <span className="w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
-                        <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.35em]">For Students</span>
+                        className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-brand-accent/25 bg-brand-accent/8 mb-10">
+                        <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
+                        <span className="text-brand-accent text-[10px] font-black uppercase tracking-[0.35em]">For Students</span>
                     </motion.div>
                     <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
                         className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.05] tracking-tighter mb-6">
                         Apply to university.<br />
-                        <span className="text-[#d5a22d]">From anywhere in Malawi.</span>
+                        <span className="text-brand-accent">From anywhere in Malawi.</span>
                     </motion.h1>
                     <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.22 }}
                         className="text-white/60 text-xl font-medium leading-relaxed max-w-2xl mx-auto mb-12">
@@ -136,7 +136,7 @@ export default function ForStudentsPage() {
                     <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.35 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link href="/register?type=student"
-                            className="group inline-flex items-center gap-3 px-10 py-4 rounded-2xl bg-[#d5a22d] text-[#1a1b41] font-black uppercase tracking-[0.2em] text-[11px] hover:bg-white transition-all shadow-xl shadow-[#d5a22d]/20 active:scale-95">
+                            className="group inline-flex items-center gap-3 px-10 py-4 rounded-2xl bg-brand-accent text-[#1a1b41] font-black uppercase tracking-[0.2em] text-[11px] hover:bg-white transition-all shadow-xl shadow-brand-accent/20 active:scale-95">
                             Create Free Account <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <Link href="/login"
@@ -151,7 +151,7 @@ export default function ForStudentsPage() {
             <section className="bg-slate-50 py-20 lg:py-32">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">Simple Process</span>
+                        <span className="text-brand-accent text-[10px] font-black tracking-[0.3em] uppercase">Simple Process</span>
                         <h2 className="text-4xl lg:text-5xl font-black text-[#1a1b41] mt-4 tracking-tighter leading-[1.1]">
                             Ready in 4 steps.
                         </h2>
@@ -163,9 +163,9 @@ export default function ForStudentsPage() {
                         {steps.map((s, i) => (
                             <motion.div key={i}
                                 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                                className="group relative bg-white border border-gray-100 rounded-[2rem] p-8 hover:border-[#d5a22d]/30 hover:shadow-xl hover:shadow-[#d5a22d]/5 transition-all duration-500">
-                                <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#d5a22d] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div className="w-12 h-12 rounded-2xl bg-[#1a1b41] flex items-center justify-center text-[#d5a22d] font-black text-sm mb-6">
+                                className="group relative bg-white border border-gray-100 rounded-[2rem] p-8 hover:border-brand-accent/30 hover:shadow-xl hover:shadow-brand-accent/5 transition-all duration-500">
+                                <div className="absolute top-0 left-8 right-8 h-[2px] bg-linear-to-r from-transparent via-brand-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="w-12 h-12 rounded-2xl bg-[#1a1b41] flex items-center justify-center text-brand-accent font-black text-sm mb-6">
                                     {s.n}
                                 </div>
                                 <h3 className="text-[#1a1b41] font-black text-base uppercase tracking-tight leading-snug mb-3">{s.title}</h3>
@@ -181,21 +181,21 @@ export default function ForStudentsPage() {
                 <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#d5a22d 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-16">
-                        <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">Everything You Need</span>
+                        <span className="text-brand-accent text-[10px] font-black tracking-[0.3em] uppercase">Everything You Need</span>
                         <h2 className="text-4xl lg:text-5xl font-black text-white mt-4 tracking-tighter leading-[1.1]">
-                            And dozens of tools<br /><span className="text-[#d5a22d]">to get you where you need to be.</span>
+                            And dozens of tools<br /><span className="text-brand-accent">to get you where you need to be.</span>
                         </h2>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         {features.map((f, i) => (
                             <motion.div key={i}
                                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.08 }}
-                                className="group bg-white/5 border border-white/10 rounded-[2rem] p-8 hover:border-[#d5a22d]/30 hover:bg-white/8 transition-all duration-500 relative overflow-hidden">
-                                <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#d5a22d] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div className="w-11 h-11 rounded-2xl bg-[#d5a22d]/10 flex items-center justify-center mb-5 group-hover:bg-[#d5a22d] transition-all duration-300">
-                                    <f.icon className="w-5 h-5 text-[#d5a22d] group-hover:text-[#1a1b41] transition-colors duration-300" />
+                                className="group bg-white/5 border border-white/10 rounded-[2rem] p-8 hover:border-brand-accent/30 hover:bg-white/8 transition-all duration-500 relative overflow-hidden">
+                                <div className="absolute top-0 left-8 right-8 h-[2px] bg-linear-to-r from-transparent via-brand-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="w-11 h-11 rounded-2xl bg-brand-accent/10 flex items-center justify-center mb-5 group-hover:bg-brand-accent transition-all duration-300">
+                                    <f.icon className="w-5 h-5 text-brand-accent group-hover:text-[#1a1b41] transition-colors duration-300" />
                                 </div>
-                                <h3 className="text-white font-black text-base uppercase tracking-tight leading-snug mb-3 group-hover:text-[#d5a22d] transition-colors duration-300">{f.title}</h3>
+                                <h3 className="text-white font-black text-base uppercase tracking-tight leading-snug mb-3 group-hover:text-brand-accent transition-colors duration-300">{f.title}</h3>
                                 <p className="text-white/45 text-sm font-medium leading-relaxed">{f.body}</p>
                             </motion.div>
                         ))}
@@ -207,7 +207,7 @@ export default function ForStudentsPage() {
             <section className="bg-slate-50 py-20 lg:py-32">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">From Others Around Malawi</span>
+                        <span className="text-brand-accent text-[10px] font-black tracking-[0.3em] uppercase">From Others Around Malawi</span>
                         <h2 className="text-4xl font-black text-[#1a1b41] mt-4 tracking-tighter uppercase leading-[0.9]">
                             Don&apos;t just take it from us.
                         </h2>
@@ -217,17 +217,17 @@ export default function ForStudentsPage() {
                         {testimonials.map((t, i) => (
                             <motion.div key={i}
                                 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.12 }}
-                                className="group bg-white border border-gray-100 rounded-[2rem] overflow-hidden hover:border-[#d5a22d]/30 hover:shadow-xl hover:shadow-[#d5a22d]/5 transition-all duration-500 relative">
-                                <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#d5a22d] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                className="group bg-white border border-gray-100 rounded-[2rem] overflow-hidden hover:border-brand-accent/30 hover:shadow-xl hover:shadow-brand-accent/5 transition-all duration-500 relative">
+                                <div className="absolute top-0 left-8 right-8 h-[2px] bg-linear-to-r from-transparent via-brand-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <div className="bg-[#1a1b41] px-6 py-4 flex items-center gap-3">
-                                    <div className="w-9 h-9 rounded-xl bg-[#d5a22d]/20 border border-[#d5a22d]/30 flex items-center justify-center text-[#d5a22d] text-[11px] font-black">{t.initials}</div>
+                                    <div className="w-9 h-9 rounded-xl bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center text-brand-accent text-[11px] font-black">{t.initials}</div>
                                     <div>
                                         <p className="text-white font-black text-sm">{t.name}</p>
-                                        <p className="text-[#d5a22d] text-[9px] font-black uppercase tracking-[0.25em]">{t.school}</p>
+                                        <p className="text-brand-accent text-[9px] font-black uppercase tracking-[0.25em]">{t.school}</p>
                                     </div>
                                 </div>
                                 <div className="p-8">
-                                    <div className="text-[#d5a22d]/20 text-5xl font-serif leading-none mb-2 group-hover:text-[#d5a22d]/40 transition-colors">&ldquo;</div>
+                                    <div className="text-brand-accent/20 text-5xl font-serif leading-none mb-2 group-hover:text-brand-accent/40 transition-colors">&ldquo;</div>
                                     <p className="text-gray-500 font-medium text-sm leading-relaxed italic">{t.quote}</p>
                                 </div>
                             </motion.div>
@@ -239,14 +239,14 @@ export default function ForStudentsPage() {
             {/* ── Final CTA ── */}
             <section className="bg-[#0f1030] py-24 lg:py-32 relative overflow-hidden text-center">
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#d5a22d] opacity-[0.05] blur-[120px]" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-brand-accent opacity-[0.05] blur-[120px]" />
                     <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(#d5a22d 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
                 </div>
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-                        <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[#d5a22d]/25 bg-[#d5a22d]/8 mb-10">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#d5a22d] animate-pulse" />
-                            <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.35em]">Yes, you read that right</span>
+                        <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-brand-accent/25 bg-brand-accent/8 mb-10">
+                            <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
+                            <span className="text-brand-accent text-[10px] font-black uppercase tracking-[0.35em]">Yes, you read that right</span>
                         </div>
                         <h2 className="text-4xl lg:text-5xl font-black text-white tracking-tighter leading-[1.1] mb-4">
                             It&apos;s completely free.
@@ -255,7 +255,7 @@ export default function ForStudentsPage() {
                             Get the services of a professional admissions advisor — at zero cost.
                         </p>
                         <Link href="/register?type=student"
-                            className="group inline-flex items-center gap-3 px-12 py-5 rounded-2xl bg-[#d5a22d] text-[#1a1b41] font-black uppercase tracking-[0.2em] text-[11px] hover:bg-white transition-all shadow-2xl shadow-[#d5a22d]/20 active:scale-95">
+                            className="group inline-flex items-center gap-3 px-12 py-5 rounded-2xl bg-brand-accent text-[#1a1b41] font-black uppercase tracking-[0.2em] text-[11px] hover:bg-white transition-all shadow-2xl shadow-brand-accent/20 active:scale-95">
                             Create Free Account <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </motion.div>

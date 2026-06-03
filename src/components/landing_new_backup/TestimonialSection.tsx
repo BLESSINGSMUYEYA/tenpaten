@@ -28,15 +28,15 @@ export function TestimonialSection() {
     return (
         <section className="py-24 lg:py-32 bg-white relative overflow-hidden border-t border-gray-100">
             {/* Background artistic elements */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-[#d5a22d]/5 to-transparent blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-linear-to-b from-brand-accent/5 to-transparent blur-[120px] pointer-events-none" />
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-20">
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gray-50 border border-gray-100 text-[#d5a22d] text-[10px] font-black tracking-[0.3em] mb-6 uppercase shadow-sm">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gray-50 border border-gray-100 text-brand-accent text-[10px] font-black tracking-[0.3em] mb-6 uppercase shadow-sm">
                         Success Stories
                     </div>
                     <h2 className="text-4xl lg:text-6xl font-black text-[#1a1b41] tracking-tighter uppercase leading-[0.85] mb-6">
-                        Trusted by <span className="text-[#d5a22d]">Thousands</span>
+                        Trusted by <span className="text-brand-accent">Thousands</span>
                     </h2>
                     <p className="text-[#1a1b41]/60 text-lg font-medium max-w-2xl mx-auto">
                         Hear how our global platform is changing the way students and universities connect.
@@ -53,7 +53,7 @@ export function TestimonialSection() {
 
                             <div className="flex gap-1 mb-8">
                                 {[...Array(item.rating)].map((_, i) => (
-                                    <Star key={i} className="w-4 h-4 fill-[#d5a22d] text-[#d5a22d]" />
+                                    <Star key={i} className="w-4 h-4 fill-brand-accent text-brand-accent" />
                                 ))}
                             </div>
                             
@@ -62,12 +62,12 @@ export function TestimonialSection() {
                             </p>
                             
                             <div className="flex items-center gap-5 mt-auto pt-8 border-t border-gray-50 relative z-10">
-                                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#1a1b41] to-[#36335e] flex items-center justify-center text-white font-black text-xl shadow-lg">
+                                <div className="w-14 h-14 rounded-full bg-linear-to-br from-[#1a1b41] to-brand-primary flex items-center justify-center text-white font-black text-xl shadow-lg">
                                     {item.avatar}
                                 </div>
                                 <div>
                                     <h4 className="text-[#1a1b41] font-black tracking-tight text-lg">{item.name}</h4>
-                                    <p className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.2em]">{item.role}</p>
+                                    <p className="text-brand-accent text-[10px] font-black uppercase tracking-[0.2em]">{item.role}</p>
                                 </div>
                             </div>
                         </div>

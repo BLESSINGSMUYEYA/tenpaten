@@ -33,11 +33,11 @@ export function AuthCard({
     decorations = defaultAvatars
 }: AuthCardProps) {
     return (
-        <div className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-[#1a1b4d] to-[#12132e] p-4 overflow-hidden">
+        <div className="min-h-screen relative flex items-center justify-center bg-linear-to-br from-[#1a1b4d] to-[#12132e] p-4 overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#d5a22d]/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-[#36335e]/30 rounded-full blur-[120px]" />
+                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-brand-accent/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-brand-primary/30 rounded-full blur-[120px]" />
             </div>
 
             <div className="relative z-10 w-full max-w-md">
@@ -77,7 +77,7 @@ export function AuthCard({
                             {footerText}{' '}
                             <Link
                                 href={footerLinkHref}
-                                className="font-bold text-[#d5a22d] hover:text-[#b89531] hover:underline transition-all"
+                                className="font-bold text-brand-accent hover:text-[#b89531] hover:underline transition-all"
                             >
                                 {footerLinkText}
                             </Link>

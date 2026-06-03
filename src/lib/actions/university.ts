@@ -56,7 +56,9 @@ export async function updateUniversityProfileJson(
 
     if (!user) return { error: 'Unauthorized' };
 
-    const universityId = targetUniversityId || user.managedUniversityId;
+    const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+    const activeId = user.role === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : user.managedUniversityId;
+    const universityId = targetUniversityId || activeId;
 
     if (!universityId) return { error: 'No university specified' };
 
@@ -72,8 +74,10 @@ export async function updateUniversityProfileJson(
         if (!country || !university || university.countryId !== country.id) {
             return { error: 'Unauthorized: You do not manage this university' };
         }
-    } else if (user.role === 'SCHOOL_ADMIN') {
-        if (universityId !== user.managedUniversityId) {
+    } else if (user.role === 'SCHOOL_ADMIN' || user.role === 'SCHOOL_SUPER_AGENT') {
+        const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+        const activeId = user.role === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : user.managedUniversityId;
+        if (universityId !== activeId) {
             return { error: 'Unauthorized: You can only manage your own university' };
         }
     } else if (user.role !== 'SUPER_ADMIN') {
@@ -122,7 +126,9 @@ export async function uploadUniversityImage(formData: FormData, targetUniversity
 
     if (!user) throw new Error('Unauthorized');
 
-    const universityId = targetUniversityId || user.managedUniversityId;
+    const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+    const activeId = user.role === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : user.managedUniversityId;
+    const universityId = targetUniversityId || activeId;
 
     if (!universityId) throw new Error('No university specified');
 
@@ -138,8 +144,10 @@ export async function uploadUniversityImage(formData: FormData, targetUniversity
         if (!country || !university || university.countryId !== country.id) {
             throw new Error('Unauthorized: You do not manage this university');
         }
-    } else if (user.role === 'SCHOOL_ADMIN') {
-        if (universityId !== user.managedUniversityId) {
+    } else if (user.role === 'SCHOOL_ADMIN' || user.role === 'SCHOOL_SUPER_AGENT') {
+        const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+        const activeId = user.role === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : user.managedUniversityId;
+        if (universityId !== activeId) {
             throw new Error('Unauthorized: You can only manage your own university');
         }
     } else if (user.role !== 'SUPER_ADMIN') {
@@ -249,14 +257,16 @@ export async function updateUniversitySlug(newSlug: string, targetUniversityId?:
 
     if (!user) return { error: 'Unauthorized' };
 
-    const universityId = targetUniversityId || user.managedUniversityId;
+    const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+    const activeId = user.role === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : user.managedUniversityId;
+    const universityId = targetUniversityId || activeId;
     if (!universityId) return { error: 'No university specified' };
 
     // Auth check
-    if (user.role === 'SCHOOL_ADMIN' && universityId !== user.managedUniversityId) {
+    if ((user.role === 'SCHOOL_ADMIN' || user.role === 'SCHOOL_SUPER_AGENT') && universityId !== activeId) {
         return { error: 'Unauthorized: You can only manage your own university' };
     }
-    if (!['SUPER_ADMIN', 'COUNTRY_DIRECTOR', 'SCHOOL_ADMIN'].includes(user.role)) {
+    if (!['SUPER_ADMIN', 'COUNTRY_DIRECTOR', 'SCHOOL_ADMIN', 'SCHOOL_SUPER_AGENT'].includes(user.role)) {
         return { error: 'Unauthorized' };
     }
 

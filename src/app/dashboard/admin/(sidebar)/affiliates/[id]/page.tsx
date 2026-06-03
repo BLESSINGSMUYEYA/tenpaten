@@ -24,8 +24,8 @@ export default async function AdminAffiliateDetailPage({ params }: { params: Pro
     if (!affiliate) {
         return (
             <div className="flex flex-col items-center justify-center min-h-[400px]">
-                <h2 className="text-xl font-black text-[#36335e]">Partner not found</h2>
-                <Link href="/dashboard/admin/affiliates" className="text-[#d5a22d] font-bold hover:underline mt-4">
+                <h2 className="text-xl font-black text-brand-primary">Partner not found</h2>
+                <Link href="/dashboard/admin/affiliates" className="text-brand-accent font-bold hover:underline mt-4">
                     Return to Registry
                 </Link>
             </div>
@@ -42,18 +42,18 @@ export default async function AdminAffiliateDetailPage({ params }: { params: Pro
                 <div className="flex items-center gap-6">
                     <Link
                         href="/dashboard/admin/affiliates"
-                        className="h-14 w-14 rounded-2xl bg-white shadow-xl shadow-[#36335e]/10 flex items-center justify-center text-[#36335e] hover:bg-[#36335e] hover:text-[#d5a22d] hover:scale-110 transition-all duration-300 border border-gray-100"
+                        className="h-14 w-14 rounded-2xl bg-white shadow-xl shadow-brand-primary/10 flex items-center justify-center text-brand-primary hover:bg-brand-primary hover:text-brand-accent hover:scale-110 transition-all duration-300 border border-gray-100"
                     >
                         <ArrowLeft className="w-6 h-6" />
                     </Link>
                     <div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.2em] mb-3 border border-[#d5a22d]/20">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent text-[10px] font-black uppercase tracking-[0.2em] mb-3 border border-brand-accent/20">
                             <UserIcon className="w-3 h-3" />
                             Affiliate verification
                         </div>
-                        <h1 className="text-4xl font-black text-[#36335e] tracking-tight">{affiliate.user.fullName}</h1>
+                        <h1 className="text-4xl font-black text-brand-primary tracking-tight">{affiliate.user.fullName}</h1>
                         <p className="text-gray-500 mt-1 font-medium italic flex items-center gap-2">
-                            Partner Code: <span className="text-[#36335e] font-bold">{affiliate.referralCode}</span>
+                            Partner Code: <span className="text-brand-primary font-bold">{affiliate.referralCode}</span>
                         </p>
                     </div>
                 </div>
@@ -86,10 +86,10 @@ export default async function AdminAffiliateDetailPage({ params }: { params: Pro
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                 <div className="lg:col-span-2 space-y-8">
-                    <Card className="border-none shadow-2xl shadow-[#36335e]/10 rounded-[2.5rem] overflow-hidden">
+                    <Card className="border-none shadow-2xl shadow-brand-primary/10 rounded-[2.5rem] overflow-hidden">
                         <CardHeader className="bg-gray-50/50 border-b border-gray-100 p-8">
-                            <CardTitle className="text-xl font-black flex items-center gap-3 text-[#36335e]">
-                                <div className="p-2.5 rounded-xl bg-[#36335e] text-[#d5a22d]">
+                            <CardTitle className="text-xl font-black flex items-center gap-3 text-brand-primary">
+                                <div className="p-2.5 rounded-xl bg-brand-primary text-brand-accent">
                                     <FileText className="w-5 h-5" />
                                 </div>
                                 Identification Document
@@ -101,11 +101,11 @@ export default async function AdminAffiliateDetailPage({ params }: { params: Pro
                                     <div className="grid grid-cols-2 gap-8 bg-slate-50 p-6 rounded-2xl border border-slate-100">
                                         <div>
                                             <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none mb-2 block">Document Type</label>
-                                            <p className="text-sm font-bold text-[#36335e]">{idDocument.subType}</p>
+                                            <p className="text-sm font-bold text-brand-primary">{idDocument.subType}</p>
                                         </div>
                                         <div>
                                             <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none mb-2 block">Document ID</label>
-                                            <p className="text-sm font-bold text-[#36335e]">{idDocument.number}</p>
+                                            <p className="text-sm font-bold text-brand-primary">{idDocument.number}</p>
                                         </div>
                                     </div>
 
@@ -118,7 +118,7 @@ export default async function AdminAffiliateDetailPage({ params }: { params: Pro
                                         />
                                     </div>
                                     <div className="text-center">
-                                        <a href={idDocument.url} target="_blank" rel="noopener noreferrer" className="text-xs font-black text-[#d5a22d] uppercase tracking-widest hover:underline">
+                                        <a href={idDocument.url} target="_blank" rel="noopener noreferrer" className="text-xs font-black text-brand-accent uppercase tracking-widest hover:underline">
                                             Open full resolution asset
                                         </a>
                                     </div>
@@ -133,10 +133,10 @@ export default async function AdminAffiliateDetailPage({ params }: { params: Pro
                 </div>
 
                 <div className="space-y-8">
-                    <Card className="border-none shadow-2xl shadow-[#36335e]/10 rounded-[2.5rem] overflow-hidden">
+                    <Card className="border-none shadow-2xl shadow-brand-primary/10 rounded-[2.5rem] overflow-hidden">
                         <CardHeader className="bg-gray-50/50 border-b border-gray-100 p-8">
-                            <CardTitle className="text-xl font-black flex items-center gap-3 text-[#36335e]">
-                                <div className="p-2.5 rounded-xl bg-[#36335e] text-[#d5a22d]">
+                            <CardTitle className="text-xl font-black flex items-center gap-3 text-brand-primary">
+                                <div className="p-2.5 rounded-xl bg-brand-primary text-brand-accent">
                                     <CreditCard className="w-5 h-5" />
                                 </div>
                                 Settlement info
@@ -147,24 +147,24 @@ export default async function AdminAffiliateDetailPage({ params }: { params: Pro
                                 <div className="space-y-6">
                                     <div className="space-y-1">
                                         <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none mb-2 block">Bank Institution</label>
-                                        <p className="text-sm font-black text-[#36335e]">{bankDetails.bankName}</p>
+                                        <p className="text-sm font-black text-brand-primary">{bankDetails.bankName}</p>
                                     </div>
                                     <Separator className="bg-slate-100" />
                                     <div className="space-y-1">
                                         <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none mb-2 block">Account holder</label>
-                                        <p className="text-sm font-black text-[#36335e]">{bankDetails.accountName}</p>
+                                        <p className="text-sm font-black text-brand-primary">{bankDetails.accountName}</p>
                                     </div>
                                     <Separator className="bg-slate-100" />
                                     <div className="space-y-1">
                                         <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none mb-2 block">Channel ID / IBAN</label>
-                                        <code className="text-xs font-black bg-slate-100 px-3 py-1.5 rounded-xl text-[#36335e]">{bankDetails.accountNumber}</code>
+                                        <code className="text-xs font-black bg-slate-100 px-3 py-1.5 rounded-xl text-brand-primary">{bankDetails.accountNumber}</code>
                                     </div>
                                     {bankDetails.swiftCode && (
                                         <>
                                             <Separator className="bg-slate-100" />
                                             <div className="space-y-1">
                                                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none mb-2 block">SWIFT Authority</label>
-                                                <p className="text-sm font-black text-[#36335e]">{bankDetails.swiftCode}</p>
+                                                <p className="text-sm font-black text-brand-primary">{bankDetails.swiftCode}</p>
                                             </div>
                                         </>
                                     )}
@@ -175,19 +175,19 @@ export default async function AdminAffiliateDetailPage({ params }: { params: Pro
                         </CardContent>
                     </Card>
 
-                    <Card className="border-none shadow-2xl shadow-[#36335e]/20 rounded-[2.5rem] bg-[#36335e] text-white overflow-hidden relative group">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#d5a22d]/20 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:scale-150 transition-transform duration-700" />
+                    <Card className="border-none shadow-2xl shadow-brand-primary/20 rounded-[2.5rem] bg-brand-primary text-white overflow-hidden relative group">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/20 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:scale-150 transition-transform duration-700" />
                         <CardHeader className="p-8 pb-4 relative z-10">
-                            <CardTitle className="text-[10px] font-black text-[#d5a22d] uppercase tracking-[0.2em]">Economics</CardTitle>
+                            <CardTitle className="text-[10px] font-black text-brand-accent uppercase tracking-[0.2em]">Economics</CardTitle>
                         </CardHeader>
                         <CardContent className="p-8 pt-0 space-y-6 relative z-10">
                             <div className="flex items-center justify-between">
                                 <span className="text-sm font-bold text-white/70">Commission Level</span>
-                                <span className="text-2xl font-black text-[#d5a22d] leading-none">{affiliate.commissionRate}%</span>
+                                <span className="text-2xl font-black text-brand-accent leading-none">{affiliate.commissionRate}%</span>
                             </div>
                             <div className="flex items-center justify-between">
                                 <span className="text-sm font-bold text-white/70">Reward Format</span>
-                                <span className="text-sm font-black text-[#d5a22d] leading-none uppercase tracking-widest">{affiliate.rewardType.replace('_', ' ')}</span>
+                                <span className="text-sm font-black text-brand-accent leading-none uppercase tracking-widest">{affiliate.rewardType.replace('_', ' ')}</span>
                             </div>
                         </CardContent>
                     </Card>

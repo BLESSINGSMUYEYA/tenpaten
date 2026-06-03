@@ -48,7 +48,7 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
             
             <PageHeader 
                 preTitle={
-                    <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] border border-[#d5a22d]/20 text-[10px] font-black uppercase tracking-[0.2em]">
+                    <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent border border-brand-accent/20 text-[10px] font-black uppercase tracking-[0.2em]">
                         <Award className="w-3.5 h-3.5" />
                         Funding Engine
                     </div>
@@ -56,7 +56,7 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
                 title="Global Scholarships"
                 subtitle={
                     <>
-                        Set a universal tuition discount across all programmes for <span className="font-bold text-[#d5a22d]">{university.name}</span>.
+                        Set a universal tuition discount across all programmes for <span className="font-bold text-brand-accent">{university.name}</span>.
                     </>
                 }
             />
@@ -65,13 +65,13 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
                 {/* ── Master Settings Panel ── */}
                 <div className="lg:col-span-1 space-y-8">
                     <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden">
-                        <div className="bg-[#36335e] px-8 py-6 flex items-center justify-between">
+                        <div className="bg-brand-primary px-8 py-6 flex items-center justify-between">
                             <div>
                                 <h3 className="text-base font-black text-white tracking-tight">Master Settings</h3>
                                 <p className="text-white/40 text-[10px] font-black uppercase tracking-widest mt-1">Policy Configuration</p>
                             </div>
                             <div className="w-11 h-11 bg-white/10 rounded-2xl flex items-center justify-center border border-white/10 shrink-0">
-                                <Percent className="w-5 h-5 text-[#d5a22d]" />
+                                <Percent className="w-5 h-5 text-brand-accent" />
                             </div>
                         </div>
 
@@ -79,8 +79,8 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
                             {/* Enable Toggle */}
                             <div className="p-6 bg-slate-50/50 rounded-[2rem] border border-slate-50 flex items-center justify-between group hover:bg-white hover:border-slate-100 transition-all">
                                 <div className="space-y-1">
-                                    <h4 className="text-[10px] font-black text-[#36335e]/40 uppercase tracking-[0.2em]">Scholarship Status</h4>
-                                    <p className="text-sm font-black text-[#36335e]">
+                                    <h4 className="text-[10px] font-black text-brand-primary/40 uppercase tracking-[0.2em]">Scholarship Status</h4>
+                                    <p className="text-sm font-black text-brand-primary">
                                         {isActive ? 'Active Platform-wide' : 'Currently Disabled'}
                                     </p>
                                 </div>
@@ -91,7 +91,7 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
                                         onChange={() => setIsActive(!isActive)}
                                         className="sr-only peer"
                                     />
-                                    <div className="w-14 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-7 peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#36335e] shadow-inner"></div>
+                                    <div className="w-14 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-7 peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-primary shadow-inner"></div>
                                 </label>
                             </div>
 
@@ -106,18 +106,18 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
                                             max="100"
                                             value={percentage}
                                             onChange={(e) => setPercentage(e.target.value)}
-                                            className="w-full h-20 px-8 bg-slate-50 border-none rounded-[2rem] focus:ring-4 focus:ring-[#36335e]/10 focus:bg-white text-4xl font-black text-[#36335e] transition-all placeholder:text-slate-200 shadow-sm"
+                                            className="w-full h-20 px-8 bg-slate-50 border-none rounded-[2rem] focus:ring-4 focus:ring-brand-primary/10 focus:bg-white text-4xl font-black text-brand-primary transition-all placeholder:text-slate-200 shadow-sm"
                                             placeholder="20"
                                         />
-                                        <div className="absolute right-8 top-1/2 -translate-y-1/2 text-[#d5a22d] font-black text-3xl group-focus-within:scale-110 transition-transform">%</div>
+                                        <div className="absolute right-8 top-1/2 -translate-y-1/2 text-brand-accent font-black text-3xl group-focus-within:scale-110 transition-transform">%</div>
                                     </div>
                                 </div>
                                 
-                                <div className="flex items-start gap-4 p-5 bg-[#d5a22d]/5 rounded-[1.5rem] border border-[#d5a22d]/10">
+                                <div className="flex items-start gap-4 p-5 bg-brand-accent/5 rounded-[1.5rem] border border-brand-accent/10">
                                     <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm shrink-0">
-                                        <AlertCircle className="w-5 h-5 text-[#d5a22d]" />
+                                        <AlertCircle className="w-5 h-5 text-brand-accent" />
                                     </div>
-                                    <p className="text-[10px] text-[#36335e]/70 font-bold uppercase tracking-tight leading-relaxed py-1">
+                                    <p className="text-[10px] text-brand-primary/70 font-bold uppercase tracking-tight leading-relaxed py-1">
                                         This percentage is calculated against the Base Tuition set on each individual programme.
                                     </p>
                                 </div>
@@ -126,9 +126,9 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
                             <button
                                 onClick={handleSaveGlobal}
                                 disabled={isSaving}
-                                className="w-full h-16 bg-[#36335e] hover:bg-[#2a284a] text-white rounded-[1.5rem] font-black uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 shadow-2xl shadow-[#36335e]/20 transition-all active:scale-95 disabled:opacity-50 group"
+                                className="w-full h-16 bg-brand-primary hover:bg-brand-primary-hover text-white rounded-[1.5rem] font-black uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 shadow-2xl shadow-brand-primary/20 transition-all active:scale-95 disabled:opacity-50 group"
                             >
-                                {isSaving ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5 text-[#d5a22d] group-hover:scale-125 transition-transform" />}
+                                {isSaving ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5 text-brand-accent group-hover:scale-125 transition-transform" />}
                                 Deploy Funding Policy
                             </button>
                         </div>
@@ -138,12 +138,12 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
                 {/* ── Exemptions List ── */}
                 <div className="lg:col-span-2">
                     <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden flex flex-col h-[calc(100vh-16rem)] min-h-[700px]">
-                        <div className="bg-[#36335e] px-10 py-7 flex items-center justify-between shrink-0">
+                        <div className="bg-brand-primary px-10 py-7 flex items-center justify-between shrink-0">
                             <div>
                                 <h3 className="text-xl font-black text-white tracking-tight">Programme Exemptions</h3>
                                 <p className="text-white/40 text-[10px] font-black uppercase tracking-widest mt-1">Custom Inclusion Logic</p>
                             </div>
-                            <div className="px-5 py-2.5 bg-white/10 text-[#d5a22d] border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.15em] flex items-center gap-2">
+                            <div className="px-5 py-2.5 bg-white/10 text-brand-accent border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.15em] flex items-center gap-2">
                                 <GraduationCap className="w-4 h-4" />
                                 {university.programs.length} Programmes Active
                             </div>
@@ -155,7 +155,7 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
                                     <div className="w-20 h-20 bg-white rounded-[2.5rem] flex items-center justify-center shadow-sm border border-slate-100 mb-6">
                                         <Coins className="w-10 h-10 text-slate-100" />
                                     </div>
-                                    <p className="text-lg font-black text-[#36335e] tracking-tight">No academic programmes found</p>
+                                    <p className="text-lg font-black text-brand-primary tracking-tight">No academic programmes found</p>
                                     <p className="text-sm font-bold text-slate-400 mt-1 max-w-xs">Start by adding programmes in the Academics section to configure scholarships.</p>
                                 </div>
                             ) : (
@@ -169,14 +169,14 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
                                     </thead>
                                     <tbody className="divide-y divide-slate-50">
                                         {university.programs.map(program => (
-                                            <tr key={program.id} className="hover:bg-slate-50/80 transition-all duration-300 group border-l-4 border-transparent hover:border-[#d5a22d]">
+                                            <tr key={program.id} className="hover:bg-slate-50/80 transition-all duration-300 group border-l-4 border-transparent hover:border-brand-accent">
                                                 <td className="px-10 py-6">
                                                     <div className="space-y-1.5">
-                                                        <h4 className={`text-[15px] font-black tracking-tight transition-colors ${program.excludeFromGlobalScholarship ? 'text-slate-300 line-through' : 'text-[#36335e]'}`}>
+                                                        <h4 className={`text-[15px] font-black tracking-tight transition-colors ${program.excludeFromGlobalScholarship ? 'text-slate-300 line-through' : 'text-brand-primary'}`}>
                                                             {program.name}
                                                         </h4>
                                                         <div className="flex items-center gap-3">
-                                                            <span className="text-[9px] uppercase font-black tracking-widest text-[#d5a22d] bg-[#d5a22d]/10 px-2 py-0.5 rounded-lg border border-[#d5a22d]/10">
+                                                            <span className="text-[9px] uppercase font-black tracking-widest text-brand-accent bg-brand-accent/10 px-2 py-0.5 rounded-lg border border-brand-accent/10">
                                                                 {program.level}
                                                             </span>
                                                             {!program.baseTuition ? (
@@ -212,10 +212,10 @@ export default function ScholarshipManager({ university }: ScholarshipManagerPro
                                                                 disabled={processingPrograms[program.id]}
                                                                 className="sr-only peer"
                                                             />
-                                                            <div className="w-14 h-7 bg-slate-100 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-7 peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#36335e] shadow-inner"></div>
+                                                            <div className="w-14 h-7 bg-slate-100 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-7 peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-primary shadow-inner"></div>
                                                             {processingPrograms[program.id] && (
                                                                 <div className="absolute inset-0 bg-white/50 backdrop-blur-[1px] flex items-center justify-center z-10 rounded-full">
-                                                                    <Loader2 className="w-3.5 h-3.5 animate-spin text-[#36335e]" />
+                                                                    <Loader2 className="w-3.5 h-3.5 animate-spin text-brand-primary" />
                                                                 </div>
                                                             )}
                                                         </label>

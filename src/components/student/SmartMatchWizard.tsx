@@ -57,7 +57,7 @@ export default function SmartMatchWizard({ onApplyFilters, onReset }: SmartMatch
             {/* Toggle Card */}
             <div 
                 onClick={() => setIsOpen(!isOpen)}
-                className={`relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#1d1b41] to-[#36335e] border border-white/10 hover:border-[#d5a22d]/40 shadow-2xl p-6 sm:p-8 cursor-pointer group transition-all duration-500 ${isOpen ? 'shadow-inner hover:scale-100' : 'hover:-translate-y-1'}`}
+                className={`relative overflow-hidden rounded-[2.5rem] bg-linear-to-br from-[#1d1b41] to-brand-primary border border-white/10 hover:border-brand-accent/40 shadow-2xl p-6 sm:p-8 cursor-pointer group transition-all duration-500 ${isOpen ? 'shadow-inner hover:scale-100' : 'hover:-translate-y-1'}`}
             >
                 <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 pointer-events-none">
                     <Sparkles className="w-32 h-32 text-white" />
@@ -65,14 +65,14 @@ export default function SmartMatchWizard({ onApplyFilters, onReset }: SmartMatch
                 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative z-10">
                     <div className="space-y-2 text-left">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d5a22d]/20 text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.25em]">
-                            <Sparkles className="w-3 h-3 text-[#d5a22d]" />
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/20 text-brand-accent text-[10px] font-black uppercase tracking-[0.25em]">
+                            <Sparkles className="w-3 h-3 text-brand-accent" />
                             Smart Discovery
                         </div>
                         <h2 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tight">Find Your Perfect Program</h2>
                         <p className="text-white/60 text-sm font-medium">Answer 3 simple questions to discover matching universities instantly.</p>
                     </div>
-                    <button className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#d5a22d] text-[#1d1b41] hover:bg-[#b89531] text-xs font-black uppercase tracking-widest transition-all shrink-0">
+                    <button className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-brand-accent text-[#1d1b41] hover:bg-[#b89531] text-xs font-black uppercase tracking-widest transition-all shrink-0">
                         {isOpen ? 'Close Finder' : 'Launch Finder'}
                         <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-90' : 'group-hover:translate-x-1'}`} />
                     </button>
@@ -92,16 +92,16 @@ export default function SmartMatchWizard({ onApplyFilters, onReset }: SmartMatch
                             {/* Step Indicators */}
                             <div className="flex items-center justify-between border-b border-gray-50 pb-6">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-8 h-8 rounded-xl bg-[#36335e]/5 flex items-center justify-center text-[#36335e] font-black text-sm">
+                                    <div className="w-8 h-8 rounded-xl bg-brand-primary/5 flex items-center justify-center text-brand-primary font-black text-sm">
                                         {step}
                                     </div>
-                                    <span className="text-xs font-black text-[#36335e] uppercase tracking-widest">Step {step} of 3</span>
+                                    <span className="text-xs font-black text-brand-primary uppercase tracking-widest">Step {step} of 3</span>
                                 </div>
                                 <div className="flex gap-1.5">
                                     {[1, 2, 3].map((s) => (
                                         <div 
                                             key={s}
-                                            className={`h-1.5 rounded-full transition-all duration-300 ${s === step ? 'w-8 bg-[#d5a22d]' : s < step ? 'w-3 bg-[#36335e]' : 'w-3 bg-gray-100'}`}
+                                            className={`h-1.5 rounded-full transition-all duration-300 ${s === step ? 'w-8 bg-brand-accent' : s < step ? 'w-3 bg-brand-primary' : 'w-3 bg-gray-100'}`}
                                         />
                                     ))}
                                 </div>
@@ -119,7 +119,7 @@ export default function SmartMatchWizard({ onApplyFilters, onReset }: SmartMatch
                                             className="space-y-6"
                                         >
                                             <div className="text-left">
-                                                <h3 className="text-lg font-black text-[#36335e] uppercase tracking-tight">What field excites you most?</h3>
+                                                <h3 className="text-lg font-black text-brand-primary uppercase tracking-tight">What field excites you most?</h3>
                                                 <p className="text-slate-400 text-xs font-medium">Select a primary focus area to filter academic pathways.</p>
                                             </div>
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -130,14 +130,14 @@ export default function SmartMatchWizard({ onApplyFilters, onReset }: SmartMatch
                                                         <div
                                                             key={f.id}
                                                             onClick={() => setSelectedField(f.id)}
-                                                            className={`p-5 rounded-2xl border text-left cursor-pointer group transition-all duration-300 ${isSelected ? 'bg-[#36335e] border-[#36335e] text-white' : 'bg-gray-50/50 border-gray-100 hover:border-[#d5a22d]/30 hover:bg-white'}`}
+                                                            className={`p-5 rounded-2xl border text-left cursor-pointer group transition-all duration-300 ${isSelected ? 'bg-brand-primary border-brand-primary text-white' : 'bg-gray-50/50 border-gray-100 hover:border-brand-accent/30 hover:bg-white'}`}
                                                         >
                                                             <div className="flex items-center gap-3">
-                                                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${isSelected ? 'bg-white/10 text-[#d5a22d]' : 'bg-[#36335e]/5 text-[#36335e]'}`}>
+                                                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${isSelected ? 'bg-white/10 text-brand-accent' : 'bg-brand-primary/5 text-brand-primary'}`}>
                                                                     <Icon className="w-5 h-5" />
                                                                 </div>
                                                                 <div>
-                                                                    <h4 className={`font-black text-sm uppercase tracking-tight ${isSelected ? 'text-white' : 'text-[#36335e]'}`}>{f.label}</h4>
+                                                                    <h4 className={`font-black text-sm uppercase tracking-tight ${isSelected ? 'text-white' : 'text-brand-primary'}`}>{f.label}</h4>
                                                                     <p className={`text-[10px] font-medium leading-tight ${isSelected ? 'text-white/60' : 'text-slate-400'}`}>{f.desc}</p>
                                                                 </div>
                                                             </div>
@@ -157,7 +157,7 @@ export default function SmartMatchWizard({ onApplyFilters, onReset }: SmartMatch
                                             className="space-y-6"
                                         >
                                             <div className="text-left">
-                                                <h3 className="text-lg font-black text-[#36335e] uppercase tracking-tight">What academic level are you seeking?</h3>
+                                                <h3 className="text-lg font-black text-brand-primary uppercase tracking-tight">What academic level are you seeking?</h3>
                                                 <p className="text-slate-400 text-xs font-medium">Choose your targets to find the appropriate depth of curriculum.</p>
                                             </div>
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -167,14 +167,14 @@ export default function SmartMatchWizard({ onApplyFilters, onReset }: SmartMatch
                                                         <div
                                                             key={l.id}
                                                             onClick={() => setSelectedLevel(l.id)}
-                                                            className={`p-5 rounded-2xl border text-left cursor-pointer group transition-all duration-300 ${isSelected ? 'bg-[#36335e] border-[#36335e] text-white' : 'bg-gray-50/50 border-gray-100 hover:border-[#d5a22d]/30 hover:bg-white'}`}
+                                                            className={`p-5 rounded-2xl border text-left cursor-pointer group transition-all duration-300 ${isSelected ? 'bg-brand-primary border-brand-primary text-white' : 'bg-gray-50/50 border-gray-100 hover:border-brand-accent/30 hover:bg-white'}`}
                                                         >
                                                             <div className="flex items-center gap-3">
-                                                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${isSelected ? 'bg-white/10 text-[#d5a22d]' : 'bg-[#36335e]/5 text-[#36335e]'}`}>
+                                                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${isSelected ? 'bg-white/10 text-brand-accent' : 'bg-brand-primary/5 text-brand-primary'}`}>
                                                                     <GraduationCap className="w-5 h-5" />
                                                                 </div>
                                                                 <div>
-                                                                    <h4 className={`font-black text-sm uppercase tracking-tight ${isSelected ? 'text-white' : 'text-[#36335e]'}`}>{l.label}</h4>
+                                                                    <h4 className={`font-black text-sm uppercase tracking-tight ${isSelected ? 'text-white' : 'text-brand-primary'}`}>{l.label}</h4>
                                                                     <p className={`text-[10px] font-medium leading-tight ${isSelected ? 'text-white/60' : 'text-slate-400'}`}>{l.desc}</p>
                                                                 </div>
                                                             </div>
@@ -194,7 +194,7 @@ export default function SmartMatchWizard({ onApplyFilters, onReset }: SmartMatch
                                             className="space-y-6"
                                         >
                                             <div className="text-left">
-                                                <h3 className="text-lg font-black text-[#36335e] uppercase tracking-tight">Do you require a scholarship?</h3>
+                                                <h3 className="text-lg font-black text-brand-primary uppercase tracking-tight">Do you require a scholarship?</h3>
                                                 <p className="text-slate-400 text-xs font-medium">Filter for programs and schools offering financial waivers.</p>
                                             </div>
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -204,14 +204,14 @@ export default function SmartMatchWizard({ onApplyFilters, onReset }: SmartMatch
                                                         <div
                                                             key={b.id}
                                                             onClick={() => setScholarshipOnly(b.value)}
-                                                            className={`p-5 rounded-2xl border text-left cursor-pointer group transition-all duration-300 ${isSelected ? 'bg-[#36335e] border-[#36335e] text-white' : 'bg-gray-50/50 border-gray-100 hover:border-[#d5a22d]/30 hover:bg-white'}`}
+                                                            className={`p-5 rounded-2xl border text-left cursor-pointer group transition-all duration-300 ${isSelected ? 'bg-brand-primary border-brand-primary text-white' : 'bg-gray-50/50 border-gray-100 hover:border-brand-accent/30 hover:bg-white'}`}
                                                         >
                                                             <div className="flex items-center gap-3">
-                                                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${isSelected ? 'bg-white/10 text-[#d5a22d]' : 'bg-[#36335e]/5 text-[#36335e]'}`}>
+                                                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${isSelected ? 'bg-white/10 text-brand-accent' : 'bg-brand-primary/5 text-brand-primary'}`}>
                                                                     {b.value ? <Coins className="w-5 h-5" /> : <BookOpen className="w-5 h-5" />}
                                                                 </div>
                                                                 <div>
-                                                                    <h4 className={`font-black text-sm uppercase tracking-tight ${isSelected ? 'text-white' : 'text-[#36335e]'}`}>{b.label}</h4>
+                                                                    <h4 className={`font-black text-sm uppercase tracking-tight ${isSelected ? 'text-white' : 'text-brand-primary'}`}>{b.label}</h4>
                                                                     <p className={`text-[10px] font-medium leading-tight ${isSelected ? 'text-white/60' : 'text-slate-400'}`}>{b.desc}</p>
                                                                 </div>
                                                             </div>
@@ -228,7 +228,7 @@ export default function SmartMatchWizard({ onApplyFilters, onReset }: SmartMatch
                             <div className="flex items-center justify-between border-t border-gray-50 pt-6">
                                 <button
                                     onClick={handleReset}
-                                    className="flex items-center gap-2 text-xs font-black text-slate-400 uppercase tracking-widest hover:text-[#36335e] transition-colors"
+                                    className="flex items-center gap-2 text-xs font-black text-slate-400 uppercase tracking-widest hover:text-brand-primary transition-colors"
                                 >
                                     <RefreshCw className="w-3.5 h-3.5" />
                                     Reset Discovery
@@ -250,7 +250,7 @@ export default function SmartMatchWizard({ onApplyFilters, onReset }: SmartMatch
                                             className={`px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-colors ${
                                                 (step === 1 && !selectedField) || (step === 2 && !selectedLevel)
                                                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                                                    : 'bg-[#36335e] text-[#d5a22d] hover:bg-[#2a284a]'
+                                                    : 'bg-brand-primary text-brand-accent hover:bg-brand-primary-hover'
                                             }`}
                                         >
                                             Continue
@@ -262,7 +262,7 @@ export default function SmartMatchWizard({ onApplyFilters, onReset }: SmartMatch
                                             className={`px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-colors ${
                                                 scholarshipOnly === null
                                                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                                                    : 'bg-[#d5a22d] text-[#1d1b41] hover:bg-[#b89531]'
+                                                    : 'bg-brand-accent text-[#1d1b41] hover:bg-[#b89531]'
                                             }`}
                                         >
                                             Find Match

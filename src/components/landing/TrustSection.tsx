@@ -39,7 +39,7 @@ export function TrustSection() {
                     {/* Secure channel badge — exact UI from the chat screenshot */}
                     <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-[#1a1b41]/10 bg-[#1a1b41]/5 mb-6">
                         <div className="w-5 h-5 rounded-full bg-[#1a1b41] flex items-center justify-center">
-                            <Lock className="w-2.5 h-2.5 text-[#d5a22d]" />
+                            <Lock className="w-2.5 h-2.5 text-brand-accent" />
                         </div>
                         <span className="text-[#1a1b41] text-[10px] font-black tracking-[0.3em] uppercase">
                             Secure Channel
@@ -64,10 +64,10 @@ export function TrustSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: i * 0.1 }}
-                            className="group relative p-8 lg:p-10 rounded-[2rem] border border-gray-100 bg-white hover:border-[#d5a22d]/30 hover:shadow-[0_32px_64px_-16px_rgba(213,162,45,0.08)] transition-all duration-500 overflow-hidden"
+                            className="group relative p-8 lg:p-10 rounded-[2rem] border border-gray-100 bg-white hover:border-brand-accent/30 hover:shadow-[0_32px_64px_-16px_rgba(213,162,45,0.08)] transition-all duration-500 overflow-hidden"
                         >
                             {/* Gold top border accent */}
-                            <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#d5a22d] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute top-0 left-8 right-8 h-[2px] bg-linear-to-r from-transparent via-brand-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             {/* Status chip */}
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1a1b41]/5 border border-[#1a1b41]/10 text-[9px] font-black tracking-[0.25em] uppercase text-[#1a1b41]/60 mb-6">
@@ -75,11 +75,11 @@ export function TrustSection() {
                                 {pillar.chip}
                             </div>
 
-                            <div className="w-12 h-12 rounded-2xl bg-[#d5a22d]/10 flex items-center justify-center mb-6 group-hover:bg-[#d5a22d] transition-all duration-300">
-                                <pillar.icon className="w-5 h-5 text-[#d5a22d] group-hover:text-white transition-colors duration-300" />
+                            <div className="w-12 h-12 rounded-2xl bg-brand-accent/10 flex items-center justify-center mb-6 group-hover:bg-brand-accent transition-all duration-300">
+                                <pillar.icon className="w-5 h-5 text-brand-accent group-hover:text-white transition-colors duration-300" />
                             </div>
 
-                            <h3 className="text-xl font-black text-[#1a1b41] uppercase tracking-tighter mb-3 leading-none group-hover:text-[#d5a22d] transition-colors duration-300">
+                            <h3 className="text-xl font-black text-[#1a1b41] uppercase tracking-tighter mb-3 leading-none group-hover:text-brand-accent transition-colors duration-300">
                                 {pillar.title}
                             </h3>
                             <p className="text-gray-500 text-sm font-medium leading-relaxed">
@@ -98,7 +98,7 @@ export function TrustSection() {
                         'Monitored for your protection',
                     ].map((item, i) => (
                         <div key={i} className="flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
-                            <CheckCircle2 className="w-4 h-4 text-[#d5a22d] shrink-0" />
+                            <CheckCircle2 className="w-4 h-4 text-brand-accent shrink-0" />
                             {item}
                         </div>
                     ))}

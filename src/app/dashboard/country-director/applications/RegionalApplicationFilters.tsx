@@ -43,13 +43,13 @@ export default function RegionalApplicationFilters() {
     return (
         <div className="flex flex-wrap items-center gap-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm w-full">
             <div className="flex-1 min-w-[300px] relative group">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d5a22d] transition-colors pointer-events-none" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-brand-accent transition-colors pointer-events-none" />
                 <input
                     type="text"
                     placeholder="Search by student name, email, or university..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-12 pr-10 py-3 bg-gray-50 border-transparent focus:bg-white focus:border-[#d5a22d]/30 focus:ring-0 rounded-xl text-sm font-medium transition-all"
+                    className="w-full pl-12 pr-10 py-3 bg-gray-50 border-transparent focus:bg-white focus:border-brand-accent/30 focus:ring-0 rounded-xl text-sm font-medium transition-all"
                 />
                 {searchTerm && (
                     <button
@@ -66,7 +66,7 @@ export default function RegionalApplicationFilters() {
                     <select
                         value={currentStatus}
                         onChange={(e) => handleFilterChange('status', e.target.value)}
-                        className="appearance-none pl-10 pr-8 py-3 bg-white border border-gray-200 rounded-xl text-sm font-bold text-gray-600 hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-[#d5a22d]/20 cursor-pointer"
+                        className="appearance-none pl-10 pr-8 py-3 bg-white border border-gray-200 rounded-xl text-sm font-bold text-gray-600 hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-brand-accent/20 cursor-pointer"
                     >
                         <option value="ALL">All Statuses</option>
                         <option value="SUBMITTED">Submitted</option>
@@ -76,19 +76,19 @@ export default function RegionalApplicationFilters() {
                         <option value="ENROLLED">Enrolled</option>
                         <option value="REJECTED">Rejected</option>
                     </select>
-                    <Filter className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-hover:text-[#d5a22d] transition-colors pointer-events-none" />
+                    <Filter className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-hover:text-brand-accent transition-colors pointer-events-none" />
                 </div>
 
                 <div className="relative group">
                     <select
                         value={currentSort}
                         onChange={(e) => handleFilterChange('sort', e.target.value)}
-                        className="appearance-none pl-10 pr-8 py-3 bg-white border border-gray-200 rounded-xl text-sm font-bold text-gray-600 hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-[#d5a22d]/20 cursor-pointer"
+                        className="appearance-none pl-10 pr-8 py-3 bg-white border border-gray-200 rounded-xl text-sm font-bold text-gray-600 hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-brand-accent/20 cursor-pointer"
                     >
                         <option value="newest">Newest First</option>
                         <option value="oldest">Oldest First</option>
                     </select>
-                    <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-hover:text-[#d5a22d] transition-colors pointer-events-none" />
+                    <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-hover:text-brand-accent transition-colors pointer-events-none" />
                 </div>
             </div>
         </div>

@@ -18,6 +18,7 @@ import { PageHeader } from '@/components/ui/PageHeader';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { getHomeUrl } from '@/lib/navigation';
+import { getActiveSchoolId } from '@/lib/getActiveSchool';
 import SchoolQRCode from '@/components/school/SchoolQRCode';
 import CopySchoolLink from '@/components/school/CopySchoolLink';
 import LiveActivityFeed from '@/components/school/LiveActivityFeed';
@@ -28,14 +29,17 @@ export default async function UniversityDashboard() {
     const session = await auth();
     const userRole = (session?.user as any)?.role;
 
-    if (userRole !== 'SCHOOL_ADMIN') {
+    if (userRole !== 'SCHOOL_ADMIN' && userRole !== 'SCHOOL_SUPER_AGENT') {
         redirect(getHomeUrl(userRole));
     }
 
     let universityId = (session?.user as any)?.managedUniversityId;
 
-    // Fallback: If session is stale (post-registration), fetch from DB
-    if (!universityId && session?.user?.id) {
+    if (userRole === 'SCHOOL_SUPER_AGENT') {
+        // Super agents use cookie-based active school context
+        universityId = await getActiveSchoolId();
+    } else if (!universityId && session?.user?.id) {
+        // Fallback: If session is stale (post-registration), fetch from DB
         const dbUser = await prisma.user.findUnique({
             where: { id: session.user.id },
             select: { managedUniversityId: true }
@@ -74,11 +78,11 @@ export default async function UniversityDashboard() {
             <div className="min-h-screen bg-gray-50/30 flex flex-col items-center py-12 px-4">
                 <div className="w-full max-w-xl text-center space-y-6 pt-20">
                     <AlertCircle className="w-16 h-16 text-rose-500 mx-auto animate-pulse" />
-                    <h1 className="text-3xl font-black text-[#36335e]">Database Unreachable</h1>
+                    <h1 className="text-3xl font-black text-brand-primary">Database Unreachable</h1>
                     <p className="text-slate-500 font-medium pb-8 max-w-sm mx-auto">
                         We couldn't connect to the database. The server might be experiencing high traffic or temporarily sleeping.
                     </p>
-                    <Link href={getHomeUrl(userRole)} className="px-8 py-4 bg-[#36335e] text-white rounded-2xl font-black hover:bg-[#d5a22d] transition-colors shadow-xl">
+                    <Link href={getHomeUrl(userRole)} className="px-8 py-4 bg-brand-primary text-white rounded-2xl font-black hover:bg-brand-accent transition-colors shadow-xl">
                         Retry Connection
                     </Link>
                 </div>
@@ -87,7 +91,11 @@ export default async function UniversityDashboard() {
     }
 
     if (!university) {
-        redirect('/school/setup');
+        if (userRole === 'SCHOOL_SUPER_AGENT') {
+            redirect('/dashboard/super-agent');
+        } else {
+            redirect('/school/setup');
+        }
     }
 
     if (university.status === 'DRAFT' || university.status === 'REJECTED') {
@@ -106,11 +114,11 @@ export default async function UniversityDashboard() {
                     {/* Header with Glassmorphism Effect */}
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative p-1">
                         <div className="space-y-3 relative z-10">
-                            <div className={`inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border shadow-sm backdrop-blur-md ${university.status === 'REJECTED' ? 'bg-rose-50/80 border-rose-100 text-rose-700' : 'bg-[#d5a22d]/10 border-[#d5a22d]/20 text-[#d5a22d]'}`}>
+                            <div className={`inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border shadow-sm backdrop-blur-md ${university.status === 'REJECTED' ? 'bg-rose-50/80 border-rose-100 text-rose-700' : 'bg-brand-accent/10 border-brand-accent/20 text-brand-accent'}`}>
                                 {university.status === 'REJECTED' ? <AlertCircle className="w-3.5 h-3.5" /> : <Clock className="w-3.5 h-3.5" />}
                                 <span className="text-[10px] font-black uppercase tracking-[0.3em]">{university.status} Submission Status</span>
                             </div>
-                            <h1 className="text-4xl sm:text-5xl font-black text-[#36335e] tracking-tighter uppercase leading-[0.9]">Launch <br className="hidden sm:block" /> Checklist</h1>
+                            <h1 className="text-4xl sm:text-5xl font-black text-brand-primary tracking-tighter uppercase leading-[0.9]">Launch <br className="hidden sm:block" /> Checklist</h1>
                             <p className="text-slate-500 font-bold text-base lg:text-lg max-w-xl">
                                 {university.status === 'REJECTED'
                                     ? "Action required: Update your profile based on the director's feedback to resubmit."
@@ -171,22 +179,22 @@ export default async function UniversityDashboard() {
                                 <Link
                                     key={i}
                                     href={item.href}
-                                    className={`group flex items-center justify-between p-8 rounded-[2rem] border transition-all duration-500 hover:shadow-2xl hover:shadow-[#36335e]/5 hover:-translate-y-1.5 
-                                        ${item.done ? 'bg-white border-[#36335e]/10' : 'bg-white border-gray-100 hover:border-[#36335e]/30'}`}
+                                    className={`group flex items-center justify-between p-8 rounded-[2rem] border transition-all duration-500 hover:shadow-2xl hover:shadow-brand-primary/5 hover:-translate-y-1.5 
+                                        ${item.done ? 'bg-white border-brand-primary/10' : 'bg-white border-gray-100 hover:border-brand-primary/30'}`}
                                 >
                                     <div className="flex items-center gap-6">
                                         <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-sm
-                                            ${item.done ? 'bg-[#36335e] text-white' : 'bg-slate-50 text-slate-400 group-hover:bg-[#36335e]/10 group-hover:text-[#36335e]'}`}>
+                                            ${item.done ? 'bg-brand-primary text-white' : 'bg-slate-50 text-slate-400 group-hover:bg-brand-primary/10 group-hover:text-brand-primary'}`}>
                                             {item.done ? <CheckCircle2 className="w-8 h-8" /> : <item.icon className="w-8 h-8" />}
                                         </div>
                                         <div>
-                                            <p className={`text-lg font-black uppercase tracking-tight transition-colors ${item.done ? 'text-[#36335e]' : 'text-gray-900 group-hover:text-[#36335e]'}`}>
+                                            <p className={`text-lg font-black uppercase tracking-tight transition-colors ${item.done ? 'text-brand-primary' : 'text-gray-900 group-hover:text-brand-primary'}`}>
                                                 {item.label}
                                             </p>
                                             <p className="text-sm text-slate-400 font-bold">{item.desc}</p>
                                         </div>
                                     </div>
-                                    <div className={`w-12 h-12 rounded-xl border flex items-center justify-center transition-all ${item.done ? 'bg-slate-50 border-transparent' : 'border-gray-100 group-hover:bg-[#36335e] group-hover:text-white'}`}>
+                                    <div className={`w-12 h-12 rounded-xl border flex items-center justify-center transition-all ${item.done ? 'bg-slate-50 border-transparent' : 'border-gray-100 group-hover:bg-brand-primary group-hover:text-white'}`}>
                                         <ArrowRight className={`w-5 h-5 transition-transform group-hover:translate-x-1`} />
                                     </div>
                                 </Link>
@@ -196,7 +204,7 @@ export default async function UniversityDashboard() {
                         {/* Submission Sidebar */}
                         <div className="space-y-6">
                             <div className={`p-8 rounded-[2.5rem] border-2 transition-all duration-700 
-                                ${isReady ? 'bg-[#36335e] text-white border-[#36335e] shadow-2xl shadow-[#36335e]/30' : 'bg-white border-gray-100 text-[#36335e]'}`}>
+                                ${isReady ? 'bg-brand-primary text-white border-brand-primary shadow-2xl shadow-brand-primary/30' : 'bg-white border-gray-100 text-brand-primary'}`}>
                                 <h3 className="text-2xl font-black tracking-tight mb-4">
                                     {university.status === 'REJECTED' ? 'Resubmission' : 'Submission'}
                                 </h3>
@@ -215,7 +223,7 @@ export default async function UniversityDashboard() {
                                         disabled={!isReady}
                                         className={`w-full py-5 rounded-2xl font-black uppercase tracking-widest text-sm transition-all transform active:scale-95 disabled:opacity-30 
                                             ${isReady
-                                                ? 'bg-[#d5a22d] hover:bg-[#b08523] text-white shadow-xl shadow-[#d5a22d]/20'
+                                                ? 'bg-brand-accent hover:bg-[#b08523] text-white shadow-xl shadow-brand-accent/20'
                                                 : 'bg-gray-100 text-gray-400 cursor-not-allowed'}`}
                                     >
                                         {university.status === 'REJECTED' ? 'Resubmit for Review' : 'Submit for Final Review'}
@@ -224,11 +232,11 @@ export default async function UniversityDashboard() {
                             </div>
 
                             <div className="p-6 bg-white rounded-3xl border border-gray-100 flex gap-4 items-start">
-                                <div className="p-2 bg-[#36335e]/10 rounded-xl">
-                                    <Sparkles className="w-5 h-5 text-[#36335e]" />
+                                <div className="p-2 bg-brand-primary/10 rounded-xl">
+                                    <Sparkles className="w-5 h-5 text-brand-primary" />
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-[#36335e] text-sm">Pro Tip</h4>
+                                    <h4 className="font-bold text-brand-primary text-sm">Pro Tip</h4>
                                     <p className="text-xs text-slate-500 mt-1 leading-relaxed">
                                         High-quality campus photos increase student engagement by up to 40%. Upload yours in the visuals section!
                                     </p>
@@ -244,18 +252,18 @@ export default async function UniversityDashboard() {
     if (university.status === 'PENDING') {
         return (
             <div className="min-h-[80vh] flex items-center justify-center p-4">
-                <div className="text-center p-10 bg-white rounded-3xl shadow-xl border-2 border-[#36335e]/10 max-w-md w-full animate-in fade-in zoom-in duration-500">
-                    <div className="w-24 h-24 bg-gradient-to-br from-[#36335e] to-[#4a4785] rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-[#36335e]/20 animate-pulse">
+                <div className="text-center p-10 bg-white rounded-3xl shadow-xl border-2 border-brand-primary/10 max-w-md w-full animate-in fade-in zoom-in duration-500">
+                    <div className="w-24 h-24 bg-linear-to-br from-brand-primary to-[#4a4785] rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-brand-primary/20 animate-pulse">
                         <Clock className="w-12 h-12 text-white" />
                     </div>
-                    <h1 className="text-3xl font-bold text-[#36335e] mb-4 tracking-tight">Under Review</h1>
+                    <h1 className="text-3xl font-bold text-brand-primary mb-4 tracking-tight">Under Review</h1>
                     <p className="text-slate-600 mb-8 leading-relaxed text-lg">
-                        Thank you for registering <span className="font-bold text-[#d5a22d]">{university.name}</span>. Our team is currently reviewing your application to ensure the highest quality of service.
+                        Thank you for registering <span className="font-bold text-brand-accent">{university.name}</span>. Our team is currently reviewing your application to ensure the highest quality of service.
                     </p>
                     <div className="space-y-3">
-                        <div className="flex items-center gap-3 p-4 bg-[#36335e]/5 rounded-xl border border-[#36335e]/10">
-                            <div className="w-2.5 h-2.5 rounded-full bg-[#36335e] animate-pulse" />
-                            <p className="text-sm font-bold text-[#36335e] uppercase tracking-wide text-left">Processing Application</p>
+                        <div className="flex items-center gap-3 p-4 bg-brand-primary/5 rounded-xl border border-brand-primary/10">
+                            <div className="w-2.5 h-2.5 rounded-full bg-brand-primary animate-pulse" />
+                            <p className="text-sm font-bold text-brand-primary uppercase tracking-wide text-left">Processing Application</p>
                         </div>
                         <p className="text-sm text-slate-400 italic">
                             You will receive an email once your account is active.
@@ -329,14 +337,14 @@ export default async function UniversityDashboard() {
         <>
             <PageHeader
                 preTitle={
-                    <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] border border-[#d5a22d]/20 text-[10px] font-black uppercase tracking-[0.2em] mb-2">
+                    <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent border border-brand-accent/20 text-[10px] font-black uppercase tracking-[0.2em] mb-2">
                         <Building2 className="w-3.5 h-3.5" />
                         School Management
                     </div>
                 }
                 title="Dashboard Overview"
                 subtitle={
-                    <span className="text-slate-500 font-medium text-sm sm:text-base italic">Managing operations for <span className="font-bold text-[#d5a22d]">{university?.name}</span></span>
+                    <span className="text-slate-500 font-medium text-sm sm:text-base italic">Managing operations for <span className="font-bold text-brand-accent">{university?.name}</span></span>
                 }
                 action={
                     <>
@@ -358,7 +366,7 @@ export default async function UniversityDashboard() {
                         <Dialog>
                             <DialogTrigger asChild>
                                 <Button variant="outline" className="h-12 w-12 p-0 bg-white border-none rounded-2xl shadow-sm hover:bg-slate-50 transition-all transform hover:scale-105 active:scale-95">
-                                    <QrCode className="w-5 h-5 text-[#36335e]" />
+                                    <QrCode className="w-5 h-5 text-brand-primary" />
                                 </Button>
                             </DialogTrigger>
                             <DialogContent className="sm:max-w-[500px] p-0 bg-transparent border-none shadow-none overflow-visible">
@@ -408,11 +416,11 @@ export default async function UniversityDashboard() {
                 <div className="lg:col-span-2 space-y-6">
                     <div className="flex items-center justify-between px-4">
                         <div className="flex items-center gap-3">
-                            <LayoutDashboard className="w-5 h-5 text-[#36335e]" />
-                            <h3 className="text-xl font-black text-[#36335e] tracking-tight">Programmes</h3>
+                            <LayoutDashboard className="w-5 h-5 text-brand-primary" />
+                            <h3 className="text-xl font-black text-brand-primary tracking-tight">Programmes</h3>
                         </div>
                         <Link href="/dashboard/school/applications">
-                            <Button variant="ghost" size="sm" className="font-black text-[10px] uppercase tracking-widest text-[#36335e] hover:bg-[#36335e]/10 hover:text-[#d5a22d] rounded-xl px-4 py-2">
+                            <Button variant="ghost" size="sm" className="font-black text-[10px] uppercase tracking-widest text-brand-primary hover:bg-brand-primary/10 hover:text-brand-accent rounded-xl px-4 py-2">
                                 View Registry
                             </Button>
                         </Link>
@@ -431,7 +439,7 @@ export default async function UniversityDashboard() {
                                     description="Start by creating your first academic programme"
                                     action={
                                         <Link href="/dashboard/school/programs/new">
-                                            <Button className="h-12 px-6 bg-[#36335e] hover:bg-[#2a284a] text-white font-bold rounded-2xl shadow-lg shadow-[#36335e]/20 transition-all">
+                                            <Button className="h-12 px-6 bg-brand-primary hover:bg-brand-primary-hover text-white font-bold rounded-2xl shadow-lg shadow-brand-primary/20 transition-all">
                                                 Create Programme
                                             </Button>
                                         </Link>
@@ -460,21 +468,21 @@ export default async function UniversityDashboard() {
                         universityName={university.name}
                         slug={(university as any).slug ?? null}
                     />
-                    <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 relative overflow-hidden group hover:border-[#36335e]/20 transition-colors">
+                    <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 relative overflow-hidden group hover:border-brand-primary/20 transition-colors">
                         <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                            <Users className="w-24 h-24 text-[#36335e] rotate-12" />
+                            <Users className="w-24 h-24 text-brand-primary rotate-12" />
                         </div>
                         <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6 px-1">Institutional Support</h4>
                         <div className="space-y-4 relative z-10">
                             <div className="flex items-center gap-5">
-                                <div className="w-14 h-14 rounded-2xl bg-white shadow-lg shadow-slate-200/50 flex items-center justify-center text-[#36335e] group-hover:scale-110 transition-transform duration-300">
+                                <div className="w-14 h-14 rounded-2xl bg-white shadow-lg shadow-slate-200/50 flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform duration-300">
                                     <MessageSquare className="w-6 h-6" />
                                 </div>
                                 <div>
                                     <p className="text-sm font-bold text-slate-900 leading-tight mb-1">Help Center</p>
                                     <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Contact Support</p>
                                 </div>
-                                <Button size="sm" variant="ghost" className="ml-auto rounded-xl hover:bg-[#36335e]/10 hover:text-[#36335e]">
+                                <Button size="sm" variant="ghost" className="ml-auto rounded-xl hover:bg-brand-primary/10 hover:text-brand-primary">
                                     <ChevronRight className="w-4 h-4" />
                                 </Button>
                             </div>

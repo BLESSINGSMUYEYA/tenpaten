@@ -19,8 +19,8 @@ export default function AffiliateClient({ referralLink }: AffiliateClientProps) 
     return (
         <div className="bg-white rounded-2xl border border-gray-100 p-6 sm:p-8 shadow-xl shadow-gray-200/50">
             <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#1a1b41] to-[#36335e] flex items-center justify-center shadow-lg shadow-indigo-900/20">
-                    <Share2 className="w-6 h-6 text-[#d5a22d]" />
+                <div className="w-12 h-12 rounded-2xl bg-linear-to-br from-[#1a1b41] to-brand-primary flex items-center justify-center shadow-lg shadow-indigo-900/20">
+                    <Share2 className="w-6 h-6 text-brand-accent" />
                 </div>
                 <div>
                     <h2 className="text-xl font-bold text-gray-900">Your Referral Link</h2>
@@ -36,7 +36,7 @@ export default function AffiliateClient({ referralLink }: AffiliateClientProps) 
                     onClick={copyToClipboard}
                     className={`flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold transition-all hover:scale-105 active:scale-95 shadow-lg ${copied
                         ? 'bg-green-600 text-white shadow-green-600/20'
-                        : 'bg-[#d5a22d] hover:bg-[#b89531] text-white shadow-[#d5a22d]/20'
+                        : 'bg-brand-accent hover:bg-[#b89531] text-white shadow-brand-accent/20'
                         }`}
                 >
                     {copied ? (
@@ -64,7 +64,7 @@ export default function AffiliateClient({ referralLink }: AffiliateClientProps) 
                 <button className="px-3 py-1.5 rounded-lg bg-green-50 hover:bg-green-100 text-green-700 text-xs font-bold transition-colors">
                     WhatsApp
                 </button>
-                <button className="px-3 py-1.5 rounded-lg bg-[#d5a22d]/10 hover:bg-[#d5a22d]/20 text-[#d5a22d] text-xs font-bold transition-colors">
+                <button className="px-3 py-1.5 rounded-lg bg-brand-accent/10 hover:bg-brand-accent/20 text-brand-accent text-xs font-bold transition-colors">
                     Email
                 </button>
             </div>

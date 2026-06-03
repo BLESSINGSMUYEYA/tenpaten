@@ -59,7 +59,7 @@ export default function ApplicationFilters() {
     return (
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
             <div className="relative w-full sm:w-72 group">
-                <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#36335e] transition-colors" />
+                <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-brand-primary transition-colors" />
                 <input
                     type="text"
                     placeholder="Search students..."
@@ -67,7 +67,7 @@ export default function ApplicationFilters() {
                     onChange={(e) => {
                         setSearchTerm(e.target.value);
                     }}
-                    className="pl-12 pr-10 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#36335e]/10 focus:border-[#36335e] focus:bg-white text-sm w-full transition-all shadow-sm hover:shadow-md font-medium text-slate-900 placeholder:text-slate-400"
+                    className="pl-12 pr-10 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary focus:bg-white text-sm w-full transition-all shadow-sm hover:shadow-md font-medium text-slate-900 placeholder:text-slate-400"
                 />
                 {searchTerm && (
                     <button
@@ -85,7 +85,7 @@ export default function ApplicationFilters() {
                 <select
                     value={currentStatus}
                     onChange={(e) => handleStatusChange(e.target.value)}
-                    className="appearance-none w-full sm:w-auto pl-12 pr-12 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-700 hover:bg-white transition-all shadow-sm hover:shadow-md focus:outline-none focus:ring-4 focus:ring-[#36335e]/10 focus:border-[#36335e] cursor-pointer"
+                    className="appearance-none w-full sm:w-auto pl-12 pr-12 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-700 hover:bg-white transition-all shadow-sm hover:shadow-md focus:outline-none focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary cursor-pointer"
                 >
                     <option value="ALL">All Statuses</option>
                     <option value="SUBMITTED">Submitted</option>
@@ -93,9 +93,9 @@ export default function ApplicationFilters() {
                     <option value="OFFER_ISSUED">Offer Issued</option>
                     <option value="REJECTED">Rejected</option>
                 </select>
-                <Filter className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none group-hover:text-[#36335e] transition-colors" />
+                <Filter className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none group-hover:text-brand-primary transition-colors" />
                 <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none w-4 h-4 flex items-center justify-center">
-                    <svg className="w-4 h-4 text-slate-400 group-hover:text-[#36335e] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-slate-400 group-hover:text-brand-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
                     </svg>
                 </div>

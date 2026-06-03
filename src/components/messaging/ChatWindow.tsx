@@ -24,7 +24,7 @@ function SubmitButton({ pending }: { pending: boolean }) {
         <button
             type="submit"
             disabled={pending}
-            className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg active:scale-95 ${pending ? 'bg-slate-100 text-slate-400 border border-slate-200' : 'bg-[#1d1b41] text-[#d5a22d] hover:bg-[#2a284a] shadow-[#1d1b41]/20'
+            className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg active:scale-95 ${pending ? 'bg-slate-100 text-slate-400 border border-slate-200' : 'bg-[#1d1b41] text-brand-accent hover:bg-brand-primary-hover shadow-[#1d1b41]/20'
             }`}
         >
             <Send className="w-4 h-4 ml-0.5" />
@@ -187,7 +187,7 @@ export default function ChatWindow({
                             <ShieldAlert className="w-12 h-12 text-rose-500 mb-4" />
                             <h3 className="text-[#1d1b41] font-black text-xl mb-2 tracking-tight uppercase">Access Denied</h3>
                             <p className="text-slate-500 text-xs font-medium mb-6">You don&apos;t have permission to view this conversation.</p>
-                            <Link href="/dashboard/messages" className="w-full py-3.5 bg-[#1d1b41] text-[#d5a22d] font-black uppercase tracking-[0.15em] text-[11px] rounded-xl shadow-lg shadow-[#1d1b41]/20">Back to Inbox</Link>
+                            <Link href="/dashboard/messages" className="w-full py-3.5 bg-[#1d1b41] text-brand-accent font-black uppercase tracking-[0.15em] text-[11px] rounded-xl shadow-lg shadow-[#1d1b41]/20">Back to Inbox</Link>
                         </div>
                     </div>
                 )}
@@ -235,7 +235,7 @@ export default function ChatWindow({
                                                     {isTemp ? 'Sending…' : formatDetailedDate(msg.createdAt)}
                                                 </span>
                                                 {isMe && !isTemp && (
-                                                    <CheckCheck className="w-3.5 h-3.5 text-[#d5a22d]" />
+                                                    <CheckCheck className="w-3.5 h-3.5 text-brand-accent" />
                                                 )}
                                             </div>
                                         </div>

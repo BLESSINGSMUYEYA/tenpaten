@@ -36,7 +36,7 @@ export default function BrandingPage() {
                 </div>
 
                 {/* Brand Color Card */}
-                <div className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl p-10 shadow-xl flex flex-col items-center justify-center gap-8 min-h-[300px]">
+                <div className="bg-linear-to-br from-indigo-600 to-purple-700 rounded-2xl p-10 shadow-xl flex flex-col items-center justify-center gap-8 min-h-[300px]">
                     <h3 className="text-indigo-200 text-sm font-semibold uppercase tracking-wider mb-auto">Brand Primary</h3>
 
                     <div className="scale-150">

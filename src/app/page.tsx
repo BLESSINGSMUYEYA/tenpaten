@@ -22,7 +22,7 @@ export default function Home() {
   const [mobileNav, setMobileNav] = useState(false);
 
   return (
-    <main className="min-h-screen selection:bg-[#d5a22d]/30 font-sans">
+    <main className="min-h-screen selection:bg-brand-accent/30 font-sans">
       {/* ── Navigation Bar ── */}
       <nav className="fixed top-0 left-0 right-0 z-50 overflow-hidden text-white shadow-2xl transition-all duration-500 border-b border-white/10">
         {/* Background */}
@@ -37,10 +37,10 @@ export default function Home() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[11px] uppercase tracking-[0.25em] font-black text-white/60 hover:text-[#d5a22d] transition-all relative group"
+                className="text-[11px] uppercase tracking-[0.25em] font-black text-white/60 hover:text-brand-accent transition-all relative group"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#d5a22d] transition-all group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all group-hover:w-full" />
               </Link>
             ))}
           </div>
@@ -49,19 +49,19 @@ export default function Home() {
           <div className="flex items-center gap-4">
             {/* Platform live badge */}
             <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#d5a22d] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
               <span className="text-white/50 text-[9px] font-black uppercase tracking-[0.25em]">Live</span>
             </div>
 
             <Link
               href="/login"
-              className="hidden sm:inline-flex px-6 py-2.5 text-[11px] uppercase tracking-[0.2em] font-black text-white hover:text-[#d5a22d] transition-all"
+              className="hidden sm:inline-flex px-6 py-2.5 text-[11px] uppercase tracking-[0.2em] font-black text-white hover:text-brand-accent transition-all"
             >
               Sign In
             </Link>
             <Link
               href="/register?type=student"
-              className="hidden sm:inline-flex px-8 py-3 bg-[#d5a22d] text-[#1a1b41] rounded-xl text-[11px] uppercase tracking-[0.2em] font-black hover:bg-white hover:shadow-xl hover:shadow-[#d5a22d]/20 transition-all active:scale-95"
+              className="hidden sm:inline-flex px-8 py-3 bg-brand-accent text-[#1a1b41] rounded-xl text-[11px] uppercase tracking-[0.2em] font-black hover:bg-white hover:shadow-xl hover:shadow-brand-accent/20 transition-all active:scale-95"
             >
               Get Started
             </Link>
@@ -72,7 +72,7 @@ export default function Home() {
               className="md:hidden p-2.5 rounded-xl text-white hover:bg-white/10 transition-all border border-white/10"
               aria-label="Toggle menu"
             >
-              {mobileNav ? <X className="w-5 h-5 text-[#d5a22d]" /> : <Menu className="w-5 h-5" />}
+              {mobileNav ? <X className="w-5 h-5 text-brand-accent" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function Home() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileNav(false)}
-                    className="flex items-center px-6 py-4 rounded-2xl bg-white/5 hover:bg-[#d5a22d] hover:text-[#1a1b41] transition-all duration-300 text-sm font-black uppercase tracking-widest text-white/70"
+                    className="flex items-center px-6 py-4 rounded-2xl bg-white/5 hover:bg-brand-accent hover:text-[#1a1b41] transition-all duration-300 text-sm font-black uppercase tracking-widest text-white/70"
                   >
                     {item.label}
                   </Link>
@@ -103,7 +103,7 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/register?type=student"
-                  className="flex items-center justify-center px-4 py-4 rounded-xl text-[10px] font-black text-[#1a1b41] bg-[#d5a22d] hover:bg-white transition-all shadow-lg shadow-[#d5a22d]/10 uppercase tracking-widest"
+                  className="flex items-center justify-center px-4 py-4 rounded-xl text-[10px] font-black text-[#1a1b41] bg-brand-accent hover:bg-white transition-all shadow-lg shadow-brand-accent/10 uppercase tracking-widest"
                 >
                   Get Started
                 </Link>
@@ -137,7 +137,7 @@ export default function Home() {
                   <a
                     key={s}
                     href="#"
-                    className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-[#d5a22d] hover:bg-[#d5a22d]/10 hover:border-[#d5a22d]/30 transition-all duration-300 text-[10px] font-black"
+                    className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-brand-accent hover:bg-brand-accent/10 hover:border-brand-accent/30 transition-all duration-300 text-[10px] font-black"
                   >
                     {s}
                   </a>
@@ -149,10 +149,10 @@ export default function Home() {
             <div className="space-y-6">
               <h4 className="text-white font-black uppercase tracking-widest text-xs">For Students</h4>
               <ul className="space-y-4 text-white/35 text-sm font-bold">
-                <li><Link href="/register?type=student" className="hover:text-[#d5a22d] transition-colors">Apply to University</Link></li>
-                <li><Link href="#features" className="hover:text-[#d5a22d] transition-colors">How it Works</Link></li>
-                <li><Link href="/login" className="hover:text-[#d5a22d] transition-colors">Student Login</Link></li>
-                <li><Link href="/scholarships" className="hover:text-[#d5a22d] transition-colors">Find Scholarships</Link></li>
+                <li><Link href="/register?type=student" className="hover:text-brand-accent transition-colors">Apply to University</Link></li>
+                <li><Link href="#features" className="hover:text-brand-accent transition-colors">How it Works</Link></li>
+                <li><Link href="/login" className="hover:text-brand-accent transition-colors">Student Login</Link></li>
+                <li><Link href="/scholarships" className="hover:text-brand-accent transition-colors">Find Scholarships</Link></li>
               </ul>
             </div>
 
@@ -160,9 +160,9 @@ export default function Home() {
             <div className="space-y-6">
               <h4 className="text-white font-black uppercase tracking-widest text-xs">For Institutions</h4>
               <ul className="space-y-4 text-white/35 text-sm font-bold">
-                <li><Link href="/school" className="hover:text-[#d5a22d] transition-colors">Partnership Overview</Link></li>
-                <li><Link href="mailto:sales@tenpaten.com" className="hover:text-[#d5a22d] transition-colors">Contact Sales</Link></li>
-                <li><Link href="/school" className="hover:text-[#d5a22d] transition-colors">Managed Onboarding</Link></li>
+                <li><Link href="/school" className="hover:text-brand-accent transition-colors">Partnership Overview</Link></li>
+                <li><Link href="mailto:sales@tenpaten.com" className="hover:text-brand-accent transition-colors">Contact Sales</Link></li>
+                <li><Link href="/school" className="hover:text-brand-accent transition-colors">Managed Onboarding</Link></li>
               </ul>
             </div>
 
@@ -170,10 +170,10 @@ export default function Home() {
             <div className="space-y-6">
               <h4 className="text-white font-black uppercase tracking-widest text-xs">Legal &amp; Support</h4>
               <ul className="space-y-4 text-white/35 text-sm font-bold">
-                <li><Link href="/privacy" className="hover:text-[#d5a22d] transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="hover:text-[#d5a22d] transition-colors">Terms of Service</Link></li>
-                <li><Link href="/help" className="hover:text-[#d5a22d] transition-colors">Help Center</Link></li>
-                <li><Link href="/contact" className="hover:text-[#d5a22d] transition-colors">Get in Touch</Link></li>
+                <li><Link href="/privacy" className="hover:text-brand-accent transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-brand-accent transition-colors">Terms of Service</Link></li>
+                <li><Link href="/help" className="hover:text-brand-accent transition-colors">Help Center</Link></li>
+                <li><Link href="/contact" className="hover:text-brand-accent transition-colors">Get in Touch</Link></li>
               </ul>
             </div>
           </div>
@@ -186,7 +186,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center gap-6">
               <InstallPwaButton />
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
                 <span className="text-white/30 text-[10px] font-black uppercase tracking-widest">System Status: Operational</span>
               </div>
             </div>

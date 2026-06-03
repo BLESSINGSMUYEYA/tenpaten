@@ -32,7 +32,7 @@ export default function ProfileStrength({ completionPercentage, missingFields }:
     const strokeDashoffset = circumference - (completionPercentage / 100) * circumference;
 
     return (
-        <div className="rounded-xl bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 p-6 shadow-sm">
+        <div className="rounded-xl bg-linear-to-br from-indigo-50 to-purple-50 border border-indigo-200 p-6 shadow-sm">
             <div className="flex items-start gap-4">
                 {/* Circular Progress */}
                 <div className="flex-shrink-0 relative">

@@ -90,27 +90,27 @@ export default function ApplicationPaymentSection({
     };
 
     return (
-        <div className="rounded-[2rem] border-2 border-[#d5a22d] bg-white p-8 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#d5a22d]/5 rounded-full blur-2xl -mr-16 -mt-16" />
+        <div className="rounded-[2rem] border-2 border-brand-accent bg-white p-8 shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/5 rounded-full blur-2xl -mr-16 -mt-16" />
             <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-2xl bg-[#d5a22d] flex items-center justify-center shadow-lg">
+                    <div className="w-12 h-12 rounded-2xl bg-brand-accent flex items-center justify-center shadow-lg">
                         <CreditCard className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                        <h3 className="text-xl font-black text-[#36335e] tracking-tight">Payment Required</h3>
-                        <p className="text-[10px] font-black text-[#d5a22d] uppercase tracking-[0.2em]">Application Fee</p>
+                        <h3 className="text-xl font-black text-brand-primary tracking-tight">Payment Required</h3>
+                        <p className="text-[10px] font-black text-brand-accent uppercase tracking-[0.2em]">Application Fee</p>
                     </div>
                 </div>
 
                 <div className="space-y-4 mb-8">
                     <div className="flex justify-between items-center py-3 border-b border-gray-100">
                         <span className="text-sm font-bold text-gray-500">University</span>
-                        <span className="text-sm font-black text-[#36335e]">{universityName}</span>
+                        <span className="text-sm font-black text-brand-primary">{universityName}</span>
                     </div>
                     <div className="flex justify-between items-center py-3 border-b border-gray-100">
                         <span className="text-sm font-bold text-gray-500">Amount Due</span>
-                        <span className="text-xl font-black text-[#36335e]">{currency} {applicationFee.toLocaleString()}</span>
+                        <span className="text-xl font-black text-brand-primary">{currency} {applicationFee.toLocaleString()}</span>
                     </div>
                 </div>
 
@@ -125,7 +125,7 @@ export default function ApplicationPaymentSection({
                     <button
                         onClick={handlePayment}
                         disabled={isPending || isSimulating}
-                        className="flex items-center justify-center gap-3 w-full px-8 py-5 rounded-2xl bg-[#36335e] hover:bg-[#2a284a] text-white font-black text-sm uppercase tracking-widest transition-all shadow-xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed group"
+                        className="flex items-center justify-center gap-3 w-full px-8 py-5 rounded-2xl bg-brand-primary hover:bg-brand-primary-hover text-white font-black text-sm uppercase tracking-widest transition-all shadow-xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed group"
                     >
                         {isPending ? (
                             <>

@@ -21,8 +21,6 @@ export async function getCurrentUser(): Promise<AuthSession['user']> {
         redirect('/login');
     }
 
-    // We cast here because our auth.ts ensures these fields exist on the session user
-    // in the jwt/session callbacks, although types might need extending in next-auth.d.ts to be perfect.
     return session.user as AuthSession['user'];
 }
 
@@ -31,7 +29,13 @@ export async function requireRole(allowedRoles: Role | Role[]) {
 
     const roles = Array.isArray(allowedRoles) ? allowedRoles : [allowedRoles];
 
-    if (!roles.includes(user.role)) {
+    // SCHOOL_SUPER_AGENT can access anything SCHOOL_ADMIN can access,
+    // since they operate school dashboards on behalf of the assigned school.
+    const effectiveRoles = roles.includes('SCHOOL_ADMIN')
+        ? [...roles, 'SCHOOL_SUPER_AGENT']
+        : roles;
+
+    if (!effectiveRoles.includes(user.role)) {
         throw new Error(`Unauthorized: Role ${user.role} is not allowed to perform this action.`);
     }
 

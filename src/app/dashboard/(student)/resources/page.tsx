@@ -36,8 +36,8 @@ export default function ResourcesPage() {
             {/* Page Header */}
             <div className="px-2">
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-2">Support & Resources</p>
-                <h1 className="text-3xl sm:text-4xl font-black text-[#36335e] tracking-tight">
-                    How can we <span className="text-[#d5a22d]">help you?</span>
+                <h1 className="text-3xl sm:text-4xl font-black text-brand-primary tracking-tight">
+                    How can we <span className="text-brand-accent">help you?</span>
                 </h1>
             </div>
 
@@ -48,12 +48,12 @@ export default function ResourcesPage() {
                 <div className="lg:col-span-3 space-y-6">
                     <div className="flex items-center justify-between px-1">
                         <div>
-                            <h2 className="text-lg font-black text-[#36335e] tracking-tight">Resources</h2>
+                            <h2 className="text-lg font-black text-brand-primary tracking-tight">Resources</h2>
                             <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Guides, templates & more</p>
                         </div>
-                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#d5a22d]/10 border border-[#d5a22d]/20">
-                            <Clock className="w-3 h-3 text-[#d5a22d]" />
-                            <span className="text-[9px] font-black text-[#d5a22d] uppercase tracking-widest">Coming Soon</span>
+                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20">
+                            <Clock className="w-3 h-3 text-brand-accent" />
+                            <span className="text-[9px] font-black text-brand-accent uppercase tracking-widest">Coming Soon</span>
                         </div>
                     </div>
 
@@ -70,10 +70,10 @@ export default function ResourcesPage() {
                                     </span>
                                 </div>
 
-                                <div className="w-12 h-12 rounded-2xl bg-[#36335e]/5 text-[#36335e]/40 flex items-center justify-center mb-5">
+                                <div className="w-12 h-12 rounded-2xl bg-brand-primary/5 text-brand-primary/40 flex items-center justify-center mb-5">
                                     {item.icon}
                                 </div>
-                                <h3 className="text-base font-black text-[#36335e]/60 tracking-tight mb-1">{item.title}</h3>
+                                <h3 className="text-base font-black text-brand-primary/60 tracking-tight mb-1">{item.title}</h3>
                                 <p className="text-sm text-slate-400 font-medium leading-relaxed">{item.description}</p>
                             </div>
                         ))}
@@ -82,10 +82,10 @@ export default function ResourcesPage() {
 
                 {/* RIGHT: Direct Help Card — narrower */}
                 <div className="lg:col-span-2">
-                    <div className="relative overflow-hidden rounded-[2.5rem] bg-[#36335e] p-8 shadow-2xl border border-white/5 sticky top-6">
+                    <div className="relative overflow-hidden rounded-[2.5rem] bg-brand-primary p-8 shadow-2xl border border-white/5 sticky top-6">
                         {/* Decorative glows */}
-                        <div className="absolute top-0 right-0 w-48 h-48 bg-[#d5a22d]/20 rounded-full blur-[60px] -mr-24 -mt-24 pointer-events-none" />
-                        <div className="absolute bottom-0 left-0 w-36 h-36 bg-[#d5a22d]/10 rounded-full blur-[40px] -ml-18 -mb-18 pointer-events-none" />
+                        <div className="absolute top-0 right-0 w-48 h-48 bg-brand-accent/20 rounded-full blur-[60px] -mr-24 -mt-24 pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 w-36 h-36 bg-brand-accent/10 rounded-full blur-[40px] -ml-18 -mb-18 pointer-events-none" />
 
                         <div className="relative z-10 space-y-8">
                             {/* Heading */}
@@ -93,7 +93,7 @@ export default function ResourcesPage() {
                                 <h2 className="text-2xl font-black text-white tracking-tight leading-tight">
                                     Need direct help?
                                 </h2>
-                                <p className="text-[10px] font-black text-[#d5a22d] uppercase tracking-[0.25em]">
+                                <p className="text-[10px] font-black text-brand-accent uppercase tracking-[0.25em]">
                                     Our expert team is standing by
                                 </p>
                             </div>
@@ -104,14 +104,14 @@ export default function ResourcesPage() {
                                     <Link
                                         key={index}
                                         href={method.href}
-                                        className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 hover:border-[#d5a22d]/40 transition-all duration-300 group"
+                                        className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 hover:border-brand-accent/40 transition-all duration-300 group"
                                     >
-                                        <div className="w-10 h-10 rounded-xl bg-[#d5a22d]/20 text-[#d5a22d] flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                                        <div className="w-10 h-10 rounded-xl bg-brand-accent/20 text-brand-accent flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
                                             {method.icon}
                                         </div>
                                         <div>
                                             <p className="text-white font-black text-sm tracking-tight">{method.title}</p>
-                                            <p className="text-[#d5a22d] text-xs font-bold mt-0.5">{method.description}</p>
+                                            <p className="text-brand-accent text-xs font-bold mt-0.5">{method.description}</p>
                                         </div>
                                     </Link>
                                 ))}
@@ -120,7 +120,7 @@ export default function ResourcesPage() {
                             {/* CTA */}
                             <Link
                                 href="mailto:support@tenpaten.com"
-                                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#d5a22d] text-[#36335e] font-black text-xs uppercase tracking-widest shadow-xl shadow-[#d5a22d]/20 hover:bg-white hover:scale-[1.02] transition-all active:scale-[0.98]"
+                                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-brand-accent text-brand-primary font-black text-xs uppercase tracking-widest shadow-xl shadow-brand-accent/20 hover:bg-white hover:scale-[1.02] transition-all active:scale-[0.98]"
                             >
                                 <Mail className="w-4 h-4" />
                                 Get in touch

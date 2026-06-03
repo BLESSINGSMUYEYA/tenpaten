@@ -154,7 +154,7 @@ export default function BulkUploadModal({ onClose, departments, universityId }: 
             <div className="bg-white rounded-3xl w-full max-w-5xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
                 <div className="flex justify-between items-center p-6 border-b border-slate-100 bg-slate-50/50">
                     <div>
-                        <h2 className="text-xl font-black text-[#36335e]">Bulk Import Programs</h2>
+                        <h2 className="text-xl font-black text-brand-primary">Bulk Import Programs</h2>
                         <p className="text-sm text-slate-500 mt-1">Upload multiple programs via Excel.</p>
                     </div>
                     <button
@@ -182,13 +182,13 @@ export default function BulkUploadModal({ onClose, departments, universityId }: 
                             </div>
 
                             <div 
-                                className="border-2 border-dashed border-slate-200 rounded-3xl p-12 flex flex-col items-center justify-center text-center hover:border-[#36335e]/30 bg-white transition-colors cursor-pointer group"
+                                className="border-2 border-dashed border-slate-200 rounded-3xl p-12 flex flex-col items-center justify-center text-center hover:border-brand-primary/30 bg-white transition-colors cursor-pointer group"
                                 onClick={() => fileInputRef.current?.click()}
                             >
-                                <div className="w-16 h-16 rounded-full bg-[#36335e]/5 flex items-center justify-center mb-4 group-hover:bg-[#36335e]/10 transition-colors">
-                                    <Upload className="w-8 h-8 text-[#36335e]" />
+                                <div className="w-16 h-16 rounded-full bg-brand-primary/5 flex items-center justify-center mb-4 group-hover:bg-brand-primary/10 transition-colors">
+                                    <Upload className="w-8 h-8 text-brand-primary" />
                                 </div>
-                                <h3 className="font-bold text-lg text-[#36335e] mb-2">Click to Upload or Drag & Drop</h3>
+                                <h3 className="font-bold text-lg text-brand-primary mb-2">Click to Upload or Drag & Drop</h3>
                                 <p className="text-sm text-slate-500">Only .xlsx files are supported.</p>
                                 <input 
                                     type="file" 
@@ -204,12 +204,12 @@ export default function BulkUploadModal({ onClose, departments, universityId }: 
                     {step === 2 && (
                         <div className="space-y-4">
                             <div className="flex items-center justify-between mb-4">
-                                <h3 className="font-bold text-[#36335e] flex items-center gap-2">
+                                <h3 className="font-bold text-brand-primary flex items-center gap-2">
                                     Previewing {previewData.length} Programs
                                 </h3>
                                 <button 
                                     onClick={() => setStep(1)}
-                                    className="text-sm text-slate-500 hover:text-[#36335e] underline"
+                                    className="text-sm text-slate-500 hover:text-brand-primary underline"
                                 >
                                     Upload different file
                                 </button>
@@ -228,7 +228,7 @@ export default function BulkUploadModal({ onClose, departments, universityId }: 
                             <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
                                 <div className="overflow-x-auto">
                                     <table className="w-full text-left text-sm whitespace-nowrap">
-                                        <thead className="bg-[#36335e]/5 text-[#36335e] font-bold">
+                                        <thead className="bg-brand-primary/5 text-brand-primary font-bold">
                                             <tr>
                                                 <th className="px-4 py-3">Status</th>
                                                 <th className="px-4 py-3">Program Name</th>
@@ -292,7 +292,7 @@ export default function BulkUploadModal({ onClose, departments, universityId }: 
                         <button
                             onClick={handleImport}
                             disabled={hasErrors || isProcessing}
-                            className="px-8 py-2.5 bg-[#36335e] hover:bg-[#2a284a] text-white font-bold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                            className="px-8 py-2.5 bg-brand-primary hover:bg-brand-primary-hover text-white font-bold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                         >
                             {isProcessing ? 'Importing...' : `Import ${previewData.length} Programs`}
                         </button>

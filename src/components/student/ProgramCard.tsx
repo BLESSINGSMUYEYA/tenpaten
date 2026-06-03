@@ -33,11 +33,11 @@ export default function ProgramCard({ program }: ProgramCardProps) {
     return (
         <div className="group relative overflow-hidden rounded-xl bg-white border-2 border-gray-200 hover:border-indigo-300 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             {/* Gradient accent */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500" />
 
             <div className="p-5 sm:p-6">
                 {/* Icon */}
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-xl bg-linear-to-br from-indigo-100 to-purple-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <GraduationCap className="w-7 h-7 text-indigo-600" />
                 </div>
 
@@ -116,7 +116,7 @@ export default function ProgramCard({ program }: ProgramCardProps) {
                     </Link>
                     <Link
                         href={`/dashboard/apply?programId=${program.id}`}
-                        className="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all"
+                        className="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all"
                     >
                         <span>Apply Now</span>
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -125,7 +125,7 @@ export default function ProgramCard({ program }: ProgramCardProps) {
             </div>
 
             {/* Decorative gradient overlay on hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/0 to-purple-500/0 group-hover:from-indigo-500/5 group-hover:to-purple-500/5 transition-all duration-300 pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-br from-indigo-500/0 to-purple-500/0 group-hover:from-indigo-500/5 group-hover:to-purple-500/5 transition-all duration-300 pointer-events-none" />
         </div>
     );
 }

@@ -51,8 +51,8 @@ export default function CopySchoolLink({ universityId, universityName, slug }: C
 
             <div className="space-y-3">
                 {/* Link Area */}
-                <div className="flex items-center gap-2 bg-slate-50 rounded-2xl p-1.5 border border-slate-100 focus-within:border-[#36335e]/30 transition-all">
-                    <div className="flex-1 px-4 py-2 text-sm font-bold text-[#36335e] truncate font-mono bg-white/50 rounded-xl border border-slate-100/50">
+                <div className="flex items-center gap-2 bg-slate-50 rounded-2xl p-1.5 border border-slate-100 focus-within:border-brand-primary/30 transition-all">
+                    <div className="flex-1 px-4 py-2 text-sm font-bold text-brand-primary truncate font-mono bg-white/50 rounded-xl border border-slate-100/50">
                         {displayUrl}
                     </div>
                     
@@ -61,7 +61,7 @@ export default function CopySchoolLink({ universityId, universityName, slug }: C
                             <DialogTrigger asChild>
                                 <button
                                     onClick={() => handleOpenQR(false)}
-                                    className="p-2.5 rounded-xl bg-[#36335e]/5 hover:bg-[#36335e]/10 text-[#36335e] transition-all border border-[#36335e]/10 group"
+                                    className="p-2.5 rounded-xl bg-brand-primary/5 hover:bg-brand-primary/10 text-brand-primary transition-all border border-brand-primary/10 group"
                                     title="Show QR Code"
                                 >
                                     <QrCode className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -88,7 +88,7 @@ export default function CopySchoolLink({ universityId, universityName, slug }: C
                             className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all whitespace-nowrap shadow-sm ${
                                 copied
                                     ? 'bg-emerald-500 text-white'
-                                    : 'bg-[#d5a22d] hover:bg-[#b89531] text-white hover:scale-[1.02] active:scale-[0.98]'
+                                    : 'bg-brand-accent hover:bg-[#b89531] text-white hover:scale-[1.02] active:scale-[0.98]'
                             }`}
                         >
                             {copied ? (
@@ -105,7 +105,7 @@ export default function CopySchoolLink({ universityId, universityName, slug }: C
                     <div className="flex items-center gap-4">
                         <button 
                             onClick={() => handleOpenQR(true)}
-                            className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-[#d5a22d] hover:text-[#b89531] transition-colors"
+                            className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-brand-accent hover:text-[#b89531] transition-colors"
                         >
                             Customize Link
                         </button>
@@ -125,7 +125,7 @@ export default function CopySchoolLink({ universityId, universityName, slug }: C
                                 href={shortUrl} 
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                className="text-slate-400 hover:text-[#d5a22d] transition-colors"
+                                className="text-slate-400 hover:text-brand-accent transition-colors"
                                 title="Open Link"
                             >
                                 <ExternalLink className="w-3.5 h-3.5" />

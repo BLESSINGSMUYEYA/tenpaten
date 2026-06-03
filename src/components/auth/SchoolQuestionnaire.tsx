@@ -52,11 +52,11 @@ export default function SchoolQuestionnaire({ questions, onComplete }: SchoolQue
     if (!questions || questions.length === 0) {
         return (
             <div className="w-full max-w-md mx-auto space-y-6 p-6 bg-white rounded-2xl shadow-sm border border-gray-100 text-center">
-                <div className="p-4 bg-[#36335e]/10 rounded-full inline-flex">
-                    <Building2 className="w-8 h-8 text-[#36335e]" />
+                <div className="p-4 bg-brand-primary/10 rounded-full inline-flex">
+                    <Building2 className="w-8 h-8 text-brand-primary" />
                 </div>
                 <p className="text-gray-500 text-sm">No questions configured yet. Please contact support.</p>
-                <Button onClick={() => onComplete({})} className="w-full rounded-xl bg-[#36335e] text-white">
+                <Button onClick={() => onComplete({})} className="w-full rounded-xl bg-brand-primary text-white">
                     Continue to Register
                 </Button>
             </div>
@@ -94,8 +94,8 @@ export default function SchoolQuestionnaire({ questions, onComplete }: SchoolQue
     if (showSummary) {
         return (
             <div className="w-full max-w-md mx-auto space-y-6 p-5 sm:p-6 bg-white rounded-2xl shadow-sm border border-gray-100 text-center">
-                <div className="p-4 bg-[#36335e]/10 rounded-full inline-flex">
-                    <Sparkles className="w-8 h-8 text-[#d5a22d]" />
+                <div className="p-4 bg-brand-primary/10 rounded-full inline-flex">
+                    <Sparkles className="w-8 h-8 text-brand-accent" />
                 </div>
                 <div>
                     <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Profile Complete!</h2>
@@ -118,7 +118,7 @@ export default function SchoolQuestionnaire({ questions, onComplete }: SchoolQue
                 </div>
                 <Button
                     onClick={() => onComplete(answers)}
-                    className="w-full h-12 rounded-xl bg-gradient-to-r from-[#36335e] to-[#2a284a] hover:bg-[#2a284a] text-white font-bold text-base shadow-lg shadow-[#36335e]/20 hover:shadow-xl transition-all"
+                    className="w-full h-12 rounded-xl bg-linear-to-r from-brand-primary to-brand-primary-hover hover:bg-brand-primary-hover text-white font-bold text-base shadow-lg shadow-brand-primary/20 hover:shadow-xl transition-all"
                 >
                     Create Institution Account <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -142,18 +142,18 @@ export default function SchoolQuestionnaire({ questions, onComplete }: SchoolQue
                     alt="University Administration"
                     className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white" />
+                <div className="absolute inset-0 bg-linear-to-b from-transparent to-white" />
             </div>
 
             {/* Progress Bar */}
             <div className="space-y-2">
                 <div className="flex justify-between text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <span>Step {currentStep + 1} of {totalSteps}</span>
-                    <span className="text-[#36335e]">{Math.round(progress)}% Completed</span>
+                    <span className="text-brand-primary">{Math.round(progress)}% Completed</span>
                 </div>
                 <div className="bg-gray-100 h-2 rounded-full overflow-hidden">
                     <div
-                        className="bg-gradient-to-r from-[#36335e] to-[#d5a22d] h-full rounded-full transition-all duration-300 ease-in-out"
+                        className="bg-linear-to-r from-brand-primary to-brand-accent h-full rounded-full transition-all duration-300 ease-in-out"
                         style={{ width: `${progress}%` }}
                     />
                 </div>
@@ -180,7 +180,7 @@ export default function SchoolQuestionnaire({ questions, onComplete }: SchoolQue
                                 onChange={(e) => { setSearchQuery(e.target.value); setIsDropdownOpen(true); }}
                                 onFocus={() => { setSearchQuery(''); setIsDropdownOpen(true); }}
                                 placeholder={currentQuestion.placeholder || 'Type to search...'}
-                                className="w-full h-11 px-4 text-base border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-[#36335e]/20 focus:border-[#36335e] transition-all placeholder:text-gray-400"
+                                className="w-full h-11 px-4 text-base border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all placeholder:text-gray-400"
                             />
                             {isDropdownOpen && (
                                 <div className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-xl shadow-lg max-h-48 overflow-y-auto">
@@ -189,7 +189,7 @@ export default function SchoolQuestionnaire({ questions, onComplete }: SchoolQue
                                             key={option.value}
                                             type="button"
                                             onClick={() => { handleSelect(option.value); setSearchQuery(''); setIsDropdownOpen(false); }}
-                                            className={`w-full text-left px-4 py-2.5 text-sm hover:bg-[#36335e]/10 transition-colors ${answers[currentQuestion.key] === option.value ? 'bg-[#36335e]/10 text-[#36335e] font-semibold' : 'text-gray-700'}`}
+                                            className={`w-full text-left px-4 py-2.5 text-sm hover:bg-brand-primary/10 transition-colors ${answers[currentQuestion.key] === option.value ? 'bg-brand-primary/10 text-brand-primary font-semibold' : 'text-gray-700'}`}
                                         >
                                             {option.label}
                                         </button>
@@ -203,12 +203,12 @@ export default function SchoolQuestionnaire({ questions, onComplete }: SchoolQue
                     )}
                     {currentQuestion.type === 'select' && (
                         <Select onValueChange={handleSelect} value={answers[currentQuestion.key]}>
-                            <SelectTrigger className="w-full h-11 text-base rounded-xl border-2 border-gray-100 focus:border-[#36335e]/50">
+                            <SelectTrigger className="w-full h-11 text-base rounded-xl border-2 border-gray-100 focus:border-brand-primary/50">
                                 <SelectValue placeholder={currentQuestion.placeholder || 'Select...'} />
                             </SelectTrigger>
                             <SelectContent className="rounded-xl border-gray-100 shadow-xl">
                                 {options.map((option) => (
-                                    <SelectItem key={option.value} value={option.value} className="text-sm sm:text-base py-2.5 cursor-pointer focus:bg-[#36335e]/10 focus:text-[#36335e] rounded-lg mx-1 my-0.5">
+                                    <SelectItem key={option.value} value={option.value} className="text-sm sm:text-base py-2.5 cursor-pointer focus:bg-brand-primary/10 focus:text-brand-primary rounded-lg mx-1 my-0.5">
                                         {option.label}
                                     </SelectItem>
                                 ))}
@@ -221,7 +221,7 @@ export default function SchoolQuestionnaire({ questions, onComplete }: SchoolQue
                             value={answers[currentQuestion.key] || ''}
                             onChange={e => handleSelect(e.target.value)}
                             placeholder={currentQuestion.placeholder || 'Type your answer...'}
-                            className="w-full h-11 px-4 text-base border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-[#36335e]/20 focus:border-[#36335e] transition-all"
+                            className="w-full h-11 px-4 text-base border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                         />
                     )}
                 </div>
@@ -241,7 +241,7 @@ export default function SchoolQuestionnaire({ questions, onComplete }: SchoolQue
                 <Button
                     onClick={handleNext}
                     disabled={!canContinue}
-                    className="flex-1 h-11 rounded-xl bg-gradient-to-r from-[#36335e] to-[#2a284a] hover:bg-[#2a284a] text-white font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 h-11 rounded-xl bg-linear-to-r from-brand-primary to-brand-primary-hover hover:bg-brand-primary-hover text-white font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     {isLastStep ? (
                         <>Finish <CheckCircle2 className="w-4 h-4 ml-2" /></>

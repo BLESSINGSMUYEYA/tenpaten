@@ -34,17 +34,17 @@ export function UniversityProgramsList({
                         placeholder="Search programs or departments..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-12 pr-4 py-4 bg-gray-50/50 border border-gray-100 rounded-3xl text-sm focus:ring-2 focus:ring-[#d5a22d]/20 transition-all outline-none text-[#36335e] font-semibold placeholder-gray-400"
+                        className="w-full pl-12 pr-4 py-4 bg-gray-50/50 border border-gray-100 rounded-3xl text-sm focus:ring-2 focus:ring-brand-accent/20 transition-all outline-none text-brand-primary font-semibold placeholder-gray-400"
                     />
                 </div>
                 <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-gray-50/50 rounded-2xl flex items-center justify-center shrink-0 border border-gray-100 shadow-sm">
-                        <Filter className="w-5 h-5 text-[#d5a22d]" />
+                        <Filter className="w-5 h-5 text-brand-accent" />
                     </div>
                     <select
                         value={levelFilter}
                         onChange={(e) => setLevelFilter(e.target.value)}
-                        className="bg-gray-50/50 border border-gray-100 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] py-4 pl-6 pr-12 focus:ring-2 focus:ring-[#d5a22d]/20 transition-all outline-none appearance-none cursor-pointer text-[#36335e]"
+                        className="bg-gray-50/50 border border-gray-100 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] py-4 pl-6 pr-12 focus:ring-2 focus:ring-brand-accent/20 transition-all outline-none appearance-none cursor-pointer text-brand-primary"
                         style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d5a22d\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'3\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1rem' }}
                     >
                         <option value="all">All Levels</option>
@@ -61,12 +61,12 @@ export function UniversityProgramsList({
                     <div className="hidden md:block overflow-hidden">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="border-b-2 border-[#36335e]/10">
-                                    <th className="px-8 py-6 text-[10px] font-black text-[#36335e] uppercase tracking-[0.2em] w-1/3">Program Identity</th>
-                                    <th className="px-8 py-6 text-[10px] font-black text-[#36335e] uppercase tracking-[0.2em]">Level</th>
-                                    <th className="px-8 py-6 text-[10px] font-black text-[#36335e] uppercase tracking-[0.2em]">Specs</th>
-                                    <th className="px-8 py-6 text-[10px] font-black text-[#36335e] uppercase tracking-[0.2em]">Investment</th>
-                                    <th className="px-8 py-6 text-[10px] font-black text-[#36335e] uppercase tracking-[0.2em] text-right">Action</th>
+                                <tr className="border-b-2 border-brand-primary/10">
+                                    <th className="px-8 py-6 text-[10px] font-black text-brand-primary uppercase tracking-[0.2em] w-1/3">Program Identity</th>
+                                    <th className="px-8 py-6 text-[10px] font-black text-brand-primary uppercase tracking-[0.2em]">Level</th>
+                                    <th className="px-8 py-6 text-[10px] font-black text-brand-primary uppercase tracking-[0.2em]">Specs</th>
+                                    <th className="px-8 py-6 text-[10px] font-black text-brand-primary uppercase tracking-[0.2em]">Investment</th>
+                                    <th className="px-8 py-6 text-[10px] font-black text-brand-primary uppercase tracking-[0.2em] text-right">Action</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-100">
@@ -77,19 +77,19 @@ export function UniversityProgramsList({
                                                 <div className="flex items-center gap-4">
                                                     <div className="h-1px flex-1 bg-slate-100" />
                                                     <div className="flex items-center gap-3 px-6 py-2 bg-[#1a1b41] rounded-2xl shadow-xl shadow-[#1a1b41]/20">
-                                                        <Layers className="w-4 h-4 text-[#d5a22d]" />
+                                                        <Layers className="w-4 h-4 text-brand-accent" />
                                                         <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">{deptName}</span>
-                                                        <span className="px-2 py-0.5 bg-white/10 rounded text-[9px] font-black text-[#d5a22d]">{deptPrograms.length}</span>
+                                                        <span className="px-2 py-0.5 bg-white/10 rounded text-[9px] font-black text-brand-accent">{deptPrograms.length}</span>
                                                     </div>
                                                     <div className="h-1px flex-1 bg-slate-100" />
                                                 </div>
                                             </td>
                                         </tr>
                                         {deptPrograms.map((program: any) => (
-                                            <tr key={program.id} className="group hover:bg-[#36335e]/[0.02] transition-all duration-300">
+                                            <tr key={program.id} className="group hover:bg-brand-primary/[0.02] transition-all duration-300">
                                                 <td className="px-8 py-6">
                                                     <div className="flex items-center gap-5">
-                                                        <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-[#36335e]/20 group-hover:bg-[#36335e]/5 group-hover:text-[#36335e] transition-all">
+                                                        <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-brand-primary/20 group-hover:bg-brand-primary/5 group-hover:text-brand-primary transition-all">
                                                             <GraduationCap className="w-6 h-6" />
                                                         </div>
                                                         <div className="min-w-0">
@@ -101,7 +101,7 @@ export function UniversityProgramsList({
                                                     </div>
                                                 </td>
                                                 <td className="px-8 py-6">
-                                                    <span className="bg-[#d5a22d]/10 text-[#d4a017] px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest border border-[#d5a22d]/20">
+                                                    <span className="bg-brand-accent/10 text-[#d4a017] px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest border border-brand-accent/20">
                                                         {program.level}
                                                     </span>
                                                 </td>
@@ -123,7 +123,7 @@ export function UniversityProgramsList({
                                                                     <span className="text-[10px] text-slate-300 line-through font-bold">{currencySym}{program.baseTuition.toLocaleString()}</span>
                                                                 </>
                                                             ) : (
-                                                                <span className="text-sm font-black text-[#36335e]">{currencySym}{program.baseTuition.toLocaleString()}</span>
+                                                                <span className="text-sm font-black text-brand-primary">{currencySym}{program.baseTuition.toLocaleString()}</span>
                                                             )}
                                                             <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest mt-0.5">Est. Annual</span>
                                                         </div>
@@ -135,7 +135,7 @@ export function UniversityProgramsList({
                                                     <div className="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0">
                                                         <Link
                                                             href={`/dashboard/programs/${program.id}`}
-                                                            className="h-10 px-4 text-[10px] font-black text-slate-400 hover:text-[#36335e] uppercase tracking-widest transition-colors flex items-center"
+                                                            className="h-10 px-4 text-[10px] font-black text-slate-400 hover:text-brand-primary uppercase tracking-widest transition-colors flex items-center"
                                                         >
                                                             Specs
                                                         </Link>
@@ -174,7 +174,7 @@ export function UniversityProgramsList({
                                                 </div>
                                                 <div className="text-right">
                                                     {program.baseTuition && (
-                                                        <span className="text-xs font-black text-[#36335e]">{currencySym}{program.baseTuition.toLocaleString()}</span>
+                                                        <span className="text-xs font-black text-brand-primary">{currencySym}{program.baseTuition.toLocaleString()}</span>
                                                     )}
                                                 </div>
                                             </div>
@@ -207,9 +207,9 @@ export function UniversityProgramsList({
             ) : (
                 <div className="text-center py-20 bg-white rounded-[2.5rem] border-2 border-dashed border-gray-100 shadow-sm animate-in fade-in zoom-in-95 duration-500">
                     <div className="inline-flex p-5 bg-[#1a1b41]/5 rounded-[2rem] mb-6">
-                        <AlertCircle className="w-10 h-10 text-[#d5a22d]" />
+                        <AlertCircle className="w-10 h-10 text-brand-accent" />
                     </div>
-                    <h3 className="text-lg font-black text-[#36335e] mb-3 tracking-tight">No programs found</h3>
+                    <h3 className="text-lg font-black text-brand-primary mb-3 tracking-tight">No programs found</h3>
                     <p className="text-[10px] font-black text-slate-400 max-w-[280px] mx-auto uppercase tracking-widest mb-8">
                         We couldn't find any programs matching your filters.
                     </p>

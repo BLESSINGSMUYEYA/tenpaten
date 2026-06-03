@@ -38,25 +38,25 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                 <div className="flex items-center gap-6">
                     <Link
                         href="/dashboard/country-director/universities"
-                        className="h-14 w-14 rounded-2xl bg-white shadow-xl shadow-slate-200/50 flex items-center justify-center text-slate-400 hover:text-[#36335e] hover:border-[#36335e]/10 hover:scale-110 transition-all duration-300 border border-slate-100"
+                        className="h-14 w-14 rounded-2xl bg-white shadow-xl shadow-slate-200/50 flex items-center justify-center text-slate-400 hover:text-brand-primary hover:border-brand-primary/10 hover:scale-110 transition-all duration-300 border border-slate-100"
                     >
                         <ArrowLeft className="w-6 h-6" />
                     </Link>
                     <div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#36335e]/10 text-[#36335e] text-[10px] font-black uppercase tracking-[0.2em] mb-3">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-black uppercase tracking-[0.2em] mb-3">
                             <Building2 className="w-3 h-3" />
                             Institution Profile
                         </div>
                         <h1 className="text-4xl font-black text-white tracking-tight">{university.name}</h1>
                         <p className="text-gray-400 mt-1 font-medium flex items-center gap-2">
-                            <Globe className="w-4 h-4 text-[#d5a22d]" />
+                            <Globe className="w-4 h-4 text-brand-accent" />
                             Global Operations • {university.country.name}
                         </p>
                     </div>
                 </div>
 
                 <div className="flex items-center gap-3">
-                    <Button variant="outline" className="h-12 px-6 border-slate-200 text-slate-600 hover:bg-[#36335e]/5 hover:text-[#36335e] hover:border-[#36335e]/10 rounded-2xl font-bold shadow-sm" asChild>
+                    <Button variant="outline" className="h-12 px-6 border-slate-200 text-slate-600 hover:bg-brand-primary/5 hover:text-brand-primary hover:border-brand-primary/10 rounded-2xl font-bold shadow-sm" asChild>
                         <Link href={`/dashboard/country-director/universities/${id}/edit`}>
                             <Edit3 className="w-4 h-4 mr-2" />
                             Edit Profile
@@ -66,7 +66,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                         <InitiateMessage
                             recipientId={university.admins[0].id}
                             label="Message Admin"
-                            className="h-12 px-6 bg-white border-slate-200 text-slate-600 hover:bg-[#36335e]/5 hover:text-[#36335e] hover:border-[#36335e]/10 rounded-2xl font-bold shadow-sm"
+                            className="h-12 px-6 bg-white border-slate-200 text-slate-600 hover:bg-brand-primary/5 hover:text-brand-primary hover:border-brand-primary/10 rounded-2xl font-bold shadow-sm"
                         />
                     )}
                     {university.status === 'PENDING' && (
@@ -84,10 +84,10 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
             <div className="grid gap-10 lg:grid-cols-3">
                 <div className="lg:col-span-1 space-y-8">
-                    <Card className="border-none shadow-xl shadow-[#36335e]/10 rounded-[2.5rem] overflow-hidden">
+                    <Card className="border-none shadow-xl shadow-brand-primary/10 rounded-[2.5rem] overflow-hidden">
                         <CardHeader className="bg-slate-50/50 border-b border-slate-100 p-8">
-                            <CardTitle className="text-xl font-bold flex items-center gap-3 text-[#36335e]">
-                                <div className="p-2.5 rounded-xl bg-[#36335e]/10 text-[#36335e]">
+                            <CardTitle className="text-xl font-bold flex items-center gap-3 text-brand-primary">
+                                <div className="p-2.5 rounded-xl bg-brand-primary/10 text-brand-primary">
                                     <Building2 className="w-5 h-5" />
                                 </div>
                                 Registry Data
@@ -108,15 +108,15 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                             <div className="space-y-6">
                                 <div className="group cursor-pointer">
                                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-2 block">Website</label>
-                                    <p className="text-sm font-bold text-[#36335e] group-hover:text-[#2a284a] transition-colors flex items-center gap-2 truncate">
-                                        <Globe className="w-4 h-4 text-[#d5a22d]" />
+                                    <p className="text-sm font-bold text-brand-primary group-hover:text-brand-primary-hover transition-colors flex items-center gap-2 truncate">
+                                        <Globe className="w-4 h-4 text-brand-accent" />
                                         {university.website || 'Not updated'}
                                     </p>
                                 </div>
                                 <div>
                                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-2 block">Registration Date</label>
                                     <p className="text-sm font-bold text-slate-700 flex items-center gap-2">
-                                        <Calendar className="w-4 h-4 text-[#d5a22d]" />
+                                        <Calendar className="w-4 h-4 text-brand-accent" />
                                         {new Date(university.createdAt).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}
                                     </p>
                                 </div>
@@ -125,11 +125,11 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                     </Card>
 
                     {university.status === 'APPROVED' && (
-                        <Card className="border-none shadow-xl shadow-[#36335e]/20 rounded-[2.5rem] bg-[#36335e] text-white overflow-hidden relative group">
+                        <Card className="border-none shadow-xl shadow-brand-primary/20 rounded-[2.5rem] bg-brand-primary text-white overflow-hidden relative group">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:scale-150 transition-transform duration-700" />
                             <CardContent className="p-8 flex gap-5 items-center">
                                 <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 shadow-lg group-hover:rotate-12 transition-transform duration-500">
-                                    <CheckCircle2 className="w-8 h-8 text-[#d5a22d]" />
+                                    <CheckCircle2 className="w-8 h-8 text-brand-accent" />
                                 </div>
                                 <div>
                                     <h4 className="text-xl font-bold tracking-tight">Active Ops</h4>

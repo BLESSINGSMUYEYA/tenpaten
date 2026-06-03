@@ -62,20 +62,20 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
     return (
         <>
             {/* Desktop Header — White with gold top accent, clearly distinct from Midnight Navy sidebar */}
-            <nav className="hidden lg:block bg-white border-b border-gray-100 border-t-2 border-t-[#d5a22d] sticky top-0 z-40 shadow-sm">
+            <nav className="hidden lg:block bg-white border-b border-gray-100 border-t-2 border-t-brand-accent sticky top-0 z-40 shadow-sm">
                 <div className="px-8">
                     <div className="flex items-center justify-between h-14">
                         {/* Global Search Bar */}
                         <div className="w-full max-w-sm">
                             <form action="/dashboard/colleges" method="GET" className="relative group">
                                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                    <Search className="h-4 w-4 text-slate-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                                    <Search className="h-4 w-4 text-slate-400 group-focus-within:text-brand-accent transition-colors" />
                                 </div>
                                 <input
                                     type="text"
                                     name="query"
                                     placeholder="Search programs or colleges..."
-                                    className="block w-full pl-10 pr-3 py-2 border border-gray-100 rounded-xl bg-gray-50/50 text-[13px] font-medium placeholder:text-slate-400 focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#d5a22d]/30 focus:border-[#d5a22d] transition-all"
+                                    className="block w-full pl-10 pr-3 py-2 border border-gray-100 rounded-xl bg-gray-50/50 text-[13px] font-medium placeholder:text-slate-400 focus:outline-none focus:bg-white focus:ring-1 focus:ring-brand-accent/30 focus:border-brand-accent transition-all"
                                 />
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-1.5">
                                     <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded border border-gray-200 bg-white text-[10px] font-medium text-slate-400 select-none">
@@ -94,7 +94,7 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
             </nav>
 
             {/* Mobile Header - Logo + Menu Toggle */}
-            <nav className="lg:hidden bg-white border-b border-gray-100 border-t-2 border-t-[#d5a22d] sticky top-0 z-40 shadow-sm">
+            <nav className="lg:hidden bg-white border-b border-gray-100 border-t-2 border-t-brand-accent sticky top-0 z-40 shadow-sm">
                 <div className="px-4 sm:px-6">
                     <div className="flex items-center justify-between h-16">
                         <Link href={homeUrl} className="transition-transform active:scale-95">
@@ -119,7 +119,7 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
                 >
                     {/* Backdrop */}
                     <div 
-                        className={`absolute inset-0 bg-[#36335e]/40 backdrop-blur-sm transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
+                        className={`absolute inset-0 bg-brand-primary/40 backdrop-blur-sm transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
                         onClick={() => setMobileMenuOpen(false)}
                     />
                     
@@ -139,19 +139,19 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
                         </div>
 
                         {/* User Profile Section */}
-                        <div className="px-6 py-8 border-b border-gray-100 bg-gradient-to-br from-[#36335e]/5 to-white">
+                        <div className="px-6 py-8 border-b border-gray-100 bg-linear-to-br from-brand-primary/5 to-white">
                             <div className="flex items-center gap-4">
-                                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-[#36335e] to-[#4a477d] flex items-center justify-center shadow-lg border-2 border-white shrink-0">
+                                <div className="relative w-14 h-14 rounded-2xl bg-linear-to-br from-brand-primary to-[#4a477d] flex items-center justify-center shadow-lg border-2 border-white shrink-0">
                                     <span className="text-white font-black text-xl">
                                         {(user?.name?.[0] || 'U').toUpperCase()}
                                     </span>
-                                    <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#d5a22d] rounded-full border-2 border-white" />
+                                    <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-brand-accent rounded-full border-2 border-white" />
                                 </div>
                                 <div className="min-w-0">
-                                    <p className="text-base font-black text-[#36335e] truncate leading-tight tracking-tight capitalize">
+                                    <p className="text-base font-black text-brand-primary truncate leading-tight tracking-tight capitalize">
                                         {user?.name?.split(' ')[0] || 'User'}
                                     </p>
-                                    <p className="text-[10px] font-black text-[#d5a22d] uppercase tracking-[0.2em] mt-0.5">{roleLabel}</p>
+                                    <p className="text-[10px] font-black text-brand-accent uppercase tracking-[0.2em] mt-0.5">{roleLabel}</p>
                                     <p className="text-xs text-slate-400 font-medium truncate mt-0.5">{user?.email}</p>
                                 </div>
                             </div>
@@ -170,20 +170,20 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
                                         href={link.href}
                                         onClick={() => setMobileMenuOpen(false)}
                                         className={`flex items-center gap-4 px-4 py-3 rounded-xl text-sm font-bold transition-all border-l-2 ${active
-                                            ? 'bg-[#1d1b41] text-white shadow-lg shadow-[#1d1b41]/20 border-[#d5a22d]'
+                                            ? 'bg-[#1d1b41] text-white shadow-lg shadow-[#1d1b41]/20 border-brand-accent'
                                             : 'text-slate-600 hover:bg-gray-50 hover:text-[#1d1b41] border-transparent'
                                             }`}
                                     >
-                                        <div className={`w-8 h-8 rounded-xl flex items-center justify-center transition-colors ${active ? 'bg-[#d5a22d]/20' : 'bg-gray-100'}`}>
-                                             <Icon className={`w-4 h-4 ${active ? 'text-[#d5a22d]' : 'text-slate-400'}`} />
+                                        <div className={`w-8 h-8 rounded-xl flex items-center justify-center transition-colors ${active ? 'bg-brand-accent/20' : 'bg-gray-100'}`}>
+                                             <Icon className={`w-4 h-4 ${active ? 'text-brand-accent' : 'text-slate-400'}`} />
                                         </div>
                                         {link.name}
                                         {(link as any).badge && (
-                                            <span className="ml-2 px-1.5 py-0.5 rounded text-[8px] font-black bg-[#d5a22d] text-[#36335e] uppercase tracking-widest shrink-0">
+                                            <span className="ml-2 px-1.5 py-0.5 rounded text-[8px] font-black bg-brand-accent text-brand-primary uppercase tracking-widest shrink-0">
                                                 {(link as any).badge}
                                             </span>
                                         )}
-                                        {active && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#d5a22d] animate-pulse" />}
+                                        {active && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />}
                                     </Link>
                                 );
                             })}
@@ -194,7 +194,7 @@ export default function DashboardNav({ user, isEnrolled = false, hasAffiliateAcc
                             <Link
                                 href={role === 'PROSPECT' ? '/dashboard/student-settings' : role === 'SCHOOL_ADMIN' ? '/dashboard/school/settings' : '/dashboard/student-settings'}
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="flex items-center gap-4 px-4 py-3 rounded-2xl text-sm font-bold text-slate-600 hover:bg-white hover:text-[#36335e] transition-all shadow-sm border border-transparent hover:border-gray-100"
+                                className="flex items-center gap-4 px-4 py-3 rounded-2xl text-sm font-bold text-slate-600 hover:bg-white hover:text-brand-primary transition-all shadow-sm border border-transparent hover:border-gray-100"
                             >
                                 <div className="w-8 h-8 rounded-xl bg-gray-100 flex items-center justify-center">
                                     <Settings className="w-4 h-4 text-slate-400" />
@@ -235,31 +235,31 @@ function ProfileDropdown({ user, isOpen, setIsOpen }: { user: any, isOpen: boole
         <div className="relative">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-2.5 px-2 py-1.5 rounded-xl hover:bg-[#36335e]/5 transition-all group"
+                className="flex items-center gap-2.5 px-2 py-1.5 rounded-xl hover:bg-brand-primary/5 transition-all group"
             >
                 {/* Avatar */}
-                <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-[#36335e] to-[#4a477d] flex items-center justify-center shadow-sm border border-[#36335e]/20">
+                <div className="relative w-9 h-9 rounded-xl bg-linear-to-br from-brand-primary to-[#4a477d] flex items-center justify-center shadow-sm border border-brand-primary/20">
                     <span className="text-white font-black text-[11px] tracking-tight">{initials}</span>
-                    <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-[#d5a22d] rounded-full border-2 border-white" />
+                    <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-brand-accent rounded-full border-2 border-white" />
                 </div>
                 {/* First Name */}
-                <span className="hidden xl:block text-sm font-bold text-[#36335e] group-hover:text-[#d5a22d] transition-colors">{firstName}</span>
+                <span className="hidden xl:block text-sm font-bold text-brand-primary group-hover:text-brand-accent transition-colors">{firstName}</span>
                 <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {isOpen && (
                 <>
                     <div className="fixed inset-0 z-30" onClick={() => setIsOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-60 bg-white rounded-2xl shadow-2xl shadow-[#36335e]/10 border border-gray-100 overflow-hidden z-40 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="absolute right-0 mt-2 w-60 bg-white rounded-2xl shadow-2xl shadow-brand-primary/10 border border-gray-100 overflow-hidden z-40 animate-in fade-in slide-in-from-top-2 duration-200">
                         {/* Profile Header */}
-                        <div className="bg-gradient-to-br from-[#36335e] to-[#4a477d] px-4 py-4">
+                        <div className="bg-linear-to-br from-brand-primary to-[#4a477d] px-4 py-4">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center shrink-0">
                                     <span className="text-white font-black text-sm">{initials}</span>
                                 </div>
                                 <div className="min-w-0">
                                     <p className="text-sm font-black text-white truncate capitalize">{user?.name || 'User'}</p>
-                                    <p className="text-[10px] font-bold text-[#d5a22d] uppercase tracking-[0.2em]">{roleLabel}</p>
+                                    <p className="text-[10px] font-bold text-brand-accent uppercase tracking-[0.2em]">{roleLabel}</p>
                                 </div>
                             </div>
                         </div>
@@ -267,7 +267,7 @@ function ProfileDropdown({ user, isOpen, setIsOpen }: { user: any, isOpen: boole
                             {role === 'SCHOOL_ADMIN' && (
                                 <Link
                                     href="/dashboard/school/profile"
-                                    className="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:bg-[#36335e]/5 hover:text-[#36335e] transition-colors"
+                                    className="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:bg-brand-primary/5 hover:text-brand-primary transition-colors"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     <Building2 className="w-4 h-4" />
@@ -276,7 +276,7 @@ function ProfileDropdown({ user, isOpen, setIsOpen }: { user: any, isOpen: boole
                             )}
                             <Link
                                 href={role === 'PROSPECT' ? '/dashboard/student-settings' : role === 'SCHOOL_ADMIN' ? '/dashboard/school/settings' : '/dashboard/student-settings'}
-                                className="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:bg-[#36335e]/5 hover:text-[#36335e] transition-colors"
+                                className="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:bg-brand-primary/5 hover:text-brand-primary transition-colors"
                                 onClick={() => setIsOpen(false)}
                             >
                                 <Settings className="w-4 h-4" />

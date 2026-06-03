@@ -125,8 +125,8 @@ export default function VerifyEmailClient() {
     return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
             {/* Secure Channel Badge */}
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#d5a22d]/5 border border-[#d5a22d]/20">
-                <div className="w-10 h-10 rounded-xl bg-white shadow-sm border border-gray-100 flex items-center justify-center text-[#d5a22d]">
+            <div className="flex items-center gap-4 p-4 rounded-2xl bg-brand-accent/5 border border-brand-accent/20">
+                <div className="w-10 h-10 rounded-xl bg-white shadow-sm border border-gray-100 flex items-center justify-center text-brand-accent">
                     <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div className="space-y-0.5">
@@ -158,7 +158,7 @@ export default function VerifyEmailClient() {
                                 onChange={(e) => handleOtpChange(index, e.target.value)}
                                 onKeyDown={(e) => handleKeyDown(index, e)}
                                 disabled={isPending || !email || state?.success}
-                                className="w-full h-16 sm:h-20 text-center text-3xl font-black border-2 border-slate-100 rounded-2xl focus:ring-4 focus:ring-[#d5a22d]/20 focus:border-[#d5a22d] transition-all bg-slate-50/50 text-[#1a1b41] shadow-sm placeholder:text-slate-200"
+                                className="w-full h-16 sm:h-20 text-center text-3xl font-black border-2 border-slate-100 rounded-2xl focus:ring-4 focus:ring-brand-accent/20 focus:border-brand-accent transition-all bg-slate-50/50 text-[#1a1b41] shadow-sm placeholder:text-slate-200"
                                 aria-label={`Digit ${index + 1}`}
                                 placeholder="0"
                             />
@@ -189,7 +189,7 @@ export default function VerifyEmailClient() {
                         type="button"
                         onClick={handleResend}
                         disabled={timeLeft > 0 || isResending || !email || state?.success}
-                        className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-[#d5a22d] disabled:opacity-50 disabled:hover:text-slate-400 flex items-center justify-center transition-all group h-10"
+                        className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-brand-accent disabled:opacity-50 disabled:hover:text-slate-400 flex items-center justify-center transition-all group h-10"
                     >
                         {isResending ? (
                             <Loader2 className="w-3 h-3 animate-spin mr-2" />

@@ -75,11 +75,11 @@ export default function DepartmentList({ departments }: DepartmentListProps) {
 
     return (
         <div className="space-y-6 animate-in fade-in duration-500">
-            <div className="bg-white rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#36335e]/10 transition-all duration-300 overflow-hidden">
+            <div className="bg-white rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-brand-primary/10 transition-all duration-300 overflow-hidden">
                 <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/30">
                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-[#36335e]/10 flex items-center justify-center border border-slate-100 shadow-sm">
-                            <Layers className="w-5 h-5 text-[#36335e]" />
+                        <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center border border-slate-100 shadow-sm">
+                            <Layers className="w-5 h-5 text-brand-primary" />
                         </div>
                         <div>
                             <h3 className="text-xl font-black text-slate-900 tracking-tight">
@@ -91,7 +91,7 @@ export default function DepartmentList({ departments }: DepartmentListProps) {
                     {!isEditing && (
                         <button
                             onClick={startNew}
-                            className="flex items-center gap-2 px-5 py-3 bg-[#36335e] text-white font-black uppercase tracking-widest text-[10px] rounded-xl shadow-lg shadow-[#36335e]/20 hover:bg-[#2a284a] transition-all transform active:scale-95"
+                            className="flex items-center gap-2 px-5 py-3 bg-brand-primary text-white font-black uppercase tracking-widest text-[10px] rounded-xl shadow-lg shadow-brand-primary/20 hover:bg-brand-primary-hover transition-all transform active:scale-95"
                         >
                             <Plus className="w-4 h-4" />
                             Add Department
@@ -100,17 +100,17 @@ export default function DepartmentList({ departments }: DepartmentListProps) {
                 </div>
 
                 {isEditing ? (
-                    <div className="p-8 bg-[#36335e]/5 border-b border-slate-100 animate-in slide-in-from-top-2 duration-300">
+                    <div className="p-8 bg-brand-primary/5 border-b border-slate-100 animate-in slide-in-from-top-2 duration-300">
                         <form onSubmit={handleSave} className="space-y-5 max-w-2xl">
                             <div className="space-y-2">
-                                <Label htmlFor="dept-name" className="text-xs font-black uppercase tracking-widest text-[#36335e] ml-1">Department Name</Label>
+                                <Label htmlFor="dept-name" className="text-xs font-black uppercase tracking-widest text-brand-primary ml-1">Department Name</Label>
                                 <Input
                                     id="dept-name"
                                     required
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                     placeholder="e.g., Faculty of Engineering & Technology"
-                                    className="h-14 border-none bg-white focus:bg-white focus:ring-4 focus:ring-[#36335e]/10 rounded-2xl transition-all font-bold text-slate-900 shadow-sm"
+                                    className="h-14 border-none bg-white focus:bg-white focus:ring-4 focus:ring-brand-primary/10 rounded-2xl transition-all font-bold text-slate-900 shadow-sm"
                                 />
                             </div>
 
@@ -118,7 +118,7 @@ export default function DepartmentList({ departments }: DepartmentListProps) {
                                 <button
                                     type="submit"
                                     disabled={isLoading}
-                                    className="flex items-center justify-center gap-2 px-6 py-3 bg-[#36335e] text-white font-black uppercase tracking-widest text-xs rounded-xl shadow-lg shadow-[#36335e]/20 hover:bg-[#2a284a] transition-all transform active:scale-95 disabled:opacity-50"
+                                    className="flex items-center justify-center gap-2 px-6 py-3 bg-brand-primary text-white font-black uppercase tracking-widest text-xs rounded-xl shadow-lg shadow-brand-primary/20 hover:bg-brand-primary-hover transition-all transform active:scale-95 disabled:opacity-50"
                                 >
                                     {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
                                     {isEditing === 'new' ? 'Create' : 'Save Changes'}
@@ -139,10 +139,10 @@ export default function DepartmentList({ departments }: DepartmentListProps) {
                             departments.map((dept) => (
                                 <div key={dept.id} className="p-6 md:p-8 hover:bg-slate-50/50 transition-colors flex justify-between items-center group">
                                     <div className="flex-1">
-                                        <h4 className="text-lg font-black text-slate-900 tracking-tight group-hover:text-[#36335e] transition-colors mb-2">{dept.name}</h4>
+                                        <h4 className="text-lg font-black text-slate-900 tracking-tight group-hover:text-brand-primary transition-colors mb-2">{dept.name}</h4>
                                         <div className="flex items-center gap-3">
-                                            <span className="flex items-center gap-1.5 px-2.5 py-1 bg-[#36335e]/5 text-[#36335e] text-[10px] font-bold uppercase tracking-widest rounded-lg border border-slate-100 shadow-sm">
-                                                <Layers className="w-3 h-3 text-[#d5a22d]" />
+                                            <span className="flex items-center gap-1.5 px-2.5 py-1 bg-brand-primary/5 text-brand-primary text-[10px] font-bold uppercase tracking-widest rounded-lg border border-slate-100 shadow-sm">
+                                                <Layers className="w-3 h-3 text-brand-accent" />
                                                 {dept._count?.programs || 0} Programs
                                             </span>
                                         </div>
@@ -150,7 +150,7 @@ export default function DepartmentList({ departments }: DepartmentListProps) {
                                     <div className="flex gap-2 bg-white border border-slate-100 p-1 rounded-xl shadow-sm opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0">
                                         <button
                                             onClick={() => startEditing(dept)}
-                                            className="p-2.5 text-slate-400 hover:text-[#d5a22d] hover:bg-[#d5a22d]/10 rounded-lg transition-all"
+                                            className="p-2.5 text-slate-400 hover:text-brand-accent hover:bg-brand-accent/10 rounded-lg transition-all"
                                         >
                                             <Pencil className="w-4 h-4" />
                                         </button>

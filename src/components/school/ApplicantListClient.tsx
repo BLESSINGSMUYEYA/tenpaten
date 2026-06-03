@@ -73,12 +73,12 @@ function FilterBar({ programs }: { programs: Program[] }) {
         <div className="flex flex-wrap items-center gap-4 px-8 py-5 border-b border-slate-100 bg-slate-50/30">
             {/* Search */}
             <div className="flex-1 min-w-[280px] relative group">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400 group-focus-within:text-[#36335e] transition-colors" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400 group-focus-within:text-brand-primary transition-colors" />
                 <input
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search applicants..."
-                    className="w-full h-12 pl-12 pr-4 bg-white rounded-2xl text-sm font-bold text-[#36335e] placeholder:text-slate-300 border-none focus:ring-4 focus:ring-[#36335e]/10 transition-all shadow-sm"
+                    className="w-full h-12 pl-12 pr-4 bg-white rounded-2xl text-sm font-bold text-brand-primary placeholder:text-slate-300 border-none focus:ring-4 focus:ring-brand-primary/10 transition-all shadow-sm"
                 />
                 {search && (
                     <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-xl hover:bg-slate-100 transition-colors">
@@ -92,7 +92,7 @@ function FilterBar({ programs }: { programs: Program[] }) {
                 <select
                     value={searchParams.get('status') ?? 'ALL'}
                     onChange={(e) => setParam('status', e.target.value)}
-                    className="appearance-none pl-6 pr-10 h-12 bg-white rounded-2xl text-sm font-black text-[#36335e] border-none focus:ring-4 focus:ring-[#36335e]/10 transition-all cursor-pointer shadow-sm"
+                    className="appearance-none pl-6 pr-10 h-12 bg-white rounded-2xl text-sm font-black text-brand-primary border-none focus:ring-4 focus:ring-brand-primary/10 transition-all cursor-pointer shadow-sm"
                 >
                     <option value="ALL">All Statuses</option>
                     <option value="DRAFT">Drafts</option>
@@ -103,7 +103,7 @@ function FilterBar({ programs }: { programs: Program[] }) {
                     <option value="ENROLLED">Enrolled</option>
                     <option value="REJECTED">Rejected</option>
                 </select>
-                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d5a22d] pointer-events-none" />
+                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-accent pointer-events-none" />
             </div>
 
             {/* Programme Filter */}
@@ -111,14 +111,14 @@ function FilterBar({ programs }: { programs: Program[] }) {
                 <select
                     value={searchParams.get('programId') ?? 'ALL'}
                     onChange={(e) => setParam('programId', e.target.value)}
-                    className="appearance-none pl-6 pr-10 h-12 bg-white rounded-2xl text-sm font-black text-[#36335e] border-none focus:ring-4 focus:ring-[#36335e]/10 transition-all cursor-pointer shadow-sm max-w-[220px]"
+                    className="appearance-none pl-6 pr-10 h-12 bg-white rounded-2xl text-sm font-black text-brand-primary border-none focus:ring-4 focus:ring-brand-primary/10 transition-all cursor-pointer shadow-sm max-w-[220px]"
                 >
                     <option value="ALL">All Programmes</option>
                     {programs.map(p => (
                         <option key={p.id} value={p.id}>{p.name}</option>
                     ))}
                 </select>
-                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d5a22d] pointer-events-none" />
+                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-accent pointer-events-none" />
             </div>
 
             {/* Sort */}
@@ -126,14 +126,14 @@ function FilterBar({ programs }: { programs: Program[] }) {
                 <select
                     value={searchParams.get('sortBy') ?? 'rank'}
                     onChange={(e) => setParam('sortBy', e.target.value)}
-                    className="appearance-none pl-6 pr-10 h-12 bg-white rounded-2xl text-sm font-black text-[#36335e] border-none focus:ring-4 focus:ring-[#36335e]/10 transition-all cursor-pointer shadow-sm"
+                    className="appearance-none pl-6 pr-10 h-12 bg-white rounded-2xl text-sm font-black text-brand-primary border-none focus:ring-4 focus:ring-brand-primary/10 transition-all cursor-pointer shadow-sm"
                 >
                     <option value="rank">By Rank</option>
                     <option value="merit-desc">Top Merit</option>
                     <option value="newest">Newest</option>
                     <option value="name-asc">A–Z</option>
                 </select>
-                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d5a22d] pointer-events-none" />
+                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-accent pointer-events-none" />
             </div>
 
             {/* Clear */}
@@ -193,13 +193,13 @@ export default function ApplicantListClient({
             <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                     <thead>
-                        <tr className="bg-[#36335e] text-white">
+                        <tr className="bg-brand-primary text-white">
                             <th className="px-8 py-5 w-12">
                                 <input
                                     type="checkbox"
                                     checked={allSelected}
                                     onChange={toggleAll}
-                                    className="w-5 h-5 rounded-lg border-white/30 bg-white/10 accent-[#d5a22d] cursor-pointer"
+                                    className="w-5 h-5 rounded-lg border-white/30 bg-white/10 accent-brand-accent cursor-pointer"
                                 />
                             </th>
                             <th className="px-5 py-5 text-xs font-black tracking-widest uppercase text-white/70">Applicant</th>
@@ -217,7 +217,7 @@ export default function ApplicantListClient({
                                             <Search className="w-8 h-8 text-slate-200" />
                                         </div>
                                         <div>
-                                            <p className="text-lg font-black text-[#36335e] tracking-tight">No results found</p>
+                                            <p className="text-lg font-black text-brand-primary tracking-tight">No results found</p>
                                             <p className="text-sm font-bold text-slate-400 mt-1">Try adjusting your search or filters to find what you're looking for.</p>
                                         </div>
                                     </div>
@@ -234,9 +234,9 @@ export default function ApplicantListClient({
                                         onClick={() => openApplicant(app)}
                                         className={`transition-all duration-300 group cursor-pointer border-l-4 ${
                                             isPanelOpen
-                                                ? 'bg-[#36335e]/5 border-[#d5a22d]'
+                                                ? 'bg-brand-primary/5 border-brand-accent'
                                                 : isSelected
-                                                ? 'bg-[#d5a22d]/5 border-[#d5a22d]/30'
+                                                ? 'bg-brand-accent/5 border-brand-accent/30'
                                                 : 'hover:bg-slate-50/80 border-transparent'
                                         }`}
                                     >
@@ -249,7 +249,7 @@ export default function ApplicantListClient({
                                                 type="checkbox"
                                                 checked={isSelected}
                                                 onChange={() => toggleId(app.id)}
-                                                className="w-5 h-5 rounded-lg border-slate-200 accent-[#36335e] cursor-pointer"
+                                                className="w-5 h-5 rounded-lg border-slate-200 accent-brand-primary cursor-pointer"
                                                 onClick={(e) => e.stopPropagation()}
                                             />
                                         </td>
@@ -257,11 +257,11 @@ export default function ApplicantListClient({
                                         {/* Name */}
                                         <td className="px-5 py-6">
                                             <div className="flex items-center gap-4">
-                                                <div className={`w-11 h-11 rounded-[14px] flex items-center justify-center text-sm font-black transition-all shrink-0 shadow-sm ${isPanelOpen ? 'bg-[#36335e] text-[#d5a22d]' : 'bg-[#36335e]/5 text-[#36335e] group-hover:bg-[#36335e] group-hover:text-[#d5a22d]'}`}>
+                                                <div className={`w-11 h-11 rounded-[14px] flex items-center justify-center text-sm font-black transition-all shrink-0 shadow-sm ${isPanelOpen ? 'bg-brand-primary text-brand-accent' : 'bg-brand-primary/5 text-brand-primary group-hover:bg-brand-primary group-hover:text-brand-accent'}`}>
                                                     {app.prospect.fullName.charAt(0)}
                                                 </div>
                                                 <div>
-                                                    <p className="font-black text-[#36335e] text-[15px] leading-tight group-hover:text-[#d5a22d] transition-colors">
+                                                    <p className="font-black text-brand-primary text-[15px] leading-tight group-hover:text-brand-accent transition-colors">
                                                         {app.prospect.fullName}
                                                     </p>
                                                     <p className="text-xs font-bold text-slate-400 mt-1 truncate max-w-[200px]">
@@ -281,7 +281,7 @@ export default function ApplicantListClient({
                                         {/* Rank */}
                                         <td className="px-5 py-6 text-center">
                                             {app.rank !== null ? (
-                                                <span className="inline-flex items-center justify-center w-10 h-10 rounded-[14px] bg-[#36335e]/5 text-[#36335e] font-black text-sm shadow-sm group-hover:bg-[#36335e] group-hover:text-white transition-all">
+                                                <span className="inline-flex items-center justify-center w-10 h-10 rounded-[14px] bg-brand-primary/5 text-brand-primary font-black text-sm shadow-sm group-hover:bg-brand-primary group-hover:text-white transition-all">
                                                     {app.rank}
                                                 </span>
                                             ) : (
@@ -350,7 +350,7 @@ function PaginationLink({
 
     if (disabled) {
         return (
-            <span className={`px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] opacity-30 ${primary ? 'bg-[#36335e] text-white' : 'border border-slate-100 text-slate-400'}`}>
+            <span className={`px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] opacity-30 ${primary ? 'bg-brand-primary text-white' : 'border border-slate-100 text-slate-400'}`}>
                 {label}
             </span>
         );
@@ -359,7 +359,7 @@ function PaginationLink({
     return (
         <Link
             href={href}
-            className={`px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-sm ${primary ? 'bg-[#36335e] text-[#d5a22d] hover:bg-[#2a284a] shadow-[#36335e]/10' : 'bg-white border border-slate-100 text-slate-600 hover:border-[#36335e]/30 hover:text-[#36335e]'}`}
+            className={`px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-sm ${primary ? 'bg-brand-primary text-brand-accent hover:bg-brand-primary-hover shadow-brand-primary/10' : 'bg-white border border-slate-100 text-slate-600 hover:border-brand-primary/30 hover:text-brand-primary'}`}
         >
             {label}
         </Link>

@@ -108,12 +108,12 @@ export default function UniversityProfileForm({ university, countries = [], isNe
         <>
             <form onSubmit={handleSubmit} className="divide-y divide-slate-100">
             {/* Brand accent bar */}
-            <div className="h-1 w-full bg-gradient-to-r from-[#36335e] via-[#d5a22d] to-[#36335e]" />
+            <div className="h-1 w-full bg-linear-to-r from-brand-primary via-brand-accent to-brand-primary" />
 
             {/* Form header */}
             <div className="px-8 pt-7 pb-6 md:px-10 md:pt-8 bg-white">
                 <div className="flex items-center gap-4">
-                    <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-gradient-to-br from-[#36335e] to-[#4f4b8a] flex items-center justify-center shadow-lg shadow-[#36335e]/20">
+                    <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-linear-to-br from-brand-primary to-[#4f4b8a] flex items-center justify-center shadow-lg shadow-brand-primary/20">
                         <Building2 className="w-5 h-5 text-white" />
                     </div>
                     <div className="min-w-0">
@@ -140,7 +140,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                 value={formData.name}
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                 placeholder="e.g., Tenpaten Apply University"
-                                className="h-14 text-lg border-slate-100 bg-slate-50/50 focus:bg-white focus:border-[#d5a22d] focus:ring-2 focus:ring-[#d5a22d]/10 rounded-2xl transition-all font-bold placeholder:text-slate-300 text-[#36335e]"
+                                className="h-14 text-lg border-slate-100 bg-slate-50/50 focus:bg-white focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 rounded-2xl transition-all font-bold placeholder:text-slate-300 text-brand-primary"
                             />
                         </div>
 
@@ -148,7 +148,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                             <div className="space-y-3 md:col-span-2">
                                 <Label htmlFor="countryId" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Country of Origin</Label>
                                 <div className="relative group">
-                                    <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none transition-colors group-focus-within:text-[#d5a22d]">
+                                    <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none transition-colors group-focus-within:text-brand-accent">
                                         <MapPin className="h-5 w-5 text-slate-400" />
                                     </div>
                                     <select
@@ -156,7 +156,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                         required
                                         value={formData.countryId}
                                         onChange={(e) => setFormData({ ...formData, countryId: e.target.value })}
-                                        className="h-14 w-full pl-14 pr-4 border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#d5a22d] focus:ring-2 focus:ring-[#d5a22d]/10 rounded-2xl transition-all font-bold text-slate-700 appearance-none cursor-pointer outline-none hover:bg-white"
+                                        className="h-14 w-full pl-14 pr-4 border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 rounded-2xl transition-all font-bold text-slate-700 appearance-none cursor-pointer outline-none hover:bg-white"
                                     >
                                         <option value="">Select institution country...</option>
                                         {countries.map((country: Country) => (
@@ -170,7 +170,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                         <div className="space-y-3">
                             <Label htmlFor="website" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Official Website</Label>
                             <div className="relative group">
-                                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-slate-400 transition-colors group-focus-within:text-[#d5a22d]">
+                                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-slate-400 transition-colors group-focus-within:text-brand-accent">
                                     <Globe className="h-5 w-5" />
                                 </div>
                                 <Input
@@ -179,7 +179,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                     value={formData.website}
                                     onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                                     placeholder="https://www.university.edu"
-                                    className="h-14 pl-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:border-[#d5a22d] focus:ring-2 focus:ring-[#d5a22d]/10 rounded-2xl transition-all font-bold text-slate-700"
+                                    className="h-14 pl-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 rounded-2xl transition-all font-bold text-slate-700"
                                 />
                             </div>
                         </div>
@@ -187,7 +187,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                         <div className="space-y-3">
                             <Label htmlFor="phone" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Contact Phone</Label>
                             <div className="relative group">
-                                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-slate-400 transition-colors group-focus-within:text-[#d5a22d]">
+                                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-slate-400 transition-colors group-focus-within:text-brand-accent">
                                     <Phone className="h-5 w-5" />
                                 </div>
                                 <Input
@@ -196,7 +196,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                     value={formData.phone}
                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                     placeholder="+1 (234) 567-8900"
-                                    className="h-14 pl-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:border-[#d5a22d] focus:ring-2 focus:ring-[#d5a22d]/10 rounded-2xl transition-all font-bold text-slate-700"
+                                    className="h-14 pl-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 rounded-2xl transition-all font-bold text-slate-700"
                                 />
                             </div>
                         </div>
@@ -208,7 +208,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                 value={formData.description}
                                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                 placeholder="Describe your university's history, values, and academic excellence..."
-                                className="min-h-[160px] border-slate-100 bg-slate-50/50 focus:bg-white focus:border-[#d5a22d] focus:ring-2 focus:ring-[#d5a22d]/10 rounded-2xl transition-all font-medium py-5 px-6 leading-relaxed text-slate-700 resize-none"
+                                className="min-h-[160px] border-slate-100 bg-slate-50/50 focus:bg-white focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 rounded-2xl transition-all font-medium py-5 px-6 leading-relaxed text-slate-700 resize-none"
                             />
                         </div>
 
@@ -222,7 +222,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                         value={formData.tuition}
                                         onChange={(e) => setFormData({ ...formData, tuition: e.target.value })}
                                         placeholder="e.g., $10,000 - $25,000 per academic year"
-                                        className="h-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:border-[#d5a22d] focus:ring-2 focus:ring-[#d5a22d]/10 rounded-2xl transition-all font-bold text-slate-700"
+                                        className="h-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 rounded-2xl transition-all font-bold text-slate-700"
                                     />
                                 </div>
 
@@ -234,7 +234,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                                 id="applicationFeeCurrency"
                                                 value={formData.applicationFeeCurrency}
                                                 onChange={(e) => setFormData({ ...formData, applicationFeeCurrency: e.target.value })}
-                                                className="h-14 w-full pl-4 pr-6 border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#d5a22d] focus:ring-2 focus:ring-[#d5a22d]/10 rounded-2xl transition-all font-bold text-slate-700 appearance-none cursor-pointer outline-none hover:bg-white"
+                                                className="h-14 w-full pl-4 pr-6 border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 rounded-2xl transition-all font-bold text-slate-700 appearance-none cursor-pointer outline-none hover:bg-white"
                                             >
                                                 <option value="MWK">MWK</option>
                                                 <option value="USD">USD</option>
@@ -250,7 +250,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                             value={formData.applicationFeeAmount ?? ''}
                                             onChange={(e) => setFormData({ ...formData, applicationFeeAmount: e.target.value === '' ? null : Number(e.target.value) })}
                                             placeholder="Fee amount (e.g., 50.00)"
-                                            className="h-14 flex-1 border-slate-100 bg-slate-50/50 focus:bg-white focus:border-[#d5a22d] focus:ring-2 focus:ring-[#d5a22d]/10 rounded-2xl transition-all font-bold text-slate-700"
+                                            className="h-14 flex-1 border-slate-100 bg-slate-50/50 focus:bg-white focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 rounded-2xl transition-all font-bold text-slate-700"
                                         />
                                     </div>
                                     <p className="text-[11px] text-slate-400 font-medium ml-1">Leave empty or 0 for free applications. Note: Standard platform fees may apply to transactions.</p>
@@ -258,10 +258,10 @@ export default function UniversityProfileForm({ university, countries = [], isNe
 
                                 <div className="md:col-span-2 pt-8 border-t border-slate-100 space-y-8">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-[#36335e]">
+                                        <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-brand-primary">
                                             <Wallet className="w-4 h-4" />
                                         </div>
-                                        <h3 className="text-sm font-black text-[#36335e] uppercase tracking-wider">Payout Information</h3>
+                                        <h3 className="text-sm font-black text-brand-primary uppercase tracking-wider">Payout Information</h3>
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8 bg-slate-50/50 rounded-[2.5rem] border border-slate-100">
                                         <div className="space-y-3">
@@ -271,7 +271,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                                 value={formData.bankName}
                                                 onChange={(e) => setFormData({ ...formData, bankName: e.target.value })}
                                                 placeholder="e.g., National Bank of Malawi"
-                                                className="h-12 border-slate-100 bg-white focus:border-[#d5a22d] rounded-xl font-bold text-slate-700"
+                                                className="h-12 border-slate-100 bg-white focus:border-brand-accent rounded-xl font-bold text-slate-700"
                                             />
                                         </div>
                                         <div className="space-y-3">
@@ -281,7 +281,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                                 value={formData.accountName}
                                                 onChange={(e) => setFormData({ ...formData, accountName: e.target.value })}
                                                 placeholder="Official Institution Name"
-                                                className="h-12 border-slate-100 bg-white focus:border-[#d5a22d] rounded-xl font-bold text-slate-700"
+                                                className="h-12 border-slate-100 bg-white focus:border-brand-accent rounded-xl font-bold text-slate-700"
                                             />
                                         </div>
                                         <div className="space-y-3">
@@ -291,7 +291,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                                 value={formData.accountNumber}
                                                 onChange={(e) => setFormData({ ...formData, accountNumber: e.target.value })}
                                                 placeholder="Enter full account number"
-                                                className="h-12 border-slate-100 bg-white focus:border-[#d5a22d] rounded-xl font-bold text-slate-700"
+                                                className="h-12 border-slate-100 bg-white focus:border-brand-accent rounded-xl font-bold text-slate-700"
                                             />
                                         </div>
                                         <div className="space-y-3">
@@ -301,7 +301,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                                 value={formData.mobileMoneyNumber}
                                                 onChange={(e) => setFormData({ ...formData, mobileMoneyNumber: e.target.value })}
                                                 placeholder="e.g., 265999000000"
-                                                className="h-12 border-slate-100 bg-white focus:border-[#d5a22d] rounded-xl font-bold text-slate-700"
+                                                className="h-12 border-slate-100 bg-white focus:border-brand-accent rounded-xl font-bold text-slate-700"
                                             />
                                         </div>
                                         <div className="md:col-span-2">
@@ -317,7 +317,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
 
                                 <div className="space-y-6 md:col-span-2 pt-8 border-t border-slate-100">
                                     <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Institutional Branding</Label>
-                                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 p-6 bg-slate-50 rounded-[2rem] border-2 border-dashed border-slate-200 hover:border-[#36335e]/20 hover:bg-[#36335e]/5 transition-colors">
+                                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 p-6 bg-slate-50 rounded-[2rem] border-2 border-dashed border-slate-200 hover:border-brand-primary/20 hover:bg-brand-primary/5 transition-colors">
                                         <div className="h-28 w-28 rounded-3xl bg-white border border-slate-100 flex items-center justify-center overflow-hidden shadow-sm shrink-0">
                                             {formData.logo ? (
                                                 <img src={formData.logo} alt="Logo" className="h-full w-full object-contain p-4" />
@@ -338,7 +338,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                                 }}
                                             >
                                                 {({ open }) => (
-                                                    <Button type="button" onClick={() => open()} variant="outline" className="font-bold rounded-xl h-10 border-slate-300 hover:border-[#36335e] hover:text-[#36335e]">
+                                                    <Button type="button" onClick={() => open()} variant="outline" className="font-bold rounded-xl h-10 border-slate-300 hover:border-brand-primary hover:text-brand-primary">
                                                         <UploadCloud className="w-4 h-4 mr-2" />
                                                         Upload New Logo
                                                     </Button>
@@ -379,12 +379,12 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                                 <button
                                                     type="button"
                                                     onClick={() => open()}
-                                                    className="aspect-video rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 hover:bg-[#36335e]/5 hover:border-[#d5a22d] hover:text-[#36335e] flex flex-col items-center justify-center text-slate-400 transition-all group"
+                                                    className="aspect-video rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 hover:bg-brand-primary/5 hover:border-brand-accent hover:text-brand-primary flex flex-col items-center justify-center text-slate-400 transition-all group"
                                                 >
                                                     <div className="p-3 bg-white rounded-full shadow-sm mb-2 group-hover:scale-110 transition-transform">
-                                                        <ImageIcon className="w-5 h-5 text-[#d5a22d]" />
+                                                        <ImageIcon className="w-5 h-5 text-brand-accent" />
                                                     </div>
-                                                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-[#36335e]">Add Photo</span>
+                                                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-brand-primary">Add Photo</span>
                                                 </button>
                                             )}
                                         </CldUploadWidget>
@@ -406,7 +406,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                 <Button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full h-13 px-8 bg-gradient-to-r from-[#d5a22d] to-[#b88e24] hover:from-[#b88e24] hover:to-[#9c781e] text-white font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-[#d5a22d]/20 transition-all transform active:scale-95 disabled:opacity-50 disabled:active:scale-100 text-sm"
+                    className="w-full h-13 px-8 bg-linear-to-r from-brand-accent to-[#b88e24] hover:from-[#b88e24] hover:to-[#9c781e] text-white font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-brand-accent/20 transition-all transform active:scale-95 disabled:opacity-50 disabled:active:scale-100 text-sm"
                 >
                     {isLoading ? (
                         <Loader2 className="w-5 h-5 animate-spin text-white flex-shrink-0" />
@@ -444,7 +444,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                 repeat: Infinity,
                                 repeatDelay: 0.5
                             }}
-                            className="w-24 h-24 bg-gradient-to-br from-[#d5a22d] to-[#f0c84e] rounded-[2rem] flex items-center justify-center mx-auto shadow-2xl shadow-[#d5a22d]/30"
+                            className="w-24 h-24 bg-linear-to-br from-brand-accent to-[#f0c84e] rounded-[2rem] flex items-center justify-center mx-auto shadow-2xl shadow-brand-accent/30"
                         >
                             <Building2 className="w-12 h-12 text-[#1a1b41]" />
                         </motion.div>
@@ -474,7 +474,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                                             repeat: Infinity,
                                             delay: i * 0.2
                                         }}
-                                        className="w-1.5 h-1.5 rounded-full bg-[#d5a22d]"
+                                        className="w-1.5 h-1.5 rounded-full bg-brand-accent"
                                     />
                                 ))}
                             </div>
@@ -487,7 +487,7 @@ export default function UniversityProfileForm({ university, countries = [], isNe
                             transition={{ delay: 0.5 }}
                             className="pt-12"
                         >
-                            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#d5a22d]/60">
+                            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-accent/60">
                                 Tenpaten Apply · Global Network
                             </p>
                         </motion.div>

@@ -31,7 +31,7 @@ export default async function Page({
         <div className="w-full space-y-5 pb-6 animate-in fade-in duration-700">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#36335e]/10 text-[#36335e] text-[10px] font-black uppercase tracking-[0.2em] mb-2">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-black uppercase tracking-[0.2em] mb-2">
                         <Users className="w-3 h-3" />
                         Partner Ecosystem
                     </div>
@@ -39,7 +39,7 @@ export default async function Page({
                     <p className="text-gray-500 mt-2 font-medium italic">Verify and manage regional referral partners and their performance.</p>
                 </div>
                 <div className="flex items-center gap-4 bg-white px-6 py-3 rounded-2xl border border-slate-100 shadow-sm">
-                    <div className="h-10 w-10 rounded-xl bg-[#d5a22d]/10 flex items-center justify-center text-[#d5a22d]">
+                    <div className="h-10 w-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent">
                         <Users className="w-5 h-5" />
                     </div>
                     <div>
@@ -51,7 +51,7 @@ export default async function Page({
 
             {affiliates.length === 0 ? (
                 <div className="text-center py-24 bg-slate-50 rounded-[2.5rem] border-2 border-dashed border-slate-200">
-                    <div className="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-xl shadow-[#36335e]/5 text-slate-200">
+                    <div className="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-xl shadow-brand-primary/5 text-slate-200">
                         <Users className="w-10 h-10" />
                     </div>
                     <h3 className="text-xl font-black text-slate-900 tracking-tight">Partner Network Empty</h3>
@@ -61,7 +61,7 @@ export default async function Page({
                 </div>
             ) : (
                 <>
-                    <div className="bg-white rounded-2xl shadow-xl shadow-[#36335e]/10 overflow-hidden border border-slate-100">
+                    <div className="bg-white rounded-2xl shadow-xl shadow-brand-primary/10 overflow-hidden border border-slate-100">
                         <div className="overflow-x-auto">
                             <table className="w-full text-left border-collapse">
                                 <thead>
@@ -78,15 +78,15 @@ export default async function Page({
                                         <tr key={aff.id} className="group hover:bg-slate-50/50 transition-all duration-500">
                                             <td className="px-5 py-4">
                                                 <div className="flex items-center gap-6">
-                                                    <div className="h-14 w-14 rounded-2xl bg-[#36335e]/5 flex items-center justify-center text-[#36335e] font-black text-xl shadow-inner group-hover:scale-110 group-hover:bg-[#36335e] group-hover:text-white transition-all duration-500">
+                                                    <div className="h-14 w-14 rounded-2xl bg-brand-primary/5 flex items-center justify-center text-brand-primary font-black text-xl shadow-inner group-hover:scale-110 group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
                                                         {aff.user.fullName.charAt(0)}
                                                     </div>
                                                     <div>
-                                                        <p className="text-lg font-black text-slate-900 group-hover:text-[#36335e] transition-colors uppercase tracking-tight leading-none mb-2">
+                                                        <p className="text-lg font-black text-slate-900 group-hover:text-brand-primary transition-colors uppercase tracking-tight leading-none mb-2">
                                                             {aff.user.fullName}
                                                         </p>
                                                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                                                            <Mail className="w-3.5 h-3.5 text-[#d5a22d]" />
+                                                            <Mail className="w-3.5 h-3.5 text-brand-accent" />
                                                             {aff.user.email}
                                                         </p>
                                                     </div>
@@ -98,15 +98,15 @@ export default async function Page({
                                                         {aff._count.referrals} Direct Referrals
                                                     </p>
                                                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                                                        <Building2 className="w-3.5 h-3.5 text-[#36335e]/40" />
+                                                        <Building2 className="w-3.5 h-3.5 text-brand-primary/40" />
                                                         {aff.university?.name || 'Continental Hub'}
                                                     </p>
                                                 </div>
                                             </td>
                                             <td className="px-5 py-4">
                                                 <div className="flex items-center gap-3">
-                                                    <TrendingUp className="w-4 h-4 text-[#d5a22d]" />
-                                                    <span className="text-lg font-black text-[#36335e] tracking-tighter">
+                                                    <TrendingUp className="w-4 h-4 text-brand-accent" />
+                                                    <span className="text-lg font-black text-brand-primary tracking-tighter">
                                                         {aff.commissionRate}%
                                                     </span>
                                                 </div>
@@ -142,7 +142,7 @@ export default async function Page({
                                                         </div>
                                                     )}
                                                     <Link href={`/dashboard/country-director/affiliates/${aff.id}`}>
-                                                        <Button size="icon" variant="ghost" className="h-12 w-12 rounded-[1.25rem] text-slate-300 border border-transparent hover:border-slate-100 hover:text-[#36335e] hover:bg-slate-50 hover:scale-110 active:scale-95 transition-all duration-300">
+                                                        <Button size="icon" variant="ghost" className="h-12 w-12 rounded-[1.25rem] text-slate-300 border border-transparent hover:border-slate-100 hover:text-brand-primary hover:bg-slate-50 hover:scale-110 active:scale-95 transition-all duration-300">
                                                             <ExternalLink className="w-6 h-6" />
                                                         </Button>
                                                     </Link>

@@ -34,15 +34,15 @@ export default async function Page() {
             {/* Header Section */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent text-[10px] font-black uppercase tracking-[0.2em] mb-4">
                         <Wallet className="w-3 h-3" />
                         Partner Finance
                     </div>
-                    <h1 className="text-4xl font-black text-[#36335e] tracking-tight">Financial Center</h1>
+                    <h1 className="text-4xl font-black text-brand-primary tracking-tight">Financial Center</h1>
                     <p className="text-slate-500 font-medium mt-2">Manage your commissions, track payments, and request payouts.</p>
                 </div>
                 <div className="flex items-center gap-3">
-                    <Link href="/dashboard/affiliate" className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border border-slate-200 text-sm font-black text-[#36335e] hover:border-[#d5a22d]/40 hover:shadow-lg hover:shadow-slate-200/50 transition-all active:scale-95">
+                    <Link href="/dashboard/affiliate" className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border border-slate-200 text-sm font-black text-brand-primary hover:border-brand-accent/40 hover:shadow-lg hover:shadow-slate-200/50 transition-all active:scale-95">
                         <ArrowLeft className="w-4 h-4" />
                         Return
                     </Link>
@@ -53,10 +53,10 @@ export default async function Page() {
                 {/* Left Column: Stats & Payout */}
                 <div className="lg:col-span-1 space-y-8">
                     {/* Available Balance Card */}
-                    <div className="relative overflow-hidden bg-[#36335e] rounded-[2.5rem] p-8 text-white shadow-2xl shadow-indigo-900/30">
+                    <div className="relative overflow-hidden bg-brand-primary rounded-[2.5rem] p-8 text-white shadow-2xl shadow-indigo-900/30">
                         {/* Abstract Background Design */}
                         <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-12 translate-x-12 blur-3xl" />
-                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#d5a22d]/20 rounded-full translate-y-12 -translate-x-12 blur-3xl" />
+                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-accent/20 rounded-full translate-y-12 -translate-x-12 blur-3xl" />
 
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 text-indigo-200/70 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
@@ -65,7 +65,7 @@ export default async function Page() {
                             </div>
                             <div className="flex items-baseline gap-2">
                                 <span className="text-5xl font-black tracking-tighter">{summary.availableBalance.toLocaleString()}</span>
-                                <span className="text-xl font-black text-[#d5a22d]">{summary.currency}</span>
+                                <span className="text-xl font-black text-brand-accent">{summary.currency}</span>
                             </div>
                             
                             <div className="mt-8 grid grid-cols-2 gap-4">
@@ -92,7 +92,7 @@ export default async function Page() {
                     <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/40 overflow-hidden">
                         <div className="p-8 border-b border-slate-50 flex items-center justify-between">
                             <div>
-                                <h2 className="text-xl font-black text-[#36335e]">Conversion Earnings</h2>
+                                <h2 className="text-xl font-black text-brand-primary">Conversion Earnings</h2>
                                 <p className="text-sm text-slate-400 font-medium">Commissions from successful applicant payments.</p>
                             </div>
                             <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400">
@@ -121,15 +121,15 @@ export default async function Page() {
                                         {summary.transactions.map((tx) => (
                                             <tr key={tx.id} className="hover:bg-slate-50/30 transition-colors group">
                                                 <td className="px-8 py-5">
-                                                    <div className="text-xs font-black text-[#36335e]">{format(new Date(tx.createdAt), 'MMM dd, yyyy')}</div>
+                                                    <div className="text-xs font-black text-brand-primary">{format(new Date(tx.createdAt), 'MMM dd, yyyy')}</div>
                                                     <div className="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">{format(new Date(tx.createdAt), 'HH:mm')}</div>
                                                 </td>
                                                 <td className="px-4 py-5">
-                                                    <div className="text-sm font-black text-[#36335e] group-hover:text-[#d5a22d] transition-colors">{tx.referenceId}</div>
+                                                    <div className="text-sm font-black text-brand-primary group-hover:text-brand-accent transition-colors">{tx.referenceId}</div>
                                                     <div className="text-[10px] text-slate-400 font-bold">APPLICATION SUCCESS</div>
                                                 </td>
                                                 <td className="px-4 py-5 text-right">
-                                                    <div className="text-lg font-black text-[#d5a22d]">+{tx.affiliateAmount?.toLocaleString()}</div>
+                                                    <div className="text-lg font-black text-brand-accent">+{tx.affiliateAmount?.toLocaleString()}</div>
                                                     <div className="text-[11px] text-emerald-500 font-black uppercase tracking-widest">CONFIRMED</div>
                                                 </td>
                                             </tr>
@@ -144,7 +144,7 @@ export default async function Page() {
                     <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/40 overflow-hidden">
                         <div className="p-8 border-b border-slate-50 flex items-center justify-between">
                             <div>
-                                <h2 className="text-xl font-black text-[#36335e]">Withdrawal History</h2>
+                                <h2 className="text-xl font-black text-brand-primary">Withdrawal History</h2>
                                 <p className="text-sm text-slate-400 font-medium">Track your bank transfers and payout requests.</p>
                             </div>
                             <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400">
@@ -166,7 +166,7 @@ export default async function Page() {
                                             </div>
                                             <div>
                                                 <div className="flex items-center gap-3">
-                                                    <span className="text-lg font-black text-[#36335e]">{payout.amount.toLocaleString()} {payout.currency}</span>
+                                                    <span className="text-lg font-black text-brand-primary">{payout.amount.toLocaleString()} {payout.currency}</span>
                                                     <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm ${getStatusColor(payout.status)}`}>
                                                         {payout.status}
                                                     </span>

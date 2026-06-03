@@ -17,7 +17,7 @@ const ACTIONS = [
         label: 'Issue Offers',
         status: 'OFFER_ISSUED',
         icon: Send,
-        className: 'bg-[#36335e] text-white hover:bg-[#2a284a] shadow-lg shadow-[#36335e]/20',
+        className: 'bg-brand-primary text-white hover:bg-brand-primary-hover shadow-lg shadow-brand-primary/20',
         requiresConfirm: true,
     },
     {
@@ -157,7 +157,7 @@ export default function BulkActionBar({ selectedIds, onClearSelection }: BulkAct
                                 <Button
                                     onClick={() => runAction(confirmAction, `Bulk: ${confirmAction.label}`)}
                                     disabled={isPending}
-                                    className="flex-1 h-12 bg-[#1d1b41] text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#2a284a] transition-all"
+                                    className="flex-1 h-12 bg-[#1d1b41] text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-brand-primary-hover transition-all"
                                 >
                                     {isPending ? (
                                         <span className="flex items-center gap-2">

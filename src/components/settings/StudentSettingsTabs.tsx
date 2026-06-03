@@ -73,11 +73,11 @@ export default function StudentSettingsTabs({ user, countries = [] }: StudentSet
                                 onClick={() => handleTabChange(tab.id)}
                                 className={`flex items-center gap-2 px-5 py-4 text-sm font-bold tracking-tight whitespace-nowrap transition-all border-b-[3px] snap-center shrink-0
                                     ${isActive
-                                        ? 'border-[#d5a22d] text-[#d5a22d] bg-[#d5a22d]/5'
+                                        ? 'border-brand-accent text-brand-accent bg-brand-accent/5'
                                         : 'border-transparent text-gray-500 hover:text-gray-800 hover:bg-gray-50'
                                     }`}
                             >
-                                <Icon className={`w-4 h-4 ${isActive ? 'text-[#d5a22d]' : 'text-gray-400'}`} />
+                                <Icon className={`w-4 h-4 ${isActive ? 'text-brand-accent' : 'text-gray-400'}`} />
                                 {tab.label}
                             </button>
                         );

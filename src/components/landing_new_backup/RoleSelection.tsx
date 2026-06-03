@@ -7,7 +7,7 @@ export function RoleSelection() {
         <section id="roles" className="py-20 lg:py-32 bg-slate-50/30">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12 lg:mb-16">
-                    <span className="text-[#d5a22d] text-[10px] font-black tracking-[0.3em] uppercase">Tailored Experiences</span>
+                    <span className="text-brand-accent text-[10px] font-black tracking-[0.3em] uppercase">Tailored Experiences</span>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1a1b41] mt-4 tracking-tighter uppercase leading-[0.9]">Choose Your Path</h2>
                     <p className="text-gray-500 font-bold text-base lg:text-lg mt-4 px-4 max-w-2xl mx-auto">Join our global network of ambitious students and world-class institutions.</p>
                 </div>
@@ -26,11 +26,11 @@ export function RoleSelection() {
                             />
                             <div className="absolute inset-0 bg-transparent" />
                             <div className="absolute top-6 left-6 sm:top-8 sm:left-8 w-14 h-14 sm:w-16 sm:h-16 bg-white/90 backdrop-blur-xl rounded-[1.25rem] sm:rounded-[1.5rem] flex items-center justify-center shadow-2xl group-hover:rotate-12 transition-transform border border-white z-20">
-                                <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8 text-[#d5a22d]" />
+                                <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8 text-brand-accent" />
                             </div>
                         </div>
                         <div className="md:w-7/12 p-8 sm:p-10 lg:p-12 flex flex-col justify-center relative z-20">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] text-[10px] font-black tracking-[0.3em] mb-4 sm:mb-6 w-fit uppercase">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-brand-accent/10 text-brand-accent text-[10px] font-black tracking-[0.3em] mb-4 sm:mb-6 w-fit uppercase">
                                 For Students
                             </div>
                             <h3 className="text-2xl sm:text-2xl lg:text-3xl font-black text-[#1a1b41] mb-4 sm:mb-6 uppercase tracking-tighter leading-none">Find Your <br/>Dream Future</h3>
@@ -39,7 +39,7 @@ export function RoleSelection() {
                             </p>
                             <Link
                                 href="/register?type=student"
-                                className="w-full sm:w-fit inline-flex items-center justify-center gap-3 sm:gap-4 px-8 py-5 sm:px-12 sm:py-6 rounded-xl sm:rounded-2xl bg-[#1a1b41] text-white font-black uppercase tracking-[0.3em] text-[10px] sm:text-xs transition-all hover:bg-[#d5a22d] hover:scale-[1.02] active:scale-95 shadow-2xl shadow-[#1a1b41]/10"
+                                className="w-full sm:w-fit inline-flex items-center justify-center gap-3 sm:gap-4 px-8 py-5 sm:px-12 sm:py-6 rounded-xl sm:rounded-2xl bg-[#1a1b41] text-white font-black uppercase tracking-[0.3em] text-[10px] sm:text-xs transition-all hover:bg-brand-accent hover:scale-[1.02] active:scale-95 shadow-2xl shadow-[#1a1b41]/10"
                             >
                                 Get Started
                                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -52,7 +52,7 @@ export function RoleSelection() {
                         {/* School Card */}
                         <div className="group relative overflow-hidden rounded-[2.5rem] border border-gray-100 bg-white hover:bg-gray-50/50 transition-all duration-700 flex flex-col shadow-[0_24px_48px_-12px_rgba(0,0,0,0.05)] flex-1 p-8">
                             <div className="flex items-center gap-5 mb-6">
-                                <div className="p-4 bg-gray-50 rounded-xl text-[#d5a22d] group-hover:scale-110 group-hover:bg-[#1a1b41] group-hover:text-white transition-all shadow-sm">
+                                <div className="p-4 bg-gray-50 rounded-xl text-brand-accent group-hover:scale-110 group-hover:bg-[#1a1b41] group-hover:text-white transition-all shadow-sm">
                                     <Building2 className="w-7 h-7" />
                                 </div>
                                 <h3 className="text-xl sm:text-xl lg:text-2xl font-black text-[#1a1b41] uppercase tracking-tighter leading-none">Institutions</h3>
@@ -62,7 +62,7 @@ export function RoleSelection() {
                             </p>
                             <Link
                                 href="/login"
-                                className="text-[10px] font-black text-[#d5a22d] uppercase tracking-[0.3em] hover:text-[#1a1b41] flex items-center gap-2 group/link mt-auto"
+                                className="text-[10px] font-black text-brand-accent uppercase tracking-[0.3em] hover:text-[#1a1b41] flex items-center gap-2 group/link mt-auto"
                             >
                                 Institution Log In
                                 <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
@@ -72,7 +72,7 @@ export function RoleSelection() {
                         {/* Partner Card */}
                         <div className="group relative overflow-hidden rounded-[2.5rem] border border-gray-100 bg-white hover:bg-gray-50/50 transition-all duration-700 flex flex-col shadow-[0_24px_48px_-12px_rgba(0,0,0,0.05)] flex-1 p-8">
                             <div className="flex items-center gap-5 mb-6">
-                                <div className="p-4 bg-gray-50 rounded-xl text-[#d5a22d] group-hover:scale-110 group-hover:bg-[#1a1b41] group-hover:text-white transition-all shadow-sm">
+                                <div className="p-4 bg-gray-50 rounded-xl text-brand-accent group-hover:scale-110 group-hover:bg-[#1a1b41] group-hover:text-white transition-all shadow-sm">
                                     <TrendingUp className="w-7 h-7" />
                                 </div>
                                 <h3 className="text-xl sm:text-xl lg:text-2xl font-black text-[#1a1b41] uppercase tracking-tighter leading-none">Partners</h3>
@@ -82,7 +82,7 @@ export function RoleSelection() {
                             </p>
                             <Link
                                 href="/contact"
-                                className="text-[10px] font-black text-[#d5a22d] uppercase tracking-[0.3em] hover:text-[#1a1b41] flex items-center gap-2 group/link mt-auto"
+                                className="text-[10px] font-black text-brand-accent uppercase tracking-[0.3em] hover:text-[#1a1b41] flex items-center gap-2 group/link mt-auto"
                             >
                                 Contact Support
                                 <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />

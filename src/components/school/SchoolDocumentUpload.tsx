@@ -84,8 +84,8 @@ export default function SchoolDocumentUpload({ applicationId, documents }: Schoo
         <Card className="border border-slate-100 shadow-sm overflow-hidden bg-white rounded-[2rem]">
             <CardHeader className="bg-slate-50/50 border-b border-slate-100 py-6 px-6 sm:px-8">
                 <CardTitle className="text-xl font-black text-slate-900 tracking-tight flex items-center gap-3">
-                    <div className="p-2 bg-[#d5a22d]/10 rounded-xl">
-                        <FileText className="w-5 h-5 text-[#d5a22d]" />
+                    <div className="p-2 bg-brand-accent/10 rounded-xl">
+                        <FileText className="w-5 h-5 text-brand-accent" />
                     </div>
                     Official Documents
                 </CardTitle>
@@ -105,7 +105,7 @@ export default function SchoolDocumentUpload({ applicationId, documents }: Schoo
                         const isProcessing = processing === docType.id;
 
                         return (
-                            <div key={docType.id} className="p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#36335e]/30 transition-all shadow-sm hover:shadow-[#36335e]/5 group">
+                            <div key={docType.id} className="p-5 rounded-2xl border border-slate-200 bg-white hover:border-brand-primary/30 transition-all shadow-sm hover:shadow-brand-primary/5 group">
                                 <div className="flex items-start justify-between gap-4">
                                     <div className="flex-1 min-w-0">
                                         <h4 className="text-sm font-bold text-slate-900 tracking-tight">{docType.label}</h4>
@@ -118,7 +118,7 @@ export default function SchoolDocumentUpload({ applicationId, documents }: Schoo
                                                     href={url as string}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="p-2.5 text-[#36335e] hover:bg-[#36335e]/5 border border-transparent hover:border-[#36335e]/10 rounded-xl transition-all"
+                                                    className="p-2.5 text-brand-primary hover:bg-brand-primary/5 border border-transparent hover:border-brand-primary/10 rounded-xl transition-all"
                                                     title="View/Download"
                                                 >
                                                     <Download className="w-4 h-4" />
@@ -157,7 +157,7 @@ export default function SchoolDocumentUpload({ applicationId, documents }: Schoo
                                                             <button
                                                                 type="button"
                                                                 onClick={() => open()}
-                                                                className="flex items-center gap-2 px-4 py-2 bg-[#36335e]/5 text-[#36335e] border border-transparent hover:border-[#36335e]/20 rounded-xl text-xs font-bold hover:bg-[#36335e]/10 transition-all active:scale-95"
+                                                                className="flex items-center gap-2 px-4 py-2 bg-brand-primary/5 text-brand-primary border border-transparent hover:border-brand-primary/20 rounded-xl text-xs font-bold hover:bg-brand-primary/10 transition-all active:scale-95"
                                                             >
                                                                 <UploadCloud className="w-3.5 h-3.5" />
                                                                 Upload PDF

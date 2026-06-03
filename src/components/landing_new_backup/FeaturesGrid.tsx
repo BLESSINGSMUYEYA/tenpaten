@@ -28,11 +28,11 @@ export function FeaturesGrid() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
                     <div className="max-w-2xl">
-                        <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gray-50 border border-gray-100 text-[#d5a22d] text-[10px] font-black tracking-[0.3em] mb-6 uppercase">
+                        <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gray-50 border border-gray-100 text-brand-accent text-[10px] font-black tracking-[0.3em] mb-6 uppercase">
                             Creative Approach
                         </div>
                         <h2 className="text-4xl lg:text-6xl font-black text-[#1a1b41] tracking-tighter uppercase leading-[0.85] mb-6">
-                            Features <span className="text-[#d5a22d]">Section</span>
+                            Features <span className="text-brand-accent">Section</span>
                         </h2>
                         <p className="text-[#1a1b41]/60 text-lg font-medium">
                             Learn more about how Tenpaten Apply streamlines your global education journey through innovative tools and expert support.
@@ -41,9 +41,9 @@ export function FeaturesGrid() {
 
                     <Link
                         href="/register?type=student"
-                        className="bg-[#1a1b41] text-white px-8 py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-3 hover:bg-[#d5a22d] transition-all shadow-xl shadow-[#1a1b41]/10 active:scale-95 self-start lg:self-auto"
+                        className="bg-[#1a1b41] text-white px-8 py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-3 hover:bg-brand-accent transition-all shadow-xl shadow-[#1a1b41]/10 active:scale-95 self-start lg:self-auto"
                     >
-                        <Sparkles className="w-4 h-4 text-[#d5a22d]" />
+                        <Sparkles className="w-4 h-4 text-brand-accent" />
                         Explore Smart Portal
                     </Link>
                 </div>
@@ -57,9 +57,9 @@ export function FeaturesGrid() {
                             
                             <div className="flex justify-between items-start mb-8">
                                 <div className="p-4 bg-gray-50 rounded-2xl group-hover:bg-[#1a1b41] group-hover:text-white transition-all duration-500 shadow-sm border border-gray-100 relative z-10">
-                                    <feature.icon className="w-8 h-8 text-[#d5a22d]" />
+                                    <feature.icon className="w-8 h-8 text-brand-accent" />
                                 </div>
-                                <span className="text-[10px] font-black uppercase tracking-widest text-[#d5a22d]/40 group-hover:text-[#d5a22d] transition-colors">
+                                <span className="text-[10px] font-black uppercase tracking-widest text-brand-accent/40 group-hover:text-brand-accent transition-colors">
                                     {feature.tag}
                                 </span>
                             </div>
@@ -72,7 +72,7 @@ export function FeaturesGrid() {
                             </p>
 
                             <div className="relative z-10 pt-8 border-t border-gray-50 mt-auto">
-                                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#1a1b41] group-hover:text-[#d5a22d] transition-colors cursor-pointer">
+                                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#1a1b41] group-hover:text-brand-accent transition-colors cursor-pointer">
                                     Learn More <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
                                 </div>
                             </div>

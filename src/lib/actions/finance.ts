@@ -7,11 +7,12 @@ export async function getSchoolFinancialSummary() {
     const session = await auth();
     const user = session?.user as any;
 
-    if (!user || user.role !== 'SCHOOL_ADMIN' || !user.managedUniversityId) {
+    const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+    const universityId = user?.role === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : user?.managedUniversityId;
+
+    if (!user || (user.role !== 'SCHOOL_ADMIN' && user.role !== 'SCHOOL_SUPER_AGENT') || !universityId) {
         throw new Error('Unauthorized');
     }
-
-    const universityId = user.managedUniversityId;
 
     const transactions = await prisma.institutionalTransaction.findMany({
         where: { universityId },
@@ -68,11 +69,12 @@ export async function requestPayout(amount: number) {
     const session = await auth();
     const user = session?.user as any;
 
-    if (!user || user.role !== 'SCHOOL_ADMIN' || !user.managedUniversityId) {
+    const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+    const universityId = user?.role === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : user?.managedUniversityId;
+
+    if (!user || (user.role !== 'SCHOOL_ADMIN' && user.role !== 'SCHOOL_SUPER_AGENT') || !universityId) {
         throw new Error('Unauthorized');
     }
-
-    const universityId = user.managedUniversityId;
 
     // Verify balance before allowing request
     const financialData = await getSchoolFinancialSummary();

@@ -80,7 +80,7 @@ export default function ConversationList({ conversations: initialConversations }
                     </div>
                     <button 
                         onClick={() => setIsModalOpen(true)}
-                        className="w-9 h-9 rounded-xl bg-[#d5a22d] text-[#1d1b41] flex items-center justify-center shadow-lg shadow-[#1d1b41]/20 hover:bg-[#b58825] active:scale-95 transition-all"
+                        className="w-9 h-9 rounded-xl bg-brand-accent text-[#1d1b41] flex items-center justify-center shadow-lg shadow-[#1d1b41]/20 hover:bg-[#b58825] active:scale-95 transition-all"
                     >
                         <Plus className="w-4 h-4 font-black" />
                     </button>
@@ -88,13 +88,13 @@ export default function ConversationList({ conversations: initialConversations }
 
                 {/* Search Bar inside header */}
                 <div className="relative group">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 group-focus-within:text-[#d5a22d] transition-colors" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 group-focus-within:text-brand-accent transition-colors" />
                     <input
                         type="text"
                         placeholder="Search conversations..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-9 pr-4 py-2.5 bg-white/10 border border-white/10 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#d5a22d]/50 focus:bg-white/15 transition-all placeholder:text-white/30 text-white font-medium"
+                        className="w-full pl-9 pr-4 py-2.5 bg-white/10 border border-white/10 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-accent/50 focus:bg-white/15 transition-all placeholder:text-white/30 text-white font-medium"
                     />
                 </div>
             </div>
@@ -146,7 +146,7 @@ export default function ConversationList({ conversations: initialConversations }
                                         )}
                                     </div>
                                     {conv.isUnread && (
-                                        <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#d5a22d] border-2 border-white rounded-full flex items-center justify-center shadow-sm z-20">
+                                        <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-brand-accent border-2 border-white rounded-full flex items-center justify-center shadow-sm z-20">
                                         </div>
                                     )}
                                 </div>
@@ -167,7 +167,7 @@ export default function ConversationList({ conversations: initialConversations }
                                                 </span>
                                             )}
                                         </div>
-                                        <span className={`text-[9px] font-black uppercase tracking-[0.1em] flex-shrink-0 ${isActive ? 'text-white/60' : conv.isUnread ? 'text-[#d5a22d]' : 'text-slate-400'
+                                        <span className={`text-[9px] font-black uppercase tracking-[0.1em] flex-shrink-0 ${isActive ? 'text-white/60' : conv.isUnread ? 'text-brand-accent' : 'text-slate-400'
                                             }`} suppressHydrationWarning>
                                             {formatMessageDate(conv.updatedAt)}
                                         </span>

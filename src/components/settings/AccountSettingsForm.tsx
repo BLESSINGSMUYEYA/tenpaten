@@ -103,7 +103,7 @@ export default function AccountSettingsForm({ user }: AccountSettingsFormProps) 
                         <div className="space-y-2">
                             <Label htmlFor="fullName" className="text-sm font-medium">
                                 <div className="flex items-center gap-2">
-                                    <User className="w-4 h-4 text-[#d5a22d]" />
+                                    <User className="w-4 h-4 text-brand-accent" />
                                     Full Name
                                 </div>
                             </Label>
@@ -111,7 +111,7 @@ export default function AccountSettingsForm({ user }: AccountSettingsFormProps) 
                                 id="fullName"
                                 value={fullName}
                                 onChange={(e) => setFullName(e.target.value)}
-                                className="h-11 border-gray-200 focus-visible:ring-[#d5a22d] focus-visible:border-[#d5a22d]"
+                                className="h-11 border-gray-200 focus-visible:ring-brand-accent focus-visible:border-brand-accent"
                                 required
                             />
                         </div>
@@ -136,7 +136,7 @@ export default function AccountSettingsForm({ user }: AccountSettingsFormProps) 
                     <Button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full sm:w-auto bg-[#d5a22d] hover:bg-[#b89531] text-white shadow-md transition-all active:scale-95"
+                        className="w-full sm:w-auto bg-brand-accent hover:bg-[#b89531] text-white shadow-md transition-all active:scale-95"
                     >
                         {isLoading ? (
                             <>
@@ -164,7 +164,7 @@ export default function AccountSettingsForm({ user }: AccountSettingsFormProps) 
                         <div className="space-y-2 md:col-span-2">
                             <Label htmlFor="currentPassword" className="text-sm font-medium">
                                 <div className="flex items-center gap-2">
-                                    <Lock className="w-4 h-4 text-[#d5a22d]" />
+                                    <Lock className="w-4 h-4 text-brand-accent" />
                                     Current Password
                                 </div>
                             </Label>
@@ -173,7 +173,7 @@ export default function AccountSettingsForm({ user }: AccountSettingsFormProps) 
                                 type="password"
                                 value={currentPassword}
                                 onChange={(e) => setCurrentPassword(e.target.value)}
-                                className="h-11 border-gray-200 focus-visible:ring-[#d5a22d] focus-visible:border-[#d5a22d]"
+                                className="h-11 border-gray-200 focus-visible:ring-brand-accent focus-visible:border-brand-accent"
                             />
                         </div>
 
@@ -186,7 +186,7 @@ export default function AccountSettingsForm({ user }: AccountSettingsFormProps) 
                                 type="password"
                                 value={newPassword}
                                 onChange={(e) => setNewPassword(e.target.value)}
-                                className="h-11 border-gray-200 focus-visible:ring-[#d5a22d] focus-visible:border-[#d5a22d]"
+                                className="h-11 border-gray-200 focus-visible:ring-brand-accent focus-visible:border-brand-accent"
                             />
                         </div>
 
@@ -199,7 +199,7 @@ export default function AccountSettingsForm({ user }: AccountSettingsFormProps) 
                                 type="password"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
-                                className="h-11 border-gray-200 focus-visible:ring-[#d5a22d] focus-visible:border-[#d5a22d]"
+                                className="h-11 border-gray-200 focus-visible:ring-brand-accent focus-visible:border-brand-accent"
                             />
                         </div>
                     </div>
@@ -207,7 +207,7 @@ export default function AccountSettingsForm({ user }: AccountSettingsFormProps) 
                     <Button
                         type="submit"
                         disabled={isLoading || !currentPassword || !newPassword || !confirmPassword}
-                        className="w-full sm:w-auto bg-[#d5a22d] hover:bg-[#b89531] text-white shadow-md transition-all active:scale-95"
+                        className="w-full sm:w-auto bg-brand-accent hover:bg-[#b89531] text-white shadow-md transition-all active:scale-95"
                     >
                         {isLoading ? (
                             <>

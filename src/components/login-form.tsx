@@ -32,7 +32,7 @@ export default function LoginForm({ callbackUrl = '' }: { callbackUrl?: string }
                         name="email"
                         placeholder="you@example.com"
                         required
-                        className="pl-10 h-12 rounded-xl border-gray-200 bg-gray-50 text-gray-800 placeholder:text-gray-300 focus:bg-white focus:border-[#d5a22d] focus:ring-0 transition-all text-sm font-medium"
+                        className="pl-10 h-12 rounded-xl border-gray-200 bg-gray-50 text-gray-800 placeholder:text-gray-300 focus:bg-white focus:border-brand-accent focus:ring-0 transition-all text-sm font-medium"
                         disabled={isPending}
                     />
                 </div>
@@ -46,7 +46,7 @@ export default function LoginForm({ callbackUrl = '' }: { callbackUrl?: string }
                     </Label>
                     <Link
                         href="/forgot-password"
-                        className="text-xs font-semibold text-gray-400 hover:text-[#d5a22d] transition-colors"
+                        className="text-xs font-semibold text-gray-400 hover:text-brand-accent transition-colors"
                     >
                         Forgot password?
                     </Link>
@@ -60,7 +60,7 @@ export default function LoginForm({ callbackUrl = '' }: { callbackUrl?: string }
                         placeholder="••••••••"
                         required
                         minLength={6}
-                        className="pl-10 pr-10 h-12 rounded-xl border-gray-200 bg-gray-50 text-gray-800 placeholder:text-gray-300 focus:bg-white focus:border-[#d5a22d] focus:ring-0 transition-all text-sm font-medium"
+                        className="pl-10 pr-10 h-12 rounded-xl border-gray-200 bg-gray-50 text-gray-800 placeholder:text-gray-300 focus:bg-white focus:border-brand-accent focus:ring-0 transition-all text-sm font-medium"
                         disabled={isPending}
                     />
                     <button
@@ -76,7 +76,7 @@ export default function LoginForm({ callbackUrl = '' }: { callbackUrl?: string }
 
             {/* Submit */}
             <Button
-                className="w-full h-12 bg-[#d5a22d] hover:bg-[#b89531] text-white font-bold tracking-wide text-sm rounded-xl transition-all active:scale-[0.98] shadow-md shadow-[#d5a22d]/20 mt-2"
+                className="w-full h-12 bg-brand-accent hover:bg-[#b89531] text-white font-bold tracking-wide text-sm rounded-xl transition-all active:scale-[0.98] shadow-md shadow-brand-accent/20 mt-2"
                 disabled={isPending}
             >
                 {isPending ? (

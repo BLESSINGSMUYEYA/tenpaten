@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function VerifyEmailPage() {
     return (
-        <div className="min-h-screen bg-white flex flex-col selection:bg-[#d5a22d]/20">
+        <div className="min-h-screen bg-white flex flex-col selection:bg-brand-accent/20">
 
             {/* Minimal top bar */}
             <header className="flex items-center justify-between px-6 sm:px-12 py-6 border-b border-gray-100">

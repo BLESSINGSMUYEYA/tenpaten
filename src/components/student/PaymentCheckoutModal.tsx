@@ -91,10 +91,10 @@ export default function PaymentCheckoutModal({ isOpen, onClose, transactionData,
                     {/* Header */}
                     <div className="flex justify-between items-center mb-8">
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-[#36335e] flex items-center justify-center text-white shadow-lg">
+                            <div className="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center text-white shadow-lg">
                                 <CreditCard className="w-5 h-5" />
                             </div>
-                            <h2 className="text-xl font-black text-[#36335e] tracking-tight">Secure Checkout</h2>
+                            <h2 className="text-xl font-black text-brand-primary tracking-tight">Secure Checkout</h2>
                         </div>
                         {!isProcessing && !isSuccess && (
                             <button 
@@ -131,8 +131,8 @@ export default function PaymentCheckoutModal({ isOpen, onClose, transactionData,
                                     )}
                                     <div className="h-px bg-slate-200 my-4" />
                                     <div className="flex justify-between items-center">
-                                        <span className="text-lg font-black text-[#36335e]">Total Payable</span>
-                                        <span className="text-2xl font-black text-[#36335e]">{transactionData.totalAmount} {transactionData.currency}</span>
+                                        <span className="text-lg font-black text-brand-primary">Total Payable</span>
+                                        <span className="text-2xl font-black text-brand-primary">{transactionData.totalAmount} {transactionData.currency}</span>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@ export default function PaymentCheckoutModal({ isOpen, onClose, transactionData,
                                 <button
                                     onClick={handlePayNow}
                                     disabled={isProcessing || isVerifying}
-                                    className="w-full py-5 bg-[#36335e] hover:bg-[#2a284a] text-white font-black uppercase tracking-[0.2em] text-xs rounded-2xl shadow-xl shadow-indigo-900/20 flex items-center justify-center gap-3 group transition-all transform active:scale-95 disabled:opacity-50 disabled:active:scale-100"
+                                    className="w-full py-5 bg-brand-primary hover:bg-brand-primary-hover text-white font-black uppercase tracking-[0.2em] text-xs rounded-2xl shadow-xl shadow-indigo-900/20 flex items-center justify-center gap-3 group transition-all transform active:scale-95 disabled:opacity-50 disabled:active:scale-100"
                                 >
                                     {isProcessing ? (
                                         <>
@@ -210,7 +210,7 @@ export default function PaymentCheckoutModal({ isOpen, onClose, transactionData,
                             <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/20">
                                 <CheckCircle2 className="w-10 h-10 text-emerald-600" />
                             </div>
-                            <h3 className="text-2xl font-black text-[#36335e] mb-2 tracking-tight">Payment Successful!</h3>
+                            <h3 className="text-2xl font-black text-brand-primary mb-2 tracking-tight">Payment Successful!</h3>
                             <p className="text-sm text-slate-500 font-medium">Your application is being submitted...</p>
                         </div>
                     )}

@@ -99,9 +99,9 @@ export default function UniversityReviewActions({ universityId }: UniversityRevi
             <Button
                 onClick={handleApprove}
                 disabled={isLoading}
-                className="h-12 px-8 bg-[#36335e] hover:bg-[#2a284a] text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-lg shadow-[#36335e]/10 transition-all transform hover:scale-105 active:scale-95 leading-none"
+                className="h-12 px-8 bg-brand-primary hover:bg-brand-primary-hover text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-lg shadow-brand-primary/10 transition-all transform hover:scale-105 active:scale-95 leading-none"
             >
-                {isLoading ? <Loader2 className="w-4 h-4 animate-spin text-[#d5a22d]" /> : <CheckCircle2 className="w-4 h-4 mr-2 text-[#d5a22d]" />}
+                {isLoading ? <Loader2 className="w-4 h-4 animate-spin text-brand-accent" /> : <CheckCircle2 className="w-4 h-4 mr-2 text-brand-accent" />}
                 Approve Institution
             </Button>
             <Button

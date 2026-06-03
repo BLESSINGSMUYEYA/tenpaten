@@ -48,6 +48,59 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
     ],
     callbacks: {
         ...authConfig.callbacks,
+        async session({ session, token }) {
+            if (session.user && token.sub) {
+                session.user.id = token.sub;
+            }
+
+            if (token.role && session.user) {
+                session.user.role = token.role as Role;
+            }
+
+            if (session.user) {
+                if (session.user.role === 'SCHOOL_SUPER_AGENT') {
+                    let activeSchoolId: string | undefined = undefined;
+                    try {
+                        const { cookies } = await import('next/headers');
+                        const cookieStore = await cookies();
+                        activeSchoolId = cookieStore.get('active-school-id')?.value;
+                    } catch (err) {
+                        console.error('Failed to read cookies in NextAuth session callback:', err);
+                    }
+
+                    if (activeSchoolId) {
+                        session.user.managedUniversityId = activeSchoolId;
+                    } else {
+                        try {
+                            const firstAssignment = await prisma.schoolSuperAgentUniversity.findFirst({
+                                where: { userId: session.user.id },
+                                orderBy: { createdAt: 'asc' },
+                                select: { universityId: true },
+                            });
+                            if (firstAssignment) {
+                                session.user.managedUniversityId = firstAssignment.universityId;
+                            }
+                        } catch (prismaErr) {
+                            console.error('Failed to query active school assignment in NextAuth session callback:', prismaErr);
+                        }
+                    }
+                } else if (token.managedUniversityId) {
+                    session.user.managedUniversityId = token.managedUniversityId as string;
+                }
+            }
+
+            if (session.user) {
+                session.user.affiliateApproved = !!(token.affiliateApproved);
+                session.user.emailVerified = token.emailVerified as Date | null;
+            }
+
+            // Explicitly forward the user's real name from the JWT token
+            if (token.name && session.user) {
+                session.user.name = token.name as string;
+            }
+
+            return session;
+        },
         async jwt({ token, user }) {
             // At sign-in, populate token from the user object
             if (user) {

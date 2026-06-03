@@ -6,9 +6,9 @@ const STATUS_CONFIG: Record<ApplicationStatus, { label: string; className: strin
     SUBMITTED:        { label: 'Submitted',         className: 'bg-blue-50 text-blue-600 border-blue-100' },
     COUNTRY_REVIEW:   { label: 'Country Review',   className: 'bg-amber-50 text-amber-600 border-amber-100' },
     UNIVERSITY_REVIEW:{ label: 'Under Review',     className: 'bg-purple-50 text-purple-600 border-purple-100' },
-    OFFER_ISSUED:     { label: 'Offer Issued',      className: 'bg-[#d5a22d]/10 text-[#d5a22d] border-[#d5a22d]/20' },
+    OFFER_ISSUED:     { label: 'Offer Issued',      className: 'bg-brand-accent/10 text-brand-accent border-brand-accent/20' },
     OFFER_ACCEPTED:   { label: 'Offer Accepted',   className: 'bg-emerald-50 text-emerald-600 border-emerald-100' },
-    ENROLLED:         { label: 'Enrolled',          className: 'bg-[#36335e] text-[#d5a22d] border-[#36335e]' },
+    ENROLLED:         { label: 'Enrolled',          className: 'bg-brand-primary text-brand-accent border-brand-primary' },
     REJECTED:         { label: 'Not Accepted',      className: 'bg-red-50 text-red-600 border-red-100' },
 };
 

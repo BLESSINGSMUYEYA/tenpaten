@@ -39,18 +39,18 @@ export function FAQSection() {
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#d5a22d]/20 bg-[#d5a22d]/5 text-[#d5a22d] text-[10px] font-black tracking-[0.3em] mb-6 uppercase"
+                                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-brand-accent/20 bg-brand-accent/5 text-brand-accent text-[10px] font-black tracking-[0.3em] mb-6 uppercase"
                             >
                                 <HelpCircle className="w-3.5 h-3.5" />
                                 Support Center
                             </motion.div>
                             <h2 className="text-4xl lg:text-6xl font-black text-[#1a1b41] tracking-tighter uppercase leading-[0.9] mb-6">
                                 Still<br />
-                                <span className="text-[#d5a22d]">Unsure?</span>
+                                <span className="text-brand-accent">Unsure?</span>
                             </h2>
                             <p className="text-gray-500 font-medium text-lg max-w-md mx-auto lg:mx-0">
                                 We&apos;ve got answers. Or reach out at{' '}
-                                <a href="mailto:support@tenpaten.com" className="text-[#d5a22d] hover:underline font-bold">
+                                <a href="mailto:support@tenpaten.com" className="text-brand-accent hover:underline font-bold">
                                     support@tenpaten.com
                                 </a>
                             </p>
@@ -62,8 +62,8 @@ export function FAQSection() {
                                 <div
                                     key={i}
                                     className={`rounded-2xl border transition-all duration-300 overflow-hidden ${open === i
-                                        ? 'border-[#d5a22d]/40 bg-white shadow-2xl shadow-[#d5a22d]/10'
-                                        : 'border-gray-100 bg-slate-50/50 hover:border-[#d5a22d]/25 hover:bg-white'
+                                        ? 'border-brand-accent/40 bg-white shadow-2xl shadow-brand-accent/10'
+                                        : 'border-gray-100 bg-slate-50/50 hover:border-brand-accent/25 hover:bg-white'
                                         }`}
                                 >
                                     <button
@@ -71,11 +71,11 @@ export function FAQSection() {
                                         className="w-full flex items-center justify-between gap-4 px-7 py-6 text-left"
                                         aria-expanded={open === i}
                                     >
-                                        <span className={`text-sm font-black uppercase tracking-wide transition-colors ${open === i ? 'text-[#d5a22d]' : 'text-[#1a1b41]'}`}>
+                                        <span className={`text-sm font-black uppercase tracking-wide transition-colors ${open === i ? 'text-brand-accent' : 'text-[#1a1b41]'}`}>
                                             {faq.q}
                                         </span>
                                         <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${open === i
-                                            ? 'bg-[#d5a22d] text-[#1a1b41]'
+                                            ? 'bg-brand-accent text-[#1a1b41]'
                                             : 'bg-white border border-gray-100 text-gray-400'
                                             }`}>
                                             {open === i
@@ -121,10 +121,10 @@ export function FAQSection() {
                                 fill
                                 className="object-cover transition-transform duration-1000 hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#1a1b41]/60 via-transparent to-transparent" />
+                            <div className="absolute inset-0 bg-linear-to-t from-[#1a1b41]/60 via-transparent to-transparent" />
                             
                             {/* Floating Card */}
-                            <div className="absolute bottom-10 left-10 right-10 bg-[#d5a22d] p-8 rounded-3xl shadow-2xl">
+                            <div className="absolute bottom-10 left-10 right-10 bg-brand-accent p-8 rounded-3xl shadow-2xl">
                                 <p className="text-[#1a1b41] font-black text-2xl tracking-tighter leading-[1] mb-2 uppercase">
                                     Need direct help?
                                 </p>
@@ -135,7 +135,7 @@ export function FAQSection() {
                         </div>
 
                         {/* Decorative Shape */}
-                        <div className="absolute -z-10 -bottom-12 -right-12 w-64 h-64 bg-[#d5a22d]/10 rounded-full blur-3xl" />
+                        <div className="absolute -z-10 -bottom-12 -right-12 w-64 h-64 bg-brand-accent/10 rounded-full blur-3xl" />
                     </motion.div>
                 </div>
             </div>

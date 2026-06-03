@@ -67,10 +67,10 @@ export default function RoleForm({
     };
 
     return (
-        <Card className="border-none shadow-2xl shadow-[#36335e]/10 rounded-[2.5rem] overflow-hidden bg-white">
+        <Card className="border-none shadow-2xl shadow-brand-primary/10 rounded-[2.5rem] overflow-hidden bg-white">
             <CardHeader className="bg-gray-50/50 border-b border-gray-100 p-8">
-                <CardTitle className="text-xl font-black flex items-center gap-3 text-[#36335e]">
-                    <div className="p-2.5 rounded-xl bg-[#d5a22d]/10 text-[#d5a22d]">
+                <CardTitle className="text-xl font-black flex items-center gap-3 text-brand-primary">
+                    <div className="p-2.5 rounded-xl bg-brand-accent/10 text-brand-accent">
                         <UserCog className="w-5 h-5" />
                     </div>
                     Privilege Reconfiguration
@@ -82,17 +82,18 @@ export default function RoleForm({
                     <div className="space-y-3">
                         <Label className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Authority Tier</Label>
                         <Select value={selectedRole} onValueChange={(v) => setSelectedRole(v as Role)}>
-                            <SelectTrigger className="h-14 bg-gray-50 border-gray-100 rounded-2xl focus:ring-[#d5a22d]/20 focus:border-[#d5a22d]/30 font-bold text-[#36335e]">
+                            <SelectTrigger className="h-14 bg-gray-50 border-gray-100 rounded-2xl focus:ring-brand-accent/20 focus:border-brand-accent/30 font-bold text-brand-primary">
                                 <SelectValue placeholder="Select authorization role" />
                             </SelectTrigger>
                             <SelectContent className="rounded-2xl border-gray-100 shadow-2xl">
                                 <SelectGroup>
                                     <SelectLabel className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-4 py-2">System Roles</SelectLabel>
-                                    <SelectItem value="PROSPECT" className="py-3 px-4 font-bold text-[#36335e]">Prospect</SelectItem>
-                                    <SelectItem value="AFFILIATE" className="py-3 px-4 font-bold text-[#36335e]">Partner Affiliate</SelectItem>
-                                    <SelectItem value="SCHOOL_ADMIN" className="py-3 px-4 font-bold text-[#36335e]">Institutional Admin</SelectItem>
-                                    <SelectItem value="COUNTRY_DIRECTOR" className="py-3 px-4 font-bold text-[#36335e]">Regional Director</SelectItem>
-                                    <SelectItem value="SUPER_ADMIN" className="py-3 px-4 font-bold text-[#36335e]">Supreme Admin</SelectItem>
+                                    <SelectItem value="PROSPECT" className="py-3 px-4 font-bold text-brand-primary">Prospect</SelectItem>
+                                    <SelectItem value="AFFILIATE" className="py-3 px-4 font-bold text-brand-primary">Partner Affiliate</SelectItem>
+                                    <SelectItem value="SCHOOL_ADMIN" className="py-3 px-4 font-bold text-brand-primary">Institutional Admin</SelectItem>
+                                    <SelectItem value="SCHOOL_SUPER_AGENT" className="py-3 px-4 font-bold text-brand-primary">Schools Super Agent</SelectItem>
+                                    <SelectItem value="COUNTRY_DIRECTOR" className="py-3 px-4 font-bold text-brand-primary">Regional Director</SelectItem>
+                                    <SelectItem value="SUPER_ADMIN" className="py-3 px-4 font-bold text-brand-primary">Supreme Admin</SelectItem>
                                 </SelectGroup>
                             </SelectContent>
                         </Select>
@@ -101,18 +102,18 @@ export default function RoleForm({
                     {selectedRole === 'COUNTRY_DIRECTOR' && (
                         <div className="space-y-3 animate-in fade-in slide-in-from-top-2 duration-300">
                             <Label className="text-[10px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                                <Globe className="w-3 h-3 text-[#d5a22d]" />
+                                <Globe className="w-3 h-3 text-brand-accent" />
                                 Assigned Territory
                             </Label>
                             <Select value={countryId} onValueChange={setCountryId}>
-                                <SelectTrigger className="h-14 bg-gray-50 border-gray-100 rounded-2xl focus:ring-[#d5a22d]/20 focus:border-[#d5a22d]/30 font-bold text-[#36335e]">
+                                <SelectTrigger className="h-14 bg-gray-50 border-gray-100 rounded-2xl focus:ring-brand-accent/20 focus:border-brand-accent/30 font-bold text-brand-primary">
                                     <SelectValue placeholder="Assign a country" />
                                 </SelectTrigger>
                                 <SelectContent className="rounded-2xl border-gray-100 shadow-2xl">
                                     <SelectGroup>
                                         <SelectLabel className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-4 py-2">Global Operations</SelectLabel>
                                         {countries.map((c) => (
-                                            <SelectItem key={c.id} value={c.id} className="py-3 px-4 font-bold text-[#36335e]">{c.name}</SelectItem>
+                                            <SelectItem key={c.id} value={c.id} className="py-3 px-4 font-bold text-brand-primary">{c.name}</SelectItem>
                                         ))}
                                     </SelectGroup>
                                 </SelectContent>
@@ -123,18 +124,18 @@ export default function RoleForm({
                     {selectedRole === 'SCHOOL_ADMIN' && (
                         <div className="space-y-3 animate-in fade-in slide-in-from-top-2 duration-300">
                             <Label className="text-[10px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                                <Building2 className="w-3 h-3 text-[#d5a22d]" />
+                                <Building2 className="w-3 h-3 text-brand-accent" />
                                 Assigned Institution
                             </Label>
                             <Select value={universityId} onValueChange={setUniversityId}>
-                                <SelectTrigger className="h-14 bg-gray-50 border-gray-100 rounded-2xl focus:ring-[#d5a22d]/20 focus:border-[#d5a22d]/30 font-bold text-[#36335e]">
+                                <SelectTrigger className="h-14 bg-gray-50 border-gray-100 rounded-2xl focus:ring-brand-accent/20 focus:border-brand-accent/30 font-bold text-brand-primary">
                                     <SelectValue placeholder="Assign a school" />
                                 </SelectTrigger>
                                 <SelectContent className="rounded-2xl border-gray-100 shadow-2xl min-w-[250px]">
                                     <SelectGroup>
                                         <SelectLabel className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-4 py-2">Academia Registry</SelectLabel>
                                         {universities.map((u) => (
-                                            <SelectItem key={u.id} value={u.id} className="py-3 px-4 font-bold text-[#36335e]">{u.name}</SelectItem>
+                                            <SelectItem key={u.id} value={u.id} className="py-3 px-4 font-bold text-brand-primary">{u.name}</SelectItem>
                                         ))}
                                     </SelectGroup>
                                 </SelectContent>
@@ -147,16 +148,16 @@ export default function RoleForm({
                     <Button
                         onClick={handleUpdate}
                         disabled={loading || (selectedRole === currentRole && countryId === currentCountryId && universityId === currentUniversityId)}
-                        className="h-14 px-10 bg-[#36335e] hover:bg-[#2a284a] text-white rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-[#36335e]/20 transition-all transform active:scale-95 flex gap-3"
+                        className="h-14 px-10 bg-brand-primary hover:bg-brand-primary-hover text-white rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-brand-primary/20 transition-all transform active:scale-95 flex gap-3"
                     >
                         {loading ? (
                             <>
-                                <Loader2 className="w-5 h-5 animate-spin text-[#d5a22d]" />
+                                <Loader2 className="w-5 h-5 animate-spin text-brand-accent" />
                                 <span>Reconfiguring...</span>
                             </>
                         ) : (
                             <>
-                                <CheckCircle2 className="w-5 h-5 text-[#d5a22d]" />
+                                <CheckCircle2 className="w-5 h-5 text-brand-accent" />
                                 <span>Finalize Privilege Update</span>
                             </>
                         )}

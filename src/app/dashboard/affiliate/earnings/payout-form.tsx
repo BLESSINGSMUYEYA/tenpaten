@@ -33,8 +33,8 @@ export default function PayoutRequestForm({ availableBalance, currency }: { avai
 
     return (
         <form onSubmit={handleSubmit} className="p-6 bg-white rounded-[2rem] border border-gray-100 shadow-xl shadow-slate-200/50">
-            <h3 className="text-lg font-black text-[#36335e] mb-4 flex items-center gap-2">
-                <DollarSign className="w-5 h-5 text-[#d5a22d]" />
+            <h3 className="text-lg font-black text-brand-primary mb-4 flex items-center gap-2">
+                <DollarSign className="w-5 h-5 text-brand-accent" />
                 Request Payout
             </h3>
             <div className="space-y-4">
@@ -47,11 +47,11 @@ export default function PayoutRequestForm({ availableBalance, currency }: { avai
                             onChange={(e) => setAmount(Number(e.target.value))}
                             max={availableBalance}
                             min={1}
-                            className="w-full h-14 bg-slate-50 border-none rounded-2xl px-6 font-black text-[#36335e] focus:ring-2 focus:ring-[#d5a22d]/20 transition-all placeholder:text-slate-300"
+                            className="w-full h-14 bg-slate-50 border-none rounded-2xl px-6 font-black text-brand-primary focus:ring-2 focus:ring-brand-accent/20 transition-all placeholder:text-slate-300"
                             placeholder="0.00"
                             required
                         />
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 px-3 py-1 bg-white rounded-lg shadow-sm border border-slate-100 text-[10px] font-black text-[#d5a22d]">
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 px-3 py-1 bg-white rounded-lg shadow-sm border border-slate-100 text-[10px] font-black text-brand-accent">
                             MAX: {availableBalance}
                         </div>
                     </div>
@@ -66,7 +66,7 @@ export default function PayoutRequestForm({ availableBalance, currency }: { avai
                 <button
                     type="submit"
                     disabled={isSubmitting || availableBalance <= 0}
-                    className="w-full h-14 bg-[#36335e] hover:bg-[#2a284a] text-white font-black uppercase tracking-[0.2em] text-xs rounded-2xl shadow-lg shadow-indigo-900/20 flex items-center justify-center gap-3 transition-all disabled:opacity-50 disabled:grayscale transform active:scale-95"
+                    className="w-full h-14 bg-brand-primary hover:bg-brand-primary-hover text-white font-black uppercase tracking-[0.2em] text-xs rounded-2xl shadow-lg shadow-indigo-900/20 flex items-center justify-center gap-3 transition-all disabled:opacity-50 disabled:grayscale transform active:scale-95"
                 >
                     {isSubmitting ? (
                         <>

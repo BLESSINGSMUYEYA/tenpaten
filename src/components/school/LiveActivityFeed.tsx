@@ -51,7 +51,7 @@ export default function LiveActivityFeed({ universityId }: LiveActivityFeedProps
         switch (type) {
             case 'NEW_APPLICATION': return <UserPlus className="w-3.5 h-3.5 text-emerald-400" />;
             case 'STATUS_CHANGE': return <FileCheck className="w-3.5 h-3.5 text-blue-400" />;
-            case 'NEW_MESSAGE': return <MessageSquare className="w-3.5 h-3.5 text-[#d5a22d]" />;
+            case 'NEW_MESSAGE': return <MessageSquare className="w-3.5 h-3.5 text-brand-accent" />;
             default: return <Zap className="w-3.5 h-3.5 text-gray-400" />;
         }
     };
@@ -59,7 +59,7 @@ export default function LiveActivityFeed({ universityId }: LiveActivityFeedProps
     return (
         <div className="rounded-[2.5rem] bg-[#1a1b41] border border-white/8 p-6 shadow-2xl relative overflow-hidden group">
             {/* Background Glow */}
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-[#d5a22d]/10 rounded-full blur-3xl group-hover:bg-[#d5a22d]/20 transition-all duration-700" />
+            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-brand-accent/10 rounded-full blur-3xl group-hover:bg-brand-accent/20 transition-all duration-700" />
             
             <div className="relative z-10 space-y-6">
                 <div className="flex items-center justify-between">
@@ -67,7 +67,7 @@ export default function LiveActivityFeed({ universityId }: LiveActivityFeedProps
                         <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                         <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-white">Live Activity</h3>
                     </div>
-                    <span className="text-[9px] font-black uppercase tracking-widest text-[#d5a22d]/60 bg-[#d5a22d]/10 px-2.5 py-1 rounded-lg">Pulse Active</span>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-brand-accent/60 bg-brand-accent/10 px-2.5 py-1 rounded-lg">Pulse Active</span>
                 </div>
 
                 <div className="space-y-4">
@@ -100,7 +100,7 @@ export default function LiveActivityFeed({ universityId }: LiveActivityFeedProps
                     )}
                 </div>
 
-                <button className="w-full py-3 text-[9px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-[#d5a22d] transition-colors border-t border-white/5 pt-4">
+                <button className="w-full py-3 text-[9px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-brand-accent transition-colors border-t border-white/5 pt-4">
                     View Full Audit Log
                 </button>
             </div>

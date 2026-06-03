@@ -11,7 +11,7 @@ export default async function SchoolAdminSettingsPage() {
     }
 
     // Role check - ensure it's a School Admin
-    if (session.user.role !== 'SCHOOL_ADMIN') {
+    if (session.user.role !== 'SCHOOL_ADMIN' && session.user.role !== 'SCHOOL_SUPER_AGENT') {
         redirect('/dashboard');
     }
 

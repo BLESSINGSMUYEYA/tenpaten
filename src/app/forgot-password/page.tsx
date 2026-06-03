@@ -16,7 +16,7 @@ export default function ForgotPasswordPage() {
     );
 
     return (
-        <div className="min-h-screen bg-white flex flex-col selection:bg-[#d5a22d]/20">
+        <div className="min-h-screen bg-white flex flex-col selection:bg-brand-accent/20">
 
             {/* Minimal top bar */}
             <header className="flex items-center justify-between px-6 sm:px-12 py-6 border-b border-gray-100">
@@ -44,7 +44,7 @@ export default function ForgotPasswordPage() {
                                 <h2 className="text-2xl font-black text-[#1a1b41] tracking-tight">Check your inbox</h2>
                                 <p className="text-sm text-gray-400 font-medium leading-relaxed">{state.success}</p>
                             </div>
-                            <Button asChild className="w-full h-12 rounded-xl bg-[#d5a22d] hover:bg-[#b89531] text-white font-bold text-sm transition-all active:scale-95">
+                            <Button asChild className="w-full h-12 rounded-xl bg-brand-accent hover:bg-[#b89531] text-white font-bold text-sm transition-all active:scale-95">
                                 <Link href="/login">Return to sign in</Link>
                             </Button>
                         </div>
@@ -73,7 +73,7 @@ export default function ForgotPasswordPage() {
                                             type="email"
                                             required
                                             placeholder="you@example.com"
-                                            className="pl-10 h-12 rounded-xl border-gray-200 bg-gray-50 text-gray-800 placeholder:text-gray-300 focus:bg-white focus:border-[#d5a22d] focus:ring-0 transition-all text-sm font-medium"
+                                            className="pl-10 h-12 rounded-xl border-gray-200 bg-gray-50 text-gray-800 placeholder:text-gray-300 focus:bg-white focus:border-brand-accent focus:ring-0 transition-all text-sm font-medium"
                                             disabled={isPending}
                                         />
                                     </div>
@@ -89,7 +89,7 @@ export default function ForgotPasswordPage() {
                                 <Button
                                     type="submit"
                                     disabled={isPending}
-                                    className="w-full h-12 bg-[#d5a22d] hover:bg-[#b89531] text-white font-bold tracking-wide text-sm rounded-xl transition-all active:scale-[0.98] shadow-md shadow-[#d5a22d]/20"
+                                    className="w-full h-12 bg-brand-accent hover:bg-[#b89531] text-white font-bold tracking-wide text-sm rounded-xl transition-all active:scale-[0.98] shadow-md shadow-brand-accent/20"
                                 >
                                     {isPending ? (
                                         <>

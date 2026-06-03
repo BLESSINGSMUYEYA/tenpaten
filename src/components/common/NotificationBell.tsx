@@ -148,7 +148,7 @@ export default function NotificationBell() {
                 {/* Bell button */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="relative p-2 rounded-xl hover:bg-[#1d1b41]/5 dark:hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-[#d5a22d]/30"
+                    className="relative p-2 rounded-xl hover:bg-[#1d1b41]/5 dark:hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-accent/30"
                     aria-label="Notifications"
                 >
                     {bellShake ? (
@@ -157,7 +157,7 @@ export default function NotificationBell() {
                         <Bell className="w-5 h-5 text-[#1d1b41] dark:text-gray-300" />
                     )}
                     {unreadCount > 0 && (
-                        <span className="absolute -top-0.5 -right-0.5 inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-black text-white bg-[#d5a22d] rounded-full border-2 border-white animate-in zoom-in duration-300">
+                        <span className="absolute -top-0.5 -right-0.5 inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-black text-white bg-brand-accent rounded-full border-2 border-white animate-in zoom-in duration-300">
                             {unreadCount > 9 ? '9+' : unreadCount}
                         </span>
                     )}
@@ -171,7 +171,7 @@ export default function NotificationBell() {
                             <div className="flex items-center gap-2">
                                 <h3 className="font-black text-[#1d1b41] text-sm tracking-tight">Notifications</h3>
                                 {unreadCount > 0 && (
-                                    <span className="px-2 py-0.5 bg-[#d5a22d]/10 text-[#d5a22d] text-[10px] font-black rounded-full">
+                                    <span className="px-2 py-0.5 bg-brand-accent/10 text-brand-accent text-[10px] font-black rounded-full">
                                         {unreadCount} new
                                     </span>
                                 )}
@@ -180,7 +180,7 @@ export default function NotificationBell() {
                                 <button
                                     onClick={handleMarkAllRead}
                                     disabled={isMarkingAll}
-                                    className="flex items-center gap-1.5 text-[10px] font-black text-[#1d1b41]/60 hover:text-[#d5a22d] transition-colors uppercase tracking-widest"
+                                    className="flex items-center gap-1.5 text-[10px] font-black text-[#1d1b41]/60 hover:text-brand-accent transition-colors uppercase tracking-widest"
                                 >
                                     <CheckCheck className="w-3 h-3" />
                                     {isMarkingAll ? 'Marking...' : 'Mark all read'}
@@ -201,7 +201,7 @@ export default function NotificationBell() {
                             ) : (
                                 <div className="divide-y divide-gray-50">
                                     {notifications.map((notification) => (
-                                        <div key={notification.id} className={`group relative p-4 hover:bg-gray-50 transition-colors ${!notification.read ? 'bg-[#d5a22d]/5' : ''}`}>
+                                        <div key={notification.id} className={`group relative p-4 hover:bg-gray-50 transition-colors ${!notification.read ? 'bg-brand-accent/5' : ''}`}>
                                             <div className="flex gap-3">
                                                 <div className="mt-0.5">{getIcon(notification.type)}</div>
                                                 <div className="flex-1 min-w-0">
@@ -219,7 +219,7 @@ export default function NotificationBell() {
                                                     {!notification.read && (
                                                         <button
                                                             onClick={() => handleMarkAsRead(notification.id)}
-                                                            className="mt-1.5 flex items-center gap-1 text-[9px] font-black text-[#d5a22d] hover:text-[#b89531] uppercase tracking-widest transition-colors"
+                                                            className="mt-1.5 flex items-center gap-1 text-[9px] font-black text-brand-accent hover:text-[#b89531] uppercase tracking-widest transition-colors"
                                                         >
                                                             <Check className="w-2.5 h-2.5" />
                                                             Mark as read
@@ -227,7 +227,7 @@ export default function NotificationBell() {
                                                     )}
                                                 </div>
                                                 {!notification.read && (
-                                                    <div className="w-2 h-2 rounded-full bg-[#d5a22d] shrink-0 mt-1 animate-pulse" />
+                                                    <div className="w-2 h-2 rounded-full bg-brand-accent shrink-0 mt-1 animate-pulse" />
                                                 )}
                                             </div>
                                             {notification.link && (
@@ -250,7 +250,7 @@ export default function NotificationBell() {
                             <Link
                                 href="/dashboard/notifications"
                                 onClick={() => setIsOpen(false)}
-                                className="flex items-center justify-center w-full py-2 text-[10px] font-black text-[#1d1b41] hover:text-[#d5a22d] uppercase tracking-widest transition-colors"
+                                className="flex items-center justify-center w-full py-2 text-[10px] font-black text-[#1d1b41] hover:text-brand-accent uppercase tracking-widest transition-colors"
                             >
                                 View all notifications
                             </Link>

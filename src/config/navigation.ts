@@ -75,4 +75,22 @@ export const navigationConfig: Record<string, NavItem[]> = {
         { name: 'Earnings', href: '/dashboard/affiliate/earnings', icon: FileText }, // Placeholder icon
         { name: 'Settings', href: '/dashboard/affiliate/settings', icon: Settings },
     ],
+    school_super_agent: [
+        { name: 'Dashboard', href: '/dashboard/super-agent', icon: LayoutDashboard },
+        { name: 'Assigned Schools', href: '/dashboard/super-agent/schools', icon: School },
+    ],
+    school_super_agent_school: [
+        { name: 'Talent Radar', href: '/dashboard/school/discover', icon: Zap, badge: 'Soon' },
+        { name: 'Applications', href: '/dashboard/school/applications', icon: FileText },
+        { name: 'Academics', href: '/dashboard/school/programs', icon: GraduationCap },
+        { name: 'Requirements', href: '/dashboard/school/requirements', icon: Sparkles },
+        { name: 'Scholarships', href: '/dashboard/school/scholarships', icon: Percent },
+        { name: 'Analytics', href: '/dashboard/school/analytics', icon: BarChart3 },
+        { name: 'Finance', href: '/dashboard/school/finance', icon: Wallet },
+        { name: 'Messages', href: '/dashboard/messages', icon: MessageCircle },
+    ],
+    school_super_agent_account: [
+        { name: 'University Profile', href: '/dashboard/school/profile', icon: Building2 },
+        { name: 'Account Settings', href: '/dashboard/school/settings', icon: Settings },
+    ],
 };

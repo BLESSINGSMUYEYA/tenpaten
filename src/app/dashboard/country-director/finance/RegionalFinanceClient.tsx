@@ -71,12 +71,12 @@ export default function RegionalFinanceClient() {
 
             {/* Regional Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-[#36335e] text-white rounded-[2.5rem] p-8 shadow-2xl shadow-indigo-900/20 relative overflow-hidden group">
+                <div className="bg-brand-primary text-white rounded-[2.5rem] p-8 shadow-2xl shadow-indigo-900/20 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:scale-150 transition-transform duration-700" />
                     <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] mb-8">Total Regional Volume</p>
                     <h2 className="text-4xl font-black tracking-tight mb-2">{summary.totalVolume.toLocaleString()} {currency}</h2>
                     <p className="text-white/60 text-xs font-medium flex items-center gap-1">
-                        <TrendingUp className="w-3 h-3 text-[#d5a22d]" />
+                        <TrendingUp className="w-3 h-3 text-brand-accent" />
                         Gross processed through Tenpaten
                     </p>
                 </div>
@@ -84,7 +84,7 @@ export default function RegionalFinanceClient() {
                 <div className="bg-white rounded-[2.5rem] p-8 border border-slate-100 shadow-xl shadow-slate-200/50 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:scale-150 transition-transform duration-700" />
                     <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8">Regional Platform Revenue</p>
-                    <h2 className="text-4xl font-black text-[#36335e] tracking-tight mb-2">{summary.totalPlatformRevenue.toLocaleString()} {currency}</h2>
+                    <h2 className="text-4xl font-black text-brand-primary tracking-tight mb-2">{summary.totalPlatformRevenue.toLocaleString()} {currency}</h2>
                     <p className="text-emerald-600 text-xs font-bold uppercase tracking-widest flex items-center gap-1">
                         Tenpaten Net Commission (10%)
                     </p>
@@ -93,7 +93,7 @@ export default function RegionalFinanceClient() {
                 <div className="bg-white rounded-[2.5rem] p-8 border border-slate-100 shadow-xl shadow-slate-200/50 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:scale-150 transition-transform duration-700" />
                     <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8">Total School Payouts Owed</p>
-                    <h2 className="text-4xl font-black text-[#36335e] tracking-tight mb-2">{summary.regionalAvailableBalance.toLocaleString()} {currency}</h2>
+                    <h2 className="text-4xl font-black text-brand-primary tracking-tight mb-2">{summary.regionalAvailableBalance.toLocaleString()} {currency}</h2>
                     <p className="text-amber-600 text-xs font-bold uppercase tracking-widest">Awaiting Institutional Withdrawal</p>
                 </div>
             </div>
@@ -107,7 +107,7 @@ export default function RegionalFinanceClient() {
                                 <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-orange-600">
                                     <BarChart3 className="w-5 h-5" />
                                 </div>
-                                <h3 className="text-lg font-black text-[#36335e]">Top Performers</h3>
+                                <h3 className="text-lg font-black text-brand-primary">Top Performers</h3>
                             </div>
                         </div>
                         <div className="divide-y divide-slate-50">
@@ -116,12 +116,12 @@ export default function RegionalFinanceClient() {
                                     <div className="flex items-center gap-4">
                                         <div className="text-xs font-black text-slate-300 w-4">{index + 1}</div>
                                         <div>
-                                            <p className="text-sm font-black text-[#36335e] group-hover:text-indigo-600 transition-colors">{uni.name}</p>
+                                            <p className="text-sm font-black text-brand-primary group-hover:text-indigo-600 transition-colors">{uni.name}</p>
                                             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{uni.transactionCount} Successful Payments</p>
                                         </div>
                                     </div>
                                     <div className="text-right">
-                                        <p className="text-sm font-black text-[#36335e]">{uni.totalRevenue.toLocaleString()}</p>
+                                        <p className="text-sm font-black text-brand-primary">{uni.totalRevenue.toLocaleString()}</p>
                                         <p className="text-[10px] font-bold text-slate-300 uppercase leading-none">{currency}</p>
                                     </div>
                                 </div>
@@ -130,12 +130,12 @@ export default function RegionalFinanceClient() {
                     </div>
 
                     {/* Quick Action Card */}
-                    <div className="bg-gradient-to-br from-[#36335e] to-[#4f4b8a] p-8 rounded-[2.5rem] text-white shadow-2xl shadow-indigo-900/30 relative overflow-hidden group cursor-pointer">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#d5a22d]/20 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:scale-150 transition-transform duration-700" />
+                    <div className="bg-linear-to-br from-brand-primary to-[#4f4b8a] p-8 rounded-[2.5rem] text-white shadow-2xl shadow-indigo-900/30 relative overflow-hidden group cursor-pointer">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/20 rounded-full -translate-y-12 translate-x-12 blur-2xl group-hover:scale-150 transition-transform duration-700" />
                         <div className="relative z-10 space-y-4">
                             <h4 className="text-xl font-black tracking-tight leading-tight">Generate Regional Report</h4>
                             <p className="text-white/60 text-sm font-medium">Download a comprehensive PDF audit of all universities in {countryName}.</p>
-                            <Button className="w-full h-12 bg-[#d5a22d] hover:bg-[#b88e24] text-[#36335e] font-black uppercase tracking-widest rounded-2xl gap-3">
+                            <Button className="w-full h-12 bg-brand-accent hover:bg-[#b88e24] text-brand-primary font-black uppercase tracking-widest rounded-2xl gap-3">
                                 Export PDF
                                 <ArrowUpRight className="w-4 h-4" />
                             </Button>
@@ -148,10 +148,10 @@ export default function RegionalFinanceClient() {
                     <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/40 overflow-hidden h-full">
                         <div className="p-8 border-b border-slate-50 flex flex-col md:flex-row md:items-center justify-between gap-6">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-[#36335e]">
+                                <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-brand-primary">
                                     <PieChart className="w-5 h-5" />
                                 </div>
-                                <h3 className="text-lg font-black text-[#36335e]">Regional Sub-Ledger</h3>
+                                <h3 className="text-lg font-black text-brand-primary">Regional Sub-Ledger</h3>
                             </div>
                             <div className="relative">
                                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -179,7 +179,7 @@ export default function RegionalFinanceClient() {
                                         <tr key={tx.id} className="hover:bg-slate-50/50 transition-colors group">
                                             <td className="px-8 py-6">
                                                 <div>
-                                                    <p className="text-sm font-black text-[#36335e]">{tx.user.fullName}</p>
+                                                    <p className="text-sm font-black text-brand-primary">{tx.user.fullName}</p>
                                                     <p className="text-[10px] font-mono text-slate-300 mt-0.5">{tx.referenceId}</p>
                                                 </div>
                                             </td>
@@ -192,7 +192,7 @@ export default function RegionalFinanceClient() {
                                                 </div>
                                             </td>
                                             <td className="px-8 py-6 text-right">
-                                                <p className="text-sm font-black text-[#36335e]">{tx.totalAmount.toLocaleString()} {tx.currency}</p>
+                                                <p className="text-sm font-black text-brand-primary">{tx.totalAmount.toLocaleString()} {tx.currency}</p>
                                                 <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-tight">Net: {tx.schoolAmount.toLocaleString()}</p>
                                             </td>
                                             <td className="px-8 py-6">

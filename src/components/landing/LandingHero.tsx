@@ -1,13 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 export function LandingHero() {
     return (
-        <section className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center items-center overflow-hidden selection:bg-[#d5a22d]/30 text-center">
+        <section className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center items-center overflow-hidden selection:bg-brand-accent/30 text-center">
             {/* ── Background ── */}
             <div className="absolute inset-0 z-0">
                 {/* Base Fallback Color */}
@@ -31,7 +31,7 @@ export function LandingHero() {
 
                 {/* Subtle overlay to improve text visibility */}
                 <div className="absolute inset-0 bg-[#0f1030]/55 z-10" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 z-10" />
+                <div className="absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-black/50 z-10" />
 
 
 
@@ -42,24 +42,11 @@ export function LandingHero() {
                 />
                 
                 {/* Subtle light leak */}
-                <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#d5a22d] opacity-[0.05] blur-[120px] z-20" />
+                <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-brand-accent opacity-[0.05] blur-[120px] z-20" />
             </div>
 
             <div className="relative z-30 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-24 flex flex-col items-center text-center">
                 <div className="max-w-4xl flex flex-col items-center">
-                    {/* ── Trust badge ── */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[#d5a22d]/25 bg-[#d5a22d]/10 mb-8 backdrop-blur-md"
-                    >
-                        <Sparkles className="w-3.5 h-3.5 text-[#d5a22d] animate-pulse" />
-                        <span className="text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.35em]">
-                            Proudly Malawian — Applications Open
-                        </span>
-                    </motion.div>
-
                     {/* ── Headline ── */}
                     <motion.h1
                         initial={{ opacity: 0, y: 28 }}
@@ -68,7 +55,7 @@ export function LandingHero() {
                         className="text-4xl sm:text-5xl lg:text-[4.5rem] font-black text-white leading-[1.15] tracking-tighter mb-8"
                     >
                         Your one-stop platform<br />
-                        <span className="text-[#d5a22d]">for university</span> applications.
+                        <span className="text-brand-accent">for university</span> applications.
                     </motion.h1>
 
                     {/* ── Sub ── */}
@@ -79,7 +66,7 @@ export function LandingHero() {
                         className="text-white/70 text-lg lg:text-xl font-medium leading-relaxed max-w-3xl mb-12"
                     >
                         Get matched. Apply directly. Track your progress.<br className="hidden sm:block" />
-                        <span className="text-white font-black border-b-2 border-[#d5a22d]/50 pb-0.5">All in one place.</span>
+                        <span className="text-white font-black border-b-2 border-brand-accent/50 pb-0.5">All in one place.</span>
                     </motion.p>
 
                     {/* ── CTAs ── */}
@@ -91,13 +78,13 @@ export function LandingHero() {
                     >
                         <Link
                             href="/register?type=student"
-                            className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl bg-[#d5a22d] text-[#1a1b41] font-black uppercase tracking-[0.2em] text-[11px] hover:bg-white transition-all shadow-[0_20px_40px_-15px_rgba(213,162,45,0.3)] active:scale-95 overflow-hidden"
+                            className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl bg-brand-accent text-[#1a1b41] font-black uppercase tracking-[0.2em] text-[11px] hover:bg-white transition-all shadow-[0_20px_40px_-15px_rgba(213,162,45,0.3)] active:scale-95 overflow-hidden"
                         >
                             <span className="relative z-10 flex items-center gap-3">
                                 Get Started — It's Free
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                            <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                         </Link>
                         <Link
                             href="/login"
@@ -119,7 +106,7 @@ export function LandingHero() {
                             {['BM', 'TK', 'AM', 'SC'].map((initials, i) => (
                                 <div
                                     key={i}
-                                    className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1a1b41] to-[#2a2b60] border-2 border-[#0f1030] flex items-center justify-center text-[10px] font-black text-[#d5a22d] shadow-xl"
+                                    className="w-10 h-10 rounded-full bg-linear-to-br from-[#1a1b41] to-[#2a2b60] border-2 border-[#0f1030] flex items-center justify-center text-[10px] font-black text-brand-accent shadow-xl"
                                 >
                                     {initials}
                                 </div>
@@ -131,7 +118,7 @@ export function LandingHero() {
                             </p>
                             <div className="flex gap-1">
                                 {[1, 2, 3, 4, 5].map((s) => (
-                                    <div key={s} className="w-1.5 h-1.5 rounded-full bg-[#d5a22d]" />
+                                    <div key={s} className="w-1.5 h-1.5 rounded-full bg-brand-accent" />
                                 ))}
                             </div>
                         </div>
@@ -150,7 +137,7 @@ export function LandingHero() {
                     <motion.div
                         animate={{ y: [0, 12, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-                        className="w-1 h-2 rounded-full bg-[#d5a22d]"
+                        className="w-1 h-2 rounded-full bg-brand-accent"
                     />
                 </div>
             </motion.div>

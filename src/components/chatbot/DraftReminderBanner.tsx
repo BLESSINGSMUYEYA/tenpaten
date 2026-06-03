@@ -62,19 +62,19 @@ export default function DraftReminderBanner({ draft }: DraftReminderBannerProps)
                     exit={{ opacity: 0, y: -20, height: 0 }}
                     className="relative overflow-hidden"
                 >
-                    <div className="mb-8 p-1 rounded-[2.5rem] bg-gradient-to-r from-[#1d1b41] via-[#d5a22d]/30 to-[#1d1b41] shadow-2xl">
+                    <div className="mb-8 p-1 rounded-[2.5rem] bg-linear-to-r from-[#1d1b41] via-brand-accent/30 to-[#1d1b41] shadow-2xl">
                         <div className="bg-[#1d1b41] rounded-[2.3rem] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
                             {/* Decorative background elements */}
                             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32" />
-                            <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#d5a22d]/10 rounded-full blur-2xl -ml-16 -mb-16" />
+                            <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-accent/10 rounded-full blur-2xl -ml-16 -mb-16" />
 
                             <div className="flex items-center gap-6 relative z-10 w-full md:w-auto">
-                                <div className="w-16 h-16 rounded-2xl bg-[#d5a22d]/10 flex items-center justify-center flex-shrink-0 border border-[#d5a22d]/20">
-                                    <Sparkles className="w-8 h-8 text-[#d5a22d] animate-pulse" />
+                                <div className="w-16 h-16 rounded-2xl bg-brand-accent/10 flex items-center justify-center flex-shrink-0 border border-brand-accent/20">
+                                    <Sparkles className="w-8 h-8 text-brand-accent animate-pulse" />
                                 </div>
                                 <div className="space-y-1 text-left">
                                     <div className="flex items-center gap-2">
-                                        <span className="text-[10px] font-black text-[#d5a22d] uppercase tracking-[0.3em]">Unfinished Application</span>
+                                        <span className="text-[10px] font-black text-brand-accent uppercase tracking-[0.3em]">Unfinished Application</span>
                                         {daysUntilExpiry !== null && daysUntilExpiry <= 7 && (
                                             <div className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-500 text-[8px] font-black uppercase tracking-widest border border-amber-500/30 flex items-center gap-1">
                                                 <Clock className="w-2 h-2" /> Expires in {daysUntilExpiry} days
@@ -82,7 +82,7 @@ export default function DraftReminderBanner({ draft }: DraftReminderBannerProps)
                                         )}
                                     </div>
                                     <h3 className="text-xl font-black text-white tracking-tight leading-tight">
-                                        Continue your application for <span className="text-[#d5a22d]">{draft.program.name}</span>
+                                        Continue your application for <span className="text-brand-accent">{draft.program.name}</span>
                                     </h3>
                                     <p className="text-xs text-white/50 font-medium italic">
                                         at {draft.program.university.name}
@@ -93,7 +93,7 @@ export default function DraftReminderBanner({ draft }: DraftReminderBannerProps)
                             <div className="flex items-center gap-3 relative z-10 w-full md:w-auto">
                                 <Link
                                     href={`/dashboard/apply?programId=${draft.programId}&draftId=${draft.id}`}
-                                    className="flex-1 md:flex-none flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#d5a22d] text-[#1d1b41] text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all shadow-xl shadow-[#d5a22d]/20 active:scale-95 group"
+                                    className="flex-1 md:flex-none flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-brand-accent text-[#1d1b41] text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all shadow-xl shadow-brand-accent/20 active:scale-95 group"
                                 >
                                     Resume Application
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -109,7 +109,7 @@ export default function DraftReminderBanner({ draft }: DraftReminderBannerProps)
                                     </button>
                                     <button
                                         onClick={() => handleDismiss('permanent')}
-                                        className="text-[8px] font-black text-white/20 uppercase tracking-widest hover:text-[#d5a22d] transition-colors"
+                                        className="text-[8px] font-black text-white/20 uppercase tracking-widest hover:text-brand-accent transition-colors"
                                     >
                                         Don't remind again
                                     </button>

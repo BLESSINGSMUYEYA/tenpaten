@@ -91,10 +91,10 @@ export default function ApplyAffiliateForm({ countries }: ApplyAffiliateFormProp
 
     const UploadBox = ({ label, id, uploading, result, onChange, accept = ".jpg,.jpeg,.png,.pdf" }: any) => (
         <div className="flex flex-col gap-2">
-            <label className="text-xs font-bold text-[#36335e]">{label}</label>
-            <div className={`relative flex items-center justify-center p-6 border-2 border-dashed rounded-2xl transition-all ${result ? 'border-green-300 bg-green-50' : 'border-gray-200 bg-gray-50 hover:bg-gray-100 hover:border-[#d5a22d]'}`}>
+            <label className="text-xs font-bold text-brand-primary">{label}</label>
+            <div className={`relative flex items-center justify-center p-6 border-2 border-dashed rounded-2xl transition-all ${result ? 'border-green-300 bg-green-50' : 'border-gray-200 bg-gray-50 hover:bg-gray-100 hover:border-brand-accent'}`}>
                 {uploading ? (
-                    <div className="text-xs font-bold text-[#d5a22d] animate-pulse">Uploading...</div>
+                    <div className="text-xs font-bold text-brand-accent animate-pulse">Uploading...</div>
                 ) : result ? (
                     <div className="flex flex-col items-center gap-2">
                         <CheckCircle2 className="w-8 h-8 text-green-500" />
@@ -103,11 +103,11 @@ export default function ApplyAffiliateForm({ countries }: ApplyAffiliateFormProp
                     </div>
                 ) : (
                     <div className="flex flex-col items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-[#36335e]/5 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-brand-primary/5 flex items-center justify-center">
                             <Upload className="w-5 h-5 text-slate-400" />
                         </div>
                         <div className="text-xs text-slate-500 font-medium text-center">
-                            <span className="text-[#d5a22d] font-bold hover:underline cursor-pointer">Click to browse</span> or drag & drop
+                            <span className="text-brand-accent font-bold hover:underline cursor-pointer">Click to browse</span> or drag & drop
                         </div>
                         <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">JPG, PNG, PDF (Max 10MB)</p>
                     </div>
@@ -138,19 +138,19 @@ export default function ApplyAffiliateForm({ countries }: ApplyAffiliateFormProp
             {/* Section 1: Verification */}
             <div className="space-y-6">
                 <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-[#36335e] text-white flex items-center justify-center shadow-lg shadow-[#36335e]/20">
+                    <div className="w-10 h-10 rounded-xl bg-brand-primary text-white flex items-center justify-center shadow-lg shadow-brand-primary/20">
                         <User className="w-5 h-5" />
                     </div>
                     <div>
-                        <h3 className="text-lg font-black text-[#36335e] tracking-tight">Identity Verification</h3>
+                        <h3 className="text-lg font-black text-brand-primary tracking-tight">Identity Verification</h3>
                         <p className="text-xs text-slate-400 font-medium mt-0.5">Please provide government-issued ID details for security</p>
                     </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-[#36335e]">Document Type</label>
-                        <select name="idType" required className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-[#d5a22d] focus:ring-1 focus:ring-[#d5a22d]/30 transition-all appearance-none">
+                        <label className="text-xs font-bold text-brand-primary">Document Type</label>
+                        <select name="idType" required className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30 transition-all appearance-none">
                             <option value="">Select an ID type</option>
                             <option value="NATIONAL_ID">National ID Card</option>
                             <option value="PASSPORT">Passport</option>
@@ -159,13 +159,13 @@ export default function ApplyAffiliateForm({ countries }: ApplyAffiliateFormProp
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-[#36335e]">ID Number</label>
-                        <input type="text" name="idNumber" required placeholder="Enter exact document number" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-[#d5a22d] focus:ring-1 focus:ring-[#d5a22d]/30 transition-all placeholder:text-gray-400" />
+                        <label className="text-xs font-bold text-brand-primary">ID Number</label>
+                        <input type="text" name="idNumber" required placeholder="Enter exact document number" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30 transition-all placeholder:text-gray-400" />
                     </div>
 
                     <div className="space-y-2 md:col-span-2">
-                        <label className="text-xs font-bold text-[#36335e]">Operating Country</label>
-                        <select name="countryId" required className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-[#d5a22d] focus:ring-1 focus:ring-[#d5a22d]/30 transition-all appearance-none">
+                        <label className="text-xs font-bold text-brand-primary">Operating Country</label>
+                        <select name="countryId" required className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30 transition-all appearance-none">
                             <option value="">Select your operating country</option>
                             {countries.map(country => (
                                 <option key={country.id} value={country.id}>{country.name}</option>
@@ -220,7 +220,7 @@ export default function ApplyAffiliateForm({ countries }: ApplyAffiliateFormProp
                             <Landmark className="w-5 h-5" />
                         </div>
                         <div>
-                            <h3 className="text-lg font-black text-[#36335e] tracking-tight">Payout Details</h3>
+                            <h3 className="text-lg font-black text-brand-primary tracking-tight">Payout Details</h3>
                             <p className="text-xs text-slate-400 font-medium mt-0.5">Where should we send your commissions?</p>
                         </div>
                     </div>
@@ -228,7 +228,7 @@ export default function ApplyAffiliateForm({ countries }: ApplyAffiliateFormProp
                     {/* Reward Type Toggle */}
                     <div className="flex flex-col gap-1.5 min-w-[150px]">
                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Reward Type</label>
-                        <select name="rewardType" className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm font-bold text-[#36335e] focus:outline-none focus:border-[#d5a22d]">
+                        <select name="rewardType" className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm font-bold text-brand-primary focus:outline-none focus:border-brand-accent">
                             <option value="CASH">Cash Payout</option>
                             <option value="TUITION_DISCOUNT">Tuition Discount</option>
                         </select>
@@ -237,23 +237,23 @@ export default function ApplyAffiliateForm({ countries }: ApplyAffiliateFormProp
 
                 <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-[#36335e]">Bank Name</label>
-                        <input type="text" name="bankName" required placeholder="e.g. Standard Chartered" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-[#d5a22d] focus:ring-1 focus:ring-[#d5a22d]/30 transition-all placeholder:text-gray-400" />
+                        <label className="text-xs font-bold text-brand-primary">Bank Name</label>
+                        <input type="text" name="bankName" required placeholder="e.g. Standard Chartered" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30 transition-all placeholder:text-gray-400" />
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-[#36335e]">Account Name</label>
-                        <input type="text" name="accountName" required placeholder="Must match your ID name" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-[#d5a22d] focus:ring-1 focus:ring-[#d5a22d]/30 transition-all placeholder:text-gray-400" />
+                        <label className="text-xs font-bold text-brand-primary">Account Name</label>
+                        <input type="text" name="accountName" required placeholder="Must match your ID name" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30 transition-all placeholder:text-gray-400" />
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-[#36335e]">Account Number</label>
-                        <input type="text" name="accountNumber" required placeholder="Full account number" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-[#d5a22d] focus:ring-1 focus:ring-[#d5a22d]/30 transition-all placeholder:text-gray-400" />
+                        <label className="text-xs font-bold text-brand-primary">Account Number</label>
+                        <input type="text" name="accountNumber" required placeholder="Full account number" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30 transition-all placeholder:text-gray-400" />
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-[#36335e]">SWIFT / BIC Code (Optional)</label>
-                        <input type="text" name="swiftCode" placeholder="For international transfers" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-[#d5a22d] focus:ring-1 focus:ring-[#d5a22d]/30 transition-all placeholder:text-gray-400" />
+                        <label className="text-xs font-bold text-brand-primary">SWIFT / BIC Code (Optional)</label>
+                        <input type="text" name="swiftCode" placeholder="For international transfers" className="w-full h-12 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30 transition-all placeholder:text-gray-400" />
                     </div>
                 </div>
             </div>
@@ -263,7 +263,7 @@ export default function ApplyAffiliateForm({ countries }: ApplyAffiliateFormProp
                 <button
                     type="submit"
                     disabled={submitting || !idFront || !idBack || !idSelfie || uploadingFront || uploadingBack || uploadingSelfie}
-                    className="w-full h-14 rounded-2xl bg-[#36335e] text-[#d5a22d] font-black text-sm uppercase tracking-[0.2em] shadow-xl shadow-[#36335e]/10 hover:bg-[#2a284a] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 flex items-center justify-center gap-3"
+                    className="w-full h-14 rounded-2xl bg-brand-primary text-brand-accent font-black text-sm uppercase tracking-[0.2em] shadow-xl shadow-brand-primary/10 hover:bg-brand-primary-hover active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 flex items-center justify-center gap-3"
                 >
                     {submitting ? 'Submitting Application...' : 'Submit Affiliate Application'}
                 </button>

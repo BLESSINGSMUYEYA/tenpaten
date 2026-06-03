@@ -18,7 +18,7 @@ export function RoleGateway({ mode, selectedRole, onSelectRole, children }: Role
     const isLogin = mode === 'login';
 
     return (
-        <div className="min-h-screen bg-white flex flex-col selection:bg-[#d5a22d]/20">
+        <div className="min-h-screen bg-white flex flex-col selection:bg-brand-accent/20">
 
             {/* ── Minimal top bar ── */}
             <header className="flex items-center justify-between px-6 sm:px-12 py-6 border-b border-gray-100">
@@ -27,14 +27,14 @@ export function RoleGateway({ mode, selectedRole, onSelectRole, children }: Role
                     {isLogin ? (
                         <>
                             No account?{' '}
-                            <Link href="/register?type=student" className="text-[#d5a22d] font-bold hover:underline">
+                            <Link href="/register?type=student" className="text-brand-accent font-bold hover:underline">
                                 Sign up
                             </Link>
                         </>
                     ) : (
                         <>
                             Already have one?{' '}
-                            <Link href="/login" className="text-[#d5a22d] font-bold hover:underline">
+                            <Link href="/login" className="text-brand-accent font-bold hover:underline">
                                 Sign in
                             </Link>
                         </>

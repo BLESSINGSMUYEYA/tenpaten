@@ -37,6 +37,7 @@ model User {
   notifications       Notification[]
   managedUniversity   University?               @relation("UniversityAdmin", fields: [managedUniversityId], references: [id])
   status              UserStatus                @default(ACTIVE)
+  superAgentUniversities SchoolSuperAgentUniversity[]
   transactions        InstitutionalTransaction[]
 }
 
@@ -97,6 +98,7 @@ model University {
   programs                Program[]
   country                 Country            @relation(fields: [countryId], references: [id])
   admins                  User[]             @relation("UniversityAdmin")
+  superAgents             SchoolSuperAgentUniversity[]
   transactions            InstitutionalTransaction[]
   payouts                 Payout[]
 }
@@ -273,6 +275,7 @@ enum Role {
   SUPER_ADMIN
   COUNTRY_DIRECTOR
   SCHOOL_ADMIN
+  SCHOOL_SUPER_AGENT
   AFFILIATE
   PROSPECT
 }
@@ -425,4 +428,18 @@ model VerificationToken {
   createdAt DateTime @default(now())
 
   @@unique([email, token])
+}
+
+model SchoolSuperAgentUniversity {
+  id           String     @id @default(cuid())
+  userId       String
+  universityId String
+  createdAt    DateTime   @default(now())
+
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  university   University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, universityId])
+  @@index([userId])
+  @@index([universityId])
 }

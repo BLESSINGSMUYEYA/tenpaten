@@ -218,13 +218,13 @@ export default function SettingsTabs({ user, universities = [], countries = [] }
                                 disabled={isDisabled}
                                 className={`flex items-center gap-2 px-5 py-4 text-sm font-bold tracking-tight whitespace-nowrap transition-all border-b-[3px] snap-center shrink-0
                                     ${isActive
-                                        ? 'border-[#d5a22d] text-[#d5a22d] bg-[#d5a22d]/5'
+                                        ? 'border-brand-accent text-brand-accent bg-brand-accent/5'
                                         : isCompleted
-                                            ? 'border-[#d5a22d] text-[#d5a22d] hover:bg-[#d5a22d]/5'
+                                            ? 'border-brand-accent text-brand-accent hover:bg-brand-accent/5'
                                             : 'border-transparent text-gray-300 cursor-not-allowed'
                                     }`}
                             >
-                                <Icon className={`w-4 h-4 ${isActive || isCompleted ? 'text-[#d5a22d]' : 'text-gray-300'}`} />
+                                <Icon className={`w-4 h-4 ${isActive || isCompleted ? 'text-brand-accent' : 'text-gray-300'}`} />
                                 {tab.label.split('. ')[1]}
                             </button>
                         );
@@ -253,10 +253,10 @@ export default function SettingsTabs({ user, universities = [], countries = [] }
 
                             {/* Final Submission Section - Only in Documents Tab */}
                             {selectedProgramId && (
-                                <div className="p-6 bg-gradient-to-br from-[#1a1b41]/5 to-[#d5a22d]/5 border-t-2 border-[#d5a22d]/20">
+                                <div className="p-6 bg-linear-to-br from-[#1a1b41]/5 to-brand-accent/5 border-t-2 border-brand-accent/20">
                                     <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                                         <div className="flex items-center gap-4 text-left">
-                                            <div className="w-12 h-12 rounded-full bg-[#d5a22d] flex items-center justify-center flex-shrink-0 shadow-lg animate-pulse">
+                                            <div className="w-12 h-12 rounded-full bg-brand-accent flex items-center justify-center flex-shrink-0 shadow-lg animate-pulse">
                                                 <Sparkles className="w-6 h-6 text-white" />
                                             </div>
                                             <div className="space-y-1">
@@ -270,7 +270,7 @@ export default function SettingsTabs({ user, universities = [], countries = [] }
                                         <button
                                             onClick={handleSubmitApplication}
                                             disabled={isSubmitting || !windowStatus.open}
-                                            className="w-full md:w-auto px-10 py-4 bg-gradient-to-r from-[#d5a22d] to-[#b89531] text-white rounded-xl font-black text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all active:scale-95 disabled:opacity-50 disabled:translate-y-0 disabled:shadow-none min-w-[200px]"
+                                            className="w-full md:w-auto px-10 py-4 bg-linear-to-r from-brand-accent to-[#b89531] text-white rounded-xl font-black text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all active:scale-95 disabled:opacity-50 disabled:translate-y-0 disabled:shadow-none min-w-[200px]"
                                         >
                                             {isSubmitting ? (
                                                 <span className="flex items-center gap-2">

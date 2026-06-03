@@ -19,10 +19,10 @@ export default async function AdminApplicationsPage({
             {/* Header Section */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl sm:text-3xl font-black text-[#36335e] tracking-tight">Global Applications</h1>
+                    <h1 className="text-2xl sm:text-3xl font-black text-brand-primary tracking-tight">Global Applications</h1>
                     <p className="text-gray-500 mt-1 font-medium italic">Track and oversee all student applications across the entire platform.</p>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-[#d5a22d]/10 text-[#d5a22d] rounded-xl text-sm font-black uppercase tracking-widest border border-[#d5a22d]/20">
+                <div className="flex items-center gap-2 px-4 py-2 bg-brand-accent/10 text-brand-accent rounded-xl text-sm font-black uppercase tracking-widest border border-brand-accent/20">
                     <FileText className="w-4 h-4" />
                     <span>{metadata.total} Total Submissions</span>
                 </div>
@@ -31,11 +31,11 @@ export default async function AdminApplicationsPage({
             {/* Toolbar */}
             <div className="flex flex-wrap items-center gap-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm">
                 <div className="flex-1 min-w-[300px] relative group">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-brand-accent transition-colors" />
                     <input
                         type="text"
                         placeholder="Search by student name, email, or university..."
-                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border-transparent focus:bg-white focus:border-[#d5a22d]/30 focus:ring-0 rounded-xl text-sm font-medium transition-all"
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border-transparent focus:bg-white focus:border-brand-accent/30 focus:ring-0 rounded-xl text-sm font-medium transition-all"
                     />
                 </div>
                 <div className="flex items-center gap-2">
@@ -51,7 +51,7 @@ export default async function AdminApplicationsPage({
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
-                            <tr className="bg-[#36335e] text-white">
+                            <tr className="bg-brand-primary text-white">
                                 <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Student Details</th>
                                 <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Program & School</th>
                                 <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Submitted On</th>
@@ -64,11 +64,11 @@ export default async function AdminApplicationsPage({
                                 <tr key={app.id} className="hover:bg-gray-50/50 transition-colors duration-200 group">
                                     <td className="px-6 py-5">
                                         <div className="flex items-center gap-4">
-                                            <div className="w-10 h-10 rounded-full bg-[#36335e]/5 flex items-center justify-center text-[#36335e] group-hover:bg-[#36335e] group-hover:text-[#d5a22d] transition-all">
+                                            <div className="w-10 h-10 rounded-full bg-brand-primary/5 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-brand-accent transition-all">
                                                 <User className="w-5 h-5" />
                                             </div>
                                             <div>
-                                                <h3 className="font-black text-[#36335e] group-hover:text-[#d5a22d] transition-colors">
+                                                <h3 className="font-black text-brand-primary group-hover:text-brand-accent transition-colors">
                                                     {app.prospect.fullName}
                                                 </h3>
                                                 <p className="text-xs font-bold text-gray-400 mt-0.5">{app.prospect.email}</p>
@@ -77,8 +77,8 @@ export default async function AdminApplicationsPage({
                                     </td>
                                     <td className="px-6 py-5">
                                         <div className="space-y-1.5">
-                                            <div className="flex items-center gap-2 text-sm font-black text-[#36335e]">
-                                                <GraduationCap className="w-4 h-4 text-[#d5a22d]" />
+                                            <div className="flex items-center gap-2 text-sm font-black text-brand-primary">
+                                                <GraduationCap className="w-4 h-4 text-brand-accent" />
                                                 <span className="truncate max-w-[200px]">{app.program.name}</span>
                                             </div>
                                             <div className="flex items-center gap-1.5 text-xs font-bold text-gray-400 uppercase tracking-tight">
@@ -98,7 +98,7 @@ export default async function AdminApplicationsPage({
                                     </td>
                                     <td className="px-6 py-5 text-center">
                                         <Link href={`/dashboard/admin/applications/${app.id}`}>
-                                            <Button size="icon" variant="ghost" className="rounded-xl text-[#36335e] hover:bg-[#36335e] hover:text-[#d5a22d] transition-all">
+                                            <Button size="icon" variant="ghost" className="rounded-xl text-brand-primary hover:bg-brand-primary hover:text-brand-accent transition-all">
                                                 <ArrowRight className="w-5 h-5" />
                                             </Button>
                                         </Link>
@@ -124,7 +124,7 @@ export default async function AdminApplicationsPage({
                         </Button>
                         <Button
                             disabled={!metadata.hasNextPage}
-                            className="bg-[#36335e] text-[#d5a22d] hover:bg-[#2a284a] rounded-xl text-xs font-black uppercase tracking-[0.1em]"
+                            className="bg-brand-primary text-brand-accent hover:bg-brand-primary-hover rounded-xl text-xs font-black uppercase tracking-[0.1em]"
                         >
                             Next
                         </Button>
@@ -142,9 +142,9 @@ function StatusBadge({ status }: { status: ApplicationStatus }) {
         SUBMITTED: "bg-blue-50 text-blue-600 border-blue-100",
         COUNTRY_REVIEW: "bg-amber-50 text-amber-600 border-amber-100",
         UNIVERSITY_REVIEW: "bg-purple-50 text-purple-600 border-purple-100",
-        OFFER_ISSUED: "bg-[#d5a22d]/10 text-[#d5a22d] border-[#d5a22d]/20",
+        OFFER_ISSUED: "bg-brand-accent/10 text-brand-accent border-brand-accent/20",
         OFFER_ACCEPTED: "bg-emerald-50 text-emerald-600 border-emerald-100",
-        ENROLLED: "bg-[#36335e] text-[#d5a22d] border-[#36335e]",
+        ENROLLED: "bg-brand-primary text-brand-accent border-brand-primary",
         REJECTED: "bg-red-50 text-red-600 border-red-100",
     };
 

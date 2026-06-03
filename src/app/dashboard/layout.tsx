@@ -4,9 +4,11 @@ import { LogOut, Users, Settings } from 'lucide-react';
 
 import StudentSidebar from '@/components/dashboard/nav/StudentSidebar';
 import SchoolSidebar from '@/components/dashboard/nav/SchoolSidebar';
+import SuperAgentSidebar from '@/components/dashboard/nav/SuperAgentSidebar';
 import CountryDirectorSidebar from '@/components/dashboard/nav/CountryDirectorSidebar';
 import AffiliateSidebar from '@/components/dashboard/nav/AffiliateSidebar';
 import AdminSidebar from '@/components/dashboard/nav/AdminSidebar';
+import { getActiveSchoolId } from '@/lib/getActiveSchool';
 
 import DashboardNav from '@/components/dashboard/nav/DashboardNav';
 import { TenpatenLogo } from '@/components/branding/TenpatenLogo';
@@ -49,6 +51,28 @@ export default async function DashboardLayout({ children }: { children: React.Re
         isEnrolled = await getEnrollmentStatus(session.user.id);
     }
 
+    let assignedSchools: any[] = [];
+    let activeSchoolId: string | null = null;
+
+    if (role === 'SCHOOL_SUPER_AGENT' && session?.user?.id) {
+        const assignments = await prisma.schoolSuperAgentUniversity.findMany({
+            where: { userId: session.user.id },
+            include: {
+                university: {
+                    select: {
+                        id: true,
+                        name: true,
+                        logo: true,
+                        slug: true,
+                    },
+                },
+            },
+            orderBy: { createdAt: 'asc' },
+        });
+        assignedSchools = assignments.map((a) => a.university);
+        activeSchoolId = await getActiveSchoolId();
+    }
+
     return (
         <PerformanceProvider>
             <ChatbotProvider>
@@ -62,13 +86,14 @@ export default async function DashboardLayout({ children }: { children: React.Re
                         >
                             <TenpatenLogo variant="white" className="text-white" disableLink />
                             {/* Gold accent dot on logo */}
-                            <span className="ml-auto w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
+                            <span className="ml-auto w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
                         </Link>
 
                         {/* Navigation Links */}
                         <nav className="flex-1 py-3 space-y-0.5 overflow-y-auto custom-scrollbar">
                             {role === 'PROSPECT' && <StudentSidebar isEnrolled={isEnrolled} hasAffiliateAccess={hasAffiliateAccess} />}
                             {role === 'SCHOOL_ADMIN' && <SchoolSidebar />}
+                            {role === 'SCHOOL_SUPER_AGENT' && <SuperAgentSidebar assignedSchools={assignedSchools} activeSchoolId={activeSchoolId} />}
                             {role === 'COUNTRY_DIRECTOR' && <CountryDirectorSidebar />}
                             {role === 'AFFILIATE' && <AffiliateSidebar />}
                             {role === 'SUPER_ADMIN' && <AdminSidebar />}
@@ -80,7 +105,8 @@ export default async function DashboardLayout({ children }: { children: React.Re
                                 href={
                                     role === 'PROSPECT' ? '/dashboard/student-settings' :
                                         role === 'SCHOOL_ADMIN' ? '/dashboard/school/settings' :
-                                            '/dashboard/student-settings'
+                                            role === 'SCHOOL_SUPER_AGENT' ? '/dashboard/school/settings' :
+                                                '/dashboard/student-settings'
                                 }
                                 className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/60 hover:bg-white/5 hover:text-white border-l-2 border-transparent transition-all group"
                             >
@@ -106,7 +132,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
                     </div>
 
                     {/* Main content area */}
-                    <div className="flex-grow flex flex-col min-w-0 overflow-hidden">
+                    <div className="grow flex flex-col min-w-0 overflow-hidden">
                         {/* Top header — White with bottom border for clear separation from navy sidebar */}
                         <DashboardNav user={session?.user} isEnrolled={isEnrolled} hasAffiliateAccess={hasAffiliateAccess} />
                         <DynamicBreadcrumbs />

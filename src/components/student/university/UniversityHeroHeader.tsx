@@ -68,16 +68,16 @@ export function UniversityHeroHeader({ university, activeTab, setActiveTab }: Un
                                 sizes="100vw"
                                 priority
                             />
-                            <div className="absolute inset-0 bg-gradient-to-tr from-[#1a1b41] via-[#1a1b41]/80 to-transparent" />
+                            <div className="absolute inset-0 bg-linear-to-tr from-[#1a1b41] via-[#1a1b41]/80 to-transparent" />
                         </>
                     ) : (
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#1a1b41] to-[#36335e]" />
+                        <div className="absolute inset-0 bg-linear-to-br from-[#1a1b41] to-brand-primary" />
                     )}
                 </div>
 
                 {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_center,#d5a22d10_0%,transparent_70%)] opacity-30" />
-                <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#d5a22d]/10 rounded-full blur-[120px]" />
+                <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-accent/10 rounded-full blur-[120px]" />
 
                 <div className="relative z-10 px-6 sm:px-12 py-8 sm:py-12 max-w-[1440px] mx-auto">
                     <div className="flex flex-col gap-4 sm:gap-6">
@@ -85,9 +85,9 @@ export function UniversityHeroHeader({ university, activeTab, setActiveTab }: Un
                         <div className="flex items-center justify-between border-b border-white/5 pb-6">
                             {isWithinWindow && timeLeft && (
                                 <div className="flex items-center gap-6 animate-in fade-in slide-in-from-left-4 duration-1000">
-                                    <div className="flex items-center gap-3 px-4 py-2 bg-[#d5a22d]/20 rounded-2xl border border-[#d5a22d]/30 backdrop-blur-md">
-                                        <div className="w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
-                                        <span className="text-[10px] font-black text-[#d5a22d] uppercase tracking-[0.2em]">Admission Window Closes In:</span>
+                                    <div className="flex items-center gap-3 px-4 py-2 bg-brand-accent/20 rounded-2xl border border-brand-accent/30 backdrop-blur-md">
+                                        <div className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
+                                        <span className="text-[10px] font-black text-brand-accent uppercase tracking-[0.2em]">Admission Window Closes In:</span>
                                     </div>
                                     <div className="flex gap-4">
                                         {[
@@ -98,7 +98,7 @@ export function UniversityHeroHeader({ university, activeTab, setActiveTab }: Un
                                         ].map((unit, i) => (
                                             <div key={i} className="flex items-baseline gap-1">
                                                 <span className="text-xl font-black text-white">{unit.value.toString().padStart(2, '0')}</span>
-                                                <span className="text-[8px] font-black text-[#d5a22d] uppercase">{unit.label}</span>
+                                                <span className="text-[8px] font-black text-brand-accent uppercase">{unit.label}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -122,7 +122,7 @@ export function UniversityHeroHeader({ university, activeTab, setActiveTab }: Un
                             <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
                                 {/* University Logo */}
                                 <div className="relative group">
-                                    <div className="absolute inset-0 bg-[#d5a22d] rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+                                    <div className="absolute inset-0 bg-brand-accent rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
                                     <div className="relative w-20 h-20 sm:w-28 sm:h-28 bg-white rounded-[2rem] sm:rounded-[2.5rem] p-4 sm:p-5 shadow-2xl flex-shrink-0 border-4 border-white transform transition-transform duration-700 group-hover:rotate-3">
                                         {university.logo ? (
                                             <Image
@@ -137,15 +137,15 @@ export function UniversityHeroHeader({ university, activeTab, setActiveTab }: Un
                                             <Building2 className="w-full h-full text-gray-200" />
                                         )}
                                     </div>
-                                    <div className="absolute -bottom-3 -right-3 w-10 h-10 sm:w-12 sm:h-12 bg-[#d5a22d] rounded-2xl flex items-center justify-center shadow-xl animate-bounce">
+                                    <div className="absolute -bottom-3 -right-3 w-10 h-10 sm:w-12 sm:h-12 bg-brand-accent rounded-2xl flex items-center justify-center shadow-xl animate-bounce">
                                         <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                     </div>
                                 </div>
 
                                 {/* Text Content */}
                                 <div className="space-y-4 max-w-3xl">
-                                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.3em]">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#d5a22d] animate-ping" />
+                                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-brand-accent text-[10px] font-black uppercase tracking-[0.3em]">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-ping" />
                                         Verified Global Institution
                                     </div>
                                     
@@ -155,7 +155,7 @@ export function UniversityHeroHeader({ university, activeTab, setActiveTab }: Un
 
                                     <div className="flex flex-wrap items-center gap-4 text-[10px] sm:text-xs text-white/70 font-black uppercase tracking-[0.2em]">
                                         <div className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
-                                            <MapPin className="w-4 h-4 text-[#d5a22d]" />
+                                            <MapPin className="w-4 h-4 text-brand-accent" />
                                             <span>{university.country.name}</span>
                                         </div>
                                         {university.website && (
@@ -163,7 +163,7 @@ export function UniversityHeroHeader({ university, activeTab, setActiveTab }: Un
                                                 href={university.website.startsWith('http') ? university.website : `https://${university.website}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="flex items-center gap-2 text-[#d5a22d] hover:text-white transition-all hover:scale-105"
+                                                className="flex items-center gap-2 text-brand-accent hover:text-white transition-all hover:scale-105"
                                             >
                                                 <Globe className="w-4 h-4" />
                                                 Official Website
@@ -180,7 +180,7 @@ export function UniversityHeroHeader({ university, activeTab, setActiveTab }: Un
                                     { icon: Calendar, label: 'Next Intake', value: 'Sep 2026' }
                                 ].map((stat, i) => (
                                     <div key={i} className="flex items-center gap-4 bg-white/5 backdrop-blur-sm border border-white/10 p-2.5 sm:px-4 sm:py-2 rounded-2xl sm:rounded-3xl hover:bg-white/10 transition-all cursor-default group/stat">
-                                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#d5a22d]/20 flex items-center justify-center text-[#d5a22d] group-hover/stat:scale-110 transition-transform">
+                                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-brand-accent/20 flex items-center justify-center text-brand-accent group-hover/stat:scale-110 transition-transform">
                                             <stat.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                                         </div>
                                         <div>
@@ -211,10 +211,10 @@ export function UniversityHeroHeader({ university, activeTab, setActiveTab }: Un
                                 : 'text-slate-400 hover:text-[#1a1b41] hover:bg-gray-100/50'
                             }`}
                         >
-                            <tab.icon className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-500 group-hover/tab:scale-110 ${activeTab === tab.id ? 'text-[#d5a22d]' : ''}`} />
+                            <tab.icon className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-500 group-hover/tab:scale-110 ${activeTab === tab.id ? 'text-brand-accent' : ''}`} />
                             {tab.label}
                             {tab.count !== null && (
-                                <span className={`ml-1 text-[10px] px-2 py-0.5 rounded-full ${activeTab === tab.id ? 'bg-[#d5a22d] text-[#1a1b41]' : 'bg-gray-100 text-slate-500'}`}>
+                                <span className={`ml-1 text-[10px] px-2 py-0.5 rounded-full ${activeTab === tab.id ? 'bg-brand-accent text-[#1a1b41]' : 'bg-gray-100 text-slate-500'}`}>
                                     {tab.count}
                                 </span>
                             )}

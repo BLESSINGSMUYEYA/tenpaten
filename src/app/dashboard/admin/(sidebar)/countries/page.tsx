@@ -22,13 +22,13 @@ export default async function AdminCountriesPage() {
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl sm:text-3xl font-black text-[#36335e] tracking-tight">Global Territories</h1>
+                    <h1 className="text-2xl sm:text-3xl font-black text-brand-primary tracking-tight">Global Territories</h1>
                     <p className="text-gray-500 mt-1 font-medium italic">
                         Manage the countries Tenpaten operates in and assign regional directors.
                     </p>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-[#36335e] rounded-xl text-white text-sm font-bold shadow-lg shadow-[#36335e]/20">
-                    <Globe className="w-4 h-4 text-[#d5a22d]" />
+                <div className="flex items-center gap-2 px-4 py-2 bg-brand-primary rounded-xl text-white text-sm font-bold shadow-lg shadow-brand-primary/20">
+                    <Globe className="w-4 h-4 text-brand-accent" />
                     <span>{countries.length} {countries.length === 1 ? 'Country' : 'Countries'} active</span>
                 </div>
             </div>

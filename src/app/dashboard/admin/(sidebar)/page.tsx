@@ -24,8 +24,8 @@ export default async function AdminDashboardPage() {
                     <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">Admin Dashboard</h1>
                     <p className="text-gray-500 mt-1 font-medium italic">Platform overview and management.</p>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-[#36335e] text-white rounded-xl text-sm font-semibold shadow-lg shadow-[#36335e]/20">
-                    <ShieldCheck className="w-4 h-4 text-[#d5a22d]" />
+                <div className="flex items-center gap-2 px-4 py-2 bg-brand-primary text-white rounded-xl text-sm font-semibold shadow-lg shadow-brand-primary/20">
+                    <ShieldCheck className="w-4 h-4 text-brand-accent" />
                     <span>Administrator Access</span>
                 </div>
             </div>
@@ -49,13 +49,13 @@ export default async function AdminDashboardPage() {
                     <AdminDashboardChart data={chartData} />
                 </div>
 
-                <div className="bg-gradient-to-br from-[#36335e] to-[#2a284a] rounded-2xl shadow-xl p-8 text-white relative overflow-hidden group h-full">
-                    <div className="absolute top-0 right-0 w-80 h-80 bg-[#d5a22d]/10 rounded-full blur-3xl -mr-40 -mt-40 pointer-events-none group-hover:bg-[#d5a22d]/20 transition-colors duration-500" />
+                <div className="bg-linear-to-br from-brand-primary to-brand-primary-hover rounded-2xl shadow-xl p-8 text-white relative overflow-hidden group h-full">
+                    <div className="absolute top-0 right-0 w-80 h-80 bg-brand-accent/10 rounded-full blur-3xl -mr-40 -mt-40 pointer-events-none group-hover:bg-brand-accent/20 transition-colors duration-500" />
 
                     <div className="relative z-10 h-full flex flex-col">
                         <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 rounded-full bg-[#d5a22d] animate-pulse" />
-                            <span className="text-xs font-bold uppercase tracking-widest text-[#d5a22d]">Global Status</span>
+                            <div className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
+                            <span className="text-xs font-bold uppercase tracking-widest text-brand-accent">Global Status</span>
                         </div>
                         <h2 className="text-2xl font-black mb-2 tracking-tight">Platform Health</h2>
                         <p className="text-white/70 text-sm mb-8 leading-relaxed">Infrastructure monitoring.</p>
@@ -77,24 +77,24 @@ export default async function AdminDashboardPage() {
             {/* System Controls */}
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
                 <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-xl font-black text-[#36335e] tracking-tight">System Controls</h2>
+                    <h2 className="text-xl font-black text-brand-primary tracking-tight">System Controls</h2>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <Link href="/dashboard/admin/users?action=provision" className="p-6 rounded-2xl border border-gray-100 hover:border-[#d5a22d] hover:bg-gray-50 transition-all flex flex-col items-center justify-center gap-3 text-center group">
-                        <div className="w-10 h-10 rounded-xl bg-[#36335e]/5 flex items-center justify-center group-hover:bg-[#36335e] transition-colors shadow-sm">
-                            <UserCheck className="w-5 h-5 text-[#36335e] group-hover:text-[#d5a22d]" />
+                    <Link href="/dashboard/admin/users?action=provision" className="p-6 rounded-2xl border border-gray-100 hover:border-brand-accent hover:bg-gray-50 transition-all flex flex-col items-center justify-center gap-3 text-center group">
+                        <div className="w-10 h-10 rounded-xl bg-brand-primary/5 flex items-center justify-center group-hover:bg-brand-primary transition-colors shadow-sm">
+                            <UserCheck className="w-5 h-5 text-brand-primary group-hover:text-brand-accent" />
                         </div>
                         <span className="font-bold text-gray-700 text-sm">Add New User</span>
                     </Link>
-                    <Link href="/dashboard/admin/schools?action=register" className="p-6 rounded-2xl border border-gray-100 hover:border-[#d5a22d] hover:bg-gray-50 transition-all flex flex-col items-center justify-center gap-3 text-center group">
-                        <div className="w-10 h-10 rounded-xl bg-[#36335e]/5 flex items-center justify-center group-hover:bg-[#36335e] transition-colors shadow-sm">
-                            <School className="w-5 h-5 text-[#36335e] group-hover:text-[#d5a22d]" />
+                    <Link href="/dashboard/admin/schools?action=register" className="p-6 rounded-2xl border border-gray-100 hover:border-brand-accent hover:bg-gray-50 transition-all flex flex-col items-center justify-center gap-3 text-center group">
+                        <div className="w-10 h-10 rounded-xl bg-brand-primary/5 flex items-center justify-center group-hover:bg-brand-primary transition-colors shadow-sm">
+                            <School className="w-5 h-5 text-brand-primary group-hover:text-brand-accent" />
                         </div>
                         <span className="font-bold text-gray-700 text-sm">Add University</span>
                     </Link>
-                    <Link href="/dashboard/admin/users" className="p-6 rounded-2xl border border-gray-100 hover:border-[#d5a22d] hover:bg-gray-50 transition-all flex flex-col items-center justify-center gap-3 text-center group">
-                        <div className="w-10 h-10 rounded-xl bg-[#36335e]/5 flex items-center justify-center group-hover:bg-[#36335e] transition-colors shadow-sm">
-                            <Users className="w-5 h-5 text-[#36335e] group-hover:text-[#d5a22d]" />
+                    <Link href="/dashboard/admin/users" className="p-6 rounded-2xl border border-gray-100 hover:border-brand-accent hover:bg-gray-50 transition-all flex flex-col items-center justify-center gap-3 text-center group">
+                        <div className="w-10 h-10 rounded-xl bg-brand-primary/5 flex items-center justify-center group-hover:bg-brand-primary transition-colors shadow-sm">
+                            <Users className="w-5 h-5 text-brand-primary group-hover:text-brand-accent" />
                         </div>
                         <span className="font-bold text-gray-700 text-sm">Manage Staff</span>
                     </Link>

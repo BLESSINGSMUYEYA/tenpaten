@@ -1,6 +1,7 @@
 import { auth } from '@/auth';
 import prisma from '@/lib/prisma';
 import { redirect } from 'next/navigation';
+import { getActiveSchoolId } from '@/lib/getActiveSchool';
 import { Prisma } from '@prisma/client';
 import { FileText, Users } from 'lucide-react';
 import ApplicantListClient from '@/components/school/ApplicantListClient';
@@ -16,9 +17,11 @@ export default async function SchoolApplicationsPage({
     const userRole = (session?.user as any)?.role;
     let universityId = (session?.user as any)?.managedUniversityId;
 
-    if (userRole !== 'SCHOOL_ADMIN') redirect('/dashboard');
+    if (userRole !== 'SCHOOL_ADMIN' && userRole !== 'SCHOOL_SUPER_AGENT') redirect('/dashboard');
 
-    if (!universityId && session?.user?.id) {
+    if (userRole === 'SCHOOL_SUPER_AGENT') {
+        universityId = await getActiveSchoolId();
+    } else if (!universityId && session?.user?.id) {
         const dbUser = await prisma.user.findUnique({
             where: { id: session.user.id },
             select: { managedUniversityId: true },
@@ -104,7 +107,7 @@ export default async function SchoolApplicationsPage({
         <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-20">
             <PageHeader 
                 preTitle={
-                    <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] border border-[#d5a22d]/20 text-[10px] font-black uppercase tracking-[0.2em]">
+                    <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent border border-brand-accent/20 text-[10px] font-black uppercase tracking-[0.2em]">
                         <Users className="w-3.5 h-3.5" />
                         Admissions Pipeline
                     </div>
@@ -112,7 +115,7 @@ export default async function SchoolApplicationsPage({
                 title="Applicant Registry"
                 subtitle={
                     <>
-                        Managing <span className="font-bold text-[#d5a22d]">{total}</span> active applications for <span className="font-bold text-[#36335e]">{university?.name}</span>.
+                        Managing <span className="font-bold text-brand-accent">{total}</span> active applications for <span className="font-bold text-brand-primary">{university?.name}</span>.
                     </>
                 }
                 action={

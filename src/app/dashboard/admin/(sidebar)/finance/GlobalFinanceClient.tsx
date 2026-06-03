@@ -97,7 +97,7 @@ export default function GlobalFinanceClient() {
             {/* Header Section */}
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div>
-                    <h1 className="text-3xl font-black text-[#36335e] tracking-tight mb-2">Global Financial Console</h1>
+                    <h1 className="text-3xl font-black text-brand-primary tracking-tight mb-2">Global Financial Console</h1>
                     <p className="text-slate-500 font-medium italic">Monitor platform revenue, school earnings, and affiliate distributions.</p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -114,11 +114,11 @@ export default function GlobalFinanceClient() {
 
             {/* Global Metrics */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-                <div className="bg-gradient-to-br from-[#36335e] to-[#2a284a] text-white p-8 rounded-[2.5rem] shadow-2xl shadow-indigo-900/20 relative overflow-hidden group transition-all hover:-translate-y-1">
+                <div className="bg-linear-to-br from-brand-primary to-brand-primary-hover text-white p-8 rounded-[2.5rem] shadow-2xl shadow-indigo-900/20 relative overflow-hidden group transition-all hover:-translate-y-1">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-700" />
                     <div className="relative z-10">
                         <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-6">
-                            <Globe className="w-6 h-6 text-[#d5a22d]" />
+                            <Globe className="w-6 h-6 text-brand-accent" />
                         </div>
                         <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.2em] mb-1">Total Platform Volume</p>
                         <h2 className="text-3xl font-black">{summary.totalVolume.toLocaleString()} <span className="text-sm font-bold opacity-60 ml-0.5">{currency}</span></h2>
@@ -132,7 +132,7 @@ export default function GlobalFinanceClient() {
                             <TrendingUp className="w-6 h-6 text-emerald-600" />
                         </div>
                         <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mb-1">Tenpaten Revenue</p>
-                        <h2 className="text-3xl font-black text-[#36335e]">{summary.totalPlatformRevenue.toLocaleString()} <span className="text-sm font-bold text-slate-400 ml-0.5">{currency}</span></h2>
+                        <h2 className="text-3xl font-black text-brand-primary">{summary.totalPlatformRevenue.toLocaleString()} <span className="text-sm font-bold text-slate-400 ml-0.5">{currency}</span></h2>
                     </div>
                 </div>
 
@@ -143,7 +143,7 @@ export default function GlobalFinanceClient() {
                             <Users className="w-6 h-6 text-amber-600" />
                         </div>
                         <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mb-1">Affiliate Commissions</p>
-                        <h2 className="text-3xl font-black text-[#36335e]">{summary.totalAffiliateCommissions.toLocaleString()} <span className="text-sm font-bold text-slate-400 ml-0.5">{currency}</span></h2>
+                        <h2 className="text-3xl font-black text-brand-primary">{summary.totalAffiliateCommissions.toLocaleString()} <span className="text-sm font-bold text-slate-400 ml-0.5">{currency}</span></h2>
                     </div>
                 </div>
 
@@ -154,7 +154,7 @@ export default function GlobalFinanceClient() {
                             <Building2 className="w-6 h-6 text-indigo-600" />
                         </div>
                         <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mb-1">Disbursable to Schools</p>
-                        <h2 className="text-3xl font-black text-[#36335e]">{summary.totalSchoolEarnings.toLocaleString()} <span className="text-sm font-bold text-slate-400 ml-0.5">{currency}</span></h2>
+                        <h2 className="text-3xl font-black text-brand-primary">{summary.totalSchoolEarnings.toLocaleString()} <span className="text-sm font-bold text-slate-400 ml-0.5">{currency}</span></h2>
                     </div>
                 </div>
             </div>
@@ -165,15 +165,15 @@ export default function GlobalFinanceClient() {
                     <div className="flex items-center gap-8">
                         <button 
                             onClick={() => setActiveTab('overview')}
-                            className={`flex items-center gap-3 pb-2 transition-all relative ${activeTab === 'overview' ? 'text-[#36335e]' : 'text-slate-400 hover:text-slate-600'}`}
+                            className={`flex items-center gap-3 pb-2 transition-all relative ${activeTab === 'overview' ? 'text-brand-primary' : 'text-slate-400 hover:text-slate-600'}`}
                         >
                             <TrendingUp className="w-5 h-5" />
                             <span className="text-lg font-black">All Transactions</span>
-                            {activeTab === 'overview' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#36335e] rounded-full" />}
+                            {activeTab === 'overview' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-brand-primary rounded-full" />}
                         </button>
                         <button 
                             onClick={() => setActiveTab('payouts')}
-                            className={`flex items-center gap-3 pb-2 transition-all relative ${activeTab === 'payouts' ? 'text-[#36335e]' : 'text-slate-400 hover:text-slate-600'}`}
+                            className={`flex items-center gap-3 pb-2 transition-all relative ${activeTab === 'payouts' ? 'text-brand-primary' : 'text-slate-400 hover:text-slate-600'}`}
                         >
                             <CreditCard className="w-5 h-5" />
                             <span className="text-lg font-black">School Payouts</span>
@@ -182,11 +182,11 @@ export default function GlobalFinanceClient() {
                                     {payouts.filter((p: any) => p.status === 'PENDING').length}
                                 </span>
                             )}
-                            {activeTab === 'payouts' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#36335e] rounded-full" />}
+                            {activeTab === 'payouts' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-brand-primary rounded-full" />}
                         </button>
                         <button 
                             onClick={() => setActiveTab('affiliates')}
-                            className={`flex items-center gap-3 pb-2 transition-all relative ${activeTab === 'affiliates' ? 'text-[#36335e]' : 'text-slate-400 hover:text-slate-600'}`}
+                            className={`flex items-center gap-3 pb-2 transition-all relative ${activeTab === 'affiliates' ? 'text-brand-primary' : 'text-slate-400 hover:text-slate-600'}`}
                         >
                             <Briefcase className="w-5 h-5" />
                             <span className="text-lg font-black">Affiliate Payouts</span>
@@ -195,7 +195,7 @@ export default function GlobalFinanceClient() {
                                     {affiliatePayouts.filter((p: any) => p.status === 'PENDING').length}
                                 </span>
                             )}
-                            {activeTab === 'affiliates' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#36335e] rounded-full" />}
+                            {activeTab === 'affiliates' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-brand-primary rounded-full" />}
                         </button>
                     </div>
                     <div className="flex items-center gap-4">
@@ -228,11 +228,11 @@ export default function GlobalFinanceClient() {
                                     <tr key={tx.id} className="hover:bg-slate-50/50 transition-colors group">
                                         <td className="px-8 py-6">
                                             <div className="flex items-center gap-4">
-                                                <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-[#36335e] group-hover:text-white transition-all">
+                                                <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-brand-primary group-hover:text-white transition-all">
                                                     <DollarSign className="w-5 h-5" />
                                                 </div>
                                                 <div>
-                                                    <p className="text-sm font-black text-[#36335e]">{tx.referenceId}</p>
+                                                    <p className="text-sm font-black text-brand-primary">{tx.referenceId}</p>
                                                     <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tighter mt-0.5">{format(new Date(tx.createdAt), 'MMM d, yyyy • h:mm a')}</p>
                                                 </div>
                                             </div>
@@ -245,8 +245,8 @@ export default function GlobalFinanceClient() {
                                                 </div>
                                                 {tx.affiliate && (
                                                     <div className="flex items-center gap-2">
-                                                        <Briefcase className="w-3.5 h-3.5 text-[#d5a22d]" />
-                                                        <span className="text-[10px] font-black text-[#d5a22d] uppercase tracking-wider">{tx.affiliate.user.fullName}</span>
+                                                        <Briefcase className="w-3.5 h-3.5 text-brand-accent" />
+                                                        <span className="text-[10px] font-black text-brand-accent uppercase tracking-wider">{tx.affiliate.user.fullName}</span>
                                                     </div>
                                                 )}
                                                 <div className="flex items-center gap-2">
@@ -257,7 +257,7 @@ export default function GlobalFinanceClient() {
                                         </td>
                                         <td className="px-8 py-6 text-right">
                                             <div className="space-y-1">
-                                                <p className="text-sm font-black text-[#36335e]">{tx.totalAmount.toLocaleString()} {tx.currency}</p>
+                                                <p className="text-sm font-black text-brand-primary">{tx.totalAmount.toLocaleString()} {tx.currency}</p>
                                                 <div className="flex flex-col text-[10px] font-bold text-slate-400">
                                                     <span className="text-rose-400">-{tx.platformFee.toLocaleString()} (Our Fee)</span>
                                                     {tx.affiliateAmount > 0 && <span className="text-amber-500">-{tx.affiliateAmount.toLocaleString()} (Affiliate)</span>}
@@ -301,13 +301,13 @@ export default function GlobalFinanceClient() {
                                                     <ArrowUpRight className="w-5 h-5" />
                                                 </div>
                                                 <div>
-                                                    <p className="text-sm font-black text-[#36335e]">{payout.university.name}</p>
+                                                    <p className="text-sm font-black text-brand-primary">{payout.university.name}</p>
                                                     <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tighter mt-0.5">Requested {format(new Date(payout.requestedAt), 'MMM d, yyyy')}</p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td className="px-8 py-6 text-right">
-                                            <p className="text-sm font-black text-[#36335e]">{payout.amount.toLocaleString()} {payout.currency}</p>
+                                            <p className="text-sm font-black text-brand-primary">{payout.amount.toLocaleString()} {payout.currency}</p>
                                         </td>
                                         <td className="px-8 py-6">
                                             <div className="flex justify-center">
@@ -379,13 +379,13 @@ export default function GlobalFinanceClient() {
                                                     <Briefcase className="w-5 h-5" />
                                                 </div>
                                                 <div>
-                                                    <p className="text-sm font-black text-[#36335e]">{payout.affiliate.user.fullName}</p>
+                                                    <p className="text-sm font-black text-brand-primary">{payout.affiliate.user.fullName}</p>
                                                     <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tighter mt-0.5">Requested {format(new Date(payout.requestedAt), 'MMM d, yyyy')}</p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td className="px-8 py-6 text-right">
-                                            <p className="text-sm font-black text-[#36335e]">{payout.amount.toLocaleString()} {payout.currency}</p>
+                                            <p className="text-sm font-black text-brand-primary">{payout.amount.toLocaleString()} {payout.currency}</p>
                                         </td>
                                         <td className="px-8 py-6">
                                             <div className="flex justify-center">

@@ -34,23 +34,23 @@ export default function RedirectionResponse({ applicationId, alternativeProgram 
     };
 
     return (
-        <div className="bg-[#d5a22d]/5 border border-[#d5a22d]/20 rounded-[2.5rem] p-8 sm:p-10 relative overflow-hidden animate-in zoom-in duration-500">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-[#d5a22d]/10 rounded-full blur-3xl -mr-24 -mt-24" />
+        <div className="bg-brand-accent/5 border border-brand-accent/20 rounded-[2.5rem] p-8 sm:p-10 relative overflow-hidden animate-in zoom-in duration-500">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-brand-accent/10 rounded-full blur-3xl -mr-24 -mt-24" />
             
             <div className="relative z-10 space-y-6">
                 <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#d5a22d] text-white flex items-center justify-center shadow-lg shadow-[#d5a22d]/20">
+                    <div className="w-12 h-12 rounded-2xl bg-brand-accent text-white flex items-center justify-center shadow-lg shadow-brand-accent/20">
                         <RefreshCw className="w-6 h-6 animate-spin-slow" />
                     </div>
                     <div>
-                        <h3 className="text-xl font-black text-[#36335e] tracking-tight leading-none mb-1">Programme Realignment</h3>
-                        <p className="text-[10px] font-black text-[#d5a22d] uppercase tracking-widest">Action Required: Alternative Placement</p>
+                        <h3 className="text-xl font-black text-brand-primary tracking-tight leading-none mb-1">Programme Realignment</h3>
+                        <p className="text-[10px] font-black text-brand-accent uppercase tracking-widest">Action Required: Alternative Placement</p>
                     </div>
                 </div>
 
-                <div className="p-6 bg-white/50 backdrop-blur-sm border border-[#d5a22d]/10 rounded-2xl">
-                    <p className="text-sm text-[#36335e] font-medium leading-relaxed">
-                        The admissions committee has suggested switching your application to <span className="font-black text-[#d5a22d]">{alternativeProgram.name}</span>. 
+                <div className="p-6 bg-white/50 backdrop-blur-sm border border-brand-accent/10 rounded-2xl">
+                    <p className="text-sm text-brand-primary font-medium leading-relaxed">
+                        The admissions committee has suggested switching your application to <span className="font-black text-brand-accent">{alternativeProgram.name}</span>. 
                         This recommendation is based on your merit profile and current enrollment quotas.
                     </p>
                 </div>
@@ -59,7 +59,7 @@ export default function RedirectionResponse({ applicationId, alternativeProgram 
                     <Button
                         onClick={() => handleResponse('ACCEPTED')}
                         disabled={isPending}
-                        className="w-full sm:flex-1 h-12 bg-[#36335e] hover:bg-[#2a284a] text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-xl shadow-[#36335e]/20 transition-all active:scale-95"
+                        className="w-full sm:flex-1 h-12 bg-brand-primary hover:bg-brand-primary-hover text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-xl shadow-brand-primary/20 transition-all active:scale-95"
                     >
                         {isPending ? (
                             <RefreshCw className="w-4 h-4 animate-spin" />
@@ -73,7 +73,7 @@ export default function RedirectionResponse({ applicationId, alternativeProgram 
                         onClick={() => handleResponse('REJECTED')}
                         disabled={isPending}
                         variant="outline"
-                        className="w-full sm:w-auto h-12 px-8 border-[#36335e]/10 text-slate-400 hover:text-rose-600 hover:border-rose-100 hover:bg-rose-50 rounded-xl text-xs font-black uppercase tracking-widest transition-all"
+                        className="w-full sm:w-auto h-12 px-8 border-brand-primary/10 text-slate-400 hover:text-rose-600 hover:border-rose-100 hover:bg-rose-50 rounded-xl text-xs font-black uppercase tracking-widest transition-all"
                     >
                         Decline
                     </Button>

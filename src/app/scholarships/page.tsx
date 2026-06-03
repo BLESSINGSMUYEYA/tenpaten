@@ -11,14 +11,14 @@ import { TenpatenLogo } from '@/components/branding/TenpatenLogo';
 
 export default function ScholarshipsPage() {
     return (
-        <main className="min-h-screen bg-white selection:bg-[#d5a22d]/30 font-sans">
+        <main className="min-h-screen bg-white selection:bg-brand-accent/30 font-sans">
             {/* Nav */}
             <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1a1b41]/95 backdrop-blur-xl border-b border-white/10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
                     <TenpatenLogo variant="white" />
                     <Link
                         href="/register?type=student"
-                        className="px-6 py-2.5 bg-[#d5a22d] text-[#1a1b41] rounded-xl text-xs font-black uppercase tracking-widest hover:bg-white transition-all shadow-xl shadow-[#d5a22d]/20"
+                        className="px-6 py-2.5 bg-brand-accent text-[#1a1b41] rounded-xl text-xs font-black uppercase tracking-widest hover:bg-white transition-all shadow-xl shadow-brand-accent/20"
                     >
                         Apply Now
                     </Link>
@@ -33,14 +33,14 @@ export default function ScholarshipsPage() {
                         alt="Graduation"
                         className="w-full h-full object-cover opacity-10"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#1a1b41] via-transparent to-[#1a1b41]" />
+                    <div className="absolute inset-0 bg-linear-to-b from-[#1a1b41] via-transparent to-[#1a1b41]" />
                 </div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#d5a22d] text-xs font-black uppercase tracking-[0.3em] mb-8"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-brand-accent text-xs font-black uppercase tracking-[0.3em] mb-8"
                     >
                         <Trophy className="w-4 h-4" />
                         Scholarships & Funding
@@ -53,7 +53,7 @@ export default function ScholarshipsPage() {
                         className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter uppercase leading-[0.9] mb-8"
                     >
                         Global Talent <br />
-                        <span className="text-[#d5a22d]">Deserves Support.</span>
+                        <span className="text-brand-accent">Deserves Support.</span>
                     </motion.h1>
 
                     <motion.p 
@@ -74,7 +74,7 @@ export default function ScholarshipsPage() {
                     >
                         <Link
                             href="/register?type=student"
-                            className="w-full sm:w-auto px-10 py-5 bg-[#d5a22d] text-[#1a1b41] rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-white transition-all shadow-2xl shadow-[#d5a22d]/20"
+                            className="w-full sm:w-auto px-10 py-5 bg-brand-accent text-[#1a1b41] rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-white transition-all shadow-2xl shadow-brand-accent/20"
                         >
                             Find Your Scholarship
                         </Link>
@@ -117,7 +117,7 @@ export default function ScholarshipsPage() {
                                 color: "bg-indigo-50 text-indigo-600"
                             }
                         ].map((type, i) => (
-                            <div key={i} className="p-10 rounded-[2.5rem] bg-gray-50 border border-gray-100 hover:border-[#d5a22d]/30 transition-all duration-500 group">
+                            <div key={i} className="p-10 rounded-[2.5rem] bg-gray-50 border border-gray-100 hover:border-brand-accent/30 transition-all duration-500 group">
                                 <div className={`w-14 h-14 rounded-2xl ${type.color} flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 transition-transform`}>
                                     <type.icon className="w-7 h-7" />
                                 </div>
@@ -132,13 +132,13 @@ export default function ScholarshipsPage() {
             {/* How It Works */}
             <section className="py-24 lg:py-32 bg-[#f8fafc] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] pointer-events-none">
-                    <Coins className="w-full h-full text-[#d5a22d]" />
+                    <Coins className="w-full h-full text-brand-accent" />
                 </div>
                 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] text-[10px] font-black uppercase tracking-widest mb-6">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent text-[10px] font-black uppercase tracking-widest mb-6">
                                 The Process
                             </div>
                             <h2 className="text-3xl lg:text-5xl font-black text-[#1a1b41] tracking-tighter uppercase leading-[0.9] mb-8">
@@ -156,7 +156,7 @@ export default function ScholarshipsPage() {
                                     { step: "04", title: "Receive Your Offer", desc: "Get notified in real-time when a scholarship is awarded alongside your admission offer." }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-6">
-                                        <div className="text-2xl font-black text-[#d5a22d]/20 tracking-tighter">{item.step}</div>
+                                        <div className="text-2xl font-black text-brand-accent/20 tracking-tighter">{item.step}</div>
                                         <div>
                                             <h4 className="text-lg font-bold text-[#1a1b41] uppercase tracking-tight mb-1">{item.title}</h4>
                                             <p className="text-sm text-gray-500 font-medium">{item.desc}</p>
@@ -169,17 +169,17 @@ export default function ScholarshipsPage() {
                         <div className="relative">
                             <div className="aspect-square rounded-[3rem] bg-[#1a1b41] p-12 relative overflow-hidden shadow-2xl">
                                 <div className="absolute inset-0 opacity-20">
-                                    <div className="absolute top-[-10%] right-[-10%] w-96 h-96 bg-[#d5a22d] rounded-full blur-[100px]" />
+                                    <div className="absolute top-[-10%] right-[-10%] w-96 h-96 bg-brand-accent rounded-full blur-[100px]" />
                                     <div className="absolute bottom-[-10%] left-[-10%] w-96 h-96 bg-indigo-500 rounded-full blur-[100px]" />
                                 </div>
                                 <div className="relative z-10 flex flex-col justify-center h-full space-y-8">
                                     <div className="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
                                         <div className="flex items-center justify-between mb-4">
                                             <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">Scholarship Match</span>
-                                            <Zap className="w-4 h-4 text-[#d5a22d]" />
+                                            <Zap className="w-4 h-4 text-brand-accent" />
                                         </div>
                                         <div className="text-xl font-black text-white uppercase tracking-tighter">100% Tuition Waiver</div>
-                                        <div className="text-sm text-[#d5a22d] font-bold">Engineering Excellence Award</div>
+                                        <div className="text-sm text-brand-accent font-bold">Engineering Excellence Award</div>
                                     </div>
                                     <div className="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transform translate-x-8">
                                         <div className="flex items-center justify-between mb-4">
@@ -192,10 +192,10 @@ export default function ScholarshipsPage() {
                                     <div className="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
                                         <div className="flex items-center justify-between mb-4">
                                             <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">Merit Reward</span>
-                                            <Trophy className="w-4 h-4 text-[#d5a22d]" />
+                                            <Trophy className="w-4 h-4 text-brand-accent" />
                                         </div>
                                         <div className="text-xl font-black text-white uppercase tracking-tighter">50% Coverage</div>
-                                        <div className="text-sm text-[#d5a22d] font-bold">Global Leader Scholarship</div>
+                                        <div className="text-sm text-brand-accent font-bold">Global Leader Scholarship</div>
                                     </div>
                                 </div>
                             </div>
@@ -212,7 +212,7 @@ export default function ScholarshipsPage() {
                     </h2>
                     <Link
                         href="/register?type=student"
-                        className="inline-flex items-center gap-4 px-12 py-6 bg-[#d5a22d] text-[#1a1b41] rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white transition-all shadow-2xl shadow-[#d5a22d]/20"
+                        className="inline-flex items-center gap-4 px-12 py-6 bg-brand-accent text-[#1a1b41] rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white transition-all shadow-2xl shadow-brand-accent/20"
                     >
                         Start Your Application
                         <ArrowRight className="w-5 h-5" />

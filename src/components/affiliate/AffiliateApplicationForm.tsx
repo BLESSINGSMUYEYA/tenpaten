@@ -58,11 +58,11 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
     const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
     return (
-        <Card className="w-full max-w-5xl mx-auto border-none shadow-2xl shadow-[#36335e]/10 rounded-2xl overflow-hidden bg-white">
-            <CardHeader className="bg-[#36335e] text-white p-6 text-center relative overflow-hidden">
+        <Card className="w-full max-w-5xl mx-auto border-none shadow-2xl shadow-brand-primary/10 rounded-2xl overflow-hidden bg-white">
+            <CardHeader className="bg-brand-primary text-white p-6 text-center relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32 blur-3xl" />
                 <div className="relative z-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#d5a22d] text-[10px] font-black uppercase tracking-[0.2em] mb-2">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-brand-accent text-[10px] font-black uppercase tracking-[0.2em] mb-2">
                         <SparkleIcon className="w-3 h-3" />
                         Executive Partnership
                     </div>
@@ -71,7 +71,7 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                         {[1, 2, 3].map((step) => (
                             <div
                                 key={step}
-                                className={`h-1.5 rounded-full transition-all duration-500 ${currentStep >= step ? 'w-8 bg-[#d5a22d]' : 'w-4 bg-white/20'
+                                className={`h-1.5 rounded-full transition-all duration-500 ${currentStep >= step ? 'w-8 bg-brand-accent' : 'w-4 bg-white/20'
                                     }`}
                             />
                         ))}
@@ -104,11 +104,11 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                     {currentStep === 1 && (
                         <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
                             <div className="flex items-center gap-4 border-b border-slate-100 pb-4">
-                                <div className="p-2.5 rounded-xl bg-[#36335e]/10 text-[#36335e]">
+                                <div className="p-2.5 rounded-xl bg-brand-primary/10 text-brand-primary">
                                     <Globe className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-black text-[#36335e] uppercase tracking-tight">Regional Protocol</h3>
+                                    <h3 className="text-lg font-black text-brand-primary uppercase tracking-tight">Regional Protocol</h3>
                                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Step 1 of 3</p>
                                 </div>
                             </div>
@@ -116,13 +116,13 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                             <div className="space-y-3">
                                 <Label htmlFor="idNumberInput" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">School ID Number *</Label>
                                 <div className="relative group">
-                                    <User className="absolute left-4 top-4 h-5 w-5 text-slate-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                                    <User className="absolute left-4 top-4 h-5 w-5 text-slate-400 group-focus-within:text-brand-accent transition-colors" />
                                     <Input
                                         id="idNumberInput"
                                         value={idNumber}
                                         onChange={(e) => setIdNumber(e.target.value)}
                                         placeholder="Enter your School ID number"
-                                        className="h-14 pl-12 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-[#d5a22d] focus:border-transparent rounded-2xl transition-all font-bold text-[#36335e] placeholder:text-slate-300"
+                                        className="h-14 pl-12 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-brand-accent focus:border-transparent rounded-2xl transition-all font-bold text-brand-primary placeholder:text-slate-300"
                                         required
                                     />
                                 </div>
@@ -131,12 +131,12 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                             <div className="space-y-3">
                                 <Label htmlFor="country" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Operating Country *</Label>
                                 <Select onValueChange={setSelectedCountryId} value={selectedCountryId}>
-                                    <SelectTrigger className="h-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-[#d5a22d] focus:border-transparent rounded-2xl font-bold text-[#36335e] transition-all">
+                                    <SelectTrigger className="h-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-brand-accent focus:border-transparent rounded-2xl font-bold text-brand-primary transition-all">
                                         <SelectValue placeholder="Select your operating country" />
                                     </SelectTrigger>
                                     <SelectContent className="rounded-2xl border-slate-100 p-2">
                                         {countries.map((country) => (
-                                            <SelectItem key={country.id} value={country.id} className="rounded-xl font-bold p-3 focus:bg-[#36335e]/5 focus:text-[#36335e]">
+                                            <SelectItem key={country.id} value={country.id} className="rounded-xl font-bold p-3 focus:bg-brand-primary/5 focus:text-brand-primary">
                                                 {country.name}
                                             </SelectItem>
                                         ))}
@@ -148,10 +148,10 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                                 type="button"
                                 onClick={nextStep}
                                 disabled={!isStep1Valid}
-                                className="w-full h-12 bg-[#36335e] hover:bg-[#2a284a] text-white font-black uppercase tracking-[0.2em] text-xs rounded-xl transition-all flex items-center justify-center gap-3"
+                                className="w-full h-12 bg-brand-primary hover:bg-brand-primary-hover text-white font-black uppercase tracking-[0.2em] text-xs rounded-xl transition-all flex items-center justify-center gap-3"
                             >
                                 Continue To Verification
-                                <ArrowRight className="w-5 h-5 text-[#d5a22d]" />
+                                <ArrowRight className="w-5 h-5 text-brand-accent" />
                             </Button>
                         </div>
                     )}
@@ -160,11 +160,11 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                     {currentStep === 2 && (
                         <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
                             <div className="flex items-center gap-4 border-b border-slate-100 pb-4">
-                                <div className="p-2.5 rounded-xl bg-[#36335e]/10 text-[#36335e]">
+                                <div className="p-2.5 rounded-xl bg-brand-primary/10 text-brand-primary">
                                     <FileText className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-black text-[#36335e] uppercase tracking-tight">Identity Authentication</h3>
+                                    <h3 className="text-lg font-black text-brand-primary uppercase tracking-tight">Identity Authentication</h3>
                                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Step 2 of 3</p>
                                 </div>
                             </div>
@@ -206,10 +206,10 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                                     type="button"
                                     onClick={nextStep}
                                     disabled={!isStep2Valid}
-                                    className="flex-1 h-12 bg-[#36335e] hover:bg-[#2a284a] text-white font-black uppercase tracking-[0.2em] text-xs rounded-xl transition-all flex items-center justify-center gap-3"
+                                    className="flex-1 h-12 bg-brand-primary hover:bg-brand-primary-hover text-white font-black uppercase tracking-[0.2em] text-xs rounded-xl transition-all flex items-center justify-center gap-3"
                                 >
                                     Proceed To Settlement
-                                    <ArrowRight className="w-5 h-5 text-[#d5a22d]" />
+                                    <ArrowRight className="w-5 h-5 text-brand-accent" />
                                 </Button>
                             </div>
                         </div>
@@ -223,7 +223,7 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                                     <Building2 className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-black text-[#36335e] uppercase tracking-tight">Settlement Channel</h3>
+                                    <h3 className="text-lg font-black text-brand-primary uppercase tracking-tight">Settlement Channel</h3>
                                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Step 3 of 3</p>
                                 </div>
                             </div>
@@ -232,13 +232,13 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                                 <div className="space-y-3">
                                     <Label htmlFor="bankNameInput" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Bank Name *</Label>
                                     <div className="relative group">
-                                        <Building2 className="absolute left-4 top-4 h-5 w-5 text-slate-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                                        <Building2 className="absolute left-4 top-4 h-5 w-5 text-slate-400 group-focus-within:text-brand-accent transition-colors" />
                                         <Input
                                             id="bankNameInput"
                                             value={bankName}
                                             onChange={(e) => setBankName(e.target.value)}
                                             placeholder="e.g. Chase Bank"
-                                            className="h-14 pl-12 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-[#d5a22d] focus:border-transparent rounded-2xl transition-all font-bold text-[#36335e] placeholder:text-slate-300"
+                                            className="h-14 pl-12 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-brand-accent focus:border-transparent rounded-2xl transition-all font-bold text-brand-primary placeholder:text-slate-300"
                                             required
                                         />
                                     </div>
@@ -247,13 +247,13 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                                 <div className="space-y-3">
                                     <Label htmlFor="accountNameInput" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Account Holder *</Label>
                                     <div className="relative group">
-                                        <User className="absolute left-4 top-4 h-5 w-5 text-slate-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                                        <User className="absolute left-4 top-4 h-5 w-5 text-slate-400 group-focus-within:text-brand-accent transition-colors" />
                                         <Input
                                             id="accountNameInput"
                                             value={accountName}
                                             onChange={(e) => setAccountName(e.target.value)}
                                             placeholder="Full Name on Account"
-                                            className="h-14 pl-12 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-[#d5a22d] focus:border-transparent rounded-2xl transition-all font-bold text-[#36335e] placeholder:text-slate-300"
+                                            className="h-14 pl-12 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-brand-accent focus:border-transparent rounded-2xl transition-all font-bold text-brand-primary placeholder:text-slate-300"
                                             required
                                         />
                                     </div>
@@ -263,13 +263,13 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                             <div className="space-y-3">
                                 <Label htmlFor="accountNumberInput" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Account Number / IBAN *</Label>
                                 <div className="relative group">
-                                    <CreditCard className="absolute left-4 top-4 h-5 w-5 text-slate-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                                    <CreditCard className="absolute left-4 top-4 h-5 w-5 text-slate-400 group-focus-within:text-brand-accent transition-colors" />
                                     <Input
                                         id="accountNumberInput"
                                         value={accountNumber}
                                         onChange={(e) => setAccountNumber(e.target.value)}
                                         placeholder="Account Number or IBAN"
-                                        className="h-14 pl-12 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-[#d5a22d] focus:border-transparent rounded-2xl transition-all font-bold text-[#36335e] placeholder:text-slate-300"
+                                        className="h-14 pl-12 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-brand-accent focus:border-transparent rounded-2xl transition-all font-bold text-brand-primary placeholder:text-slate-300"
                                         required
                                     />
                                 </div>
@@ -279,13 +279,13 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                                 <div className="space-y-3">
                                     <Label htmlFor="swiftCodeInput" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">SWIFT / BIC Code</Label>
                                     <div className="relative group">
-                                        <Globe className="absolute left-4 top-4 h-5 w-5 text-slate-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                                        <Globe className="absolute left-4 top-4 h-5 w-5 text-slate-400 group-focus-within:text-brand-accent transition-colors" />
                                         <Input
                                             id="swiftCodeInput"
                                             value={swiftCode}
                                             onChange={(e) => setSwiftCode(e.target.value)}
                                             placeholder="Optional for local"
-                                            className="h-14 pl-12 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-[#d5a22d] focus:border-transparent rounded-2xl transition-all font-bold text-[#36335e] placeholder:text-slate-300"
+                                            className="h-14 pl-12 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-brand-accent focus:border-transparent rounded-2xl transition-all font-bold text-brand-primary placeholder:text-slate-300"
                                         />
                                     </div>
                                 </div>
@@ -293,24 +293,24 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                                 <div className="space-y-3">
                                     <Label htmlFor="rewardTypeInput" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Preferred Reward</Label>
                                     <Select onValueChange={setRewardType} value={rewardType}>
-                                        <SelectTrigger id="rewardTypeInput" className="h-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-[#d5a22d] focus:border-transparent rounded-2xl font-bold text-[#36335e] transition-all">
+                                        <SelectTrigger id="rewardTypeInput" className="h-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-brand-accent focus:border-transparent rounded-2xl font-bold text-brand-primary transition-all">
                                             <SelectValue placeholder="Select reward type" />
                                         </SelectTrigger>
                                         <SelectContent className="rounded-2xl border-slate-100 p-2">
-                                            <SelectItem value="CASH" className="rounded-xl font-bold p-3 focus:bg-[#36335e]/5 focus:text-[#36335e]">Cash Transfer</SelectItem>
-                                            <SelectItem value="TUITION_DISCOUNT" className="rounded-xl font-bold p-3 focus:bg-[#36335e]/5 focus:text-[#36335e]">Tuition Discount</SelectItem>
+                                            <SelectItem value="CASH" className="rounded-xl font-bold p-3 focus:bg-brand-primary/5 focus:text-brand-primary">Cash Transfer</SelectItem>
+                                            <SelectItem value="TUITION_DISCOUNT" className="rounded-xl font-bold p-3 focus:bg-brand-primary/5 focus:text-brand-primary">Tuition Discount</SelectItem>
                                         </SelectContent>
                                     </Select>
                                 </div>
                             </div>
 
-                            <div className="bg-[#36335e]/5 p-4 rounded-xl border border-[#36335e]/10 relative overflow-hidden group">
+                            <div className="bg-brand-primary/5 p-4 rounded-xl border border-brand-primary/10 relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                                    <Info className="w-16 h-16 text-[#36335e]" />
+                                    <Info className="w-16 h-16 text-brand-primary" />
                                 </div>
-                                <h4 className="font-black text-[#36335e] uppercase tracking-widest text-xs mb-2">Partnership Protocol</h4>
+                                <h4 className="font-black text-brand-primary uppercase tracking-widest text-xs mb-2">Partnership Protocol</h4>
                                 <p className="text-sm font-medium text-slate-500 leading-relaxed">
-                                    By submitting this application, you agree to our Affiliate Terms. Your credentials will undergo a formal verification process taking <span className="text-[#36335e] font-bold">24-48 business hours</span>.
+                                    By submitting this application, you agree to our Affiliate Terms. Your credentials will undergo a formal verification process taking <span className="text-brand-primary font-bold">24-48 business hours</span>.
                                 </p>
                             </div>
 
@@ -332,18 +332,18 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                                 </Button>
                                 <Button
                                     type="submit"
-                                    className="flex-1 h-12 bg-[#36335e] hover:bg-[#2a284a] text-white font-black uppercase tracking-[0.2em] text-xs rounded-xl shadow-xl shadow-[#36335e]/20 transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:active:scale-100"
+                                    className="flex-1 h-12 bg-brand-primary hover:bg-brand-primary-hover text-white font-black uppercase tracking-[0.2em] text-xs rounded-xl shadow-xl shadow-brand-primary/20 transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:active:scale-100"
                                     disabled={isPending || !allUploaded}
                                 >
                                     {isPending ? (
                                         <>
-                                            <Loader2 className="w-5 h-5 mr-3 animate-spin text-[#d5a22d]" />
+                                            <Loader2 className="w-5 h-5 mr-3 animate-spin text-brand-accent" />
                                             Authenticating...
                                         </>
                                     ) : (
                                         <span className="flex items-center gap-3">
                                             Finalize Application
-                                            <ArrowRight className="w-5 h-5 text-[#d5a22d]" />
+                                            <ArrowRight className="w-5 h-5 text-brand-accent" />
                                         </span>
                                     )}
                                 </Button>
@@ -353,7 +353,7 @@ export default function AffiliateApplicationForm({ countries }: { countries: Cou
                 </form>
             </CardContent>
             <CardFooter className="flex justify-center border-t border-slate-50 py-4 bg-slate-50/50">
-                <Link href="/dashboard/affiliate" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-[#36335e] transition-colors flex items-center gap-2">
+                <Link href="/dashboard/affiliate" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-brand-primary transition-colors flex items-center gap-2">
                     <ArrowRight className="w-3 h-3 rotate-180" />
                     Return to Affiliate Hub
                 </Link>
@@ -427,19 +427,19 @@ function UploadSlot({
                             type="button"
                             onClick={() => open()}
                             disabled={isUploading}
-                            className="relative w-full aspect-video border-2 border-dashed border-slate-100 bg-slate-50/50 rounded-2xl hover:border-[#d5a22d] hover:bg-white transition-all flex flex-col items-center justify-center gap-3 cursor-pointer group shadow-inner"
+                            className="relative w-full aspect-video border-2 border-dashed border-slate-100 bg-slate-50/50 rounded-2xl hover:border-brand-accent hover:bg-white transition-all flex flex-col items-center justify-center gap-3 cursor-pointer group shadow-inner"
                         >
                             {isUploading ? (
                                 <>
-                                    <Loader2 className="w-8 h-8 text-[#d5a22d] animate-spin" />
+                                    <Loader2 className="w-8 h-8 text-brand-accent animate-spin" />
                                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Uploading...</span>
                                 </>
                             ) : (
                                 <>
-                                    <div className="p-4 bg-white rounded-2xl shadow-sm text-slate-400 group-hover:text-[#36335e] group-hover:scale-110 transition-all">
+                                    <div className="p-4 bg-white rounded-2xl shadow-sm text-slate-400 group-hover:text-brand-primary group-hover:scale-110 transition-all">
                                         <Camera className="w-6 h-6" />
                                     </div>
-                                    <span className="text-[10px] font-black text-slate-400 group-hover:text-[#36335e] uppercase tracking-widest">
+                                    <span className="text-[10px] font-black text-slate-400 group-hover:text-brand-primary uppercase tracking-widest">
                                         Click to Capture
                                     </span>
                                 </>

@@ -82,9 +82,9 @@ export default function CountriesManager({ initialCountries }: { initialCountrie
         <div className="space-y-6">
             {/* Add/Edit Country Form */}
             {showForm ? (
-                <div className="bg-white rounded-2xl border border-[#d5a22d]/30 shadow-xl p-6 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
+                <div className="bg-white rounded-2xl border border-brand-accent/30 shadow-xl p-6 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
                     <div className="flex items-center justify-between mb-2">
-                        <h3 className="font-black text-[#36335e] text-sm uppercase tracking-widest">
+                        <h3 className="font-black text-brand-primary text-sm uppercase tracking-widest">
                             {editingId ? 'Edit Country' : 'Add New Country'}
                         </h3>
                         <button onClick={resetForm} className="text-gray-400 hover:text-gray-600 transition-colors">
@@ -100,7 +100,7 @@ export default function CountriesManager({ initialCountries }: { initialCountrie
                                 onChange={e => setName(e.target.value)}
                                 onKeyDown={e => e.key === 'Enter' && handleAction()}
                                 placeholder="e.g. Malawi"
-                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-[#d5a22d]/20 focus:border-[#d5a22d] text-sm font-bold text-[#36335e] transition-all"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent text-sm font-bold text-brand-primary transition-all"
                                 autoFocus
                             />
                         </div>
@@ -113,7 +113,7 @@ export default function CountriesManager({ initialCountries }: { initialCountrie
                                 onKeyDown={e => e.key === 'Enter' && handleAction()}
                                 placeholder="+265"
                                 maxLength={6}
-                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-[#d5a22d]/20 focus:border-[#d5a22d] text-sm font-bold text-[#36335e] uppercase tracking-widest transition-all"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent text-sm font-bold text-brand-primary uppercase tracking-widest transition-all"
                             />
                         </div>
                     </div>
@@ -127,9 +127,9 @@ export default function CountriesManager({ initialCountries }: { initialCountrie
                         <button
                             onClick={handleAction}
                             disabled={isPending || !name.trim() || !code.trim()}
-                            className="px-6 py-2.5 rounded-xl text-sm font-black bg-[#36335e] text-white hover:bg-[#2a284a] shadow-lg shadow-[#36335e]/20 transition-all active:scale-95 disabled:opacity-50 flex items-center gap-2"
+                            className="px-6 py-2.5 rounded-xl text-sm font-black bg-brand-primary text-white hover:bg-brand-primary-hover shadow-lg shadow-brand-primary/20 transition-all active:scale-95 disabled:opacity-50 flex items-center gap-2"
                         >
-                            {isPending ? <Loader2 className="w-4 h-4 animate-spin text-[#d5a22d]" /> : <Plus className="w-4 h-4 text-[#d5a22d]" />}
+                            {isPending ? <Loader2 className="w-4 h-4 animate-spin text-brand-accent" /> : <Plus className="w-4 h-4 text-brand-accent" />}
                             {editingId ? 'Update Country' : 'Add Country'}
                         </button>
                     </div>
@@ -137,7 +137,7 @@ export default function CountriesManager({ initialCountries }: { initialCountrie
             ) : (
                 <button
                     onClick={() => setShowForm(true)}
-                    className="w-full py-4 rounded-2xl border-2 border-dashed border-gray-200 hover:border-[#d5a22d] hover:bg-[#d5a22d]/5 transition-all flex items-center justify-center gap-2 text-sm font-bold text-gray-400 hover:text-[#d5a22d] group"
+                    className="w-full py-4 rounded-2xl border-2 border-dashed border-gray-200 hover:border-brand-accent hover:bg-brand-accent/5 transition-all flex items-center justify-center gap-2 text-sm font-bold text-gray-400 hover:text-brand-accent group"
                 >
                     <Plus className="w-4 h-4 group-hover:scale-110 transition-transform" />
                     Add Country
@@ -156,7 +156,7 @@ export default function CountriesManager({ initialCountries }: { initialCountrie
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="bg-[#36335e] text-white">
+                                <tr className="bg-brand-primary text-white">
                                     <th className="px-8 py-5 text-xs font-black uppercase tracking-[0.2em]">Country</th>
                                     <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Code</th>
                                     <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Director</th>
@@ -169,10 +169,10 @@ export default function CountriesManager({ initialCountries }: { initialCountrie
                                     <tr key={country.id} className="hover:bg-gray-50/50 transition-colors group">
                                         <td className="px-8 py-4">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-9 h-9 rounded-xl bg-[#36335e]/5 group-hover:bg-[#36335e] flex items-center justify-center transition-colors">
-                                                    <Globe className="w-4 h-4 text-[#36335e] group-hover:text-[#d5a22d] transition-colors" />
+                                                <div className="w-9 h-9 rounded-xl bg-brand-primary/5 group-hover:bg-brand-primary flex items-center justify-center transition-colors">
+                                                    <Globe className="w-4 h-4 text-brand-primary group-hover:text-brand-accent transition-colors" />
                                                 </div>
-                                                <span className="font-black text-[#36335e]">{country.name}</span>
+                                                <span className="font-black text-brand-primary">{country.name}</span>
                                             </div>
                                         </td>
                                         <td className="px-6 py-4">
@@ -182,7 +182,7 @@ export default function CountriesManager({ initialCountries }: { initialCountrie
                                         </td>
                                         <td className="px-6 py-4">
                                             {country.director ? (
-                                                <span className="text-sm font-bold text-[#36335e]">{country.director.fullName}</span>
+                                                <span className="text-sm font-bold text-brand-primary">{country.director.fullName}</span>
                                             ) : (
                                                 <span className="px-3 py-1 rounded-full text-[10px] font-black bg-amber-50 text-amber-600 border border-amber-100 uppercase tracking-widest">
                                                     No Director
@@ -190,7 +190,7 @@ export default function CountriesManager({ initialCountries }: { initialCountrie
                                             )}
                                         </td>
                                         <td className="px-6 py-4">
-                                            <span className="text-sm font-black text-[#36335e]">{country._count?.universities ?? 0}</span>
+                                            <span className="text-sm font-black text-brand-primary">{country._count?.universities ?? 0}</span>
                                         </td>
                                         <td className="px-6 py-4 text-center">
                                             <div className="flex items-center justify-center gap-1">

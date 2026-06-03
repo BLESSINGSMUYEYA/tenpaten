@@ -1,34 +1,20 @@
 import type { NextAuthConfig } from 'next-auth';
-import type { Role } from '@prisma/client';
 
+// IMPORTANT: This file is imported by middleware.ts which runs on the Edge
+// runtime. Do NOT import Prisma, next/headers, or any Node.js-only module
+// here. Only edge-compatible code is allowed.
 export const authConfig = {
     pages: {
         signIn: '/login',
     },
     callbacks: {
-        async session({ session, token }) {
-            if (session.user && token.sub) {
-                session.user.id = token.sub;
+        session({ session, token }) {
+            if (session.user && token) {
+                (session.user as any).role = token.role;
+                (session.user as any).emailVerified = token.emailVerified;
+                (session.user as any).affiliateApproved = token.affiliateApproved;
+                (session.user as any).managedUniversityId = token.managedUniversityId;
             }
-
-            if (token.role && session.user) {
-                session.user.role = token.role as Role;
-            }
-
-            if (token.managedUniversityId && session.user) {
-                session.user.managedUniversityId = token.managedUniversityId as string;
-            }
-
-            if (session.user) {
-                session.user.affiliateApproved = !!(token.affiliateApproved);
-                session.user.emailVerified = token.emailVerified as Date | null;
-            }
-
-            // Explicitly forward the user's real name from the JWT token
-            if (token.name && session.user) {
-                session.user.name = token.name as string;
-            }
-
             return session;
         },
         authorized({ auth, request: { nextUrl } }) {
@@ -54,12 +40,16 @@ export const authConfig = {
                     '/dashboard/school': 'SCHOOL_ADMIN',
                     '/dashboard/affiliate': 'AFFILIATE',
                     '/dashboard/country-director': 'COUNTRY_DIRECTOR',
+                    '/dashboard/super-agent': 'SCHOOL_SUPER_AGENT',
                 };
 
                 // Check role-based access
-
                 for (const [route, requiredRole] of Object.entries(protectedRoutes)) {
                     if (nextUrl.pathname === route || nextUrl.pathname.startsWith(`${route}/`)) {
+                        // Special case: allow /dashboard/school for SCHOOL_SUPER_AGENT
+                        if (route === '/dashboard/school' && userRole === 'SCHOOL_SUPER_AGENT') {
+                            return true;
+                        }
                         // Special case: allow /dashboard/affiliate for users with approved affiliate profile
                         if (route === '/dashboard/affiliate' && (auth?.user as any)?.affiliateApproved) {
                             return true;
@@ -80,6 +70,7 @@ export const authConfig = {
                         case 'AFFILIATE': targetUrl = '/dashboard/affiliate'; break;
                         case 'COUNTRY_DIRECTOR': targetUrl = '/dashboard/country-director'; break;
                         case 'SUPER_ADMIN': targetUrl = '/dashboard/admin'; break;
+                        case 'SCHOOL_SUPER_AGENT': targetUrl = '/dashboard/super-agent'; break;
                     }
                     return Response.redirect(new URL(targetUrl, nextUrl));
                 }

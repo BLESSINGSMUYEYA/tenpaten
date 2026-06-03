@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 
 const ChartSkeleton = () => (
     <div className="h-[400px] w-full bg-slate-50/50 animate-pulse rounded-[2.5rem] border border-slate-100 flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-[#36335e]/20 border-t-[#36335e] rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-brand-primary/20 border-t-brand-primary rounded-full animate-spin" />
     </div>
 );
 

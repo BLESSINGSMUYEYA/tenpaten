@@ -23,11 +23,11 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen selection:bg-[#d5a22d]/30 font-sans bg-white relative">
+    <main className="min-h-screen selection:bg-brand-accent/30 font-sans bg-white relative">
       {/* Background Grid & Gradients */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(#1a1b41 1px, transparent 1px), linear-gradient(90deg, #1a1b41 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-[#36335e]/10 via-purple-100/20 to-transparent blur-[120px] rounded-full" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-linear-to-b from-brand-primary/10 via-purple-100/20 to-transparent blur-[120px] rounded-full" />
       </div>
 
       {/* Floating Pill Navigation */}
@@ -51,7 +51,7 @@ export default function Home() {
           <div className="flex items-center gap-3 lg:gap-4">
             <Link
               href="/login"
-              className="hidden sm:inline-flex px-6 py-2.5 bg-white text-[#1a1b41] rounded-full text-[10px] uppercase tracking-[0.2em] font-black hover:bg-[#d5a22d] transition-all active:scale-95"
+              className="hidden sm:inline-flex px-6 py-2.5 bg-white text-[#1a1b41] rounded-full text-[10px] uppercase tracking-[0.2em] font-black hover:bg-brand-accent transition-all active:scale-95"
             >
               Sign In
             </Link>
@@ -74,7 +74,7 @@ export default function Home() {
                   key={item}
                   href={`#${item.toLowerCase().replace(' ', '-')}`}
                   onClick={() => setMobileNav(false)}
-                  className="block text-white/70 text-sm font-bold uppercase tracking-widest hover:text-[#d5a22d]"
+                  className="block text-white/70 text-sm font-bold uppercase tracking-widest hover:text-brand-accent"
                 >
                   {item}
                 </Link>
@@ -115,17 +115,17 @@ export default function Home() {
             <div className="space-y-6 text-center sm:text-left">
               <h4 className="text-[#1a1b41] font-black uppercase tracking-widest text-sm mb-6">Platform</h4>
               <ul className="space-y-4 text-[#1a1b41]/60 font-bold">
-                <li><Link href="#" className="hover:text-[#d5a22d] transition-colors">How it Works</Link></li>
-                <li><Link href="/register?type=student" className="hover:text-[#d5a22d] transition-colors">For Students</Link></li>
-                <li><Link href="/contact" className="hover:text-[#d5a22d] transition-colors">For Partners</Link></li>
+                <li><Link href="#" className="hover:text-brand-accent transition-colors">How it Works</Link></li>
+                <li><Link href="/register?type=student" className="hover:text-brand-accent transition-colors">For Students</Link></li>
+                <li><Link href="/contact" className="hover:text-brand-accent transition-colors">For Partners</Link></li>
               </ul>
             </div>
 
             <div className="space-y-6 text-center sm:text-left">
               <h4 className="text-[#1a1b41] font-black uppercase tracking-widest text-sm mb-6">Legal</h4>
               <ul className="space-y-4 text-[#1a1b41]/60 font-bold">
-                <li><Link href="/privacy" className="hover:text-[#d5a22d] transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="hover:text-[#d5a22d] transition-colors">Terms of Service</Link></li>
+                <li><Link href="/privacy" className="hover:text-brand-accent transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-brand-accent transition-colors">Terms of Service</Link></li>
               </ul>
             </div>
           </div>

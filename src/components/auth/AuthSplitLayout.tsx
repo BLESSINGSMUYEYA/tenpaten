@@ -37,7 +37,7 @@ export default function AuthSplitLayout({
     children,
     heroTitle = (
         <>
-            Connect Students with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-indigo-100">Global Opportunities</span>
+            Connect Students with <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-200 to-indigo-100">Global Opportunities</span>
         </>
     ),
     heroDescription = "The all-in-one affiliate application platform for international education. Streamline your recruitment, manage applications, and grow your network.",

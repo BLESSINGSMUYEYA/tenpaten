@@ -93,8 +93,8 @@ export default async function AffiliatePage() {
     return (
         <>
             {/* Header Section */}
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#1a1b41] via-[#36335e] to-[#1a1b41] p-6 sm:p-8 shadow-xl">
-                <div className="absolute top-0 right-0 w-40 h-40 sm:w-64 sm:h-64 bg-[#d5a22d]/10 rounded-full blur-3xl opacity-50" />
+            <div className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#1a1b41] via-brand-primary to-[#1a1b41] p-6 sm:p-8 shadow-xl">
+                <div className="absolute top-0 right-0 w-40 h-40 sm:w-64 sm:h-64 bg-brand-accent/10 rounded-full blur-3xl opacity-50" />
                 <div className="absolute bottom-0 left-0 w-40 h-40 sm:w-64 sm:h-64 bg-white/5 rounded-full blur-3xl" />
 
                 <div className="relative z-10">
@@ -140,12 +140,12 @@ export default async function AffiliatePage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
                     {benefits.map((benefit, index) => {
                         const colorClasses = {
-                            gold: 'bg-[#d5a22d]/10 text-[#d5a22d]',
+                            gold: 'bg-brand-accent/10 text-brand-accent',
                         };
                         return (
                             <div
                                 key={index}
-                                className="group relative overflow-hidden rounded-xl bg-white border-2 border-gray-100 hover:border-[#d5a22d]/30 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                                className="group relative overflow-hidden rounded-xl bg-white border-2 border-gray-100 hover:border-brand-accent/30 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                             >
                                 <div className={`w-12 h-12 rounded-xl ${colorClasses[benefit.color as keyof typeof colorClasses]} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                                     {benefit.icon}
@@ -163,13 +163,13 @@ export default async function AffiliatePage() {
             </div>
 
             {/* How It Works */}
-            <div className="bg-gradient-to-br from-[#1a1b41]/5 to-transparent rounded-2xl border border-gray-100 p-6 sm:p-8">
+            <div className="bg-linear-to-br from-[#1a1b41]/5 to-transparent rounded-2xl border border-gray-100 p-6 sm:p-8">
                 <h2 className="text-2xl font-black text-[#1a1b41] mb-6 text-center tracking-tight">How It Works</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {steps.map((step, index) => (
                         <div key={index} className="relative">
                             <div className="flex flex-col items-center text-center">
-                                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#d5a22d] to-[#b89531] flex items-center justify-center text-white text-2xl font-black mb-4 shadow-lg shadow-[#d5a22d]/20">
+                                <div className="w-16 h-16 rounded-2xl bg-linear-to-br from-brand-accent to-[#b89531] flex items-center justify-center text-white text-2xl font-black mb-4 shadow-lg shadow-brand-accent/20">
                                     {step.number}
                                 </div>
                                 <h3 className="text-lg font-bold text-gray-900 mb-2">
@@ -180,7 +180,7 @@ export default async function AffiliatePage() {
                                 </p>
                             </div>
                             {index < steps.length - 1 && (
-                                <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-[#d5a22d]/30 to-transparent -translate-x-1/2" />
+                                <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-linear-to-r from-brand-accent/30 to-transparent -translate-x-1/2" />
                             )}
                         </div>
                     ))}
@@ -190,12 +190,12 @@ export default async function AffiliatePage() {
             {/* CTA Section — changes based on affiliate status */}
             {affiliate?.status === 'APPROVED' ? (
                 /* ✅ Approved: Link to Affiliate Dashboard */
-                <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-[#36335e] via-[#2a284a] to-[#1e1d36] p-6 sm:p-8 shadow-xl">
-                    <div className="absolute top-0 right-0 w-40 h-40 sm:w-64 sm:h-64 bg-[#d5a22d]/10 rounded-full blur-3xl" />
+                <div className="relative overflow-hidden rounded-xl bg-linear-to-r from-brand-primary via-brand-primary-hover to-[#1e1d36] p-6 sm:p-8 shadow-xl">
+                    <div className="absolute top-0 right-0 w-40 h-40 sm:w-64 sm:h-64 bg-brand-accent/10 rounded-full blur-3xl" />
                     <div className="absolute bottom-0 left-0 w-40 h-40 sm:w-64 sm:h-64 bg-white/5 rounded-full blur-3xl" />
                     <div className="relative z-10 text-center max-w-3xl mx-auto">
-                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#d5a22d]/20 backdrop-blur-sm mb-4 border border-[#d5a22d]/30">
-                            <CheckCircle2 className="w-8 h-8 text-[#d5a22d]" />
+                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-accent/20 backdrop-blur-sm mb-4 border border-brand-accent/30">
+                            <CheckCircle2 className="w-8 h-8 text-brand-accent" />
                         </div>
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/20 text-green-300 text-xs font-black uppercase tracking-widest border border-green-500/20 mb-3">
                             ✓ Affiliate Approved
@@ -208,7 +208,7 @@ export default async function AffiliatePage() {
                         </p>
                         <Link
                             href="/dashboard/affiliate"
-                            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#d5a22d] text-white hover:bg-[#c49228] font-black text-sm shadow-lg shadow-[#d5a22d]/30 hover:shadow-[#d5a22d]/50 transition-all hover:scale-105"
+                            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-brand-accent text-white hover:bg-[#c49228] font-black text-sm shadow-lg shadow-brand-accent/30 hover:shadow-brand-accent/50 transition-all hover:scale-105"
                         >
                             <span>Go to Affiliate Dashboard</span>
                             <ArrowRight className="w-5 h-5" />
@@ -217,7 +217,7 @@ export default async function AffiliatePage() {
                 </div>
             ) : affiliate?.status === 'PENDING' ? (
                 /* ⏳ Pending: Application under review */
-                <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-yellow-50 to-amber-50 border-2 border-yellow-200 p-6 sm:p-8">
+                <div className="relative overflow-hidden rounded-xl bg-linear-to-r from-yellow-50 to-amber-50 border-2 border-yellow-200 p-6 sm:p-8">
                     <div className="text-center max-w-3xl mx-auto">
                         <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-yellow-100 mb-4">
                             <span className="text-2xl">⏳</span>
@@ -230,12 +230,12 @@ export default async function AffiliatePage() {
                 </div>
             ) : (
                 /* 🔲 No affiliate: Apply CTA */
-                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#1a1b41] via-[#36335e] to-[#1a1b41] p-6 sm:p-8 shadow-xl">
-                    <div className="absolute top-0 right-0 w-40 h-40 sm:w-64 sm:h-64 bg-[#d5a22d]/10 rounded-full blur-3xl opacity-50" />
+                <div className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#1a1b41] via-brand-primary to-[#1a1b41] p-6 sm:p-8 shadow-xl">
+                    <div className="absolute top-0 right-0 w-40 h-40 sm:w-64 sm:h-64 bg-brand-accent/10 rounded-full blur-3xl opacity-50" />
                     <div className="absolute bottom-0 left-0 w-40 h-40 sm:w-64 sm:h-64 bg-white/5 rounded-full blur-3xl" />
                     <div className="relative z-10 text-center max-w-3xl mx-auto">
                         <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm mb-4 border border-white/20">
-                            <Gift className="w-8 h-8 text-[#d5a22d]" />
+                            <Gift className="w-8 h-8 text-brand-accent" />
                         </div>
                         <h2 className="text-2xl sm:text-3xl font-black text-white mb-3 tracking-tight">
                             Ready to Become an Official Affiliate?
@@ -245,7 +245,7 @@ export default async function AffiliatePage() {
                         </p>
                         <Link
                             href="/dashboard/apply-affiliate"
-                            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#d5a22d] text-white hover:bg-[#c49228] font-black text-sm shadow-xl shadow-[#d5a22d]/20 transition-all hover:scale-105"
+                            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-brand-accent text-white hover:bg-[#c49228] font-black text-sm shadow-xl shadow-brand-accent/20 transition-all hover:scale-105"
                         >
                             <span>Apply for Official Affiliate Status</span>
                             <ArrowRight className="w-5 h-5" />

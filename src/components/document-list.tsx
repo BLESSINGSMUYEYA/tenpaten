@@ -54,13 +54,13 @@ export default function DocumentList({
     return (
         <div className="space-y-2">
             {docList.map((doc, index) => (
-                <div key={doc.publicId || index} className="flex items-center justify-between rounded-2xl border border-gray-100 p-4 bg-gray-50/50 hover:bg-white hover:border-[#d5a22d]/30 transition-all group">
+                <div key={doc.publicId || index} className="flex items-center justify-between rounded-2xl border border-gray-100 p-4 bg-gray-50/50 hover:bg-white hover:border-brand-accent/30 transition-all group">
                     <div className="flex items-center gap-4 overflow-hidden">
-                        <div className="w-10 h-10 rounded-xl bg-white border border-gray-100 flex items-center justify-center text-[#d5a22d] group-hover:bg-[#d5a22d] group-hover:text-white transition-all shadow-sm">
+                        <div className="w-10 h-10 rounded-xl bg-white border border-gray-100 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all shadow-sm">
                             <FileText className="w-5 h-5" />
                         </div>
                         <div className="truncate">
-                            <p className="text-sm font-black text-[#36335e] truncate mb-0.5">{doc.name}</p>
+                            <p className="text-sm font-black text-brand-primary truncate mb-0.5">{doc.name}</p>
                             <div className="flex items-center gap-2">
                                 <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">Uploaded</span>
                                 <span className="text-[10px] font-bold text-slate-500">{new Date(doc.uploadedAt).toLocaleDateString()}</span>
@@ -72,7 +72,7 @@ export default function DocumentList({
                             href={doc.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-4 py-2 rounded-lg bg-white border border-gray-200 text-[#36335e] hover:border-[#d5a22d] hover:text-[#d5a22d] font-black text-[10px] uppercase tracking-widest transition-all shadow-sm"
+                            className="px-4 py-2 rounded-lg bg-white border border-gray-200 text-brand-primary hover:border-brand-accent hover:text-brand-accent font-black text-[10px] uppercase tracking-widest transition-all shadow-sm"
                         >
                             View
                         </a>

@@ -116,7 +116,7 @@ export default function ProgramSelection({ universities, selectedProgramId, onPr
                     <div className="space-y-3">
                         <Label htmlFor="level" className="text-sm font-bold text-gray-700">
                             <div className="flex items-center gap-2">
-                                <BookOpen className="w-4 h-4 text-[#d5a22d]" />
+                                <BookOpen className="w-4 h-4 text-brand-accent" />
                                 1. Select Level
                             </div>
                         </Label>
@@ -124,7 +124,7 @@ export default function ProgramSelection({ universities, selectedProgramId, onPr
                             value={selectedLevel}
                             onValueChange={handleLevelChange}
                         >
-                            <SelectTrigger className="h-12 border-2 hover:border-[#d5a22d] transition-colors bg-white">
+                            <SelectTrigger className="h-12 border-2 hover:border-brand-accent transition-colors bg-white">
                                 <SelectValue placeholder="Degree Level" />
                             </SelectTrigger>
                             <SelectContent className="max-h-[300px]">
@@ -141,7 +141,7 @@ export default function ProgramSelection({ universities, selectedProgramId, onPr
                     <div className="space-y-3">
                         <Label htmlFor="programName" className={`text-sm font-bold transition-colors ${!selectedLevel && uniqueLevels.length > 0 ? 'text-gray-400' : 'text-gray-700'}`}>
                             <div className="flex items-center gap-2">
-                                <GraduationCap className="w-4 h-4 text-[#d5a22d]" />
+                                <GraduationCap className="w-4 h-4 text-brand-accent" />
                                 2. Select Program
                             </div>
                         </Label>
@@ -150,7 +150,7 @@ export default function ProgramSelection({ universities, selectedProgramId, onPr
                             value={selectedProgramName}
                             onValueChange={handleProgramNameChange}
                         >
-                            <SelectTrigger className={`h-12 border-2 transition-colors bg-white ${!selectedLevel && uniqueLevels.length > 0 ? 'opacity-50 cursor-not-allowed' : 'hover:border-[#d5a22d]'}`}>
+                            <SelectTrigger className={`h-12 border-2 transition-colors bg-white ${!selectedLevel && uniqueLevels.length > 0 ? 'opacity-50 cursor-not-allowed' : 'hover:border-brand-accent'}`}>
                                 <SelectValue placeholder={selectedLevel || uniqueLevels.length === 0 ? "What do you want to study?" : "Select a level first"} />
                             </SelectTrigger>
                             <SelectContent className="max-h-[300px]">
@@ -167,7 +167,7 @@ export default function ProgramSelection({ universities, selectedProgramId, onPr
                     <div className="space-y-3">
                         <Label htmlFor="universityId" className={`text-sm font-bold transition-colors ${!selectedProgramName ? 'text-gray-400' : 'text-gray-700'}`}>
                             <div className="flex items-center gap-2">
-                                <Building2 className="w-4 h-4 text-[#d5a22d]" />
+                                <Building2 className="w-4 h-4 text-brand-accent" />
                                 3. Select University
                             </div>
                         </Label>
@@ -176,7 +176,7 @@ export default function ProgramSelection({ universities, selectedProgramId, onPr
                             value={selectedUniversityId}
                             onValueChange={handleUniversityChange}
                         >
-                            <SelectTrigger className={`h-12 border-2 transition-colors bg-white ${!selectedProgramName ? 'opacity-50 cursor-not-allowed' : 'hover:border-[#d5a22d]'}`}>
+                            <SelectTrigger className={`h-12 border-2 transition-colors bg-white ${!selectedProgramName ? 'opacity-50 cursor-not-allowed' : 'hover:border-brand-accent'}`}>
                                 <SelectValue placeholder={selectedProgramName ? "Which university?" : "Select a program first"} />
                             </SelectTrigger>
                             <SelectContent>
@@ -191,13 +191,13 @@ export default function ProgramSelection({ universities, selectedProgramId, onPr
                 </div>
 
                 {selectedProgramId && (
-                    <div className="bg-[#d5a22d]/5 border border-[#d5a22d]/20 rounded-lg p-4 flex flex-col sm:flex-row items-center justify-between gap-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                    <div className="bg-brand-accent/5 border border-brand-accent/20 rounded-lg p-4 flex flex-col sm:flex-row items-center justify-between gap-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-[#d5a22d]/10 flex items-center justify-center flex-shrink-0">
-                                <Building2 className="w-5 h-5 text-[#d5a22d]" />
+                            <div className="w-10 h-10 rounded-full bg-brand-accent/10 flex items-center justify-center flex-shrink-0">
+                                <Building2 className="w-5 h-5 text-brand-accent" />
                             </div>
                             <div>
-                                <p className="text-xs font-bold text-[#d5a22d] uppercase tracking-widest">Selection Confirmed</p>
+                                <p className="text-xs font-bold text-brand-accent uppercase tracking-widest">Selection Confirmed</p>
                                 <p className="text-sm font-medium text-[#1a1b41]">
                                     You are applying for <span className="font-bold underline">{selectedProgramName}</span> at <span className="font-bold underline">{availableUniversities.find(u => u.id === selectedUniversityId)?.name}</span>
                                 </p>
@@ -219,7 +219,7 @@ export default function ProgramSelection({ universities, selectedProgramId, onPr
                         {onNext && (
                             <button
                                 onClick={onNext}
-                                className="w-full sm:w-auto px-6 py-2 bg-[#d5a22d] text-white rounded-lg font-semibold shadow-md hover:bg-[#b89531] transition-colors"
+                                className="w-full sm:w-auto px-6 py-2 bg-brand-accent text-white rounded-lg font-semibold shadow-md hover:bg-[#b89531] transition-colors"
                             >
                                 Next Step
                             </button>

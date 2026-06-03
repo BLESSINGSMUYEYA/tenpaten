@@ -186,7 +186,7 @@ export default function DocumentsManager({ user, requiredDocuments = [] }: Docum
                                     variant="outline"
                                     onClick={() => document.getElementById('file-upload')?.click()}
                                     disabled={!!uploadingType}
-                                    className={selectedFile ? "border-[#d5a22d] text-[#d5a22d] bg-[#d5a22d]/5" : ""}
+                                    className={selectedFile ? "border-brand-accent text-brand-accent bg-brand-accent/5" : ""}
                                 >
                                     {selectedFile ? (
                                         <>
@@ -205,7 +205,7 @@ export default function DocumentsManager({ user, requiredDocuments = [] }: Docum
                             <Button
                                 onClick={handleManualUpload}
                                 disabled={!selectedFile || !selectedDocType || !!uploadingType}
-                                className="w-full sm:w-auto bg-[#d5a22d] hover:bg-[#b89531] text-white min-w-[100px]"
+                                className="w-full sm:w-auto bg-brand-accent hover:bg-[#b89531] text-white min-w-[100px]"
                             >
                                 {uploadingType ? (
                                     <>
@@ -231,11 +231,11 @@ export default function DocumentsManager({ user, requiredDocuments = [] }: Docum
                         {documents.map((doc, index) => (
                             <div
                                 key={doc.id || `doc-${index}`}
-                                className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:border-[#d5a22d]/20 transition-colors"
+                                className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:border-brand-accent/20 transition-colors"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-lg bg-[#d5a22d]/5 flex items-center justify-center flex-shrink-0">
-                                        <FileText className="w-5 h-5 text-[#d5a22d]" />
+                                    <div className="w-10 h-10 rounded-lg bg-brand-accent/5 flex items-center justify-center flex-shrink-0">
+                                        <FileText className="w-5 h-5 text-brand-accent" />
                                     </div>
                                     <div className="min-w-0">
                                         <p className="text-sm font-semibold text-gray-900">
@@ -288,7 +288,7 @@ export default function DocumentsManager({ user, requiredDocuments = [] }: Docum
             </div>
 
             {/* Info Box */}
-            <div className="mt-8 p-4 sm:p-6 bg-gradient-to-r from-[#1a1b41]/5 to-[#d5a22d]/5 border border-[#d5a22d]/20 rounded-xl">
+            <div className="mt-8 p-4 sm:p-6 bg-linear-to-r from-[#1a1b41]/5 to-brand-accent/5 border border-brand-accent/20 rounded-xl">
                 <h4 className="font-semibold text-[#1a1b41] mb-2">Document Guidelines</h4>
                 <ul className="text-sm text-[#1a1b41]/80 space-y-1">
                     <li>• Accepted formats: PDF, JPG, PNG</li>

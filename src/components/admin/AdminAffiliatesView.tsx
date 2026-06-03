@@ -97,7 +97,7 @@ export default function AdminAffiliatesView({
                     <input
                         type="text"
                         placeholder="Search by name, email or code..."
-                        className="w-full h-11 pl-12 pr-4 bg-slate-50 border-none rounded-xl text-sm font-medium focus:ring-2 focus:ring-[#36335e]/10 transition-all"
+                        className="w-full h-11 pl-12 pr-4 bg-slate-50 border-none rounded-xl text-sm font-medium focus:ring-2 focus:ring-brand-primary/10 transition-all"
                     />
                 </div>
                 <div className="flex items-center gap-2 w-full md:w-auto">
@@ -115,7 +115,7 @@ export default function AdminAffiliatesView({
             {/* Table */}
             <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
                 <Table>
-                    <TableHeader className="bg-[#36335e]">
+                    <TableHeader className="bg-brand-primary">
                         <TableRow className="hover:bg-transparent border-none">
                             <TableHead className="w-[300px] text-[10px] font-black uppercase tracking-[0.2em] text-white py-5">Partner Profile</TableHead>
                             <TableHead className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Referral Code</TableHead>
@@ -146,19 +146,19 @@ export default function AdminAffiliatesView({
                                                         className="object-cover"
                                                     />
                                                 ) : (
-                                                    <div className="w-full h-full flex items-center justify-center text-[#36335e]">
+                                                    <div className="w-full h-full flex items-center justify-center text-brand-primary">
                                                         <User className="w-5 h-5" />
                                                     </div>
                                                 )}
                                             </div>
                                             <div>
-                                                <div className="text-sm font-black text-[#36335e] leading-snug">{affiliate.user.fullName}</div>
+                                                <div className="text-sm font-black text-brand-primary leading-snug">{affiliate.user.fullName}</div>
                                                 <div className="text-[11px] font-bold text-slate-400 leading-tight">{affiliate.user.email}</div>
                                             </div>
                                         </div>
                                     </TableCell>
                                     <TableCell>
-                                        <Badge variant="outline" className="bg-[#36335e]/5 border-none text-[#36335e] font-black rounded-lg px-2.5 py-1 text-[11px]">
+                                        <Badge variant="outline" className="bg-brand-primary/5 border-none text-brand-primary font-black rounded-lg px-2.5 py-1 text-[11px]">
                                             {affiliate.referralCode}
                                         </Badge>
                                     </TableCell>

@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
             {/* Header Section — Premium Midnight Navy */}
             <div className="relative overflow-hidden rounded-[3rem] bg-[#1d1b41] p-8 sm:p-12 shadow-2xl shadow-[#1d1b41]/20">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-[120px] -mr-48 -mt-48" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#d5a22d]/10 rounded-full blur-[100px] -ml-32 -mb-32" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-accent/10 rounded-full blur-[100px] -ml-32 -mb-32" />
                 
                 <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-10">
                     <div className="flex-1 space-y-6">
@@ -49,8 +49,8 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                         
                         <div className="space-y-2">
                             <div className="flex items-center gap-2">
-                                <span className="text-[10px] font-black text-[#d5a22d] uppercase tracking-[0.3em]">Institutional Application</span>
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#d5a22d] animate-pulse" />
+                                <span className="text-[10px] font-black text-brand-accent uppercase tracking-[0.3em]">Institutional Application</span>
+                                <div className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
                             </div>
                             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.1]">
                                 {application.program.name}
@@ -59,7 +59,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
                         <div className="flex flex-wrap items-center gap-4">
                             <div className="flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                                <Building2 className="w-4 h-4 text-[#d5a22d]" />
+                                <Building2 className="w-4 h-4 text-brand-accent" />
                                 <span className="text-xs font-bold text-white/90">{application.program.university.name}</span>
                             </div>
                             <div className={`px-5 py-2 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] border shadow-xl backdrop-blur-md ${getStatusColor(application.status)}`}>
@@ -70,21 +70,21 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
                     <div className="grid grid-cols-2 gap-6 p-8 rounded-[2.5rem] bg-black/20 backdrop-blur-xl border border-white/10">
                         <div className="space-y-1">
-                            <p className="text-[9px] font-black text-[#d5a22d] uppercase tracking-[0.3em]">Reference ID</p>
+                            <p className="text-[9px] font-black text-brand-accent uppercase tracking-[0.3em]">Reference ID</p>
                             <p className="text-sm font-black text-white uppercase tracking-tighter">#{application.id.slice(-8)}</p>
                         </div>
                         <div className="space-y-1 text-right">
-                            <p className="text-[9px] font-black text-[#d5a22d] uppercase tracking-[0.3em]">Cycle</p>
+                            <p className="text-[9px] font-black text-brand-accent uppercase tracking-[0.3em]">Cycle</p>
                             <p className="text-sm font-black text-white">2024 / 2025</p>
                         </div>
                         <div className="space-y-1 pt-4 border-t border-white/5">
-                            <p className="text-[9px] font-black text-[#d5a22d] uppercase tracking-[0.3em]">Submission</p>
+                            <p className="text-[9px] font-black text-brand-accent uppercase tracking-[0.3em]">Submission</p>
                             <p className="text-sm font-black text-white">
                                 {format(new Date(application.createdAt), 'MMM dd, yyyy')}
                             </p>
                         </div>
                         <div className="space-y-1 pt-4 border-t border-white/5 text-right">
-                            <p className="text-[9px] font-black text-[#d5a22d] uppercase tracking-[0.3em]">Last Updated</p>
+                            <p className="text-[9px] font-black text-brand-accent uppercase tracking-[0.3em]">Last Updated</p>
                             <p className="text-sm font-black text-white">
                                 {format(new Date(application.updatedAt), 'MMM dd, yyyy')}
                             </p>
@@ -190,7 +190,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                             <div className="p-8 rounded-[2.5rem] bg-gray-50 border border-gray-100">
                                 <div className="flex items-center gap-3 mb-3">
-                                    <Clock className="w-4 h-4 text-[#d5a22d]" />
+                                    <Clock className="w-4 h-4 text-brand-accent" />
                                     <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Entry Date</span>
                                 </div>
                                 <p className="text-lg font-black text-[#1d1b41]">
@@ -200,7 +200,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
                             <div className="p-8 rounded-[2.5rem] bg-gray-50 border border-gray-100">
                                 <div className="flex items-center gap-3 mb-3">
-                                    <CreditCard className="w-4 h-4 text-[#d5a22d]" />
+                                    <CreditCard className="w-4 h-4 text-brand-accent" />
                                     <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Application Fee</span>
                                 </div>
                                 <p className="text-lg font-black text-[#1d1b41]">
@@ -221,7 +221,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                                 </div>
                                 <Link
                                     href={`/dashboard/messages?recipientId=${application.program.university.id}`}
-                                    className="px-8 py-4 rounded-2xl bg-[#d5a22d] hover:bg-[#c29329] text-[#1a1b41] font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 shadow-xl shadow-[#d5a22d]/20 text-center"
+                                    className="px-8 py-4 rounded-2xl bg-brand-accent hover:bg-[#c29329] text-[#1a1b41] font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 shadow-xl shadow-brand-accent/20 text-center"
                                 >
                                     Message University
                                 </Link>
@@ -232,7 +232,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                     {/* Documents */}
                     <div className="rounded-[3rem] border border-gray-100 bg-white p-8 sm:p-12 shadow-sm">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-12 h-12 rounded-xl bg-[#d5a22d]/10 flex items-center justify-center text-[#d5a22d]">
+                            <div className="w-12 h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent">
                                 <FileText className="w-6 h-6" />
                             </div>
                             <div>
@@ -276,7 +276,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                         
                         {/* Final Celebratory Call to Action if Enrolled */}
                         {application.status === 'ENROLLED' && (
-                            <div className="mt-8 p-8 rounded-[2rem] bg-gradient-to-br from-[#d5a22d] to-[#b88e24] text-white shadow-xl shadow-[#d5a22d]/20 relative overflow-hidden text-center">
+                            <div className="mt-8 p-8 rounded-[2rem] bg-linear-to-br from-brand-accent to-[#b88e24] text-white shadow-xl shadow-brand-accent/20 relative overflow-hidden text-center">
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-xl -mr-12 -mt-12" />
                                 <PartyPopper className="w-10 h-10 mx-auto mb-4 text-white drop-shadow-lg" />
                                 <h3 className="text-lg font-black mb-2 leading-tight">Student Enrollment Secured!</h3>

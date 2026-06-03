@@ -249,7 +249,7 @@ export default function ProgramsList({ programs, universities }: ProgramsListPro
                     <div className="w-20 h-20 bg-white rounded-[2rem] shadow-sm flex items-center justify-center mx-auto mb-6">
                         <Search className="w-8 h-8 text-slate-200" />
                     </div>
-                    <h3 className="text-xl font-black text-[#36335e] mb-2 tracking-tight">No programs found</h3>
+                    <h3 className="text-xl font-black text-brand-primary mb-2 tracking-tight">No programs found</h3>
                     <p className="text-xs font-bold text-slate-400 uppercase tracking-widest max-w-[280px] mx-auto leading-relaxed">
                         {hasActiveFilters
                             ? 'Adjust your filters or try a different search term to expand your horizons.'
@@ -258,7 +258,7 @@ export default function ProgramsList({ programs, universities }: ProgramsListPro
                     {hasActiveFilters && (
                         <Button
                             onClick={clearFilters}
-                            className="mt-8 rounded-xl bg-[#36335e] text-white font-black uppercase text-[10px] tracking-widest px-8"
+                            className="mt-8 rounded-xl bg-brand-primary text-white font-black uppercase text-[10px] tracking-widest px-8"
                         >
                             Reset Registry
                         </Button>
@@ -279,22 +279,22 @@ export default function ProgramsList({ programs, universities }: ProgramsListPro
                         {filteredPrograms.map((program) => (
                             <div 
                                 key={program.id} 
-                                className="grid grid-cols-1 lg:grid-cols-12 gap-6 px-8 lg:px-10 py-8 lg:py-6 items-center bg-white rounded-[2.5rem] border border-transparent shadow-xl shadow-[#36335e]/5 hover:shadow-2xl hover:shadow-[#36335e]/10 hover:border-[#d5a22d]/30 transition-all duration-500 group relative overflow-hidden"
+                                className="grid grid-cols-1 lg:grid-cols-12 gap-6 px-8 lg:px-10 py-8 lg:py-6 items-center bg-white rounded-[2.5rem] border border-transparent shadow-xl shadow-brand-primary/5 hover:shadow-2xl hover:shadow-brand-primary/10 hover:border-brand-accent/30 transition-all duration-500 group relative overflow-hidden"
                             >
                                 {/* Premium side accent */}
-                                <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#36335e] to-[#d5a22d] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+                                <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-linear-to-b from-brand-primary to-brand-accent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
 
                                 {/* Program & University Info */}
                                 <div className="lg:col-span-5 flex items-center gap-6">
-                                    <div className="h-16 w-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#36335e]/10 group-hover:bg-[#36335e]/5 group-hover:text-[#36335e] transition-all duration-500 shadow-inner">
+                                    <div className="h-16 w-16 rounded-2xl bg-slate-50 flex items-center justify-center text-brand-primary/10 group-hover:bg-brand-primary/5 group-hover:text-brand-primary transition-all duration-500 shadow-inner">
                                         <GraduationCap className="w-8 h-8 transform group-hover:rotate-12 transition-transform" />
                                     </div>
                                     <div className="min-w-0">
-                                        <h4 className="text-lg lg:text-xl font-black text-slate-900 tracking-tight group-hover:text-[#36335e] transition-colors leading-none mb-2 uppercase break-words">
+                                        <h4 className="text-lg lg:text-xl font-black text-slate-900 tracking-tight group-hover:text-brand-primary transition-colors leading-none mb-2 uppercase break-words">
                                             {program.name}
                                         </h4>
                                         <div className="flex items-center gap-2">
-                                            <div className="flex items-center gap-1.5 text-[10px] font-black text-[#d5a22d] uppercase tracking-widest bg-[#d5a22d]/5 px-2 py-0.5 rounded border border-[#d5a22d]/10">
+                                            <div className="flex items-center gap-1.5 text-[10px] font-black text-brand-accent uppercase tracking-widest bg-brand-accent/5 px-2 py-0.5 rounded border border-brand-accent/10">
                                                 <Building2 className="w-3 h-3" />
                                                 {program.university.name}
                                             </div>
@@ -306,13 +306,13 @@ export default function ProgramsList({ programs, universities }: ProgramsListPro
                                 <div className="lg:col-span-3">
                                     <div className="grid grid-cols-2 lg:flex lg:flex-col gap-4 lg:gap-1.5">
                                         <div className="flex items-center gap-2">
-                                            <div className="p-1.5 rounded-lg bg-slate-50 text-slate-400 group-hover:text-[#36335e] transition-colors">
+                                            <div className="p-1.5 rounded-lg bg-slate-50 text-slate-400 group-hover:text-brand-primary transition-colors">
                                                 <Clock className="w-3.5 h-3.5" />
                                             </div>
                                             <span className="text-xs lg:text-sm font-black text-slate-700 uppercase tracking-tight">{program.duration || 'Flexible'}</span>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <div className="p-1.5 rounded-lg bg-slate-50 text-slate-400 group-hover:text-[#36335e] transition-colors">
+                                            <div className="p-1.5 rounded-lg bg-slate-50 text-slate-400 group-hover:text-brand-primary transition-colors">
                                                 <Calendar className="w-3.5 h-3.5" />
                                             </div>
                                             <span className="text-[10px] lg:text-[11px] font-bold text-slate-400 uppercase tracking-widest">{program.intake || 'Multiple'} Intake</span>
@@ -322,7 +322,7 @@ export default function ProgramsList({ programs, universities }: ProgramsListPro
 
                                 {/* Level badge */}
                                 <div className="lg:col-span-2">
-                                    <span className="inline-flex px-4 py-1.5 bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] rounded-full border border-slate-200 group-hover:bg-[#36335e] group-hover:text-white group-hover:border-[#36335e] transition-all">
+                                    <span className="inline-flex px-4 py-1.5 bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] rounded-full border border-slate-200 group-hover:bg-brand-primary group-hover:text-white group-hover:border-brand-primary transition-all">
                                         {program.level || 'Degree'}
                                     </span>
                                 </div>
@@ -331,13 +331,13 @@ export default function ProgramsList({ programs, universities }: ProgramsListPro
                                 <div className="lg:col-span-2 flex items-center justify-end gap-3 mt-4 lg:mt-0">
                                     <Link
                                         href={`/dashboard/programs/${program.id}`}
-                                        className="hidden xl:flex h-11 px-5 text-[10px] font-black text-slate-400 hover:text-[#36335e] uppercase tracking-widest transition-colors items-center"
+                                        className="hidden xl:flex h-11 px-5 text-[10px] font-black text-slate-400 hover:text-brand-primary uppercase tracking-widest transition-colors items-center"
                                     >
                                         Details
                                     </Link>
                                     <Link
                                         href={`/dashboard/apply?programId=${program.id}`}
-                                        className="h-14 lg:h-12 px-10 flex-1 lg:flex-none bg-[#36335e] hover:bg-[#2a284a] text-[#d5a22d] text-[11px] font-black uppercase tracking-[0.2em] rounded-2xl transition-all shadow-xl shadow-[#36335e]/20 flex items-center justify-center group-hover:scale-105 active:scale-95"
+                                        className="h-14 lg:h-12 px-10 flex-1 lg:flex-none bg-brand-primary hover:bg-brand-primary-hover text-brand-accent text-[11px] font-black uppercase tracking-[0.2em] rounded-2xl transition-all shadow-xl shadow-brand-primary/20 flex items-center justify-center group-hover:scale-105 active:scale-95"
                                     >
                                         Enroll Now
                                     </Link>

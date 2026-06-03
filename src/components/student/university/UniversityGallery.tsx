@@ -26,11 +26,11 @@ export function UniversityGallery({ images }: UniversityGalleryProps) {
     return (
         <div className="bg-white rounded-[2.5rem] p-8 sm:p-12 border border-gray-100 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-700">
             <div className="flex flex-col gap-2 mb-10">
-                <h2 className="text-xl font-black text-[#36335e] tracking-tight flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-2xl bg-[#36335e]/5 flex items-center justify-center">
-                        <ImageIcon className="w-5 h-5 text-[#36335e]" />
+                <h2 className="text-xl font-black text-brand-primary tracking-tight flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-2xl bg-brand-primary/5 flex items-center justify-center">
+                        <ImageIcon className="w-5 h-5 text-brand-primary" />
                     </div>
-                    University <span className="text-[#d5a22d]">Gallery</span>
+                    University <span className="text-brand-accent">Gallery</span>
                 </h2>
                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] ml-14">Explore Campus Life</p>
             </div>
@@ -68,9 +68,9 @@ export function UniversityGallery({ images }: UniversityGalleryProps) {
             ) : (
                 <div className="text-center py-20 bg-white rounded-[2.5rem] border-2 border-dashed border-gray-100 shadow-sm">
                     <div className="inline-flex p-5 bg-[#1a1b41]/5 rounded-[2rem] mb-6">
-                        <ImageIcon className="w-10 h-10 text-[#d5a22d]" />
+                        <ImageIcon className="w-10 h-10 text-brand-accent" />
                     </div>
-                    <h3 className="text-lg font-black text-[#36335e] mb-3 tracking-tight">No photos yet</h3>
+                    <h3 className="text-lg font-black text-brand-primary mb-3 tracking-tight">No photos yet</h3>
                     <p className="text-[10px] font-black text-slate-400 max-w-[280px] mx-auto uppercase tracking-widest">
                         This university hasn't uploaded any gallery photos yet.
                     </p>
@@ -98,20 +98,20 @@ export function UniversityGallery({ images }: UniversityGalleryProps) {
                         />
                         
                         {/* Navigation */}
-                        <div className="absolute inset-x-0 bottom-0 p-8 flex items-center justify-between bg-gradient-to-t from-black/60 to-transparent">
+                        <div className="absolute inset-x-0 bottom-0 p-8 flex items-center justify-between bg-linear-to-t from-black/60 to-transparent">
                             <div className="flex items-center gap-4">
-                                <span className="text-[#d5a22d] font-black text-xs uppercase tracking-widest">Photo {selectedImage + 1} of {images.length}</span>
+                                <span className="text-brand-accent font-black text-xs uppercase tracking-widest">Photo {selectedImage + 1} of {images.length}</span>
                             </div>
                             <div className="flex items-center gap-3">
                                 <button 
                                     onClick={(e) => { e.stopPropagation(); prevImage(); }}
-                                    className="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center hover:bg-[#d5a22d] hover:text-[#1a1b41] transition-all"
+                                    className="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center hover:bg-brand-accent hover:text-[#1a1b41] transition-all"
                                 >
                                     <ChevronLeft className="w-6 h-6" />
                                 </button>
                                 <button 
                                     onClick={(e) => { e.stopPropagation(); nextImage(); }}
-                                    className="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center hover:bg-[#d5a22d] hover:text-[#1a1b41] transition-all"
+                                    className="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center hover:bg-brand-accent hover:text-[#1a1b41] transition-all"
                                 >
                                     <ChevronRight className="w-6 h-6" />
                                 </button>

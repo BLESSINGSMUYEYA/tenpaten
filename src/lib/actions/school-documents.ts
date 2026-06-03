@@ -14,9 +14,10 @@ export async function uploadSchoolDocument(
 ) {
     const session = await auth();
     const userRole = (session?.user as any)?.role;
-    const universityId = (session?.user as any)?.managedUniversityId;
+    const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+    const universityId = userRole === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : (session?.user as any)?.managedUniversityId;
 
-    if (userRole !== 'SCHOOL_ADMIN' || !universityId) {
+    if ((userRole !== 'SCHOOL_ADMIN' && userRole !== 'SCHOOL_SUPER_AGENT') || !universityId) {
         return { success: false, error: 'Unauthorized' };
     }
 
@@ -82,7 +83,7 @@ export async function uploadSchoolDocument(
 
 export async function deleteSchoolDocument(applicationId: string, type: SchoolDocumentType) {
     const session = await auth();
-    if (!session?.user || (session.user as any).role !== 'SCHOOL_ADMIN') {
+    if (!session?.user || ((session.user as any).role !== 'SCHOOL_ADMIN' && (session.user as any).role !== 'SCHOOL_SUPER_AGENT')) {
         return { success: false, error: 'Unauthorized' };
     }
 
@@ -96,7 +97,10 @@ export async function deleteSchoolDocument(applicationId: string, type: SchoolDo
             }
         })) as any;
 
-        if (!application || application.program.universityId !== (session.user as any).managedUniversityId) {
+        const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+        const activeId = (session.user as any).role === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : (session.user as any).managedUniversityId;
+
+        if (!application || application.program.universityId !== activeId) {
             return { success: false, error: 'Unauthorized' };
         }
 

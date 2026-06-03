@@ -38,12 +38,12 @@ export default async function ApplicationPage() {
     return (
         <div className="space-y-6">
             <div className="space-y-4">
-                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#d5a22d]/10 text-[#d5a22d] w-fit">
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent w-fit">
                     <Sparkles className="w-3 h-3" />
                     <span className="text-[10px] font-black tracking-[0.3em] uppercase">New Application</span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl font-black text-[#36335e] tracking-tight leading-tight">
-                    Start Your <span className="text-[#d5a22d]">Journey</span>
+                <h1 className="text-3xl sm:text-4xl font-black text-brand-primary tracking-tight leading-tight">
+                    Start Your <span className="text-brand-accent">Journey</span>
                 </h1>
                 <p className="text-sm text-slate-500 font-medium max-w-md">
                     Complete the steps below to apply to your dream university and track your progress.

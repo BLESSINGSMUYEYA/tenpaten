@@ -24,7 +24,7 @@ export default function PusherListener({ userId }: PusherListenerProps) {
             const isPositive = ['OFFER_ISSUED', 'OFFER_ACCEPTED', 'ENROLLED'].includes(data.newStatus);
             
             toast(data.message, {
-                icon: isPositive ? <CheckCircle2 className="w-5 h-5 text-emerald-500" /> : <BellRing className="w-5 h-5 text-[#d5a22d]" />,
+                icon: isPositive ? <CheckCircle2 className="w-5 h-5 text-emerald-500" /> : <BellRing className="w-5 h-5 text-brand-accent" />,
                 duration: 6000,
                 description: `Program: ${data.programName}`,
                 style: {

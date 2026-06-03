@@ -86,8 +86,8 @@ export default function ReviewToolkit({ applicationId, initialReviewData, person
                         <CardDescription className="text-slate-500 text-sm font-medium mt-1">Internal assessment tools</CardDescription>
                     </div>
                     {isSaving ? (
-                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-[#36335e] uppercase tracking-widest bg-white/50 px-3 py-1.5 rounded-full border border-slate-200">
-                            <div className="w-3 h-3 border-2 border-[#36335e]/30 border-t-[#36335e] rounded-full animate-spin" />
+                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-brand-primary uppercase tracking-widest bg-white/50 px-3 py-1.5 rounded-full border border-slate-200">
+                            <div className="w-3 h-3 border-2 border-brand-primary/30 border-t-brand-primary rounded-full animate-spin" />
                             Saving...
                         </div>
                     ) : (
@@ -105,7 +105,7 @@ export default function ReviewToolkit({ applicationId, initialReviewData, person
                     <div className="grid grid-cols-2 gap-4">
                         <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50/80 transition-colors">
                             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wide mb-1.5">GPA / Grade</p>
-                            <p className="text-xl font-black text-[#36335e] tracking-tight">{gpa}</p>
+                            <p className="text-xl font-black text-brand-primary tracking-tight">{gpa}</p>
                         </div>
                         <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50/80 transition-colors">
                             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wide mb-1.5">Qualification</p>
@@ -152,7 +152,7 @@ export default function ReviewToolkit({ applicationId, initialReviewData, person
                             {documents.map((doc, idx) => {
                                 const isVerified = reviewData.verifiedDocuments?.includes(doc.url);
                                 return (
-                                    <div key={idx} className="flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-white group hover:border-[#36335e]/30 hover:shadow-sm hover:shadow-[#36335e]/5 transition-all">
+                                    <div key={idx} className="flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-white group hover:border-brand-primary/30 hover:shadow-sm hover:shadow-brand-primary/5 transition-all">
                                         <div className="flex flex-col min-w-0 pr-4">
                                             <span className="text-sm font-bold text-slate-900 tracking-tight truncate" title={doc.name}>{doc.name}</span>
                                             <span className="text-[10px] font-medium text-slate-400 uppercase tracking-widest mt-0.5">{doc.type || 'Document'}</span>
@@ -192,7 +192,7 @@ export default function ReviewToolkit({ applicationId, initialReviewData, person
                             >
                                 <Star
                                     className={`w-10 h-10 transition-colors duration-300 ${s <= (reviewData.score || 0)
-                                        ? 'fill-[#d5a22d] text-[#d5a22d] drop-shadow-md'
+                                        ? 'fill-brand-accent text-brand-accent drop-shadow-md'
                                         : 'text-slate-200 hover:text-slate-300'
                                         }`}
                                 />

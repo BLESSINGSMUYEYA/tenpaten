@@ -13,8 +13,8 @@ const TASK_CONFIG = [
     {
         key: 'pendingOffers' as const,
         icon: Send,
-        color: 'text-[#d5a22d] bg-[#d5a22d]/10',
-        dotColor: 'bg-[#d5a22d]',
+        color: 'text-brand-accent bg-brand-accent/10',
+        dotColor: 'bg-brand-accent',
         label: (n: number) => `${n} application${n !== 1 ? 's' : ''} ready for offer`,
         href: '/dashboard/school/applications?status=UNIVERSITY_REVIEW&sortBy=rank',
     },
@@ -51,7 +51,7 @@ export default function TaskQueue({ pendingScoring, pendingOffers, pendingRedire
                     </p>
                 </div>
                 {totalTasks > 0 && (
-                    <span className="w-8 h-8 rounded-xl bg-[#d5a22d] text-white text-sm font-black flex items-center justify-center shadow-md shadow-[#d5a22d]/30">
+                    <span className="w-8 h-8 rounded-xl bg-brand-accent text-white text-sm font-black flex items-center justify-center shadow-md shadow-brand-accent/30">
                         {totalTasks}
                     </span>
                 )}
@@ -81,13 +81,13 @@ export default function TaskQueue({ pendingScoring, pendingOffers, pendingRedire
                                     <task.icon className="w-5 h-5" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-sm font-black text-[#1d1b41] group-hover:text-[#d5a22d] transition-colors">
+                                    <p className="text-sm font-black text-[#1d1b41] group-hover:text-brand-accent transition-colors">
                                         {task.label(count)}
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-2 shrink-0">
                                     <span className={`w-2 h-2 rounded-full animate-pulse ${task.dotColor}`} />
-                                    <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#d5a22d] group-hover:translate-x-1 transition-all" />
+                                    <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-brand-accent group-hover:translate-x-1 transition-all" />
                                 </div>
                             </Link>
                         );

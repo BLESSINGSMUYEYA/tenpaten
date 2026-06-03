@@ -20,7 +20,7 @@ export default function CreateUserForm({ countries }: { countries: Country[] }) 
                         Full Name
                     </label>
                     <input
-                        className="w-full px-4 py-3 bg-slate-50 border-transparent rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-[#d5a22d]/20 transition-all outline-none"
+                        className="w-full px-4 py-3 bg-slate-50 border-transparent rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-brand-accent/20 transition-all outline-none"
                         id="fullName"
                         type="text"
                         name="fullName"
@@ -34,7 +34,7 @@ export default function CreateUserForm({ countries }: { countries: Country[] }) 
                         Email Address
                     </label>
                     <input
-                        className="w-full px-4 py-3 bg-slate-50 border-transparent rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-[#d5a22d]/20 transition-all outline-none"
+                        className="w-full px-4 py-3 bg-slate-50 border-transparent rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-brand-accent/20 transition-all outline-none"
                         id="email"
                         type="email"
                         name="email"
@@ -48,7 +48,7 @@ export default function CreateUserForm({ countries }: { countries: Country[] }) 
                         Initial Password
                     </label>
                     <input
-                        className="w-full px-4 py-3 bg-slate-50 border-transparent rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-[#d5a22d]/20 transition-all outline-none"
+                        className="w-full px-4 py-3 bg-slate-50 border-transparent rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-brand-accent/20 transition-all outline-none"
                         id="password"
                         type="password"
                         name="password"
@@ -63,7 +63,7 @@ export default function CreateUserForm({ countries }: { countries: Country[] }) 
                         Platform Role
                     </label>
                     <select
-                        className="w-full px-4 py-3 bg-slate-50 border-transparent rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-[#d5a22d]/20 transition-all outline-none appearance-none"
+                        className="w-full px-4 py-3 bg-slate-50 border-transparent rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-brand-accent/20 transition-all outline-none appearance-none"
                         id="role"
                         name="role"
                         required
@@ -79,11 +79,11 @@ export default function CreateUserForm({ countries }: { countries: Country[] }) 
 
                 {role === 'COUNTRY_DIRECTOR' && (
                     <div className="animate-in slide-in-from-top-2 duration-300">
-                        <label className="block text-[10px] font-black text-[#d5a22d] uppercase tracking-widest mb-2" htmlFor="countryId">
+                        <label className="block text-[10px] font-black text-brand-accent uppercase tracking-widest mb-2" htmlFor="countryId">
                             Assign Regional Territory
                         </label>
                         <select
-                            className="w-full px-4 py-3 bg-slate-50 border-transparent rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-[#d5a22d]/20 transition-all outline-none appearance-none"
+                            className="w-full px-4 py-3 bg-slate-50 border-transparent rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-brand-accent/20 transition-all outline-none appearance-none"
                             id="countryId"
                             name="countryId"
                             required
@@ -98,7 +98,7 @@ export default function CreateUserForm({ countries }: { countries: Country[] }) 
                 )}
             </div>
 
-            <Button type="submit" className="w-full h-12 bg-[#36335e] hover:bg-[#2a284a] text-white font-black uppercase tracking-widest rounded-xl shadow-lg shadow-[#36335e]/10 transition-all" disabled={isPending}>
+            <Button type="submit" className="w-full h-12 bg-brand-primary hover:bg-brand-primary-hover text-white font-black uppercase tracking-widest rounded-xl shadow-lg shadow-brand-primary/10 transition-all" disabled={isPending}>
                 {isPending ? 'Propagating Records...' : 'Instantiate Account'}
             </Button>
 

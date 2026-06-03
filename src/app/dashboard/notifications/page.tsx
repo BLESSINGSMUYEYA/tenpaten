@@ -12,7 +12,7 @@ export default function NotificationsPage() {
         <div className="min-h-full py-2">
             <Suspense fallback={
                 <div className="max-w-4xl mx-auto p-20 flex flex-col items-center justify-center space-y-4">
-                    <div className="w-12 h-12 border-4 border-indigo-100 border-t-[#d5a22d] rounded-full animate-spin" />
+                    <div className="w-12 h-12 border-4 border-indigo-100 border-t-brand-accent rounded-full animate-spin" />
                     <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">Preparing Notifications...</p>
                 </div>
             }>

@@ -15,7 +15,7 @@ export default function StatsCard({ label, value, trend, trendUp = true }: Stats
             <div className="flex items-start justify-between mb-2">
                 <div>
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{label}</p>
-                    <h3 className="text-2xl sm:text-3xl font-black mt-3 text-[#36335e] tracking-tight">{value}</h3>
+                    <h3 className="text-2xl sm:text-3xl font-black mt-3 text-brand-primary tracking-tight">{value}</h3>
                 </div>
                 <div className={`p-3 rounded-2xl transition-transform duration-500 group-hover:scale-110 ${trendUp ? 'bg-emerald-50 text-emerald-600' : 'bg-rose-50 text-rose-600'}`}>
                     <TrendingUp className="w-5 h-5" />

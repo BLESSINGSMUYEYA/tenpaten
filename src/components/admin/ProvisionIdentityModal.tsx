@@ -21,6 +21,7 @@ const ROLE_OPTIONS = [
     { value: 'SUPER_ADMIN', label: 'Supreme Administrator', icon: ShieldCheck, description: 'Full platform control & configuration' },
     { value: 'COUNTRY_DIRECTOR', label: 'Country Director', icon: Globe, description: 'Manages a regional territory' },
     { value: 'SCHOOL_ADMIN', label: 'School Administrator', icon: Building2, description: 'Manages an institutional profile' },
+    { value: 'SCHOOL_SUPER_AGENT', label: 'Schools Super Agent', icon: ShieldCheck, description: 'Multi-school operator agent' },
     { value: 'AFFILIATE', label: 'Partner Affiliate', icon: User, description: 'Marketing & referral partner' },
 ];
 
@@ -76,14 +77,14 @@ export default function ProvisionIdentityModal({ children }: ProvisionIdentityMo
             </div>
 
             <Dialog open={open} onOpenChange={handleOpenChange}>
-                <DialogContent className="max-w-xl p-0 gap-0 border-none rounded-[2.5rem] overflow-hidden shadow-2xl shadow-[#36335e]/20">
+                <DialogContent className="max-w-xl p-0 gap-0 border-none rounded-[2.5rem] overflow-hidden shadow-2xl shadow-brand-primary/20">
                     {/* Modal Header */}
-                    <div className="bg-[#36335e] p-8 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-48 h-48 bg-[#d5a22d]/10 rounded-full -translate-y-16 translate-x-16 blur-3xl" />
+                    <div className="bg-brand-primary p-8 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-48 h-48 bg-brand-accent/10 rounded-full -translate-y-16 translate-x-16 blur-3xl" />
                         <div className="relative z-10">
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="p-2.5 bg-[#d5a22d]/20 rounded-xl">
-                                    <UserPlus className="w-5 h-5 text-[#d5a22d]" />
+                                <div className="p-2.5 bg-brand-accent/20 rounded-xl">
+                                    <UserPlus className="w-5 h-5 text-brand-accent" />
                                 </div>
                                 <DialogHeader className="p-0 space-y-0">
                                     <DialogTitle className="text-xl font-black text-white leading-tight">
@@ -110,7 +111,7 @@ export default function ProvisionIdentityModal({ children }: ProvisionIdentityMo
                                 name="fullName"
                                 required
                                 placeholder="e.g. Alexandra Reyes"
-                                className="w-full px-4 py-3.5 rounded-2xl bg-gray-50 border border-gray-100 text-sm font-semibold text-[#36335e] placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#d5a22d]/40 focus:border-[#d5a22d]/40 transition-all"
+                                className="w-full px-4 py-3.5 rounded-2xl bg-gray-50 border border-gray-100 text-sm font-semibold text-brand-primary placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-accent/40 focus:border-brand-accent/40 transition-all"
                             />
                         </div>
 
@@ -125,7 +126,7 @@ export default function ProvisionIdentityModal({ children }: ProvisionIdentityMo
                                 name="email"
                                 required
                                 placeholder="e.g. user@domain.com"
-                                className="w-full px-4 py-3.5 rounded-2xl bg-gray-50 border border-gray-100 text-sm font-semibold text-[#36335e] placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#d5a22d]/40 focus:border-[#d5a22d]/40 transition-all"
+                                className="w-full px-4 py-3.5 rounded-2xl bg-gray-50 border border-gray-100 text-sm font-semibold text-brand-primary placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-accent/40 focus:border-brand-accent/40 transition-all"
                             />
                         </div>
 
@@ -142,12 +143,12 @@ export default function ProvisionIdentityModal({ children }: ProvisionIdentityMo
                                     required
                                     minLength={6}
                                     placeholder="Minimum 6 characters"
-                                    className="w-full px-4 py-3.5 pr-12 rounded-2xl bg-gray-50 border border-gray-100 text-sm font-semibold text-[#36335e] placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#d5a22d]/40 focus:border-[#d5a22d]/40 transition-all"
+                                    className="w-full px-4 py-3.5 pr-12 rounded-2xl bg-gray-50 border border-gray-100 text-sm font-semibold text-brand-primary placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-accent/40 focus:border-brand-accent/40 transition-all"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(v => !v)}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#36335e] transition-colors"
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand-primary transition-colors"
                                 >
                                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                 </button>
@@ -166,17 +167,17 @@ export default function ProvisionIdentityModal({ children }: ProvisionIdentityMo
                                         key={value}
                                         type="button"
                                         onClick={() => setSelectedRole(value)}
-                                        className={`p-3.5 rounded-2xl border-2 text-left transition-all hover:border-[#d5a22d]/40 hover:bg-[#d5a22d]/5 group
+                                        className={`p-3.5 rounded-2xl border-2 text-left transition-all hover:border-brand-accent/40 hover:bg-brand-accent/5 group
                                             ${selectedRole === value
-                                                ? 'border-[#d5a22d] bg-[#d5a22d]/5 shadow-md shadow-[#d5a22d]/10'
+                                                ? 'border-brand-accent bg-brand-accent/5 shadow-md shadow-brand-accent/10'
                                                 : 'border-gray-100 bg-gray-50'
                                             }`}
                                     >
                                         <div className={`w-8 h-8 rounded-xl flex items-center justify-center mb-2 transition-all
-                                            ${selectedRole === value ? 'bg-[#36335e] text-[#d5a22d]' : 'bg-white text-gray-400 group-hover:text-[#36335e]'}`}>
+                                            ${selectedRole === value ? 'bg-brand-primary text-brand-accent' : 'bg-white text-gray-400 group-hover:text-brand-primary'}`}>
                                             <Icon className="w-4 h-4" />
                                         </div>
-                                        <p className={`text-xs font-black leading-none mb-1 transition-colors ${selectedRole === value ? 'text-[#36335e]' : 'text-gray-600'}`}>
+                                        <p className={`text-xs font-black leading-none mb-1 transition-colors ${selectedRole === value ? 'text-brand-primary' : 'text-gray-600'}`}>
                                             {label}
                                         </p>
                                         <p className="text-[10px] text-gray-400 font-medium leading-tight">{description}</p>
@@ -208,7 +209,7 @@ export default function ProvisionIdentityModal({ children }: ProvisionIdentityMo
                             <Button
                                 type="submit"
                                 disabled={isPending || !selectedRole}
-                                className="flex-1 h-12 bg-[#36335e] hover:bg-[#2a284a] text-white rounded-2xl font-bold flex items-center gap-2 shadow-lg shadow-[#36335e]/20 disabled:opacity-50"
+                                className="flex-1 h-12 bg-brand-primary hover:bg-brand-primary-hover text-white rounded-2xl font-bold flex items-center gap-2 shadow-lg shadow-brand-primary/20 disabled:opacity-50"
                             >
                                 {isPending ? (
                                     <>
@@ -217,7 +218,7 @@ export default function ProvisionIdentityModal({ children }: ProvisionIdentityMo
                                     </>
                                 ) : (
                                     <>
-                                        <CheckCircle2 className="w-4 h-4 text-[#d5a22d]" />
+                                        <CheckCircle2 className="w-4 h-4 text-brand-accent" />
                                         <span>Provision Identity</span>
                                     </>
                                 )}

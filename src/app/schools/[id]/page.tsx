@@ -45,13 +45,13 @@ export default async function PublicSchoolPage({ params }: { params: Promise<{ i
                 <div className="ml-auto flex items-center gap-4">
                     <Link
                         href={`/login?callbackUrl=/dashboard/schools/${university.id}`}
-                        className="text-sm font-bold text-gray-300 hover:text-[#d5a22d] transition-colors"
+                        className="text-sm font-bold text-gray-300 hover:text-brand-accent transition-colors"
                     >
                         Sign In
                     </Link>
                     <Link
                         href={`/register?callbackUrl=/dashboard/schools/${university.id}`}
-                        className="px-5 py-2.5 bg-[#d5a22d] text-white rounded-xl text-sm font-bold hover:bg-[#b89531] transition-all"
+                        className="px-5 py-2.5 bg-brand-accent text-white rounded-xl text-sm font-bold hover:bg-[#b89531] transition-all"
                     >
                         Join Free
                     </Link>
@@ -68,13 +68,13 @@ export default async function PublicSchoolPage({ params }: { params: Promise<{ i
                             alt={university.name}
                             className="w-full h-full object-cover opacity-10"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1b41]/60 via-[#1a1b41]/80 to-[#1a1b41]" />
+                        <div className="absolute inset-0 bg-linear-to-b from-[#1a1b41]/60 via-[#1a1b41]/80 to-[#1a1b41]" />
                     </div>
                 )}
 
                 {/* Ambient glows */}
-                <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#d5a22d]/10 rounded-full blur-[120px] pointer-events-none" />
-                <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-[#36335e]/40 rounded-full blur-[100px] pointer-events-none" />
+                <div className="absolute top-20 left-1/4 w-96 h-96 bg-brand-accent/10 rounded-full blur-[120px] pointer-events-none" />
+                <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-brand-primary/40 rounded-full blur-[100px] pointer-events-none" />
 
                 <div className="relative z-10 max-w-4xl mx-auto px-6 py-24 text-center">
                     {/* Logo */}
@@ -83,14 +83,14 @@ export default async function PublicSchoolPage({ params }: { params: Promise<{ i
                             <img src={university.logo} alt={`${university.name} logo`} className="w-full h-full object-contain" />
                         </div>
                     ) : (
-                        <div className="w-28 h-28 rounded-3xl bg-[#36335e] border border-white/10 mx-auto mb-8 flex items-center justify-center shadow-2xl">
-                            <GraduationCap className="w-14 h-14 text-[#d5a22d]" />
+                        <div className="w-28 h-28 rounded-3xl bg-brand-primary border border-white/10 mx-auto mb-8 flex items-center justify-center shadow-2xl">
+                            <GraduationCap className="w-14 h-14 text-brand-accent" />
                         </div>
                     )}
 
                     {/* Country badge */}
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 text-xs font-black uppercase tracking-widest mb-5 backdrop-blur-md">
-                        <MapPin className="w-3.5 h-3.5 text-[#d5a22d]" />
+                        <MapPin className="w-3.5 h-3.5 text-brand-accent" />
                         {university.country?.name}
                     </div>
 
@@ -108,12 +108,12 @@ export default async function PublicSchoolPage({ params }: { params: Promise<{ i
                     {/* Stats row */}
                     <div className="flex items-center justify-center gap-8 mb-10">
                         <div className="text-center">
-                            <p className="text-3xl font-black text-[#d5a22d]">{programCount}</p>
+                            <p className="text-3xl font-black text-brand-accent">{programCount}</p>
                             <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mt-1">Programs</p>
                         </div>
                         <div className="w-px h-10 bg-white/10" />
                         <div className="text-center">
-                            <p className="text-3xl font-black text-[#d5a22d]">Open</p>
+                            <p className="text-3xl font-black text-brand-accent">Open</p>
                             <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mt-1">Applications</p>
                         </div>
                     </div>
@@ -122,7 +122,7 @@ export default async function PublicSchoolPage({ params }: { params: Promise<{ i
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link
                             href={`/dashboard/schools/${university.id}?tab=programs`}
-                            className="w-full sm:w-auto px-10 py-4 bg-[#d5a22d] text-white rounded-2xl font-black text-sm flex items-center justify-center gap-2 hover:bg-[#b89531] transition-all hover:scale-105 shadow-xl shadow-[#d5a22d]/20"
+                            className="w-full sm:w-auto px-10 py-4 bg-brand-accent text-white rounded-2xl font-black text-sm flex items-center justify-center gap-2 hover:bg-[#b89531] transition-all hover:scale-105 shadow-xl shadow-brand-accent/20"
                         >
                             <BookOpen className="w-5 h-5" />
                             Explore All Programs
@@ -141,7 +141,7 @@ export default async function PublicSchoolPage({ params }: { params: Promise<{ i
                             href={university.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 mt-6 text-xs text-gray-500 hover:text-[#d5a22d] transition-colors font-bold"
+                            className="inline-flex items-center gap-2 mt-6 text-xs text-gray-500 hover:text-brand-accent transition-colors font-bold"
                         >
                             <Globe className="w-3.5 h-3.5" />
                             {university.website.replace(/^https?:\/\//, '')}
@@ -155,7 +155,7 @@ export default async function PublicSchoolPage({ params }: { params: Promise<{ i
             <footer className="border-t border-white/10 py-8 text-center">
                 <p className="text-xs text-gray-600 font-medium">
                     Powered by{' '}
-                    <Link href="/" className="text-[#d5a22d] hover:underline font-bold">
+                    <Link href="/" className="text-brand-accent hover:underline font-bold">
                         Tenpaten Apply
                     </Link>{' '}
                     — The Global Student Recruitment Platform

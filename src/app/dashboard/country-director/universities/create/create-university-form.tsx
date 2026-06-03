@@ -26,11 +26,11 @@ export default function CreateUniversityForm() {
 
     return (
         <form action={dispatch} className="max-w-2xl mx-auto w-full">
-            <Card className="border-none shadow-2xl shadow-[#36335e]/10 overflow-hidden rounded-[2.5rem] bg-white">
-                <CardHeader className="bg-[#36335e] text-white p-10">
+            <Card className="border-none shadow-2xl shadow-brand-primary/10 overflow-hidden rounded-[2.5rem] bg-white">
+                <CardHeader className="bg-brand-primary text-white p-10">
                     <CardTitle className="text-3xl font-black flex items-center gap-4 tracking-tight">
                         <div className="p-3 rounded-2xl bg-white/10 backdrop-blur-md">
-                            <Building2 className="w-8 h-8 text-[#d5a22d]" />
+                            <Building2 className="w-8 h-8 text-brand-accent" />
                         </div>
                         Add New University
                     </CardTitle>
@@ -40,7 +40,7 @@ export default function CreateUniversityForm() {
                     <div className="space-y-6">
                         <div className="space-y-3">
                             <Label htmlFor="name" className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                                <Building2 className="w-4 h-4 text-[#36335e]" />
+                                <Building2 className="w-4 h-4 text-brand-primary" />
                                 University Name *
                             </Label>
                             <Input
@@ -48,27 +48,27 @@ export default function CreateUniversityForm() {
                                 name="name"
                                 placeholder="E.g. Tenpaten International University"
                                 required
-                                className="h-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-[#d5a22d] focus:border-transparent rounded-2xl transition-all font-bold text-[#36335e] placeholder:text-slate-300"
+                                className="h-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-brand-accent focus:border-transparent rounded-2xl transition-all font-bold text-brand-primary placeholder:text-slate-300"
                             />
                         </div>
 
                         <div className="space-y-3">
                             <Label htmlFor="description" className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                                <TextQuote className="w-4 h-4 text-[#36335e]" />
+                                <TextQuote className="w-4 h-4 text-brand-primary" />
                                 Brief Description
                             </Label>
                             <Textarea
                                 id="description"
                                 name="description"
                                 placeholder="Tell us a bit about this institution..."
-                                className="min-h-[120px] border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-[#d5a22d] focus:border-transparent rounded-2xl transition-all font-bold text-[#36335e] placeholder:text-slate-300 resize-none p-5"
+                                className="min-h-[120px] border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-brand-accent focus:border-transparent rounded-2xl transition-all font-bold text-brand-primary placeholder:text-slate-300 resize-none p-5"
                             />
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="space-y-3">
                                 <Label htmlFor="website" className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                                    <Globe className="w-4 h-4 text-[#36335e]" />
+                                    <Globe className="w-4 h-4 text-brand-primary" />
                                     Official Website
                                 </Label>
                                 <Input
@@ -76,19 +76,19 @@ export default function CreateUniversityForm() {
                                     name="website"
                                     type="url"
                                     placeholder="https://www.university.edu"
-                                    className="h-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-[#d5a22d] focus:border-transparent rounded-2xl transition-all font-bold text-[#36335e] placeholder:text-slate-300"
+                                    className="h-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-brand-accent focus:border-transparent rounded-2xl transition-all font-bold text-brand-primary placeholder:text-slate-300"
                                 />
                             </div>
                             <div className="space-y-3">
                                 <Label htmlFor="tuition" className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                                    <DollarSign className="w-4 h-4 text-[#36335e]" />
+                                    <DollarSign className="w-4 h-4 text-brand-primary" />
                                     Average Tuition
                                 </Label>
                                 <Input
                                     id="tuition"
                                     name="tuition"
                                     placeholder="e.g. $5,000 - $10,000"
-                                    className="h-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-[#d5a22d] focus:border-transparent rounded-2xl transition-all font-bold text-[#36335e] placeholder:text-slate-300"
+                                    className="h-14 border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-brand-accent focus:border-transparent rounded-2xl transition-all font-bold text-brand-primary placeholder:text-slate-300"
                                 />
                             </div>
                         </div>
@@ -112,18 +112,18 @@ function SubmitButton() {
     const { pending } = useFormStatus();
     return (
         <Button
-            className="px-10 h-14 bg-[#36335e] hover:bg-[#2a284a] text-white font-black rounded-2xl shadow-xl shadow-[#36335e]/20 transition-all transform hover:scale-105 active:scale-95 leading-none"
+            className="px-10 h-14 bg-brand-primary hover:bg-brand-primary-hover text-white font-black rounded-2xl shadow-xl shadow-brand-primary/20 transition-all transform hover:scale-105 active:scale-95 leading-none"
             aria-disabled={pending}
             disabled={pending}
         >
             {pending ? (
                 <>
-                    <Loader2 className="w-6 h-6 mr-3 animate-spin text-[#d5a22d]" />
+                    <Loader2 className="w-6 h-6 mr-3 animate-spin text-brand-accent" />
                     Registering...
                 </>
             ) : (
                 <>
-                    <Save className="w-6 h-6 mr-3 text-[#d5a22d]" />
+                    <Save className="w-6 h-6 mr-3 text-brand-accent" />
                     Create University
                 </>
             )}

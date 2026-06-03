@@ -136,15 +136,15 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
             {/* Header Section */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl sm:text-3xl font-black text-[#36335e] tracking-tight">University Management</h1>
+                    <h1 className="text-2xl sm:text-3xl font-black text-brand-primary tracking-tight">University Management</h1>
                     <p className="text-gray-500 mt-1 font-medium italic">Monitor and manage all educational institutions across the platform.</p>
                 </div>
                 <div className="flex items-center gap-3">
                     <Button 
                         onClick={() => setIsRegisterModalOpen(true)}
-                        className="bg-[#36335e] hover:bg-[#2a284a] text-white rounded-xl px-6 py-6 shadow-lg shadow-[#36335e]/20 transition-all active:scale-95 flex gap-2 font-bold"
+                        className="bg-brand-primary hover:bg-brand-primary-hover text-white rounded-xl px-6 py-6 shadow-lg shadow-brand-primary/20 transition-all active:scale-95 flex gap-2 font-bold"
                     >
-                        <Plus className="w-5 h-5 text-[#d5a22d]" />
+                        <Plus className="w-5 h-5 text-brand-accent" />
                         <span>Register New School</span>
                     </Button>
                 </div>
@@ -153,13 +153,13 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
             {/* Quick Stats Toolbar */}
             <div className="flex flex-wrap items-center gap-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm">
                 <div className="flex-1 min-w-[300px] relative group">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d5a22d] transition-colors" />
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-brand-accent transition-colors" />
                     <input
                         type="text"
                         placeholder="Search universities by name or country..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border-transparent focus:bg-white focus:border-[#d5a22d]/30 focus:ring-0 rounded-xl text-sm font-medium transition-all"
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border-transparent focus:bg-white focus:border-brand-accent/30 focus:ring-0 rounded-xl text-sm font-medium transition-all"
                     />
                 </div>
                 <div className="flex items-center gap-2 pr-2">
@@ -175,7 +175,7 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
-                            <tr className="bg-[#36335e] text-white">
+                            <tr className="bg-brand-primary text-white">
                                 <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">University Info</th>
                                 <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Location</th>
                                 <th className="px-6 py-5 text-xs font-black uppercase tracking-[0.2em]">Academic Scope</th>
@@ -198,7 +198,7 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
                                     <tr key={school.id} className="hover:bg-gray-50/50 transition-colors duration-200 group">
                                         <td className="px-6 py-5">
                                             <div className="flex items-center gap-4">
-                                                <div className="w-14 h-14 rounded-2xl bg-gray-50 border-2 border-gray-100 flex items-center justify-center overflow-hidden flex-shrink-0 group-hover:border-[#d5a22d]/30 transition-colors">
+                                                <div className="w-14 h-14 rounded-2xl bg-gray-50 border-2 border-gray-100 flex items-center justify-center overflow-hidden flex-shrink-0 group-hover:border-brand-accent/30 transition-colors">
                                                     {school.logo ? (
                                                         <Image
                                                             src={school.logo}
@@ -212,11 +212,11 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
                                                     )}
                                                 </div>
                                                 <div className="min-w-0">
-                                                    <h3 className="font-black text-[#36335e] truncate break-words group-hover:text-[#d5a22d] transition-colors">
+                                                    <h3 className="font-black text-brand-primary truncate break-words group-hover:text-brand-accent transition-colors">
                                                         {school.name}
                                                     </h3>
                                                     {school.website ? (
-                                                        <a href={school.website} target="_blank" className="text-xs font-bold text-gray-400 flex items-center gap-1 hover:text-[#36335e] mt-1 transition-colors">
+                                                        <a href={school.website} target="_blank" className="text-xs font-bold text-gray-400 flex items-center gap-1 hover:text-brand-primary mt-1 transition-colors">
                                                             <ExternalLink className="w-3 h-3" />
                                                             <span>Official Website</span>
                                                         </a>
@@ -229,7 +229,7 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
                                         <td className="px-6 py-5">
                                             <div className="flex flex-col gap-1">
                                                 <div className="flex items-center gap-1.5 text-sm font-bold text-gray-700">
-                                                    <MapPin className="w-4 h-4 text-[#d5a22d]" />
+                                                    <MapPin className="w-4 h-4 text-brand-accent" />
                                                     <span>{school.country.name}</span>
                                                 </div>
                                                 <span className="text-xs font-medium text-gray-400 uppercase tracking-widest">{school.country.code}</span>
@@ -238,8 +238,8 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
                                         <td className="px-6 py-5">
                                             <div className="flex flex-col gap-2">
                                                 <div className="flex items-center gap-2">
-                                                    <GraduationCap className="w-4 h-4 text-[#36335e]" />
-                                                    <span className="text-sm font-black text-[#36335e]">{school.programs.length} Programs</span>
+                                                    <GraduationCap className="w-4 h-4 text-brand-primary" />
+                                                    <span className="text-sm font-black text-brand-primary">{school.programs.length} Programs</span>
                                                 </div>
                                                 <div className="flex flex-wrap gap-1">
                                                     {school.departments.slice(0, 2).map((dept) => (
@@ -248,7 +248,7 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
                                                         </span>
                                                     ))}
                                                     {school.departments.length > 2 && (
-                                                        <span className="text-[10px] font-bold text-[#d5a22d] px-1">+{school.departments.length - 2} more</span>
+                                                        <span className="text-[10px] font-bold text-brand-accent px-1">+{school.departments.length - 2} more</span>
                                                     )}
                                                 </div>
                                             </div>
@@ -259,7 +259,7 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
                                         <td className="px-6 py-5 text-center">
                                             <div className="flex items-center justify-center gap-1.5">
                                                 {/* Details Page */}
-                                                <Button asChild size="icon" variant="ghost" className="rounded-xl text-[#36335e] hover:bg-[#36335e] hover:text-[#d5a22d] transition-all">
+                                                <Button asChild size="icon" variant="ghost" className="rounded-xl text-brand-primary hover:bg-brand-primary hover:text-brand-accent transition-all">
                                                     <Link href={`/dashboard/admin/schools/${school.id}`} title="View Details">
                                                         <Eye className="w-4 h-4" />
                                                     </Link>
@@ -324,7 +324,7 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
                             Previous
                         </Button>
                         <Button
-                            className="bg-[#36335e] text-[#d5a22d] hover:bg-[#2a284a] rounded-xl text-xs font-black uppercase tracking-[0.1em]"
+                            className="bg-brand-primary text-brand-accent hover:bg-brand-primary-hover rounded-xl text-xs font-black uppercase tracking-[0.1em]"
                             disabled
                         >
                             Next
@@ -336,7 +336,7 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
             {/* Register University Modal */}
             <Dialog open={isRegisterModalOpen} onOpenChange={setIsRegisterModalOpen}>
                 <DialogContent className="sm:max-w-[500px] rounded-[2rem] p-0 overflow-hidden border-none shadow-2xl">
-                    <div className="bg-[#36335e] p-8 text-white relative">
+                    <div className="bg-brand-primary p-8 text-white relative">
                         <div className="absolute top-0 right-0 p-8 opacity-10">
                             <Building2 className="w-24 h-24" />
                         </div>
@@ -378,7 +378,7 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
                             </div>
 
                             <div className="pt-4 border-t border-gray-50">
-                                <p className="text-[10px] font-black uppercase tracking-widest text-[#d5a22d] mb-4">Admin Account Details</p>
+                                <p className="text-[10px] font-black uppercase tracking-widest text-brand-accent mb-4">Admin Account Details</p>
                                 <div className="grid grid-cols-1 gap-4">
                                     <div className="space-y-2">
                                         <Label htmlFor="adminName" className="text-xs font-bold text-gray-500">Admin Full Name</Label>
@@ -417,7 +417,7 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
                             <Button 
                                 type="submit" 
                                 disabled={isRegistering}
-                                className="bg-[#36335e] text-white hover:bg-[#2a284a] rounded-xl px-8 font-black uppercase tracking-widest text-xs shadow-lg shadow-[#36335e]/20"
+                                className="bg-brand-primary text-white hover:bg-brand-primary-hover rounded-xl px-8 font-black uppercase tracking-widest text-xs shadow-lg shadow-brand-primary/20"
                             >
                                 {isRegistering ? (
                                     <>
@@ -438,7 +438,7 @@ export default function SchoolsManager({ initialSchools, total, countries }: Sch
 
 function StatusBadge({ status }: { status: UniversityStatus }) {
     const styles = {
-        APPROVED: "bg-[#d5a22d]/10 text-[#d5a22d] border-[#d5a22d]/20",
+        APPROVED: "bg-brand-accent/10 text-brand-accent border-brand-accent/20",
         PENDING: "bg-amber-50 text-amber-600 border-amber-100",
         REJECTED: "bg-red-50 text-red-600 border-red-100",
         DRAFT: "bg-gray-100 text-gray-500 border-gray-200",

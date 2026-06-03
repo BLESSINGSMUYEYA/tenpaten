@@ -24,20 +24,20 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
             <div className="flex items-center gap-6">
                 <Link
                     href={`/dashboard/country-director/universities/${id}`}
-                    className="h-14 w-14 rounded-2xl bg-white shadow-xl shadow-slate-200/50 flex items-center justify-center text-slate-400 hover:text-[#36335e] hover:border-[#36335e]/10 hover:scale-110 transition-all duration-300 border border-slate-100"
+                    className="h-14 w-14 rounded-2xl bg-white shadow-xl shadow-slate-200/50 flex items-center justify-center text-slate-400 hover:text-brand-primary hover:border-brand-primary/10 hover:scale-110 transition-all duration-300 border border-slate-100"
                 >
                     <ArrowLeft className="w-6 h-6" />
                 </Link>
                 <div>
                     <h1 className="text-4xl font-black text-white tracking-tight">Edit Profile</h1>
                     <p className="text-gray-400 flex items-center gap-2 mt-2 font-medium">
-                        <Building2 className="w-4 h-4 text-[#d5a22d]" />
+                        <Building2 className="w-4 h-4 text-brand-accent" />
                         {university.name}
                     </p>
                 </div>
             </div>
 
-            <div className="bg-white rounded-[3rem] shadow-xl shadow-[#36335e]/10 overflow-hidden border border-slate-100">
+            <div className="bg-white rounded-[3rem] shadow-xl shadow-brand-primary/10 overflow-hidden border border-slate-100">
                 <UniversityProfileForm university={university} universityId={id} />
             </div>
         </div>

@@ -105,7 +105,7 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                     onClick={() => setView('qr')}
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${
                         view === 'qr' 
-                        ? 'bg-white dark:bg-[#1a1b41] text-[#1a1b41] dark:text-[#d5a22d] shadow-sm' 
+                        ? 'bg-white dark:bg-[#1a1b41] text-[#1a1b41] dark:text-brand-accent shadow-sm' 
                         : 'text-gray-500 hover:text-gray-700'
                     }`}
                 >
@@ -115,7 +115,7 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                     onClick={() => setView('flyer')}
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${
                         view === 'flyer' 
-                        ? 'bg-white dark:bg-[#1a1b41] text-[#1a1b41] dark:text-[#d5a22d] shadow-sm' 
+                        ? 'bg-white dark:bg-[#1a1b41] text-[#1a1b41] dark:text-brand-accent shadow-sm' 
                         : 'text-gray-500 hover:text-gray-700'
                     }`}
                 >
@@ -165,7 +165,7 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                         {/* Premium QR Container with Tilt Effect and Scanning Animation */}
                         <motion.div 
                             whileHover={{ scale: 1.02, rotateY: 5, rotateX: 5 }}
-                            className="relative group p-1 rounded-[2.5rem] bg-gradient-to-br from-[#d5a22d]/40 via-white/5 to-[#d5a22d]/20 shadow-2xl shadow-black/40"
+                            className="relative group p-1 rounded-[2.5rem] bg-linear-to-br from-brand-accent/40 via-white/5 to-brand-accent/20 shadow-2xl shadow-black/40"
                         >
                             <div className="relative p-6 bg-[#ffffff] rounded-[2.2rem] overflow-hidden">
                                 {/* Scanning Line Animation */}
@@ -179,14 +179,14 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                                         repeat: Infinity, 
                                         ease: "linear" 
                                     }}
-                                    className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#d5a22d] to-transparent z-10 pointer-events-none"
+                                    className="absolute left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-brand-accent to-transparent z-10 pointer-events-none"
                                 />
 
                                 {/* Corner Accents */}
-                                <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[#d5a22d]/30 rounded-tl-lg" />
-                                <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#d5a22d]/30 rounded-tr-lg" />
-                                <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-[#d5a22d]/30 rounded-bl-lg" />
-                                <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-[#d5a22d]/30 rounded-br-lg" />
+                                <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-brand-accent/30 rounded-tl-lg" />
+                                <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-brand-accent/30 rounded-tr-lg" />
+                                <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-brand-accent/30 rounded-bl-lg" />
+                                <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-brand-accent/30 rounded-br-lg" />
 
                                 {/* DISPLAY: SVG */}
                                 <QRCodeSVG
@@ -208,7 +208,7 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                             </div>
 
                             {/* Floating Badge */}
-                            <div className="absolute -top-2 -right-2 px-3 py-1 bg-[#d5a22d] rounded-full shadow-lg border border-white/20">
+                            <div className="absolute -top-2 -right-2 px-3 py-1 bg-brand-accent rounded-full shadow-lg border border-white/20">
                                 <span className="text-[8px] font-black text-white uppercase tracking-tighter flex items-center gap-1">
                                     <Sparkles className="w-2 h-2" /> Affiliate
                                 </span>
@@ -217,7 +217,7 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
 
                         <div className="text-center">
                             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-1">Referral Code</p>
-                            <p className="text-2xl font-black text-[#1a1b41] tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-[#1a1b41] to-[#36335e]">
+                            <p className="text-2xl font-black text-[#1a1b41] tracking-tighter bg-clip-text text-transparent bg-linear-to-b from-[#1a1b41] to-brand-primary">
                                 {referralCode}
                             </p>
                         </div>
@@ -228,8 +228,8 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                         className="w-[340px] h-[480px] bg-[#1a1b41] rounded-3xl p-8 relative overflow-hidden flex flex-col shadow-2xl border border-white/10 shrink-0"
                     >
                         {/* Flyer background elements */}
-                        <div className="absolute top-[-10%] right-[-10%] w-[150px] h-[150px] bg-[#d5a22d]/20 rounded-full blur-3xl" />
-                        <div className="absolute bottom-[-5%] left-[-5%] w-[100px] h-[100px] bg-[#36335e]/40 rounded-full blur-2xl" />
+                        <div className="absolute top-[-10%] right-[-10%] w-[150px] h-[150px] bg-brand-accent/20 rounded-full blur-3xl" />
+                        <div className="absolute bottom-[-5%] left-[-5%] w-[100px] h-[100px] bg-brand-primary/40 rounded-full blur-2xl" />
                         
                         <div className="relative z-10 flex flex-col h-full">
                             <img src="/tenpaten-logo.png" alt="Tenpaten" className="h-8 w-auto self-start mb-6" />
@@ -259,7 +259,7 @@ export default function AffiliateQRCode({ referralCode, affiliateName }: Affilia
                                     />
                                 </div>
                                 <div className="mt-4 text-center">
-                                    <p className="text-[10px] font-bold uppercase tracking-widest text-[#d5a22d] mb-1">Referral Code</p>
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-brand-accent mb-1">Referral Code</p>
                                     <p className="text-lg font-black text-white">{referralCode}</p>
                                 </div>
                             </div>

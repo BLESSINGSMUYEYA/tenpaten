@@ -69,13 +69,13 @@ function IntroScreen({ onStart }: { onStart: () => void }) {
                     className="w-full h-full object-cover object-center"
                 />
                 {/* subtle bottom fade only — keeps image clearly visible */}
-                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-t from-white to-transparent" />
             </div>
 
             {/* Content */}
             <div className="px-6 pb-6 -mt-2 text-center space-y-4">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-1.5 bg-[#d5a22d]/10 text-[#d5a22d] text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                <div className="inline-flex items-center gap-1.5 bg-brand-accent/10 text-brand-accent text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
                     <Sparkles className="w-3 h-3" /> Discovery Quiz
                 </div>
 
@@ -104,7 +104,7 @@ function IntroScreen({ onStart }: { onStart: () => void }) {
 
                 <button
                     onClick={onStart}
-                    className="w-full h-11 rounded-xl bg-[#d5a22d] hover:bg-[#b89531] text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-[#d5a22d]/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
+                    className="w-full h-11 rounded-xl bg-brand-accent hover:bg-[#b89531] text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-brand-accent/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
                 >
                     Get Started <ArrowRight className="w-4 h-4" />
                 </button>
@@ -141,7 +141,7 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                 <p className="text-gray-400 text-sm">No discovery path configured yet.</p>
                 <button
                     onClick={() => onComplete({})}
-                    className="w-full h-11 rounded-xl bg-[#d5a22d] text-white font-bold text-sm"
+                    className="w-full h-11 rounded-xl bg-brand-accent text-white font-bold text-sm"
                 >
                     Continue to Register
                 </button>
@@ -199,9 +199,9 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                 <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1.6, repeat: Infinity, ease: 'linear' }}
-                    className="w-14 h-14 rounded-full border-4 border-[#d5a22d]/20 border-t-[#d5a22d] mx-auto flex items-center justify-center"
+                    className="w-14 h-14 rounded-full border-4 border-brand-accent/20 border-t-brand-accent mx-auto flex items-center justify-center"
                 >
-                    <Sparkles className="w-6 h-6 text-[#d5a22d]" />
+                    <Sparkles className="w-6 h-6 text-brand-accent" />
                 </motion.div>
                 <div>
                     <h2 className="text-lg font-black text-[#1a1b41] uppercase tracking-tight">Finding Your Matches</h2>
@@ -219,7 +219,7 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                 animate={{ opacity: 1, scale: 1 }}
                 className="w-full max-w-md mx-auto bg-white rounded-2xl border border-gray-100 shadow-sm p-6 text-center space-y-5"
             >
-                <div className="w-14 h-14 bg-[#d5a22d] rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-[#d5a22d]/30 rotate-6">
+                <div className="w-14 h-14 bg-brand-accent rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-brand-accent/30 rotate-6">
                     <CheckCircle2 className="w-7 h-7 text-white" />
                 </div>
 
@@ -251,7 +251,7 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
 
                 <button
                     onClick={() => onComplete(answers)}
-                    className="w-full h-11 rounded-xl bg-[#d5a22d] hover:bg-[#b89531] text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-[#d5a22d]/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
+                    className="w-full h-11 rounded-xl bg-brand-accent hover:bg-[#b89531] text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-brand-accent/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
                 >
                     See My Matches <ArrowRight className="w-4 h-4" />
                 </button>
@@ -284,7 +284,7 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                         className="w-full h-full object-cover absolute inset-0"
                     />
                 </AnimatePresence>
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white" />
+                <div className="absolute inset-0 bg-linear-to-b from-transparent to-white" />
             </div>
 
             <div className="px-5 pb-5 space-y-4">
@@ -293,14 +293,14 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                 <div className="space-y-1.5">
                     <div className="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-wider">
                         <span>Step {currentStep + 1} of {questions.length}</span>
-                        <span className="text-[#d5a22d]">{Math.round(progress)}%</span>
+                        <span className="text-brand-accent">{Math.round(progress)}%</span>
                     </div>
                     <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
                         <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${progress}%` }}
                             transition={{ duration: 0.4 }}
-                            className="h-full bg-gradient-to-r from-[#1a1b41] to-[#d5a22d] rounded-full"
+                            className="h-full bg-linear-to-r from-[#1a1b41] to-brand-accent rounded-full"
                         />
                     </div>
                 </div>
@@ -337,7 +337,7 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                                             onClick={() => handleSelect(option.value)}
                                             className={`relative p-4 rounded-xl border-2 transition-all flex flex-col items-center gap-2 text-center ${
                                                 selected
-                                                    ? 'bg-[#d5a22d] border-[#d5a22d] shadow-md shadow-[#d5a22d]/25'
+                                                    ? 'bg-brand-accent border-brand-accent shadow-md shadow-brand-accent/25'
                                                     : 'bg-gray-50 border-gray-100 hover:border-gray-200 hover:bg-gray-100'
                                             }`}
                                         >
@@ -384,7 +384,7 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                                                     onClick={() => { handleSelect(option.value); setIsDropdownOpen(false); }}
                                                     className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-all ${
                                                         answers[currentQuestion.key] === option.value
-                                                            ? 'bg-[#d5a22d] text-white'
+                                                            ? 'bg-brand-accent text-white'
                                                             : 'text-gray-600 hover:bg-gray-50 hover:text-[#1a1b41]'
                                                     }`}
                                                 >
@@ -404,7 +404,7 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                                 value={answers[currentQuestion.key] || ''}
                                 onChange={e => handleSelect(e.target.value)}
                                 placeholder={currentQuestion.placeholder || 'Type your answer…'}
-                                className="w-full h-11 px-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-semibold text-[#1a1b41] placeholder:text-gray-300 focus:outline-none focus:border-[#d5a22d] transition-all"
+                                className="w-full h-11 px-4 bg-gray-50 border border-gray-100 rounded-xl text-sm font-semibold text-[#1a1b41] placeholder:text-gray-300 focus:outline-none focus:border-brand-accent transition-all"
                             />
                         )}
                     </motion.div>
@@ -422,7 +422,7 @@ export default function StudentQuestionnaire({ questions, onComplete }: StudentQ
                     <button
                         onClick={handleNext}
                         disabled={!canContinue}
-                        className="flex-1 h-10 rounded-xl bg-[#d5a22d] hover:bg-[#b89531] text-white font-bold text-sm uppercase tracking-wide transition-all active:scale-[0.98] disabled:opacity-40 shadow-md shadow-[#d5a22d]/20 flex items-center justify-center gap-2"
+                        className="flex-1 h-10 rounded-xl bg-brand-accent hover:bg-[#b89531] text-white font-bold text-sm uppercase tracking-wide transition-all active:scale-[0.98] disabled:opacity-40 shadow-md shadow-brand-accent/20 flex items-center justify-center gap-2"
                     >
                         {isLastStep ? 'Discover My Path' : 'Continue'} <ArrowRight className="w-4 h-4" />
                     </button>

@@ -29,7 +29,7 @@ export default function Breadcrumbs({ items = [], className }: BreadcrumbsProps)
                 <li>
                     <Link 
                         href={homeUrl} 
-                        className="flex items-center text-slate-400 hover:text-[#d5a22d] transition-colors"
+                        className="flex items-center text-slate-400 hover:text-brand-accent transition-colors"
                     >
                         <Home className="h-3 w-3 flex-shrink-0" aria-hidden="true" />
                         <span className="sr-only">Dashboard</span>
@@ -41,12 +41,12 @@ export default function Breadcrumbs({ items = [], className }: BreadcrumbsProps)
                         {item.href ? (
                             <Link
                                 href={item.href}
-                                className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-[#36335e] transition-colors flex items-center"
+                                className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-brand-primary transition-colors flex items-center"
                             >
                                 {item.label}
                             </Link>
                         ) : (
-                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#d5a22d] truncate max-w-[200px]" aria-current="page">
+                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent truncate max-w-[200px]" aria-current="page">
                                 {item.label}
                             </span>
                         )}

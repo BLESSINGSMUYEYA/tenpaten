@@ -9,9 +9,10 @@ export async function upsertDepartment(data: {
     name: string;
 }) {
     const session = await auth();
-    const universityId = (session?.user as any)?.managedUniversityId;
+    const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+    const universityId = (session?.user as any)?.role === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : (session?.user as any)?.managedUniversityId;
 
-    if (!session?.user || session.user.role !== 'SCHOOL_ADMIN' || !universityId) {
+    if (!session?.user || ((session.user as any).role !== 'SCHOOL_ADMIN' && (session.user as any).role !== 'SCHOOL_SUPER_AGENT') || !universityId) {
         return { error: 'Unauthorized' };
     }
 
@@ -51,9 +52,10 @@ export async function upsertDepartment(data: {
 
 export async function deleteDepartment(id: string) {
     const session = await auth();
-    const universityId = (session?.user as any)?.managedUniversityId;
+    const { getActiveSchoolId } = await import('@/lib/getActiveSchool');
+    const universityId = (session?.user as any)?.role === 'SCHOOL_SUPER_AGENT' ? await getActiveSchoolId() : (session?.user as any)?.managedUniversityId;
 
-    if (!session?.user || session.user.role !== 'SCHOOL_ADMIN' || !universityId) {
+    if (!session?.user || ((session.user as any).role !== 'SCHOOL_ADMIN' && (session.user as any).role !== 'SCHOOL_SUPER_AGENT') || !universityId) {
         return { error: 'Unauthorized' };
     }
 

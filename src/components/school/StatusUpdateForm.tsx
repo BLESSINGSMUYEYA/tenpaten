@@ -23,7 +23,7 @@ const STATUS_OPTIONS = [
     { value: 'UNIVERSITY_REVIEW', label: 'Under University Review', icon: AlertCircle, color: 'text-blue-600' },
     { value: 'OFFER_ISSUED', label: 'Offer Issued', icon: CheckCircle2, color: 'text-emerald-600' },
     { value: 'OFFER_ACCEPTED', label: 'Offer Accepted', icon: CheckCircle2, color: 'text-emerald-700' },
-    { value: 'ENROLLED', label: 'Enrolled', icon: CheckCircle2, color: 'text-[#36335e]' },
+    { value: 'ENROLLED', label: 'Enrolled', icon: CheckCircle2, color: 'text-brand-primary' },
     { value: 'REJECTED', label: 'Rejected', icon: XCircle, color: 'text-rose-600' },
 ];
 
@@ -76,28 +76,28 @@ export default function StatusUpdateForm({ applicationId, currentStatus }: Statu
     return (
         <div className="bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden">
             <div className="p-6 sm:px-8 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
-                <h3 className="font-black text-[#36335e] text-sm uppercase tracking-widest flex items-center gap-2">
-                    <Save className="w-4 h-4 text-[#d5a22d]" />
+                <h3 className="font-black text-brand-primary text-sm uppercase tracking-widest flex items-center gap-2">
+                    <Save className="w-4 h-4 text-brand-accent" />
                     Process Application
                 </h3>
                 
                 <div className="flex items-center gap-2">
-                    <span className={`text-[9px] font-black uppercase tracking-widest ${isOverride ? 'text-[#d5a22d]' : 'text-slate-400'}`}>
+                    <span className={`text-[9px] font-black uppercase tracking-widest ${isOverride ? 'text-brand-accent' : 'text-slate-400'}`}>
                         Official Override
                     </span>
                     <Switch 
                         checked={isOverride} 
                         onCheckedChange={setIsOverride} 
-                        className="data-[state=checked]:bg-[#d5a22d]"
+                        className="data-[state=checked]:bg-brand-accent"
                     />
                 </div>
             </div>
             
             <div className="p-6 sm:px-8 space-y-6">
                 {isOverride && (
-                    <div className="p-4 bg-[#d5a22d]/5 border border-[#d5a22d]/20 rounded-2xl flex items-start gap-3 animate-in slide-in-from-top-2">
-                        <AlertTriangle className="w-4 h-4 text-[#d5a22d] shrink-0 mt-0.5" />
-                        <p className="text-[10px] font-bold text-[#d5a22d] uppercase tracking-wide leading-relaxed">
+                    <div className="p-4 bg-brand-accent/5 border border-brand-accent/20 rounded-2xl flex items-start gap-3 animate-in slide-in-from-top-2">
+                        <AlertTriangle className="w-4 h-4 text-brand-accent shrink-0 mt-0.5" />
+                        <p className="text-[10px] font-bold text-brand-accent uppercase tracking-wide leading-relaxed">
                             Manual overrides are flagged in the enrollment audit trail and require a standardized reason for institutional compliance.
                         </p>
                     </div>
@@ -106,7 +106,7 @@ export default function StatusUpdateForm({ applicationId, currentStatus }: Statu
                 <div className="space-y-2">
                     <Label htmlFor="status" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Target Status</Label>
                     <Select value={status} onValueChange={setStatus}>
-                        <SelectTrigger id="status" className="w-full h-12 sm:h-14 rounded-2xl border-slate-200 bg-slate-50 focus:ring-4 focus:ring-[#36335e]/10 focus:border-[#36335e] font-bold text-slate-700 transition-all">
+                        <SelectTrigger id="status" className="w-full h-12 sm:h-14 rounded-2xl border-slate-200 bg-slate-50 focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary font-bold text-slate-700 transition-all">
                             <SelectValue placeholder="Select status" />
                         </SelectTrigger>
                         <SelectContent className="rounded-2xl border-slate-200 shadow-xl">
@@ -132,14 +132,14 @@ export default function StatusUpdateForm({ applicationId, currentStatus }: Statu
                             placeholder="Add specific details or feedback..."
                             value={note}
                             onChange={(e) => setNote(e.target.value)}
-                            className="min-h-[120px] rounded-2xl border-slate-200 bg-slate-50 focus:ring-4 focus:ring-[#36335e]/10 focus:border-[#36335e] resize-none font-medium leading-relaxed transition-all p-4"
+                            className="min-h-[120px] rounded-2xl border-slate-200 bg-slate-50 focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary resize-none font-medium leading-relaxed transition-all p-4"
                         />
                     </div>
                 ) : (
                     <div className="space-y-2 animate-in slide-in-from-bottom-2 duration-300">
-                        <Label htmlFor="overrideReason" className="text-xs font-black uppercase tracking-widest text-[#d5a22d] ml-1">Override Reason</Label>
+                        <Label htmlFor="overrideReason" className="text-xs font-black uppercase tracking-widest text-brand-accent ml-1">Override Reason</Label>
                         <Select value={overrideReason} onValueChange={(val) => setOverrideReason(val as OverrideReason)}>
-                            <SelectTrigger id="overrideReason" className="w-full h-12 sm:h-14 rounded-2xl border-[#d5a22d]/30 bg-[#d5a22d]/5 focus:ring-4 focus:ring-[#d5a22d]/10 focus:border-[#d5a22d] font-bold text-slate-700 transition-all">
+                            <SelectTrigger id="overrideReason" className="w-full h-12 sm:h-14 rounded-2xl border-brand-accent/30 bg-brand-accent/5 focus:ring-4 focus:ring-brand-accent/10 focus:border-brand-accent font-bold text-slate-700 transition-all">
                                 <SelectValue placeholder="Select standardized reason..." />
                             </SelectTrigger>
                             <SelectContent className="rounded-2xl border-slate-200 shadow-xl">
@@ -164,7 +164,7 @@ export default function StatusUpdateForm({ applicationId, currentStatus }: Statu
                     onClick={handleSubmit}
                     disabled={isPending || (status === currentStatus && !note && !isOverride)}
                     className={`w-full h-12 sm:h-14 text-white text-xs font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all transform active:scale-95 disabled:opacity-50 disabled:active:scale-100 mt-2 ${
-                        isOverride ? 'bg-[#d5a22d] hover:bg-[#b08523] shadow-[#d5a22d]/20' : 'bg-[#36335e] hover:bg-[#2a284a] shadow-[#36335e]/20'
+                        isOverride ? 'bg-brand-accent hover:bg-[#b08523] shadow-brand-accent/20' : 'bg-brand-primary hover:bg-brand-primary-hover shadow-brand-primary/20'
                     }`}
                 >
                     {isPending ? (

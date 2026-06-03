@@ -182,7 +182,7 @@ export default function UniversityDetailsView({ university }: UniversityDetailsP
                         />
                         
                         {/* Call to Action Card in Sidebar */}
-                        <div className="bg-gradient-to-br from-[#d5a22d] to-[#b88a24] rounded-[2.5rem] p-8 text-white shadow-2xl relative overflow-hidden group hover:scale-[1.02] transition-all duration-500">
+                        <div className="bg-linear-to-br from-brand-accent to-[#b88a24] rounded-[2.5rem] p-8 text-white shadow-2xl relative overflow-hidden group hover:scale-[1.02] transition-all duration-500">
                             <div className="absolute top-0 right-0 -mr-8 -mt-8 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
                             <div className="relative z-10 space-y-6">
                                 <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center backdrop-blur-md border border-white/20">
@@ -217,7 +217,7 @@ export default function UniversityDetailsView({ university }: UniversityDetailsP
                     <div className="relative z-10 space-y-6 max-w-3xl mx-auto">
                         {isWithinWindow && timeLeft && (
                             <div className="flex flex-col items-center gap-4 mb-8">
-                                <span className="text-[#d5a22d] text-[9px] font-black uppercase tracking-[0.3em]">Application Deadline Countdown</span>
+                                <span className="text-brand-accent text-[9px] font-black uppercase tracking-[0.3em]">Application Deadline Countdown</span>
                                 <div className="flex gap-4">
                                     {[
                                         { label: 'Days', value: timeLeft.days },
@@ -236,7 +236,7 @@ export default function UniversityDetailsView({ university }: UniversityDetailsP
                             </div>
                         )}
                         {!isWithinWindow && !isBeforeOpen && (
-                            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#d5a22d]/20 text-[#d5a22d] text-[9px] font-black uppercase tracking-[0.3em] border border-[#d5a22d]/30 animate-bounce">
+                            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-accent/20 text-brand-accent text-[9px] font-black uppercase tracking-[0.3em] border border-brand-accent/30 animate-bounce">
                                 Admissions Closed
                             </span>
                         )}
@@ -246,7 +246,7 @@ export default function UniversityDetailsView({ university }: UniversityDetailsP
                             </span>
                         )}
                         <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tighter leading-none">
-                            Your future at <span className="text-[#d5a22d]">{university.name}</span> starts here.
+                            Your future at <span className="text-brand-accent">{university.name}</span> starts here.
                         </h2>
                         <p className="text-sm sm:text-base text-white/60 font-medium">
                             {isWithinWindow 
@@ -261,7 +261,7 @@ export default function UniversityDetailsView({ university }: UniversityDetailsP
                         <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-6">
                             <button 
                                 onClick={handleStartConversation}
-                                className="h-14 px-10 bg-[#d5a22d] text-[#1a1b41] font-black rounded-2xl text-[10px] uppercase tracking-[0.2em] hover:bg-white transition-all hover:scale-105 active:scale-95 shadow-2xl"
+                                className="h-14 px-10 bg-brand-accent text-[#1a1b41] font-black rounded-2xl text-[10px] uppercase tracking-[0.2em] hover:bg-white transition-all hover:scale-105 active:scale-95 shadow-2xl"
                             >
                                 Connect with Admissions
                             </button>
@@ -280,7 +280,7 @@ export default function UniversityDetailsView({ university }: UniversityDetailsP
                                 onClick={handleStartConversation}
                                 className="h-14 px-10 bg-white/10 text-white font-black rounded-2xl text-[10px] uppercase tracking-[0.2em] hover:bg-white/20 transition-all border border-white/10 backdrop-blur-md flex items-center gap-3"
                             >
-                                <Sparkles className="w-4 h-4 text-[#d5a22d]" />
+                                <Sparkles className="w-4 h-4 text-brand-accent" />
                                 Get Notified for Next Intake
                             </button>
                         </div>

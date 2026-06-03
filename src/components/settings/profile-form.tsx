@@ -26,7 +26,7 @@ export default function ProfileForm({ user, theme = 'student' }: { user: any; th
                     Full Name
                 </label>
                 <input
-                    className={`flex h-11 w-full rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 ${isSchool ? 'focus-visible:ring-[#d5a22d]' : 'focus-visible:ring-indigo-500'} focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all`}
+                    className={`flex h-11 w-full rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 ${isSchool ? 'focus-visible:ring-brand-accent' : 'focus-visible:ring-indigo-500'} focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all`}
                     id="fullName"
                     name="fullName"
                     type="text"
@@ -40,7 +40,7 @@ export default function ProfileForm({ user, theme = 'student' }: { user: any; th
                 type="submit"
                 disabled={isPending}
                 className={isSchool 
-                    ? "bg-[#36335e] hover:bg-[#2a284a] text-white px-8 h-11 transition-all shadow-sm active:scale-95" 
+                    ? "bg-brand-primary hover:bg-brand-primary-hover text-white px-8 h-11 transition-all shadow-sm active:scale-95" 
                     : "bg-indigo-600 hover:bg-indigo-700 text-white px-8 h-11 transition-all shadow-sm active:scale-95"
                 }
             >

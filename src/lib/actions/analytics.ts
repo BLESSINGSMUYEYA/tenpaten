@@ -46,11 +46,25 @@ export async function getAdminStats() {
 }
 
 export async function getSchoolStats(universityId: string) {
-    const user = await requireRole(['SCHOOL_ADMIN', 'SUPER_ADMIN']);
+    const user = await requireRole(['SCHOOL_ADMIN', 'SUPER_ADMIN', 'SCHOOL_SUPER_AGENT']);
 
     // Safety check for school admins
     if (user.role === 'SCHOOL_ADMIN' && user.managedUniversityId !== universityId) {
         throw new Error("Unauthorized access to school stats");
+    }
+
+    if (user.role === 'SCHOOL_SUPER_AGENT') {
+        const assignment = await prisma.schoolSuperAgentUniversity.findUnique({
+            where: {
+                userId_universityId: {
+                    userId: user.id,
+                    universityId,
+                },
+            },
+        });
+        if (!assignment) {
+            throw new Error("Unauthorized access to school stats");
+        }
     }
 
     const [

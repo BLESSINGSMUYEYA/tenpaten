@@ -15,7 +15,7 @@ export default function PasswordForm({ theme = 'student' }: { theme?: 'student' 
                     Current Password
                 </label>
                 <input
-                    className={`mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 ${isSchool ? 'focus:border-[#d5a22d] focus:ring-[#d5a22d]' : 'focus:border-blue-500 focus:ring-blue-500'}`}
+                    className={`mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 ${isSchool ? 'focus:border-brand-accent focus:ring-brand-accent' : 'focus:border-blue-500 focus:ring-blue-500'}`}
                     id="currentPassword"
                     name="currentPassword"
                     type="password"
@@ -28,7 +28,7 @@ export default function PasswordForm({ theme = 'student' }: { theme?: 'student' 
                     New Password
                 </label>
                 <input
-                    className={`mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 ${isSchool ? 'focus:border-[#d5a22d] focus:ring-[#d5a22d]' : 'focus:border-blue-500 focus:ring-blue-500'}`}
+                    className={`mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 ${isSchool ? 'focus:border-brand-accent focus:ring-brand-accent' : 'focus:border-blue-500 focus:ring-blue-500'}`}
                     id="newPassword"
                     name="newPassword"
                     type="password"
@@ -42,7 +42,7 @@ export default function PasswordForm({ theme = 'student' }: { theme?: 'student' 
                     Confirm New Password
                 </label>
                 <input
-                    className={`mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 ${isSchool ? 'focus:border-[#d5a22d] focus:ring-[#d5a22d]' : 'focus:border-blue-500 focus:ring-blue-500'}`}
+                    className={`mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 ${isSchool ? 'focus:border-brand-accent focus:ring-brand-accent' : 'focus:border-blue-500 focus:ring-blue-500'}`}
                     id="confirmPassword"
                     name="confirmPassword"
                     type="password"
@@ -62,7 +62,7 @@ export default function PasswordForm({ theme = 'student' }: { theme?: 'student' 
                 aria-disabled={isPending} 
                 disabled={isPending}
                 className={isSchool 
-                    ? "bg-[#36335e] hover:bg-[#2a284a] text-white px-8 h-11 transition-all shadow-sm active:scale-95" 
+                    ? "bg-brand-primary hover:bg-brand-primary-hover text-white px-8 h-11 transition-all shadow-sm active:scale-95" 
                     : "bg-indigo-600 hover:bg-indigo-700 text-white px-8 h-11 transition-all shadow-sm active:scale-95"
                 }
             >

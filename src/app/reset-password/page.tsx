@@ -46,7 +46,7 @@ function ResetPasswordForm() {
                 </div>
                 <h3 className="text-lg font-medium text-gray-900">Password Reset Successful</h3>
                 <p className="text-sm text-gray-500">{state.success}</p>
-                <Button asChild className="w-full mt-4 h-11 rounded-xl bg-gradient-to-r from-[#36335e] to-[#2a284a] text-white">
+                <Button asChild className="w-full mt-4 h-11 rounded-xl bg-linear-to-r from-brand-primary to-brand-primary-hover text-white">
                     <Link href="/login">Go to login</Link>
                 </Button>
             </div>
@@ -119,7 +119,7 @@ function ResetPasswordForm() {
             <Button
                 type="submit"
                 disabled={isPending}
-                className="w-full h-11 bg-gradient-to-r from-[#36335e] to-[#2a284a] hover:from-[#2a284a] hover:to-[#36335e] text-white transition-all font-semibold rounded-xl shadow-lg shadow-[#36335e]/20"
+                className="w-full h-11 bg-linear-to-r from-brand-primary to-brand-primary-hover hover:from-brand-primary-hover hover:to-brand-primary text-white transition-all font-semibold rounded-xl shadow-lg shadow-brand-primary/20"
             >
                 {isPending ? (
                     <>
@@ -149,7 +149,7 @@ export default function ResetPasswordPage() {
                     <div className="bg-white sm:shadow-xl sm:shadow-gray-200/50 sm:border border-gray-100 sm:rounded-2xl p-6 sm:p-8">
                         <Suspense fallback={
                             <div className="flex justify-center items-center py-8">
-                                <Loader2 className="h-8 w-8 animate-spin text-[#36335e]" />
+                                <Loader2 className="h-8 w-8 animate-spin text-brand-primary" />
                             </div>
                         }>
                             <ResetPasswordForm />

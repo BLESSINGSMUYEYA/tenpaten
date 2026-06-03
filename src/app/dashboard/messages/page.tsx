@@ -81,7 +81,7 @@ export default async function MessagesPage({ searchParams }: { searchParams: Pro
                                 <div className="w-24 h-24 rounded-3xl bg-[#1d1b41]/5 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 border border-[#1d1b41]/10 shadow-sm">
                                     <MessageSquare className="w-10 h-10 text-[#1d1b41]" />
                                 </div>
-                                <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-xl bg-[#d5a22d] shadow-lg flex items-center justify-center transform group-hover:-translate-y-2 transition-all duration-500 delay-100 border-2 border-white">
+                                <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-xl bg-brand-accent shadow-lg flex items-center justify-center transform group-hover:-translate-y-2 transition-all duration-500 delay-100 border-2 border-white">
                                     <MousePointer2 className="w-5 h-5 text-white" />
                                 </div>
                             </div>

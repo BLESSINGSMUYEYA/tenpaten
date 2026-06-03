@@ -73,7 +73,7 @@ export default function SchoolRegisterForm() {
 
             <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-[#36335e] to-[#2a284a] hover:from-[#2a284a] hover:to-[#36335e] text-white transition-all font-semibold shadow-lg shadow-[#36335e]/20"
+                className="w-full bg-linear-to-r from-brand-primary to-brand-primary-hover hover:from-brand-primary-hover hover:to-brand-primary text-white transition-all font-semibold shadow-lg shadow-brand-primary/20"
                 disabled={isPending}
             >
                 {isPending ? (

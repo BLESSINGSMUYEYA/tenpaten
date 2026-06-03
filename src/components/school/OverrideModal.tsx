@@ -93,8 +93,8 @@ export default function OverrideModal({
                 <div className="bg-[#1d1b41] text-white p-8 flex items-start justify-between">
                     <div>
                         <div className="flex items-center gap-2 mb-2">
-                            <AlertTriangle className="w-4 h-4 text-[#d5a22d]" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#d5a22d]">
+                            <AlertTriangle className="w-4 h-4 text-brand-accent" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
                                 Manual Override
                             </span>
                         </div>
@@ -121,7 +121,7 @@ export default function OverrideModal({
                             <select
                                 value={newStatus}
                                 onChange={(e) => setNewStatus(e.target.value as ApplicationStatus)}
-                                className="w-full appearance-none px-4 py-3.5 pr-10 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-800 focus:outline-none focus:ring-4 focus:ring-[#36335e]/10 focus:border-[#36335e] transition-all cursor-pointer"
+                                className="w-full appearance-none px-4 py-3.5 pr-10 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-800 focus:outline-none focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary transition-all cursor-pointer"
                             >
                                 {STATUS_OPTIONS.map(opt => (
                                     <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -147,7 +147,7 @@ export default function OverrideModal({
                                 onChange={(e) => { setNewRank(e.target.value); setPreview(null); }}
                                 onBlur={handleRankBlur}
                                 placeholder="Enter new rank..."
-                                className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-800 focus:outline-none focus:ring-4 focus:ring-[#36335e]/10 focus:border-[#36335e] transition-all"
+                                className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-800 focus:outline-none focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary transition-all"
                             />
                         </div>
                     )}
@@ -155,7 +155,7 @@ export default function OverrideModal({
                     {/* Impact Preview */}
                     {loadingPreview && (
                         <div className="flex items-center gap-2 text-xs text-slate-400 font-medium px-1">
-                            <div className="w-3 h-3 border-2 border-slate-300 border-t-[#36335e] rounded-full animate-spin" />
+                            <div className="w-3 h-3 border-2 border-slate-300 border-t-brand-primary rounded-full animate-spin" />
                             Calculating impact...
                         </div>
                     )}
@@ -188,7 +188,7 @@ export default function OverrideModal({
                             <select
                                 value={reason}
                                 onChange={(e) => setReason(e.target.value as OverrideReason)}
-                                className="w-full appearance-none px-4 py-3.5 pr-10 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-800 focus:outline-none focus:ring-4 focus:ring-[#36335e]/10 focus:border-[#36335e] transition-all cursor-pointer"
+                                className="w-full appearance-none px-4 py-3.5 pr-10 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-800 focus:outline-none focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary transition-all cursor-pointer"
                             >
                                 <option value="">Select a reason...</option>
                                 {OVERRIDE_REASONS.map(r => (
@@ -216,7 +216,7 @@ export default function OverrideModal({
                         <Button
                             onClick={handleConfirm}
                             disabled={!reason || isPending}
-                            className="flex-1 h-12 bg-[#1d1b41] hover:bg-[#2a284a] text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-[#1d1b41]/20 disabled:opacity-40 transition-all"
+                            className="flex-1 h-12 bg-[#1d1b41] hover:bg-brand-primary-hover text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-[#1d1b41]/20 disabled:opacity-40 transition-all"
                         >
                             {isPending ? (
                                 <span className="flex items-center gap-2">
